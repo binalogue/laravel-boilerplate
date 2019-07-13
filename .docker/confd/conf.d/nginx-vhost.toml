@@ -1,0 +1,5 @@
+[template]
+src = "nginx-vhost.tmpl"
+dest = "/etc/nginx/sites-available/default"
+owner = "root"
+mode = "0644"
