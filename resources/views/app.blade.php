@@ -82,7 +82,7 @@ $currentRouteMeta = $data['meta'][Request::route()->getName()];
 
 <!-- Fonts/Media-->
 {{-- Every browser that supports preloading also supports WOFF2, so that's always the format that we should preload. --}}
-<link rel="preload" as="font" crossorigin="crossorigin" href="https://fonts.googleapis.com/css?family=Nunito">
+<link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="{{ asset('fonts/TradeGothic-Light.woff2') }}">
 <link rel="preload" as="image" href="{{ webp('images/binalogue-logo.png') }}">
 
 {{--
