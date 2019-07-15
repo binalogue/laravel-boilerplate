@@ -1,0 +1,158 @@
+# Templates
+
+.only-mr-backend:
+  only:
+    refs:
+      - merge_requests
+    changes:
+      - app/**/*
+      - bootstrap/**/*
+      - config/**/*
+      - database/**/*
+      - routes/**/*
+      - tests/**/*
+
+# GitLab CI
+
+stages:
+  - install
+  - build
+  - test
+  - security
+  - staging
+  - production
+
+install:composer:
+  extends:
+    - .only-mr-backend
+  stage: install
+  image: edbizarro/gitlab-ci-pipeline-php:7.2
+  script:
+    - php -v
+    - composer install --prefer-dist --no-scripts --no-progress --optimize-autoloader --ignore-platform-reqs --no-ansi --no-interaction
+    - cp .env.forge .env
+    - php artisan key:generate
+  artifacts:
+    name: '$CI_JOB_NAME-$CI_COMMIT_REF_NAME'
+    paths:
+      - vendor/
+      - .env
+    when: always
+    expire_in: 1 days
+  cache:
+    key: '$CI_JOB_NAME-$CI_COMMIT_REF_SLUG'
+    paths:
+      - vendor/
+
+install:yarn:
+  extends:
+    - .only-mr-backend
+  stage: install
+  image: edbizarro/gitlab-ci-pipeline-php:7.2
+  script:
+    - yarn --version
+    - yarn install --pure-lockfile
+  artifacts:
+    name: '$CI_JOB_NAME-$CI_COMMIT_REF_NAME'
+    paths:
+      - node_modules/
+    when: always
+    expire_in: 1 days
+  cache:
+    key: '$CI_JOB_NAME-$CI_COMMIT_REF_SLUG'
+    paths:
+      - node_modules/
+
+build:assets:
+  extends:
+    - .only-mr-backend
+  stage: build
+  image: edbizarro/gitlab-ci-pipeline-php:7.2
+  script:
+    - yarn --version
+    - yarn favicon:check
+    - yarn prod --progress false
+  dependencies:
+    - install:composer
+    - install:yarn
+  artifacts:
+    name: '$CI_JOB_NAME-$CI_COMMIT_REF_NAME'
+    paths:
+      - public/css/
+      - public/fonts/
+      - public/images/
+      - public/js/
+      - public/video/
+      - public/mix-manifest.json
+    when: always
+    expire_in: 1 days
+
+test:codestyle:
+  stage: test
+  image: lorisleiva/laravel-docker
+  script:
+    - phpcs --standard=PSR2 --extensions=php app
+  dependencies: []
+  only:
+    refs:
+      - merge_requests
+    changes:
+      - app/**/*
+
+test:phpcpd:
+  stage: test
+  image: edbizarro/gitlab-ci-pipeline-php:7.2
+  script:
+    - test -f phpcpd.phar || curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar
+    - php phpcpd.phar app/ --min-lines=50
+  dependencies: []
+  cache:
+    key: '$CI_JOB_NAME-$CI_COMMIT_REF_SLUG'
+    paths:
+      - phpcpd.phar
+  only:
+    refs:
+      - merge_requests
+    changes:
+      - app/**/*
+
+test:phpunit:
+  extends: .only-mr-backend
+  stage: test
+  image: edbizarro/gitlab-ci-pipeline-php:7.2
+  dependencies:
+    - install:composer
+    - build:assets
+  script:
+    - php -v
+    - sudo cp /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini /usr/local/etc/php/conf.d/docker-php-ext-xdebug.bak
+    - echo "" | sudo tee /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+    - ./vendor/phpunit/phpunit/phpunit --version
+    - php -d short_open_tag=off ./vendor/phpunit/phpunit/phpunit -v --colors=never --stderr
+    - sudo cp /usr/local/etc/php/conf.d/docker-php-ext-xdebug.bak /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+  artifacts:
+    name: '$CI_JOB_NAME-$CI_COMMIT_REF_NAME'
+    paths:
+      - storage/logs # for debugging
+    when: on_failure
+    expire_in: 1 days
+
+security:sensiolabs:
+  stage: security
+  image: edbizarro/gitlab-ci-pipeline-php:7.2
+  script:
+    - test -d security-checker || git clone https://github.com/sensiolabs/security-checker.git
+    - cd security-checker
+    - composer install
+    - php security-checker security:check ../composer.lock
+  dependencies: []
+  cache:
+    key: '$CI_JOB_NAME-$CI_COMMIT_REF_SLUG'
+    paths:
+      - security-checker/
+  only:
+    refs:
+      - merge_requests
+    changes:
+      - composer.json
+      - composer.lock

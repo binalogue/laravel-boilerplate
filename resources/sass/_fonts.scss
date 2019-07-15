@@ -1,0 +1,41 @@
+/**
+ * Fonts.
+ *
+ * See:
+ *  - [Web Font Optimization](https://developers.google.com/web/fundamentals/performance/optimizing-content-efficiency/webfont-optimization)
+ *  - [Controlling Font Performance with font-display](https://developers.google.com/web/updates/2016/02/font-display)
+ */
+
+@font-face {
+  font-weight: 800;
+  font-family: "TradeGothic";
+
+  src: url("/fonts/TradeGothic-BdCn.woff2") format("woff2"),
+    url("/fonts/TradeGothic-BdCn.woff") format("woff"),
+    url("/fonts/TradeGothic-BdCn.ttf") format("truetype"),
+    url("/fonts/TradeGothic-BdCn.eot") format("embedded-opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 500;
+  font-family: "TradeGothic";
+
+  src: url("/fonts/TradeGothic-Roman.woff2") format("woff2"),
+    url("/fonts/TradeGothic-Roman.woff") format("woff"),
+    url("/fonts/TradeGothic-Roman.ttf") format("truetype"),
+    url("/fonts/TradeGothic-Roman.eot") format("embedded-opentype");
+  font-display: swap;
+}
+
+@font-face {
+  font-weight: 400;
+  font-family: "TradeGothic";
+
+  // This font's `woff2` format will be preloaded.
+  src: url("/fonts/TradeGothic-Light.woff2") format("woff2"),
+    url("/fonts/TradeGothic-Light.woff") format("woff"),
+    url("/fonts/TradeGothic-Light.ttf") format("truetype"),
+    url("/fonts/TradeGothic-Light.eot") format("embedded-opentype");
+  font-display: swap;
+}

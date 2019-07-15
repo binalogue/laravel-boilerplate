@@ -1,0 +1,90 @@
+version: '3'
+
+services:
+  app:
+    container_name: laravel-boilerplate-app
+    image: laravel-app-apache
+    build:
+      context: .
+      dockerfile: .docker/app.apache.dockerfile
+    depends_on:
+      - redis
+      - database
+    volumes:
+      - .:/var/www
+    networks:
+      - app-tier
+    ports:
+      - 80:80
+    env_file:
+      - .env
+    environment:
+      CONTAINER_ROLE: app
+    working_dir: /var/www
+
+  scheduler:
+    container_name: laravel-boilerplate-scheduler
+    image: laravel-app-apache
+    depends_on:
+      - app
+      - redis
+      - database
+    volumes:
+      - .:/var/www
+    networks:
+      - app-tier
+    env_file:
+      - .env
+    environment:
+      CONTAINER_ROLE: scheduler
+
+  queue:
+    container_name: laravel-boilerplate-queue
+    image: laravel-app-apache
+    depends_on:
+      - app
+      - redis
+      - database
+    volumes:
+      - .:/var/www
+    networks:
+      - app-tier
+    env_file:
+      - .env
+    environment:
+      CONTAINER_ROLE: queue
+
+  redis:
+    container_name: laravel-boilerplate-redis
+    image: redis:4-alpine
+    volumes:
+      - redis:/data
+    networks:
+      - app-tier
+    ports:
+      - 63791:6379
+
+  database:
+    container_name: laravel-boilerplate-database
+    image: mysql:5.7
+    volumes:
+      - mysql:/var/lib/mysql
+    networks:
+      - app-tier
+    ports:
+      - 33061:3306
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_USER: root
+      MYSQL_PASSWORD: root
+
+volumes:
+  mysql:
+    driver: 'local'
+  redis:
+    driver: 'local'
+
+networks:
+  app-tier:
+    driver: bridge
