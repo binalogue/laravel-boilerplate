@@ -1,0 +1,26 @@
+
+    W     W EEEEEE  010   010   DDDD  EEEEE  SSSS I GGGGG N     N
+    W     W E      00110 01100  D   D E     S     I G     NN    N
+    W     W E     0110110110110 D   D E     S     I G     N N   N
+    W     W EEE   1100110110011 D   D EEE    SSS  I G  GG N  N  N
+    W     W E      10110101101  D   D E         S I G   G N   N N
+    W  W  W E        1110111    D   D E         S I G   G N    NN
+     WW WW  EEEEEE     010      DDDD  EEEEE SSSS  I GGGGG N     N
+                        1
+
+# COMPANY
+
+    Binalogue -- We love design -- https://binalogue.com
+
+# SITE
+
+    Language: Español
+    Doctype: HTML5
+    Standards: HTML5 / CSS3
+    Frameworks: Laravel / Sage / jQuery / Bootstrap / Modernizr
+    IDE: Coda / Atom / BitBucket / FileZilla / Photoshop / Illustrator
+
+# THANKS
+
+    Humans TXT: We Are People, Not Machines.
+    https://humanstxt.org/

@@ -32,7 +32,7 @@
       "pictureAspect": "noChange",
       "themeColor": "#1db954",
       "manifest": {
-        "name": "Laravel",
+        "name": "BinaLaravel",
         "display": "standalone",
         "orientation": "notSet",
         "onConflict": "override",

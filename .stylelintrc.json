@@ -1,0 +1,6 @@
+{
+  "extends": "stylelint-config-airbnb",
+  "rules": {
+    "max-nesting-depth": null
+  }
+}

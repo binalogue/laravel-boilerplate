@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'description' => 'We ❤️ code',
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -80,7 +82,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'es',
 
     /*
     |--------------------------------------------------------------------------
@@ -106,7 +108,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'es_ES',
 
     /*
     |--------------------------------------------------------------------------
@@ -122,6 +124,14 @@ return [
     'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Allow Robots Header
+    |--------------------------------------------------------------------------
+    */
+
+    'allow_robots' => env('ALLOW_ROBOTS', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -174,6 +184,11 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+
+        /*
+         * Custom Service Providers...
+         */
+        App\Providers\ViewServiceProvider::class,
 
     ],
 
