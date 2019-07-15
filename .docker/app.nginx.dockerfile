@@ -1,4 +1,4 @@
-FROM php:7.2-fpm-stretch
+FROM php:7.3-fpm-stretch
 
 ENV PATH="./vendor/bin:${PATH}" \
   NGINX_SERVER_NAME="_" \
