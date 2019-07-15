@@ -26,7 +26,7 @@ stages:
 #   extends:
 #     - .only-mr-backend
 #   stage: install
-#   image: edbizarro/gitlab-ci-pipeline-php:7.2
+#   image: edbizarro/gitlab-ci-pipeline-php:7.3
 #   script:
 #     - php -v
 #     - composer install --prefer-dist --no-scripts --no-progress --optimize-autoloader --ignore-platform-reqs --no-ansi --no-interaction
@@ -48,7 +48,7 @@ stages:
 #   extends:
 #     - .only-mr-backend
 #   stage: install
-#   image: edbizarro/gitlab-ci-pipeline-php:7.2
+#   image: edbizarro/gitlab-ci-pipeline-php:7.3
 #   script:
 #     - yarn --version
 #     - yarn install --pure-lockfile
@@ -67,7 +67,7 @@ stages:
 #   extends:
 #     - .only-mr-backend
 #   stage: build
-#   image: edbizarro/gitlab-ci-pipeline-php:7.2
+#   image: edbizarro/gitlab-ci-pipeline-php:7.3
 #   script:
 #     - yarn --version
 #     - yarn favicon:check
@@ -101,7 +101,7 @@ test:codestyle:
 
 test:phpcpd:
   stage: test
-  image: edbizarro/gitlab-ci-pipeline-php:7.2
+  image: edbizarro/gitlab-ci-pipeline-php:7.3
   script:
     - test -f phpcpd.phar || curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar
     - php phpcpd.phar app/ --min-lines=50
@@ -120,7 +120,7 @@ test:phpcpd:
 #   extends:
 #     - .only-mr-backend
 #   stage: test
-#   image: edbizarro/gitlab-ci-pipeline-php:7.2
+#   image: edbizarro/gitlab-ci-pipeline-php:7.3
 #   dependencies:
 #     - install:composer
 #     - build:assets
@@ -140,7 +140,7 @@ test:phpcpd:
 
 security:sensiolabs:
   stage: security
-  image: edbizarro/gitlab-ci-pipeline-php:7.2
+  image: edbizarro/gitlab-ci-pipeline-php:7.3
   script:
     - test -d security-checker || git clone https://github.com/sensiolabs/security-checker.git
     - cd security-checker
