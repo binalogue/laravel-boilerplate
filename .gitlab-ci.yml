@@ -117,7 +117,8 @@ test:phpcpd:
       - app/**/*
 
 test:phpunit:
-  extends: .only-mr-backend
+  extends:
+    - .only-mr-backend
   stage: test
   image: edbizarro/gitlab-ci-pipeline-php:7.2
   dependencies:
