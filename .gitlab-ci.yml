@@ -1,13 +1,6 @@
---- #--------------------------------------------------------------------------
-
-#--------------------------------------------------------------------------
 # Templates
-.only-default:
-  only:
-    - master
-    - tags
 
-.only-backend:
+.only-mr-backend:
   only:
     refs:
       - merge_requests
@@ -19,7 +12,19 @@
       - routes/**/*
       - tests/**/*
 
-.install-composer:
+# GitLab CI
+
+stages:
+  - install
+  - build
+  - test
+  - security
+  - staging
+  - production
+
+install:composer:
+  extends:
+    - .only-mr-backend
   stage: install
   image: edbizarro/gitlab-ci-pipeline-php:7.2
   script:
@@ -39,7 +44,9 @@
     paths:
       - vendor/
 
-.install-yarn:
+install:yarn:
+  extends:
+    - .only-mr-backend
   stage: install
   image: edbizarro/gitlab-ci-pipeline-php:7.2
   script:
@@ -56,7 +63,9 @@
     paths:
       - node_modules/
 
-.build-assets:
+build:assets:
+  extends:
+    - .only-mr-backend
   stage: build
   image: edbizarro/gitlab-ci-pipeline-php:7.2
   script:
@@ -77,48 +86,6 @@
       - public/mix-manifest.json
     when: always
     expire_in: 1 days
-
-#--------------------------------------------------------------------------
-# GitLab CI
-#--------------------------------------------------------------------------
-
-stages:
-  - install
-  - build
-  - test
-  - security
-  - staging
-  - production
-
-install:composer:
-  extends:
-    - .install-composer
-    - .only-default
-
-install:composer:mr:
-  extends:
-    - .install-composer
-    - .only-backend
-
-install:yarn:
-  extends:
-    - .install-yarn
-    - .only-default
-
-install:yarn:mr:
-  extends:
-    - .install-yarn
-    - .only-backend
-
-build:assets:
-  extends:
-    - .build-assets
-    - .only-default
-
-build:assets:mr:
-  extends:
-    - .build-assets
-    - .only-backend
 
 test:codestyle:
   stage: test
@@ -150,7 +117,7 @@ test:phpcpd:
       - app/**/*
 
 test:phpunit:
-  extends: .only-backend
+  extends: .only-mr-backend
   stage: test
   image: edbizarro/gitlab-ci-pipeline-php:7.2
   dependencies:
@@ -189,37 +156,3 @@ security:sensiolabs:
     changes:
       - composer.json
       - composer.lock
-
-staging:docker:
-  stage: staging
-  image: docker:stable
-  services:
-    - docker:dind
-  before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-  script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE" -f .docker/app.nginx.dockerfile .
-    - docker push "$CI_REGISTRY_IMAGE"
-  dependencies:
-    - install:composer
-    - build:assets
-  when: manual
-  only:
-    - master
-
-production:docker:
-  stage: production
-  image: docker:stable
-  services:
-    - docker:dind
-  before_script:
-    - docker login -u "$CI_REGISTRY_USER" -p "$CI_REGISTRY_PASSWORD" $CI_REGISTRY
-  script:
-    - docker build --pull -t "$CI_REGISTRY_IMAGE:$CI_COMMIT_TAG" -f .docker/app.nginx.dockerfile .
-    - docker push "$CI_REGISTRY_IMAGE:$CI_COMMIT_TAG"
-  dependencies:
-    - install:composer
-    - build:assets
-  when: manual
-  only:
-    - tags
