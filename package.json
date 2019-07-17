@@ -4,7 +4,7 @@
   "scripts": {
     "lint:js": "./node_modules/.bin/eslint --ext .js,.vue --fix resources/js",
     "lint:css": "./node_modules/.bin/stylelint --config .stylelintrc.order.json --fix resources/**/*.{scss,vue}",
-    "lint:php": "./vendor/bin/phpcpd app/ --min-lines=50 && ./vendor/bin/phpcbf --standard=PSR2 --extensions=php app",
+    "lint:php": "./vendor/bin/phpcpd app/ --min-lines=50 && ./vendor/bin/phpcbf --standard=PSR2 --extensions=php app && ./vendor/bin/phpcs --standard=PSR2 --extensions=php app",
     "lint": "yarn lint:js && yarn lint:css && yarn lint:php",
     "favicon:generate": "./node_modules/.bin/real-favicon generate .favicon/faviconDescription.json .favicon/faviconData.json public",
     "favicon:inject": "./node_modules/.bin/real-favicon inject .favicon/faviconData.json resources/views/modules resources/views/modules/icons.blade.php",
@@ -68,7 +68,8 @@
   "lint-staged": {
     "app/**/*.php": [
       "./vendor/bin/phpcpd --min-lines=50",
-      "./vendor/bin/phpcbf --standard=PSR2"
+      "./vendor/bin/phpcbf --standard=PSR2",
+      "./vendor/bin/phpcs --standard=PSR2"
     ],
     "resources/js/**/*.js": [
       "./node_modules/.bin/eslint --fix",
