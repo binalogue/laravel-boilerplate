@@ -1,0 +1,34 @@
+/**
+ * Vue animations.
+ */
+
+/* Slide */
+
+.slide-enter-active,
+.slide-leave-active {
+  transition: opacity .4s ease-in-out, transform .4s ease-in-out;
+}
+
+.slide-enter,
+.slide-leave-to {
+  opacity: 0;
+}
+
+/* Appear / Fade */
+
+.appear-enter-active,
+.fade-enter-active {
+  transition: all .4s ease;
+}
+
+.appear-leave-active,
+.fade-leave-active {
+  transition: all .4s ease;
+}
+
+.appear-enter,
+.appear-leave-to,
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
