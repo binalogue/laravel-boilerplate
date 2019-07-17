@@ -128,7 +128,7 @@ This site doesn't have any tests.
 
 ## Deployment
 
-See [our wiki](https://gitlab.com/binalogue/laravel-boilerplate/wikis/google-cloud-platform/deploying-the-website).
+We have set up **continuous deployment** with Laravel Forge. Every time we push to the **master** branch, we deploy the new changes to our **production** environment.
 
 ## Built With
 
