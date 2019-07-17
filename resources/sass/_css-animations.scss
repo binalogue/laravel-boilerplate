@@ -1,0 +1,113 @@
+/**
+ * CSS animations.
+ */
+
+.animated {
+  animation-duration: .6s;
+  animation-fill-mode: both;
+}
+
+.animated.delay-05s {
+  animation-delay: .5s;
+}
+
+.animated.delay-1s {
+  animation-delay: 1s;
+}
+
+.fade-in {
+  animation-name: fadeIn;
+}
+
+.fade-in-up {
+  animation-name: fadeInUp;
+}
+
+.fade-in-right {
+  animation-name: fadeInRight;
+}
+
+.fade-in-left {
+  animation-name: fadeInLeft;
+}
+
+.fade-out {
+  animation-name: fadeOut;
+}
+
+.fade-out-left {
+  animation-name: fadeOutLeft;
+}
+
+@keyframes fadeIn {
+
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInLeft {
+
+  from {
+    transform: translate3d(-20%, 0, 0);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInRight {
+
+  from {
+    transform: translate3d(20%, 0, 0);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOut {
+
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+@keyframes fadeOutLeft {
+
+  from {
+    opacity: 1;
+  }
+
+  to {
+    transform: translate3d(-20%, 0, 0);
+    opacity: 0;
+  }
+}
+
+@keyframes fadeInUp {
+
+  from {
+    transform: translate3d(0, 10%, 0);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+    opacity: 1;
+  }
+}
