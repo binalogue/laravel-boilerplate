@@ -136,6 +136,8 @@ We have set up **continuous deployment** with Laravel Forge. Every time we push 
 - [Composer](https://getcomposer.org/) - Dependency Manager for PHP
 - [Docker](https://www.docker.com/) - Enterprise-ready container platform to cost-effectively build and manage your application
 
+<!-- ⬇️ OPTIONAL -->
+
 ## Versioning
 
 We use [SemVer](https://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://gitlab.com/binalogue/laravel-boilerplate/-/tags).
@@ -144,6 +146,8 @@ New release checklist:
 
 - Change version in `package.json`
 - Update `CHANGELOG.md`
+
+<!-- ⬆️ OPTIONAL -->
 
 ## Authors
 
