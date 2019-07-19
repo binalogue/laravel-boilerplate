@@ -11,6 +11,7 @@
 /vendor
 .DS_Store
 .env
+.env.dusk*
 .phpunit.result.cache
 auth.json
 Homestead.json
