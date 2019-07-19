@@ -157,3 +157,30 @@ security:sensiolabs:
     changes:
       - composer.json
       - composer.lock
+
+# Update the branch if necessary! Suggested: `master`
+# staging:forge:
+#   stage: staging
+#   image: alpine:latest
+#   script:
+#     - wget https://forge.laravel.com/XXX
+#   dependencies: []
+#   only:
+#     - master
+#   environment:
+#     name: staging
+#     url: https://staging.laravel.binalogue.dev
+
+# Don't forget to change the Laravel Forge Deployment Trigger URL!
+# Update the branch if necessary! Suggested: `production`
+production:forge:
+  stage: production
+  image: alpine:latest
+  script:
+    - wget https://forge.laravel.com/servers/271850/sites/808914/deploy/http?token=53ATtM1efUIF2acGu8j7SREWCOSLTCMqWO6cq5ky
+  dependencies: []
+  only:
+    - master
+  environment:
+    name: production
+    url: https://laravel.binalogue.dev
