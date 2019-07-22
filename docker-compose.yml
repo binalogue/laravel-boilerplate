@@ -3,7 +3,7 @@ version: '3'
 services:
   app:
     container_name: laravel-boilerplate-app
-    image: laravel-app-nginx
+    image: laravel-boilerplate-app-nginx
     build:
       context: .
       dockerfile: .docker/app.nginx.dockerfile
@@ -24,7 +24,7 @@ services:
 
   scheduler:
     container_name: laravel-boilerplate-scheduler
-    image: laravel-app-nginx
+    image: laravel-boilerplate-app-nginx
     depends_on:
       - app
       - redis
@@ -40,7 +40,7 @@ services:
 
   queue:
     container_name: laravel-boilerplate-queue
-    image: laravel-app-nginx
+    image: laravel-boilerplate-app-nginx
     depends_on:
       - app
       - redis
