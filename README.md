@@ -77,8 +77,6 @@ These instructions will get you a copy of the project up and running on your loc
 
    The first time you run `docker-compose` it will take some time to download Docker images and build the local environment, so you can take a ️☕️.
 
-   Now you can access to the local site at http://localhost.
-
    If you run in the background, you can see the logs with:
 
    ```bash
