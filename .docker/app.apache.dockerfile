@@ -16,6 +16,7 @@ RUN apt-get update \
 
 # Install MySQL, Opcache and other PHP extensions.
 RUN docker-php-ext-install \
+  bcmath \
   mbstring \
   opcache \
   pdo \
