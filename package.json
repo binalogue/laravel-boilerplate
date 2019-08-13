@@ -69,7 +69,8 @@
     "app/**/*.php": [
       "./vendor/bin/phpcpd --min-lines=50",
       "./vendor/bin/phpcbf --standard=PSR2",
-      "./vendor/bin/phpcs --standard=PSR2"
+      "./vendor/bin/phpcs --standard=PSR2",
+      "git add"
     ],
     "resources/js/**/*.js": [
       "./node_modules/.bin/eslint --fix",
