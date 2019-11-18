@@ -11,7 +11,7 @@ services:
       - redis
       - database
     volumes:
-      - .:/var/www
+      - .:/var/www:rw,cached
     networks:
       - app-tier
     ports:
@@ -30,7 +30,7 @@ services:
       - redis
       - database
     volumes:
-      - .:/var/www
+      - .:/var/www:rw,cached
     networks:
       - app-tier
     env_file:
@@ -46,7 +46,7 @@ services:
       - redis
       - database
     volumes:
-      - .:/var/www
+      - .:/var/www:rw,cached
     networks:
       - app-tier
     env_file:

@@ -3,7 +3,7 @@ Follow these steps to get a fresh copy of this boilerplate:
 ## App
 
 - [ ] Replace in all project files the following terms, in this order:
-  - [ ] The app name: `Binalogue - Laravel Boilerplate`, `Binalogue x Laravel Boilerplate`, `BinaLaravel`
+  - [ ] The app name: `Binalogue x Laravel Boilerplate`, `BinaLaravel`
   - [ ] The app description: `We ❤️ code`
   - [ ] The repository path: `binalogue/laravel-boilerplate`
   - [ ] The repository name: `laravel-boilerplate`

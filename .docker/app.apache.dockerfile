@@ -2,29 +2,56 @@ FROM php:7.3-apache-stretch
 
 ENV PATH="./vendor/bin:${PATH}" \
   PHP_OPCACHE_VALIDATE_TIMESTAMPS="0" \
-  PHP_OPCACHE_MAX_ACCELERATED_FILES="8000" \
-  PHP_OPCACHE_MEMORY_CONSUMPTION="128"
+  PHP_OPCACHE_MAX_ACCELERATED_FILES="12000" \
+  PHP_OPCACHE_MEMORY_CONSUMPTION="256"
 
 # Enable Apache mod_rewrite.
 RUN a2enmod rewrite
 
-# Install some packages.
+# Install Linux packages.
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
+  gifsicle \
+  git \
+  jpegoptim \
+  libjpeg62-turbo-dev \
+  libmagickwand-dev \
+  libpng-dev \
+  libwebp-dev \
+  libzip-dev \
+  optipng \
+  pngquant \
   procps \
-  sqlite3
+  sqlite3 \
+  unzip \
+  wget
 
-# Install MySQL, Opcache and other PHP extensions.
+# Install Node.js and some global dependencies.
+RUN wget -qO- https://deb.nodesource.com/setup_12.x | bash - && apt-get install -y nodejs
+RUN npm install -g bower yarn
+
+# Install Docker PHP extensions.
+RUN docker-php-ext-configure gd --with-webp-dir=/usr/include/ --with-jpeg-dir=/usr/include/
+RUN docker-php-ext-configure zip --with-libzip
 RUN docker-php-ext-install \
   bcmath \
+  exif \
+  gd \
   mbstring \
   opcache \
   pdo \
-  pdo_mysql
-
-# Install XDebug.
-RUN pecl install apcu xdebug \
-  && docker-php-ext-enable apcu xdebug
+  pdo_mysql \
+  zip
+RUN pecl install \
+  apcu \
+  imagick-3.4.3 \
+  redis \
+  xdebug
+RUN docker-php-ext-enable \
+  apcu \
+  imagick \
+  redis \
+  xdebug
 
 # Copy PHP config files.
 COPY .docker/php/composer-installer.sh /usr/local/bin/composer-installer
@@ -41,18 +68,27 @@ COPY .docker/app.apache.sh /usr/local/bin/run-app
 RUN chmod +x /usr/local/bin/confd \
   && chmod +x /usr/local/bin/run-app
 
+# Copy the application.
+COPY . /var/www
+
 # Install Composer.
+# We need to run this command after "Copy the application" because we need the
+# `composer.json` file.
+ENV COMPOSER_ALLOW_SUPERUSER=1
 RUN chmod +x /usr/local/bin/composer-installer \
   && /usr/local/bin/composer-installer \
   && mv composer.phar /usr/local/bin/composer \
   && chmod +x /usr/local/bin/composer \
+  && composer check-platform-reqs --working-dir=/var/www \
+  && composer global require hirak/prestissimo --prefer-dist --no-progress --no-suggest --classmap-authoritative \
+  && composer clear-cache \
   && composer --version
 
-# Copy the application.
-COPY . /var/www
-
-# Set Apache permissions.
+# Set server permissions.
 RUN chown -R www-data:www-data /var/www
+
+# Add alias.
+RUN echo 'alias pa="php artisan"' >> ~/.bashrc
 
 EXPOSE 80
 
