@@ -10,6 +10,7 @@
   "require": {
     "php": "^7.2",
     "caouecs/laravel-lang": "~4.0",
+    "facade/ignition": "^1.12",
     "fideloper/proxy": "^4.2",
     "kg-bot/laravel-localization-to-vue": "^1.6",
     "laravel/framework": "^6.5",
@@ -18,14 +19,18 @@
     "spatie/laravel-robots-middleware": "^1.1"
   },
   "require-dev": {
-    "facade/ignition": "^1.12",
+    "astrotomic/ignition-stackoverflow": "^1.4",
+    "facade/ignition-code-editor": "^1.0",
+    "facade/ignition-self-diagnosis": "^1.0",
+    "facade/ignition-tinker-tab": "^1.0",
     "fzaninotto/faker": "^1.9",
     "laravel/telescope": "^2.1",
     "mockery/mockery": "^1.2",
     "nunomaduro/collision": "^3.0",
     "phpunit/phpunit": "^8.4",
     "sebastian/phpcpd": "^4.1",
-    "squizlabs/php_codesniffer": "^3.4"
+    "squizlabs/php_codesniffer": "^3.4",
+    "stefanbauer/ignition-laracasts-tab": "^0.2.0"
   },
   "config": {
     "optimize-autoloader": true,
