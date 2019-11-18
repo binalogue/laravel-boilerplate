@@ -76,7 +76,6 @@
   },
   "eslint.packageManager": "yarn",
   "eslint.run": "onType",
-  "eslint.runtime": "node",
   // Enable validation for `.vue` files.
   "eslint.validate": [
     "javascript",
@@ -90,21 +89,12 @@
   /* Material Icon Theme (pkief.material-icon-theme) */
   "material-icon-theme.activeIconPack": "vue_vuex",
 
-  /* Prettier (esbenp.prettier-vscode) */
-  // Try to format our code via `prettier`, and then passes the result of that
-  // to `eslint --fix` (if the language can be processed by ESLint).
-  "prettier.eslintIntegration": true,
-  // Try to format our code via `prettier`, and then passes the result of that
-  // to `stylelint --fix` (if the language can be processed by stylelint).
-  "prettier.stylelintIntegration": true,
-
   /* Stylelint (shinnn.stylelint) */
   "stylelint.enable": true,
 
   /* Vetur (octref.vetur) */
   "vetur.completion.autoImport": true,
   "vetur.completion.tagCasing": "kebab",
-  "vetur.completion.useScaffoldSnippets": true,
   "vetur.format.defaultFormatter.css": "none",
   "vetur.format.defaultFormatter.html": "none",
   "vetur.format.defaultFormatter.js": "none",
