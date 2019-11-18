@@ -30,7 +30,6 @@ class AppService
         $image_width,
         $image_height
     ) {
-
         return collect([
             'title' => $title,
             'description' => $description,
