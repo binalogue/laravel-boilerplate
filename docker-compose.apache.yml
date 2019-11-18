@@ -3,7 +3,7 @@ version: '3'
 services:
   app:
     container_name: laravel-boilerplate-app
-    image: laravel-app-apache
+    image: laravel-boilerplate-app-apache
     build:
       context: .
       dockerfile: .docker/app.apache.dockerfile
@@ -11,7 +11,7 @@ services:
       - redis
       - database
     volumes:
-      - .:/var/www
+      - .:/var/www:rw,cached
     networks:
       - app-tier
     ports:
@@ -24,13 +24,13 @@ services:
 
   scheduler:
     container_name: laravel-boilerplate-scheduler
-    image: laravel-app-apache
+    image: laravel-boilerplate-app-apache
     depends_on:
       - app
       - redis
       - database
     volumes:
-      - .:/var/www
+      - .:/var/www:rw,cached
     networks:
       - app-tier
     env_file:
@@ -40,13 +40,13 @@ services:
 
   queue:
     container_name: laravel-boilerplate-queue
-    image: laravel-app-apache
+    image: laravel-boilerplate-app-apache
     depends_on:
       - app
       - redis
       - database
     volumes:
-      - .:/var/www
+      - .:/var/www:rw,cached
     networks:
       - app-tier
     env_file:

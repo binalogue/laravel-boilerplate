@@ -18,9 +18,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-- [Composer](https://getcomposer.org/) >= 1.8.6
 - [Docker](https://www.docker.com/) >= 18.09.2
-- [nvm](https://github.com/creationix/nvm) >= 0.34.0
 
 > If you need to update Composer you can run `composer selfupdate`.
 
@@ -32,92 +30,22 @@ These instructions will get you a copy of the project up and running on your loc
    git clone git@gitlab.com:binalogue/laravel-boilerplate.git && cd laravel-boilerplate
    ```
 
-2. Install [Composer](https://getcomposer.org/) dependencies:
+2. Build the project:
 
    ```bash
-   composer install
+   .cli/build.sh
    ```
 
-3. Create a `.env` config file, and fill it with your development environment config:
+3. Run the project:
 
    ```bash
-   cp .env.docker .env
+   .cli/up.sh
    ```
 
-4. Generate a new Laravel key:
+4. Stop the project:
 
    ```bash
-   php artisan key:generate
-   ```
-
-5. Install the [Node.js](https://nodejs.org/en/) version given at `.nvmrc`:
-
-   ```bash
-   nvm install
-   ```
-
-   Also, test that [Yarn](https://yarnpkg.com) is installed by running:
-
-   ```bash
-   yarn --version
-   # 1.16.0
-   ```
-
-6. Install Node.js dependencies and run the development script:
-
-   ```bash
-   yarn install && yarn dev
-   ```
-
-7. Make sure Docker Desktop app is running, and then run `docker-compose` to build the images and run containers in the background. Omit the `-d` flag if you want to run in the foreground:
-
-   ```bash
-   docker-compose up -d
-   ```
-
-   The first time you run `docker-compose` it will take some time to download Docker images and build the local environment, so you can take a ️☕️.
-
-   If you run in the background, you can see the logs with:
-
-   ```bash
-   docker-compose logs -f <services>
-   ```
-
-8. Migrate the database in the container:
-
-   ```bash
-   docker-compose exec app bash
-   ```
-
-   Now inside the container
-
-   ```bash
-   php artisan migrate
-   ```
-
-### Building
-
-1. Make sure Docker Desktop app is running, and then run `docker-compose`:
-
-   ```
-   docker-compose up -d
-   ```
-
-   Now you can access to the local site at http://localhost.
-
-2. Run one of the following build processes:
-
-   > Make sure you are using `nvm` to load the correct Node.js version, with `nvm use`.
-
-   ```
-   # Development
-   yarn dev
-
-   # Watch
-   yarn watch
-
-   # Production
-   yarn prod
+   .cli/down.sh
    ```
 
 ## Running the tests

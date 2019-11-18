@@ -60,7 +60,7 @@ const router = new VueRouter({
       [
         localStorage,
         to.name && to.name.match(/home/),
-      ].every(condition => condition)
+      ].every((condition) => condition)
     ) {
       return {
         x: Number(localStorage.getItem('scrollX')) || 0,
@@ -124,9 +124,7 @@ router.afterEach((to, from) => {
     // }, gtagConfigOptions));
   }
 
-  gtag('config', serverData.google_analytics_id, Object.assign({
-    groups: 'binalogue',
-  }, gtagConfigOptions));
+  gtag('config', serverData.google_analytics_id, { groups: 'binalogue', ...gtagConfigOptions });
 });
 
 export default router;

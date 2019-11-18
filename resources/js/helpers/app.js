@@ -8,7 +8,7 @@ export const addSeoMetaTagsToTheCurrentPage = (meta) => {
   // Remove any stale meta tags from the document using the key attribute we
   // set below.
   Array.from(document.querySelectorAll('[data-vue-router-controlled]'))
-    .map(el => el.parentNode.removeChild(el));
+    .map((el) => el.parentNode.removeChild(el));
 
   // Turn the meta tag definitions into actual elements in the head and add
   // the meta tags to the document head.
@@ -24,13 +24,13 @@ export const addSeoMetaTagsToTheCurrentPage = (meta) => {
     tag.setAttribute('data-vue-router-controlled', '');
 
     return tag;
-  }).forEach(tag => document.head.appendChild(tag));
+  }).forEach((tag) => document.head.appendChild(tag));
 };
 
 /**
  * Convert an image URL to base64 encoded JPEG image data.
  */
-export const imageToBase64 = url => new Promise((resolve) => {
+export const imageToBase64 = (url) => new Promise((resolve) => {
   const xhr = new XMLHttpRequest();
   xhr.onload = () => {
     const reader = new FileReader();
