@@ -14,20 +14,19 @@ return [
     |
     */
 
-    'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
-        'endpoint' => env('MAILGUN_ENDPOINT', 'api.mailgun.net'),
+    'facebook' => [
+        'app_id' => env('FACEBOOK_APP_ID'),
+        'admins' => env('FACEBOOK_ADMINS'),
+        'page_url' => env('FACEBOOK_PAGE_URL'),
     ],
 
-    'postmark' => [
-        'token' => env('POSTMARK_TOKEN'),
+    'googleanalytics' => [
+        'id' => env('GOOGLEANALYTICS_ID'),
     ],
 
-    'ses' => [
-        'key' => env('AWS_ACCESS_KEY_ID'),
-        'secret' => env('AWS_SECRET_ACCESS_KEY'),
-        'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
+    'twitter' => [
+        'site' => env('TWITTER_SITE'),
+        'creator' => env('TWITTER_CREATOR'),
     ],
 
 ];
