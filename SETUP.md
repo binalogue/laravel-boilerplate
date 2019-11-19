@@ -50,6 +50,5 @@ Follow these steps to get a fresh copy of this boilerplate:
 ## GitLab
 
 - [ ] Add the Slack integration: https://gitlab.com/binalogue/laravel-boilerplate/-/settings/integrations
-  - Webhook: https://hooks.slack.com/services/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
 
 **When you are done with the steps above delete this file!**
