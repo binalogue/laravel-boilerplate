@@ -92,7 +92,8 @@ RUN chmod +x /usr/local/bin/composer-installer \
   && composer check-platform-reqs --working-dir=/var/www \
   && composer global require hirak/prestissimo --prefer-dist --no-progress --no-suggest --classmap-authoritative \
   && composer clear-cache \
-  && composer --version
+  && composer --version \
+  && composer install --prefer-dist --no-progress --no-suggest --no-interaction
 
 # Set server permissions.
 RUN chown -R www-data:www-data /var/www
