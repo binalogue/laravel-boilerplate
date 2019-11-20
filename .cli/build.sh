@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-# Run "alias.sh" script.
 source .cli/alias.sh
 
 # Copy config files.
@@ -15,5 +14,4 @@ dc up -d
 # Generate Laravel encryption key.
 dc:pa key:generate
 
-# Run "down.sh" script.
 .cli/down.sh

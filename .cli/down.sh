@@ -1,6 +1,5 @@
 #!/bin/zsh
 
-# Run "alias.sh" script.
 source .cli/alias.sh
 
 # Stop Docker.
