@@ -11,6 +11,9 @@ dc build
 # Run Docker in "detached" mode.
 dc up -d
 
+# Install Composer dependencies.
+dc:composer install --prefer-dist --no-progress --no-suggest --no-interaction
+
 # Generate Laravel encryption key.
 dc:pa key:generate
 
