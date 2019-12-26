@@ -1,4 +1,4 @@
-/* global __dirname, path */
+/* global path */
 /* eslint-disable import/no-extraneous-dependencies */
 
 /* Laravel Mix */
@@ -150,8 +150,7 @@ if (mix.inProduction()) {
     .version()
 
     .options(
-      Object.assign({
-        // Remove console logs.
+      { // Remove console logs.
         terser: {
           terserOptions: {
             compress: {
@@ -159,7 +158,8 @@ if (mix.inProduction()) {
             },
           },
         },
-      }, options),
+        ...options,
+      },
     )
 
     .purgeCss({
