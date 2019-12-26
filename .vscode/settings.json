@@ -36,6 +36,10 @@
    * Text Editor
    *************************************************************************/
 
+  "editor.codeActionsOnSave": {
+    "source.fixAll": false,
+    "source.fixAll.eslint": true
+  },
   "editor.formatOnPaste": false,
   "editor.formatOnSave": true,
   "editor.formatOnType": false,
@@ -69,21 +73,15 @@
    * - https://eslint.vuejs.org/user-guide/#visual-studio-code
    */
   "eslint.alwaysShowStatus": true,
-  "eslint.autoFixOnSave": true,
   "eslint.enable": true,
+  "eslint.format.enable": true,
   "eslint.options": {
     "extensions": [".js", ".vue"]
   },
   "eslint.packageManager": "yarn",
   "eslint.run": "onType",
   // Enable validation for `.vue` files.
-  "eslint.validate": [
-    "javascript",
-    {
-      "language": "vue",
-      "autoFix": true
-    }
-  ],
+  "eslint.validate": ["javascript", "vue"],
   "eslint.workingDirectories": ["resources/js"],
 
   /* Material Icon Theme (pkief.material-icon-theme) */
