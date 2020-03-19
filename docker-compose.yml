@@ -12,6 +12,7 @@ services:
       - database
     volumes:
       - .:/var/www:rw,cached
+      - yarn_cache:/usr/local/share/.cache/yarn/v6:rw,cached
     networks:
       - app-tier
     ports:
@@ -84,6 +85,8 @@ volumes:
   mysql:
     driver: 'local'
   redis:
+    driver: 'local'
+  yarn_cache:
     driver: 'local'
 
 networks:
