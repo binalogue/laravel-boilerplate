@@ -8,23 +8,25 @@
   ],
   "license": "MIT",
   "require": {
-    "php": "^7.2",
+    "php": "^7.4",
+    "ext-exif": "*",
+    "ext-gd": "*",
     "caouecs/laravel-lang": "~4.0",
     "facade/ignition": "^1.12",
     "fideloper/proxy": "^4.2",
     "kg-bot/laravel-localization-to-vue": "^1.6",
     "laravel/framework": "^6.5",
+    "laravel/telescope": "^3.0",
     "laravel/tinker": "^1.0",
     "riverskies/laravel-mobile-detect": "^1.3",
     "spatie/laravel-robots-middleware": "^1.1"
   },
   "require-dev": {
     "astrotomic/ignition-stackoverflow": "^1.4",
-    "facade/ignition-code-editor": "^1.0",
     "facade/ignition-self-diagnosis": "^1.0",
     "facade/ignition-tinker-tab": "^1.0",
     "fzaninotto/faker": "^1.9",
-    "laravel/telescope": "^2.1",
+    "laravel/ui": "^1.1",
     "mockery/mockery": "^1.2",
     "nunomaduro/collision": "^3.0",
     "phpunit/phpunit": "^8.4",
@@ -71,6 +73,7 @@
     ],
     "post-create-project-cmd": [
       "@php artisan key:generate --ansi"
-    ]
+    ],
+    "test": "vendor/bin/phpunit"
   }
 }
