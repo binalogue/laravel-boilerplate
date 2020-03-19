@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\App;
 use Laravel\Telescope\Telescope;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Telescope\IncomingEntry;
@@ -16,12 +18,12 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
      */
     public function register()
     {
-        // Telescope::night();
+        Telescope::night();
 
         $this->hideSensitiveRequestDetails();
 
         Telescope::filter(function (IncomingEntry $entry) {
-            if ($this->app->isLocal()) {
+            if (App::environment(['local', 'staging'])) {
                 return true;
             }
 
@@ -30,6 +32,19 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
                 $entry->isFailedJob() ||
                 $entry->isScheduledTask() ||
                 $entry->hasMonitoredTag();
+        });
+
+        Telescope::filterBatch(function (Collection $entries) {
+            if (App::environment(['local', 'staging'])) {
+                return true;
+            }
+
+            return $entries->contains(function ($entry) {
+                return $entry->isReportableException() ||
+                    $entry->isFailedJob() ||
+                    $entry->isScheduledTask() ||
+                    $entry->hasMonitoredTag();
+            });
         });
     }
 
@@ -40,7 +55,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
      */
     protected function hideSensitiveRequestDetails()
     {
-        if ($this->app->isLocal()) {
+        if (App::environment(['local', 'staging'])) {
             return;
         }
 
@@ -63,9 +78,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
     protected function gate()
     {
         Gate::define('viewTelescope', function ($user) {
-            return in_array($user->email, [
-                'mikel@binalogue.com',
-            ]);
+            return $user->isSuperAdmin();
         });
     }
 }
