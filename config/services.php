@@ -15,18 +15,23 @@ return [
     */
 
     'facebook' => [
-        'app_id' => env('FACEBOOK_APP_ID'),
-        'admins' => env('FACEBOOK_ADMINS'),
-        'page_url' => env('FACEBOOK_PAGE_URL'),
+
+        'client_id' => env('FACEBOOK_APP_ID'),
+        'client_secret' => env('FACEBOOK_APP_SECRET'),
+        'redirect' => '/oauth/facebook/callback',
     ],
 
-    'googleanalytics' => [
-        'id' => env('GOOGLEANALYTICS_ID'),
+    'google' => [
+
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => '/oauth/google/callback',
     ],
 
-    'twitter' => [
-        'site' => env('TWITTER_SITE'),
-        'creator' => env('TWITTER_CREATOR'),
+    'google_tag_manager' => [
+
+        'id' => env('GOOGLE_TAG_MANAGER_ID'),
+        'query' => env('GOOGLE_TAG_MANAGER_QUERY'),
     ],
 
 ];

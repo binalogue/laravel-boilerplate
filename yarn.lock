@@ -714,6 +714,19 @@
   dependencies:
     arrify "^1.0.1"
 
+"@inertiajs/inertia-vue@^0.1.2":
+  version "0.1.2"
+  resolved "https://registry.yarnpkg.com/@inertiajs/inertia-vue/-/inertia-vue-0.1.2.tgz#e45ec9e5b75c31c302e8dc486ae484fff3c91460"
+  integrity sha512-a0+j0RoMEXHj24aMiaequfW6X9fMpLac9FABv+hCddQTj9yBfmpwFrubxJEZkQuRWlDZ7P1MB/N3qZSWTubs8w==
+
+"@inertiajs/inertia@^0.1.7":
+  version "0.1.7"
+  resolved "https://registry.yarnpkg.com/@inertiajs/inertia/-/inertia-0.1.7.tgz#de0600c32f8d7cec1ea3b1d5121f2cdcaef1d810"
+  integrity sha512-iS92F8SOa1l5jlaDzDdaRbO2GZhN6j3kteuVeA2VSGdpAr3CfUhhTC9s/LT2cypo1LTVqXN1h47Bd0ElZYy95Q==
+  dependencies:
+    axios "^0.19.0"
+    nprogress "^0.2.0"
+
 "@mgoigfer/vue-social-media@^0.2.0":
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@mgoigfer/vue-social-media/-/vue-social-media-0.2.0.tgz#be338d23258bbd57035c3d0bfd6568d600bcf084"
@@ -1522,7 +1535,7 @@ axios@^0.18.0:
     follow-redirects "1.5.10"
     is-buffer "^2.0.2"
 
-axios@^0.19.2:
+axios@^0.19.0, axios@^0.19.2:
   version "0.19.2"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.19.2.tgz#3ea36c5d8818d0d5f8a8a97a6d36b86cdc00cb27"
   integrity sha512-fjgm5MvRHLhx+osE2xoekY70AhARk3a6hkN+3Io1jc00jtquGvxYlKlsFUhmUET0V5te6CcZI7lcv2Ym61mjHA==
@@ -3694,6 +3707,11 @@ deepmerge@^2.1.0:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-2.2.1.tgz#5d3ff22a01c00f645405a2fbc17d0778a1801170"
   integrity sha512-R9hc1Xa/NOBi9WRVUWg19rl1UB7Tt4kuPd+thNJgFZoxXsTz7ncaPaeIm+40oSGuP33DfMb4sZt1QIGiJzC4EA==
+
+deepmerge@^4.2.2:
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-4.2.2.tgz#44d2ea3679b8f4d4ffba33f03d865fc1e7bf4955"
+  integrity sha512-FJ3UgI4gIl+PHZm53knsuSFpE+nESMr7M4v9QcgB7S63Kj/6WqMiFQJpBBYz1Pt+66bZpP3Q7Lye0Oo9MPKEdg==
 
 default-gateway@^4.2.0:
   version "4.2.0"
@@ -7871,6 +7889,11 @@ mobile-detect@^1.4.0:
   resolved "https://registry.yarnpkg.com/mobile-detect/-/mobile-detect-1.4.4.tgz#686c74e92d3cc06b09a9b3594b7b981494b137f6"
   integrity sha512-vTgEjKjS89C5yHL5qWPpT6BzKuOVqABp+A3Szpbx34pIy3sngxlGaFpgHhfj6fKze1w0QKeOSDbU7SKu7wDvRQ==
 
+moment@^2.24.0:
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
+  integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -8181,6 +8204,11 @@ npmlog@^4.0.2:
     console-control-strings "~1.1.0"
     gauge "~2.7.3"
     set-blocking "~2.0.0"
+
+nprogress@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/nprogress/-/nprogress-0.2.0.tgz#cb8f34c53213d895723fcbab907e9422adbcafb1"
+  integrity sha1-y480xTIT2JVyP8urkH6UIq28r7E=
 
 nth-check@^1.0.2, nth-check@~1.0.1:
   version "1.0.2"
@@ -12147,6 +12175,13 @@ vue-loader@^15.4.2:
     loader-utils "^1.1.0"
     vue-hot-reload-api "^2.3.0"
     vue-style-loader "^4.1.0"
+
+vue-meta@^2.3.3:
+  version "2.3.3"
+  resolved "https://registry.yarnpkg.com/vue-meta/-/vue-meta-2.3.3.tgz#2a097f62817204b0da78be4d62aee0cb566eaee0"
+  integrity sha512-FmeekLkd5+BI7NFBnU4bEnTpVZqmu3q8ztW4R4U3GBQljgDM7QAuwMXs8/aJP0U1tjtxobX8T6HcyZXimGj1DQ==
+  dependencies:
+    deepmerge "^4.2.2"
 
 vue-router@^3.1.0:
   version "3.1.3"

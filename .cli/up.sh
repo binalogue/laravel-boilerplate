@@ -16,14 +16,18 @@ if [ -f artisan ]; then
   # Create a symbolic link from "public/storage" to "storage/app/public".
   [ -L 'public/storage' ] || ( dc:pa storage:link )
 
-  # Publish Laravel Horizon.
-  dc:pa horizon:assets
-
   # Publish Laravel Telescope.
   dc:pa telescope:publish
 
+  # Publish Laravel Horizon.
+  dc:pa horizon:assets
+
+  # Publish Laravel Nova.
+  dc:pa nova:publish
+  dc:pa vendor:publish --provider='Binalogue\BinalogueNovaTheme\ThemeServiceProvider' --force
+
   # Migrate database.
-  dc:pa migrate --force
+  dc:pa migrate:fresh --force --seed
 
   # Terminate the master Horizon process.
   dc exec queue php artisan horizon:terminate

@@ -9,45 +9,13 @@
 |------------------------------------------------------------------------------
 | SEO
 |------------------------------------------------------------------------------
+|
+| See:
+|   - [artesaos/seotools](https://github.com/artesaos/seotools)
+|
 -->
 
-@php
-$currentRouteMeta = $data['meta'][Request::route()->getName()];
-@endphp
-
-<title>{{ $currentRouteMeta['title'] }}</title>
-
-<meta name="description" content="{{ $currentRouteMeta['description'] }}" data-vue-router-controlled="">
-
-<link rel="canonical" href="{{ url()->current() }}">
-
-<!-- Open Graph -->
-<meta property="og:type"             content="website">
-<meta property="og:locale"           content="{{ app()->getLocale() }}">
-<meta property="og:site_name"        content="{{ config('app.name') }}">
-<meta property="og:url"              content="{{ url()->current() }}"                  data-vue-router-controlled="">
-<meta property="og:title"            content="{{ $currentRouteMeta['title'] }}"        data-vue-router-controlled="">
-<meta property="og:description"      content="{{ $currentRouteMeta['description'] }}"  data-vue-router-controlled="">
-<meta property="og:image"            content="{{ $currentRouteMeta['image'] }}"        data-vue-router-controlled="">
-<meta property="og:image:secure_url" content="{{ $currentRouteMeta['image'] }}"        data-vue-router-controlled="">
-<meta property="og:image:width"      content="{{ $currentRouteMeta['image_width'] }}"  data-vue-router-controlled="">
-<meta property="og:image:height"     content="{{ $currentRouteMeta['image_height'] }}" data-vue-router-controlled="">
-<meta property="og:image:alt"        content="{{ $currentRouteMeta['title'] }}"        data-vue-router-controlled="">
-<meta property="og:image:type"       content="image/jpeg">
-<!-- End Open Graph -->
-
-<!-- Facebook Sharing: https://developers.facebook.com/tools/debug/ -->
-<meta property="fb:app_id"           content="{{ config('services.facebook.app_id') }}">
-<!-- End Facebook Sharing -->
-
-<!-- Twitter Cards: https://cards-dev.twitter.com/validator -->
-<meta name="twitter:card"            content="summary_large_image">
-<meta name="twitter:title"           content="{{ $currentRouteMeta['title'] }}"        data-vue-router-controlled="">
-<meta name="twitter:description"     content="{{ $currentRouteMeta['description'] }}"  data-vue-router-controlled="">
-<meta name="twitter:image"           content="{{ $currentRouteMeta['image'] }}"        data-vue-router-controlled="">
-<meta name="twitter:site"            content="{{ config('services.twitter.site') }}">
-<meta name="twitter:creator"         content="{{ config('services.twitter.creator') }}">
-<!-- End Twitter Cards -->
+@include('modules.seo')
 
 <!--
 |------------------------------------------------------------------------------
@@ -114,37 +82,32 @@ $currentRouteMeta = $data['meta'][Request::route()->getName()];
 |------------------------------------------------------------------------------
 -->
 
-<!-- Vue.js Data -->
+<!-- Google Tag Manager -->
+@if (config('services.google_tag_manager.id'))
 <script>
-    window.csrf_token = "{{ csrf_token() }}";
-    window.app_server_data = @json($data);
+(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl+'{!! config('services.google_tag_manager.query') !!}';f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','{{ config('services.google_tag_manager.id') }}');
 </script>
-<!-- End Vue.js Data -->
+@endif
+<!-- End Google Tag Manager -->
 
-<!-- Global Site Tag (gtag.js) - Google Analytics -->
-@env('production')
-{{-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script> --}}
-@else
-<script async src="https://www.googletagmanager.com/gtag/js?id={{ config('services.googleanalytics.id') }}"></script>
-@endenv
+<!-- Application Data -->
 <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() {dataLayer.push(arguments);}
-    gtag('js', new Date());
+window.app_server_data = @json($data);
 </script>
-<!-- End Global Site Tag (gtag.js) - Google Analytics -->
+<!-- End Application Data -->
 
-<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-<!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-<![endif]-->
+<!-- Application Routes -->
+@routes
+<!-- End Application Routes -->
+
+<script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 
 <body>
-<main id="app"></main>
-
-<script src="{{ mix('js/app.js') }}"></script>
+@inertia
 </body>
 </html>

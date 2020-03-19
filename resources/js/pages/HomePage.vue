@@ -1,10 +1,10 @@
 <template>
   <div class="HomePage">
-    <CustomHeader />
     <main class="HomePage__main animated fade-in-up delay-05s">
       <h1 class="HomePage__main--title">
         We ❤️ code
       </h1>
+
       <a
         href="#"
         class="HomePage__main--button custom-button"
@@ -17,19 +17,25 @@
 </template>
 
 <script>
-/* Components */
-import CustomHeader from 'components/global/CustomHeader';
-
 /* Vendor */
-import { mapState, mapMutations } from 'vuex';
 import PxLoader from 'pxloader';
 import 'pxloader/PxLoaderImage';
 
-export default {
-  name: 'HomePage',
+/* Helpers */
+import { mainLayout } from 'helpers/vue-layouts';
 
-  components: {
-    CustomHeader,
+/* Mixins */
+import Page from 'mixins/Page';
+
+export default {
+  layout: mainLayout,
+
+  mixins: [Page],
+
+  metaInfo() {
+    return {
+      title: 'Home',
+    };
   },
 
   data() {
@@ -38,46 +44,42 @@ export default {
     };
   },
 
-  computed: {
-    ...mapState(['isPhone']),
-  },
-
   created() {
     this.setupLoader();
   },
 
   methods: {
-    ...mapMutations(['SET_LOADER_PROGRESS', 'TOGGLE_IS_LOADING']),
-
-    handleLoaderProgress(event) {
-      const count = Math.floor((event.completedCount / event.totalCount) * 100);
-      this.SET_LOADER_PROGRESS(count);
+    async $$setupLoader() {
+      return [
+        await this.$$loadFake(),
+        // await this.loadImages(),
+      ];
     },
 
-    handleLoaderCompletion() {
-      this.TOGGLE_IS_LOADING(false);
-    },
+    loadImages() {
+      return new Promise((resolve) => {
+        this.pxloader = new PxLoader();
 
-    setupLoader() {
-      this.pxloader = new PxLoader();
+        this.pxloader.addImage(this.webp('/images/binalogue-logo.png'));
 
-      this.pxloader.addImage(this.webp('/images/binalogue-logo.png'));
+        if (this.$store.state.isPhone) {
+          // this.pxloader.addImage(this.webp('/images/binalogue-bg-home-mobile.jpg'));
+        } else {
+          // this.pxloader.addImage(this.webp('/images/binalogue-bg-home-desktop.jpg'));
+        }
 
-      if (this.isPhone) {
-        // this.pxloader.addImage(this.webp('/images/binalogue-bg-home-mobile.jpg'));
-      } else {
-        // this.pxloader.addImage(this.webp('/images/binalogue-bg-home-desktop.jpg'));
-      }
+        this.pxloader.addCompletionListener(() => {
+          resolve('loadImages');
+        });
 
-      this.pxloader.addProgressListener(this.handleLoaderProgress);
-      this.pxloader.addCompletionListener(this.handleLoaderCompletion);
-      this.pxloader.start();
+        this.pxloader.start();
+      });
     },
   },
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 .HomePage {
   display: flex;
   flex-direction: column;

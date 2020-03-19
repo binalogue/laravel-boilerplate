@@ -69,7 +69,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Europe/Madrid',
 
     /*
     |--------------------------------------------------------------------------
@@ -83,6 +83,7 @@ return [
     */
 
     'locale' => 'es',
+    'country_locale' => 'es_ES',
 
     /*
     |--------------------------------------------------------------------------
@@ -173,24 +174,19 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Package Service Providers...
-         */
-
-        /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\HorizonServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
-        App\Providers\TelescopeServiceProvider::class,
-
-        /*
-         * Custom Service Providers...
-         */
-        App\Providers\ViewServiceProvider::class,
+        Support\Providers\AppServiceProvider::class,
+        Support\Providers\AuthServiceProvider::class,
+        // Support\Providers\BroadcastServiceProvider::class,
+        Support\Providers\EventServiceProvider::class,
+        Support\Providers\HorizonServiceProvider::class,
+        Support\Providers\InertiaServiceProvider::class,
+        Support\Providers\NovaServiceProvider::class,
+        Support\Providers\RouteServiceProvider::class,
+        Support\Providers\SeoToolsServiceProvider::class,
+        Support\Providers\TelescopeServiceProvider::class,
+        Support\Providers\ViewServiceProvider::class,
 
     ],
 
@@ -242,6 +238,14 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        /*
+         * Custom Aliases...
+         */
+        'FacebookSharing' => Support\SeoTools\Facades\FacebookSharing::class,
+        'MetaTags' => Support\SeoTools\Facades\MetaTags::class,
+        'OpenGraph' => Support\SeoTools\Facades\OpenGraph::class,
+        'TwitterCards' => Support\SeoTools\Facades\TwitterCards::class,
 
     ],
 
