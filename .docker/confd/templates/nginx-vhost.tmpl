@@ -32,4 +32,6 @@ server {
 
     add_header X-Served-By binalogue.com;
     include h5bp/basic.conf;
+
+    client_max_body_size 30M;
 }
