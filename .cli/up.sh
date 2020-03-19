@@ -13,6 +13,9 @@ if [ -f artisan ]; then
   # Copy config files.
   [ -f .env ] || ( cp .env.docker .env && dc:pa key:generate )
 
+  # Create a symbolic link from "public/storage" to "storage/app/public".
+  [ -L 'public/storage' ] || ( dc:pa storage:link )
+
   # Migrate database.
   dc:pa migrate --force
 fi
