@@ -1,6 +1,8 @@
 {
   "extends": "stylelint-config-airbnb",
   "rules": {
-    "max-nesting-depth": null
+    "max-empty-lines": 1,
+    "max-nesting-depth": 5,
+    "order/order": null
   }
 }
