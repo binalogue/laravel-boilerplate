@@ -17,6 +17,7 @@
     "fideloper/proxy": "^4.3",
     "kg-bot/laravel-localization-to-vue": "^1.6",
     "laravel/framework": "^6.18",
+    "laravel/horizon": "^3.7",
     "laravel/telescope": "^3.2",
     "laravel/tinker": "^2.3",
     "riverskies/laravel-mobile-detect": "^1.3",

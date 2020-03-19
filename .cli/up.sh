@@ -16,11 +16,17 @@ if [ -f artisan ]; then
   # Create a symbolic link from "public/storage" to "storage/app/public".
   [ -L 'public/storage' ] || ( dc:pa storage:link )
 
+  # Publish Laravel Horizon.
+  dc:pa horizon:assets
+
   # Publish Laravel Telescope.
   dc:pa telescope:publish
 
   # Migrate database.
   dc:pa migrate --force
+
+  # Terminate the master Horizon process.
+  dc exec queue php artisan horizon:terminate
 fi
 
 # Run yarn.
