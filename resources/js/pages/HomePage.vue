@@ -8,6 +8,9 @@
       <inertia-link
         href="#"
         class="btn"
+        @click="$gtm.track('test-click', {
+          category: 'engagement',
+        })"
       >
         Comenzar
       </inertia-link>
