@@ -479,7 +479,7 @@ class MetaTags implements MetaTagsContract
         if (empty($default)) {
             return $title;
         }
-        $defaultBefore = $this->config->get('defaults.titleBefore', false);
+        $defaultBefore = $this->config->get('defaults.title_before', false);
 
         return $defaultBefore
             ? $default . $this->getTitleSeparator() . $title
