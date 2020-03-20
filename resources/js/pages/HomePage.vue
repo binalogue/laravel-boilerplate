@@ -1,25 +1,23 @@
 <template>
   <div class="HomePage">
-    <CustomHeader />
+    <TheHeader />
     <main class="HomePage__main animated fade-in-up delay-05s">
       <h1 class="HomePage__main--title">
         We ❤️ code
       </h1>
       <a
         href="#"
-        class="HomePage__main--button custom-button"
+        class="btn"
         @click.stop="gtagDiscoverCampaign"
       >
         Comenzar
       </a>
     </main>
+    <TheFooter />
   </div>
 </template>
 
 <script>
-/* Components */
-import CustomHeader from 'components/global/CustomHeader';
-
 /* Vendor */
 import { mapState, mapMutations } from 'vuex';
 import PxLoader from 'pxloader';
@@ -27,10 +25,6 @@ import 'pxloader/PxLoaderImage';
 
 export default {
   name: 'HomePage',
-
-  components: {
-    CustomHeader,
-  },
 
   data() {
     return {
@@ -79,20 +73,18 @@ export default {
 
 <style lang="scss" scoped>
 .HomePage {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
+  @include page;
 
   &__main {
-    display: flex;
+    @include container;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-top: 20vh;
+    margin-bottom: 10vh;
 
     &--title {
+      @include title;
       margin-bottom: 3vh;
-      font-size: 60px;
     }
   }
 }

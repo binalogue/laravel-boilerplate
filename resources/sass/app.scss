@@ -26,17 +26,4 @@
 
 @import "reset";
 
-.custom-button {
-  padding: 10px 50px;
-  color: $black;
-  text-transform: uppercase;
-  background: $white;
-  border: 1px solid $white;
-  cursor: pointer;
-  transition: .4s all ease;
-
-  &:hover {
-    color: $white;
-    background: transparent;
-  }
-}
+@import "global";

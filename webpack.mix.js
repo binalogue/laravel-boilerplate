@@ -59,7 +59,6 @@ mix
   })
 
   .copyDirectory('resources/fonts', 'public/fonts')
-  .copyDirectory('resources/images/svgs', 'public/images/svgs')
   .copyDirectory('resources/video', 'public/video')
 
   .sourceMaps()
@@ -76,7 +75,7 @@ mix
         {
           enforce: 'pre',
           test: /\.(js|vue)$/,
-          exclude: /node_modules/,
+          exclude: [/node_modules/, /vendor/],
           loader: 'eslint-loader',
           options: {
             fix: true,
@@ -88,9 +87,9 @@ mix
 
     resolve: {
       extensions: ['.js', '.vue', '.scss', '.json'],
-      modules: ['resources/js', 'node_modules'],
+      modules: ['resources/js', 'node_modules', 'vendor'],
       alias: {
-        '@': path.resolve(__dirname, 'resources/sass/'),
+        '@sass': path.resolve(__dirname, 'resources/sass/'),
         vue$: 'vue/dist/vue.runtime.esm.js',
       },
     },
@@ -149,18 +148,16 @@ if (mix.inProduction()) {
     // `app.js?id=8e5c48eadbfdd5458ec6`.
     .version()
 
-    .options(
-      { // Remove console logs.
-        terser: {
-          terserOptions: {
-            compress: {
-              drop_console: true,
-            },
+    .options({
+      terser: {
+        terserOptions: {
+          compress: {
+            drop_console: true,
           },
         },
-        ...options,
       },
-    )
+      ...options,
+    })
 
     .purgeCss({
       whitelistPatternsChildren: [
@@ -171,6 +168,7 @@ if (mix.inProduction()) {
         /fade-in/,
         /fade-out/,
         /leave/,
+        /nprogress/,
       ],
     });
 }

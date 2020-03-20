@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "lint:js": "./node_modules/.bin/eslint --ext .js,.vue --fix resources/js",
-    "lint:css": "./node_modules/.bin/stylelint --config .stylelintrc.order.json --fix resources/**/*.{scss,vue}",
+    "lint:css": "./node_modules/.bin/stylelint --fix resources/**/*.{scss,vue}",
     "lint:php": "./vendor/bin/phpcpd app/ --min-lines=50 && ./vendor/bin/phpcbf --standard=PSR2 --extensions=php app && ./vendor/bin/phpcs --standard=PSR2 --extensions=php app",
     "lint": "yarn lint:js && yarn lint:css && yarn lint:php",
     "favicon:generate": "./node_modules/.bin/real-favicon generate .favicon/faviconDescription.json .favicon/faviconData.json public",
@@ -36,20 +36,18 @@
     "sass-resources-loader": "^2.0.0",
     "stylelint": "^11.1.0",
     "stylelint-config-airbnb": "^0.0.0",
-    "stylelint-config-rational-order": "^0.1.2",
-    "stylelint-order": "^3.1.0",
+    "stylelint-order": "^4.0.0",
     "stylelint-scss": "^3.12.0",
     "stylelint-webpack-plugin": "^1.0.0",
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {
     "@mgoigfer/vue-social-media": "^0.2.0",
-    "axios": "^0.19.0",
+    "axios": "^0.19.2",
     "js-cookie": "^2.2.0",
     "lang.js": "^1.1.0",
     "mobile-detect": "^1.4.0",
     "pxloader": "^1.1.0",
-    "simplebar": "^2.6.1",
     "vue": "^2.6.10",
     "vue-router": "^3.1.0",
     "vuex": "^3.1.0"
@@ -78,11 +76,11 @@
     ],
     "resources/js/**/*.vue": [
       "./node_modules/.bin/eslint --fix",
-      "./node_modules/.bin/stylelint --config .stylelintrc.order.json --fix",
+      "./node_modules/.bin/stylelint --fix",
       "git add"
     ],
     "resources/sass/**/*.scss": [
-      "./node_modules/.bin/stylelint --config .stylelintrc.order.json --fix",
+      "./node_modules/.bin/stylelint --fix",
       "git add"
     ]
   }

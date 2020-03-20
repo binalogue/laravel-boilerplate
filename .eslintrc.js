@@ -25,12 +25,15 @@ module.exports = {
     'vue',
   ],
   rules: {
-    'no-console': [
-      'error',
-      {
-        allow: ['warn', 'error'],
-      },
-    ],
+    'func-names': 'off',
+    'global-require': 'off',
+    'import/extensions': ['error', 'always', {
+      'js': 'never',
+      'vue': 'never'
+    }],
+    'import/no-dynamic-require': 'off',
+    'max-len': 'off',
+    'no-console': 'off',
     'no-param-reassign': [
       'error',
       {
@@ -41,7 +44,6 @@ module.exports = {
     'vue/arrow-spacing': 'error',
     'vue/block-spacing': 'error',
     'vue/brace-style': 'error',
-    'vue/camelcase': 'error',
     'vue/comma-dangle': ['error', 'always-multiline'],
     'vue/component-name-in-template-casing': 'error',
     'vue/eqeqeq': 'error',
@@ -54,6 +56,7 @@ module.exports = {
     ],
     'vue/no-boolean-default': 'error',
     'vue/no-restricted-syntax': 'error',
+    'vue/no-v-html': 'off',
     'vue/object-curly-spacing': ['error', 'always'],
     'vue/require-direct-export': 'error',
     'vue/script-indent': 'error',
@@ -72,7 +75,7 @@ module.exports = {
     'import/resolver': {
       node: {
         extensions: ['.js', '.vue', '.scss', '.json'],
-        moduleDirectory: ['resources/js', 'node_modules'],
+        moduleDirectory: ['resources/js', 'node_modules', 'vendor'],
       },
     },
   },

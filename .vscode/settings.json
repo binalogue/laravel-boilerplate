@@ -3,11 +3,17 @@
    * Languages
    *************************************************************************/
 
+  "[css]": {
+    "editor.formatOnSave": false
+  },
   "[javascript]": {
     "editor.formatOnSave": false
   },
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[scss]": {
+    "editor.formatOnSave": false
   },
   "[vue]": {
     "editor.formatOnSave": false
@@ -50,13 +56,6 @@
   /**************************************************************************
    * Extensions
    *************************************************************************/
-
-  /* Better-phpunit (calebporzio.better-phpunit) */
-  "better-phpunit.docker.command": "docker-compose exec app",
-  "better-phpunit.docker.enable": true,
-  "better-phpunit.docker.paths": {
-    "/Users/mikelgoig/code/projects/binalogue/laravel-boilerplate": "/var/www"
-  },
 
   /* Emmet */
   "emmet.includeLanguages": {
