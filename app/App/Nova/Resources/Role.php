@@ -46,7 +46,7 @@ class Role extends Resource
      *
      * @var string
      */
-    public static $defaultIndexOrder = 'name';
+    public static $defaultIndexOrder = 'id';
 
     /**
      * The default index order direction.

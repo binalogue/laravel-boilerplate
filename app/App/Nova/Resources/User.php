@@ -108,8 +108,8 @@ class User extends Resource
                 })
                 ->rules('json'),
 
-            Heading::make('Meta'),
-
+            Heading::make('Meta')
+                ->onlyOnDetail(),
             DateTime::make('Created At')
                 ->format('MMM DD, YYYY, HH:mm:ss')
                 ->onlyOnDetail(),
