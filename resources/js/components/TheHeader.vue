@@ -1,9 +1,12 @@
 <template>
   <div class="TheHeader">
-    <div
+    <inertia-link
+      :href="route('home')"
       class="TheHeader__logo"
       :style="{
-        cursor: this.$route.name === 'home' ? 'default' : 'pointer',
+        pointerEvents: route().current() === 'home'
+          ? 'none'
+          : 'auto',
       }"
       @click.stop="navigateToHome"
     >
@@ -11,38 +14,23 @@
         v-webp="'/images/binalogue-logo.png'"
         alt="Binalogue"
       >
-    </div>
+    </inertia-link>
   </div>
 </template>
 
-<script>
-export default {
-  methods: {
-    navigateToHome() {
-      this.$router.push('/');
-    },
-  },
-};
-</script>
-
-<style lang="scss" scoped>
+<style lang="scss">
 .TheHeader {
   display: flex;
-  align-items: center;
   width: 100%;
-  padding: 10px 15px;
-
-  @media (min-width: 576px) {
-    padding: 30px 50px;
-  }
+  padding: 3vh 5vw;
 
   &__logo {
     width: 150px;
     height: auto;
     margin-left: auto;
 
-    @media (min-width: 576px) {
-      width: 250px;
+    @include tablet-m() {
+      width: 200px;
     }
 
     img {

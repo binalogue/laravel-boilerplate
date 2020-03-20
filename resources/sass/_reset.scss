@@ -6,7 +6,10 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Gotham";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
@@ -17,7 +20,7 @@ body {
 html {
   color: $white;
   font-size: 16px;
-  font-family: "TradeGothic";
+  font-family: "Gotham";
   text-decoration: none;
 }
 

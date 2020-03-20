@@ -7,7 +7,7 @@
 
       <a
         href="#"
-        class="HomePage__main--button custom-button"
+        class="btn"
         @click.stop="gtagDiscoverCampaign"
       >
         Comenzar
@@ -45,7 +45,7 @@ export default {
   },
 
   created() {
-    this.setupLoader();
+    this.$$setupLoader();
   },
 
   methods: {
@@ -81,20 +81,18 @@ export default {
 
 <style lang="scss">
 .HomePage {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
+  @include page;
 
   &__main {
-    display: flex;
+    @include container;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    margin-top: 20vh;
+    margin-bottom: 10vh;
 
     &--title {
+      @include title;
       margin-bottom: 3vh;
-      font-size: 60px;
     }
   }
 }

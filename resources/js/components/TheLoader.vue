@@ -16,7 +16,7 @@
   left: 0;
   z-index: 99;
   color: $white;
-  background: $white;
+  background: $black;
   transition: all 1s;
   display: flex;
   justify-content: center;
