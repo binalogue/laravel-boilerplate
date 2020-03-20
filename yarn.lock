@@ -714,6 +714,13 @@
   dependencies:
     arrify "^1.0.1"
 
+"@d_hristov/get-value@^3.0.3":
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/@d_hristov/get-value/-/get-value-3.0.4.tgz#3fbf7a29d932ca8f3b53625e6cbd97a2c8f8f8a6"
+  integrity sha512-OBPlFhtnc00x//NvCkvcsZuCg7MIc5+BbaB6PgCX9CXmmm+BBHG+zQbEt5FXFaB0jHO7qN9eb95A5FCJoL7BIg==
+  dependencies:
+    isobject "^4.0.0"
+
 "@inertiajs/inertia-vue@^0.1.2":
   version "0.1.2"
   resolved "https://registry.yarnpkg.com/@inertiajs/inertia-vue/-/inertia-vue-0.1.2.tgz#e45ec9e5b75c31c302e8dc486ae484fff3c91460"
@@ -6795,6 +6802,11 @@ isobject@^3.0.0, isobject@^3.0.1:
   resolved "https://registry.yarnpkg.com/isobject/-/isobject-3.0.1.tgz#4e431e92b11a9731636aa1f9c8d1ccbcfdab78df"
   integrity sha1-TkMekrEalzFjaqH5yNHMvP2reN8=
 
+isobject@^4.0.0:
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/isobject/-/isobject-4.0.0.tgz#3f1c9155e73b192022a80819bacd0343711697b0"
+  integrity sha512-S/2fF5wH8SJA/kmwr6HYhK/RI/OkhD84k8ntalo0iJjZikgq1XFvR5M8NPT1x5F7fBwCG3qHfnzeP/Vh/ZxCUA==
+
 isurl@^1.0.0-alpha5:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/isurl/-/isurl-1.0.0.tgz#b27f4f49f3cdaa3ea44a0a5b7f3462e6edc39d67"
@@ -12213,6 +12225,18 @@ vue@^2.6.10:
   version "2.6.10"
   resolved "https://registry.yarnpkg.com/vue/-/vue-2.6.10.tgz#a72b1a42a4d82a721ea438d1b6bf55e66195c637"
   integrity sha512-ImThpeNU9HbdZL3utgMCq0oiMzAkt1mcgy3/E6zWC/G6AaQoeuFdsl9nDhTDU3X1R6FK7nsIUuRACVcjI+A2GQ==
+
+vuelidate-error-extractor@^2.4.1:
+  version "2.4.1"
+  resolved "https://registry.yarnpkg.com/vuelidate-error-extractor/-/vuelidate-error-extractor-2.4.1.tgz#f01b2787fd327e0b36c34f7a302d6b70f65ffdf7"
+  integrity sha512-lOWHn1FbrL4vSu/fiospWEZiAOegh+5lfdNl8Y1ulZnV1+TiGAEqvpbpHqSiIMfshFePYtYMbZHsIZLLF2O4Qg==
+  dependencies:
+    "@d_hristov/get-value" "^3.0.3"
+
+vuelidate@^0.7.5:
+  version "0.7.5"
+  resolved "https://registry.yarnpkg.com/vuelidate/-/vuelidate-0.7.5.tgz#ff48c75ae9d24ea24c24e9ea08065eda0a0cba0a"
+  integrity sha512-GAAG8QAFVp7BFeQlNaThpTbimq3+HypBPNwdkCkHZZeVaD5zmXXfhp357dcUJXHXTZjSln0PvP6wiwLZXkFTwg==
 
 vuex@^3.1.0:
   version "3.1.2"

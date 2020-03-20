@@ -18,4 +18,130 @@
     background: $alerts;
     color: $white;
   }
+
+  .dots {
+    display: none;
+  }
+}
+
+.btn-loading {
+  color: transparent;
+
+  &:disabled,
+  &[disabled] {
+    background: $black;
+
+    &:hover {
+      background: $black;
+    }
+  }
+
+  &:hover {
+    color: transparent;
+  }
+
+  .dots {
+    display: block;
+
+    span {
+      position: absolute;
+      top: 40%;
+      transform: translateY(-50%);
+      color: $white;
+      font-size: 22px;
+      margin: 0;
+      animation: btnLoading .9s infinite ease-in;
+
+      &:nth-child(1) {
+        left: 40%;
+      }
+
+      &:nth-child(2) {
+        left: 50%;
+        animation-delay: .3s;
+      }
+
+      &:nth-child(3) {
+        left: 60%;
+        animation-delay: .6s;
+      }
+    }
+  }
+}
+
+.input {
+  position: relative;
+  width: 100%;
+  color: $black;
+  margin-bottom: 15px;
+  min-width: 300px;
+
+  label {
+    position: absolute;
+    left: 17px;
+    top: 14px;
+    font-family: "Gotham";
+    font-weight: 400;
+    font-size: 16px;
+    text-transform: uppercase;
+
+    @include transition;
+  }
+
+  input {
+    width: 100%;
+    height: 48px;
+    outline: none;
+    padding: 10px 12px 0 15px;
+    font-family: "Gotham";
+    font-weight: 800;
+    font-size: 16px;
+    background: $white;
+    border: 0;
+    color: $black;
+
+    &::placeholder {
+      color: transparent;
+      font-weight: 400;
+
+      @include transition;
+    }
+  }
+
+  &.active {
+
+    label {
+      top: 5px;
+      font-size: 11px;
+    }
+
+    input {
+
+      &::placeholder {
+        color: $grey;
+      }
+    }
+  }
+}
+
+.input-error {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 5px;
+  position: relative;
+  background: $red;
+  padding: 7px 15px;
+  color: $white;
+  font-family: "VW";
+  font-weight: 800;
+  font-size: 14px;
+
+  svg {
+    height: 17px;
+    width: auto;
+    margin-right: 10px;
+    fill: $white;
+  }
 }

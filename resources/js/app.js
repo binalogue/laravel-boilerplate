@@ -23,8 +23,13 @@ import Vuex from 'vuex';
 import VueGtm from 'plugins/gtm';
 import VueMeta from 'vue-meta';
 import VueWebP from 'plugins/webp';
+import Vuelidate from 'vuelidate';
+import VuelidateErrorExtractor from 'vuelidate-error-extractor';
+import BaseFormGroup from 'components/BaseFormGroup';
 
 /* Vue Helpers */
+import { scroll, clickOutside } from 'helpers/vue-directives';
+import { capitalize, toLowerCase } from 'helpers/vue-filters';
 import mixin from 'helpers/vue-mixin';
 
 /* Vue Instance */
@@ -64,6 +69,23 @@ Vue.use(Vuex);
 Vue.use(VueGtm);
 Vue.use(VueMeta);
 Vue.use(VueWebP);
+Vue.use(Vuelidate);
+Vue.use(VuelidateErrorExtractor, {
+  template: BaseFormGroup,
+  name: 'BaseFormGroup',
+  messages: {
+    checked: 'Es obligatorio confirmar este campo.',
+    email: 'El email no tiene un formato válido.',
+    maxLength: 'Este campo es demasiado largo.',
+    required: 'Este campo no puede estar vacío.',
+    sameAsPassword: 'Las contraseñas deben ser iguales.',
+  },
+});
+
+Vue.directive('scroll', scroll);
+Vue.directive('click-outside', clickOutside);
+Vue.filter('capitalize', capitalize);
+Vue.filter('toLowerCase', toLowerCase);
 
 Vue.mixin(mixin);
 
