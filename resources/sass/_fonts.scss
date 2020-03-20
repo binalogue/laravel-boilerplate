@@ -7,35 +7,35 @@
  */
 
 @font-face {
-  font-weight: 800;
-  font-family: "TradeGothic";
+  font-weight: 900;
+  font-family: "Gotham";
 
-  src: url("/fonts/TradeGothic-BdCn.woff2") format("woff2"),
-    url("/fonts/TradeGothic-BdCn.woff") format("woff"),
-    url("/fonts/TradeGothic-BdCn.ttf") format("truetype"),
-    url("/fonts/TradeGothic-BdCn.eot") format("embedded-opentype");
+  src: url("/fonts/Gotham-Black.woff2") format("woff2"),
+    url("/fonts/Gotham-Black.woff") format("woff"),
+    url("/fonts/Gotham-Black.ttf") format("truetype"),
+    url("/fonts/Gotham-Black.eot") format("embedded-opentype");
   font-display: swap;
 }
 
 @font-face {
-  font-weight: 500;
-  font-family: "TradeGothic";
+  font-weight: 600;
+  font-family: "Gotham";
 
-  src: url("/fonts/TradeGothic-Roman.woff2") format("woff2"),
-    url("/fonts/TradeGothic-Roman.woff") format("woff"),
-    url("/fonts/TradeGothic-Roman.ttf") format("truetype"),
-    url("/fonts/TradeGothic-Roman.eot") format("embedded-opentype");
+  src: url("/fonts/Gotham-Medium.woff2") format("woff2"),
+    url("/fonts/Gotham-Medium.woff") format("woff"),
+    url("/fonts/Gotham-Medium.ttf") format("truetype"),
+    url("/fonts/Gotham-Medium.eot") format("embedded-opentype");
   font-display: swap;
 }
 
 @font-face {
   font-weight: 400;
-  font-family: "TradeGothic";
+  font-family: "Gotham";
 
   // This font's `woff2` format will be preloaded.
-  src: url("/fonts/TradeGothic-Light.woff2") format("woff2"),
-    url("/fonts/TradeGothic-Light.woff") format("woff"),
-    url("/fonts/TradeGothic-Light.ttf") format("truetype"),
-    url("/fonts/TradeGothic-Light.eot") format("embedded-opentype");
+  src: url("/fonts/Gotham-Book.woff2") format("woff2"),
+    url("/fonts/Gotham-Book.woff") format("woff"),
+    url("/fonts/Gotham-Book.ttf") format("truetype"),
+    url("/fonts/Gotham-Book.eot") format("embedded-opentype");
   font-display: swap;
 }

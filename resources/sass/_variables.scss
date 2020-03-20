@@ -5,7 +5,118 @@
 /* Colors */
 
 $alerts: #509bf5;
-$black: #030205;
-$black_transparent: rgba(255, 255, 255, .5);
-$red: #990f1f;
+$black: #2B2B2B;
+$grey: #C0C0C0;
 $white: #fff;
+
+/**
+ * Mixins.
+ */
+
+/* Media Queries */
+
+@mixin mobile() {
+  @media (min-width:350px) {
+    @content;
+  }
+}
+
+@mixin tablet() {
+  @media (min-width:576px) {
+    @content;
+  }
+}
+
+@mixin tablet-m() {
+  @media (min-width:769px) {
+    @content;
+  }
+}
+
+@mixin desktop-s() {
+  @media (min-width:992px) {
+    @content;
+  }
+}
+
+@mixin desktop-sm() {
+  @media (min-width:1200px) {
+    @content;
+  }
+}
+
+@mixin desktop-m() {
+  @media (min-width:1400px) {
+    @content;
+  }
+}
+
+@mixin desktop-l() {
+  @media (min-width:1800px) {
+    @content;
+  }
+}
+
+/* Containers */
+
+@mixin page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  flex-grow: 1;
+}
+
+@mixin container {
+  width: 90%;
+  max-width: 1400px;
+  height: 100%;
+  display: flex;
+}
+
+/* Fonts */
+
+@mixin title {
+  font-family: "Gotham";
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 1.5;
+
+  @include tablet() {
+    font-size: 32px;
+  }
+
+  @include tablet-m() {
+    font-size: 42px;
+  }
+}
+
+@mixin text {
+  font-family: "Gotham";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.5;
+
+  @include tablet-m() {
+    font-size: 16px;
+  }
+}
+
+@mixin text-s {
+  font-family: "Gotham";
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 1.5;
+
+  @include tablet-m() {
+    font-size: 14px;
+  }
+}
+
+/* Transitions */
+
+@mixin transition {
+  transition: .3s all ease;
+}

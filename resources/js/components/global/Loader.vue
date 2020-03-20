@@ -35,14 +35,14 @@ export default {
   left: 0;
   z-index: 99;
   color: $white;
-  background: linear-gradient(0deg, $black 0%, $white 100%);
+  background: $black;
   transition: all 1s;
 
   &__count {
     position: absolute;
     top: 50%;
     width: 100%;
-    font-weight: 800;
+    font-weight: 900;
     font-size: 13px;
     text-align: center;
     transform: translateY(-50%);
@@ -63,9 +63,9 @@ export default {
       margin-top: -8vw;
       margin-left: -8vw;
       border-radius: 50%;
-      box-shadow: inset 0 0 0 6px $black_transparent;
+      box-shadow: inset 0 0 0 6px $grey;
 
-      @media (min-width: 769px) {
+      @include tablet-m() {
         width: 10vw;
         height: 10vw;
         margin-top: -5vw;
@@ -85,7 +85,7 @@ export default {
       transform-origin: 8vw 8vw;
       animation: rotate 1.2s infinite linear;
 
-      @media (min-width: 769px) {
+      @include tablet-m() {
         width: 5vw;
         height: 10vw;
         margin-top: -5vw;
@@ -97,9 +97,9 @@ export default {
         width: 16vw;
         height: 16vw;
         border-radius: 50%;
-        box-shadow: inset 0 0 0 6px $black_transparent;
+        box-shadow: inset 0 0 0 6px $white;
 
-        @media (min-width: 769px) {
+        @include tablet-m() {
           width: 10vw;
           height: 10vw;
         }

@@ -4,6 +4,8 @@
     role="alert"
   >
     <div class="CookieBanner__container">
+      <!-- eslint-disable vue/no-v-html -->
+      <p v-html="trans.get('messages.global.cookie_banner')" />
       <button
         type="button"
         class="CookieBanner__close"
@@ -12,9 +14,6 @@
       >
         <span aria-hidden="true">×</span>
       </button>
-
-      <!-- eslint-disable vue/no-v-html -->
-      <p v-html="trans.get('messages.global.cookie_banner')" />
     </div>
   </div>
 </template>
@@ -46,53 +45,36 @@ export default {
   top: 0;
   right: 0;
   left: 0;
-  margin-bottom: 0;
-  padding: 14px 14px 12px;
-  color: $white;
-  font-weight: 400;
-  font-size: 12px;
-  background-color: $alerts;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: $alerts;
+  padding: 1vh 0;
 
-  a {
-    color: $white;
-    text-decoration: underline;
-  }
-}
+  &__container {
+    @include container;
+    justify-content: space-between;
 
-.CookieBanner__container {
-  margin-right: auto;
-  margin-left: auto;
-  padding-right: 44px;
-  padding-left: 15px;
+    p {
+      @include text-s;
+      margin-right: 5vw;
+    }
 
-  @media (min-width: 768px) {
-    width: 750px;
-  }
-
-  @media (min-width: 992px) {
-    width: 970px;
+    a {
+      @include text-s;
+      color: $white;
+      text-decoration: underline;
+    }
   }
 
-  @media (min-width: 1200px) {
-    width: 1170px;
-  }
-}
+  &__close {
+    border: 0;
+    background: transparent;
 
-.CookieBanner__close {
-  position: relative;
-  top: 0;
-  right: 0;
-  float: right;
-  margin-top: -3px;
-  margin-bottom: -3px;
-  padding: 0;
-  color: $white;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 1;
-  background: transparent;
-  border: 0;
-  cursor: pointer;
-  opacity: 1;
+    span {
+      font-size: 30px;
+      color: $white;
+    }
+  }
 }
 </style>

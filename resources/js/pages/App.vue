@@ -51,12 +51,8 @@ export default {
   min-height: 100vh;
   overflow-x: hidden;
   //background-image: url('/images-mobile/.jpg');
-  background-color: #2b2b2b;
+  background-color: $black;
   background-repeat: no-repeat;
   background-size: cover;
-
-  @media (min-width: 576px) {
-    //background-image: url('/images/mobile.jpg');
-  }
 }
 </style>

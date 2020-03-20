@@ -1,7 +1,7 @@
 <template>
-  <div class="CustomHeader">
+  <div class="TheHeader">
     <div
-      class="CustomHeader__logo"
+      class="TheHeader__logo"
       :style="{
         cursor: this.$route.name === 'home' ? 'default' : 'pointer',
       }"
@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: 'CustomHeader',
+  name: 'TheHeader',
 
   methods: {
     navigateToHome() {
@@ -28,23 +28,18 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.CustomHeader {
+.TheHeader {
   display: flex;
-  align-items: center;
   width: 100%;
-  padding: 10px 15px;
-
-  @media (min-width: 576px) {
-    padding: 30px 50px;
-  }
+  padding: 3vh 5vw;
 
   &__logo {
     width: 150px;
     height: auto;
     margin-left: auto;
 
-    @media (min-width: 576px) {
-      width: 250px;
+    @include tablet-m() {
+      width: 200px;
     }
 
     img {
