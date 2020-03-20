@@ -5,13 +5,12 @@
         We ❤️ code
       </h1>
 
-      <a
+      <inertia-link
         href="#"
         class="btn"
-        @click.stop="gtagDiscoverCampaign"
       >
         Comenzar
-      </a>
+      </inertia-link>
     </main>
   </div>
 </template>
@@ -63,9 +62,9 @@ export default {
         this.pxloader.addImage(this.webp('/images/binalogue-logo.png'));
 
         if (this.$store.state.isPhone) {
-          // this.pxloader.addImage(this.webp('/images/binalogue-bg-home-mobile.jpg'));
+          this.pxloader.addImage(this.webp('/images/binalogue-bg-home-mobile.jpg'));
         } else {
-          // this.pxloader.addImage(this.webp('/images/binalogue-bg-home-desktop.jpg'));
+          this.pxloader.addImage(this.webp('/images/binalogue-bg-home-desktop.jpg'));
         }
 
         this.pxloader.addCompletionListener(() => {
