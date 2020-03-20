@@ -5,7 +5,7 @@ namespace Domain\Users\Actions;
 use Domain\Users\Models\User;
 use Illuminate\Support\Facades\Storage;
 
-class DeleteProfileAvatarsAction
+class DeleteUserAvatarsAction
 {
     public function execute(User $user): void
     {

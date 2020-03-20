@@ -4,7 +4,7 @@ namespace Domain\Users\Actions;
 
 use Domain\Users\Models\User;
 
-class DestroyUserAction
+class DeleteUserAction
 {
     public function execute(User $user): void
     {

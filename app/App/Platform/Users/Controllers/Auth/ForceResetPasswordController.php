@@ -3,7 +3,7 @@
 namespace App\Platform\Users\Controllers\Auth;
 
 use App\Platform\Users\Requests\ForceResetPasswordRequest;
-use Domain\Auth\DataTransferObjects\ForceResetPasswordData;
+use Domain\Users\DataTransferObjects\ForceResetPasswordData;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Auth;

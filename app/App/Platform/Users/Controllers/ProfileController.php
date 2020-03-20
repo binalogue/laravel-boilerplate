@@ -3,7 +3,7 @@
 namespace App\Platform\Users\Controllers;
 
 use App\Platform\Users\Requests\ProfileUpdateRequest;
-use Domain\Users\Actions\DestroyUserAction;
+use Domain\Users\Actions\DeleteUserAction;
 use Domain\Users\Actions\UpdateUserAction;
 use Domain\Users\DataTransferObjects\UserData;
 use Illuminate\Support\Facades\Auth;
@@ -81,12 +81,12 @@ class ProfileController
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \Domain\Users\Actions\DestroyUserAction  $destroyUserAction
+     * @param  \Domain\Users\Actions\DeleteUserAction  $deleteUserAction
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(DestroyUserAction $destroyUserAction)
+    public function destroy(DeleteUserAction $deleteUserAction)
     {
-        $destroyUserAction->execute(Auth::user());
+        $deleteUserAction->execute(Auth::user());
 
         flash([
             'status' => __('status.profile.destroyed'),

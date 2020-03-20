@@ -2,7 +2,7 @@
 
 namespace Domain\Users\Observers;
 
-use Domain\Users\Actions\DeleteProfileAvatarsAction;
+use Domain\Users\Actions\DeleteUserAvatarsAction;
 use Domain\Users\Models\User;
 
 class UserObserver
@@ -26,6 +26,6 @@ class UserObserver
      */
     public function deleted(User $user)
     {
-        (new DeleteProfileAvatarsAction())->execute($user);
+        (new DeleteUserAvatarsAction())->execute($user);
     }
 }
