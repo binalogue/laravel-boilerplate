@@ -40,7 +40,10 @@
 -->
 
 <!-- Preconnect to required origins -->
-{{-- <link rel="dns-prefetch" href="https://www.google-analytics.com"> --}}
+@if (config('services.google_tag_manager.id'))
+<link rel="dns-prefetch" href="https://www.googletagmanager.com">
+<link rel="dns-prefetch" href="https://www.google-analytics.com">
+@endif
 <!-- End Preconnect to required origins -->
 
 <!-- JS/CSS -->
