@@ -2,7 +2,7 @@
 
 # laravel-boilerplate
 
-[![Website laravel.binalogue.dev](https://img.shields.io/website-up-down-green-red/https/laravel.binalogue.dev.svg)](https://laravel.binalogue.dev) [![pipeline status](https://gitlab.com/binalogue/laravel-boilerplate/badges/master/pipeline.svg)](https://gitlab.com/binalogue/laravel-boilerplate/commits/master)
+[![Website laravel.binalogue.dev](https://img.shields.io/website?down_color=red&down_message=down&up_color=green&up_message=up&url=https%3A%2F%2Flaravel.binalogue.dev)](https://laravel.binalogue.dev)
 
 <!-- ⬇️ REMOVE -->
 
@@ -19,8 +19,6 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 - [Docker](https://www.docker.com/) >= 18.09.2
-
-> If you need to update Composer you can run `composer selfupdate`.
 
 ### Installing
 
