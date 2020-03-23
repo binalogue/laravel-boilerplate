@@ -8,7 +8,6 @@
           ? 'none'
           : 'auto',
       }"
-      @click.stop="navigateToHome"
     >
       <img
         v-webp="'/images/binalogue-logo.png'"
