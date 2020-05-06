@@ -26,7 +26,7 @@ class UserData extends DataTransferObject
 
     public function hasVerifiedEmail(): bool
     {
-        return $this->google_id;
+        return (bool) $this->google_id;
     }
 
     public static function new($array): self
