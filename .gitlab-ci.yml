@@ -177,7 +177,7 @@ production:forge:
   stage: production
   image: alpine:latest
   script:
-    - wget https://forge.laravel.com/servers/271850/sites/808914/deploy/http?token=53ATtM1efUIF2acGu8j7SREWCOSLTCMqWO6cq5ky
+    - wget https://forge.laravel.com/servers/${LARAVEL_FORGE_SERVER_ID_STAGING_74}/sites/${LARAVEL_FORGE_SITE_ID}/deploy/http?token=${LARAVEL_FORGE_DEPLOY_TOKEN}
   dependencies: []
   only:
     - master
