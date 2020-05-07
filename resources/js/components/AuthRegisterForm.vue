@@ -64,144 +64,13 @@
       />
     </template>
 
-    <div class="AuthRegisterForm__privacy">
-      <h3 class="AuthRegisterForm__privacy--title">
-        Para nosotros tu privacidad es muy importante, ¿Nos dices cómo usar tus datos?
-      </h3>
-
-      <p class="AuthRegisterForm__privacy--question">
-        ¿Te gustaría recibir descuentos y novedades de Volkswagen?
-      </p>
-
-      <div class="AuthRegisterForm__privacy--answer">
-        <span>
-          <BaseInputCheckboxDouble
-            v-model="form.legal1"
-            :v="$v.form.legal1"
-            label="Sí"
-            name="legal1"
-            option-true="Sí"
-            option-false="No"
-          />
-          <p
-            class="link AuthRegisterForm__privacy--aditional"
-            @click="isShownFirstPrivacyText = !isShownFirstPrivacyText"
-          >
-            + info
-          </p>
-        </span>
-      </div>
-
-      <p
-        class="AuthRegisterForm__privacy--aditional-show"
-        :class="{
-          active: isShownFirstPrivacyText,
-        }"
-      >
-        Estarás mejor informado. Recibirás información sobre los próximos lanzamientos, así como invitaciones a eventos, promociones y condiciones especiales.
-      </p>
-
-      <p class="AuthRegisterForm__privacy--question">
-        ¿Podemos mejorar nuestras ofertas y servicios personalizándolos según tu perfil?
-      </p>
-
-      <div class="AuthRegisterForm__privacy--answer">
-        <span>
-          <BaseInputCheckboxDouble
-            v-model="form.legal2"
-            :v="$v.form.legal2"
-            label="Sí"
-            name="legal2"
-            option-true="Sí"
-            option-false="No"
-          />
-          <p
-            class="link AuthRegisterForm__privacy--aditional"
-            @click="isShownSecondPrivacyText = !isShownSecondPrivacyText"
-          >
-            + info
-          </p>
-        </span>
-      </div>
-
-      <p
-        class="AuthRegisterForm__privacy--aditional-show"
-        :class="{
-          active: isShownSecondPrivacyText,
-        }"
-      >
-        ¡Adiós mensajes genéricos! Activando esta opción podremos enviarte información y ofertas personalizadas de productos y servicios adecuadas a tu perfil. Para ello nos basaremos en tu comportamiento, preferencias personales y cómo usas nuestros productos y servicios.
-      </p>
-
-      <p class="AuthRegisterForm__privacy--question">
-        Confirmo que he leído y acepto la
-        <inertia-link
-          href="#"
-          class="link"
-        >
-          Política de Privacidad
-        </inertia-link>
-        ,
-        <inertia-link
-          href="#"
-          class="link"
-        >
-          Bases de la Promoción
-        </inertia-link>
-        y
-        <inertia-link
-          href="#"
-          class="link"
-        >
-          Condiciones de Uso
-        </inertia-link>
-        .
-      </p>
-      <div class="AuthRegisterForm__privacy--answer">
-        <span>
-          <BaseInputCheckboxDouble
-            v-model="form.legal3"
-            :v="$v.form.legal3"
-            label="Sí"
-            name="legal3"
-            option-true="Sí"
-            option-false="No"
-          />
-        </span>
-      </div>
-      <BaseSubmitButton
-        class="btn AuthRegisterForm__privacy--button"
-        :class="$HasVuelidate_submitButtonClass"
-        :disabled="$HasVuelidate_submitButtonDisabled"
-      >
-        Crear Perfil
-      </BaseSubmitButton>
-
-      <p class="AuthRegisterForm__privacy--text">
-        Te informamos que el responsable del tratamiento de tus datos es la compañía VOLKSWAGEN GROUP ESPAÑA DISTRIBUCION, S.A.U., con la finalidad de atender tus consultas y solicitudes, realizar un control de calidad sobre los productos y servicios solicitados, realizar encuestas de opinión y estudios de mercado con fines estadísticos. En caso que nos hayas dado tu consentimiento, para las finalidades descritas en los consentimientos adicionales.
-      </p>
-
-      <p class="AuthRegisterForm__privacy--text">
-        Le informamos que tienes derecho a retirar tu consentimiento en cualquier momento así como a oponerte al tratamiento, limitar el mismo, acceder, rectificar,suprimir los datos y ejercer tu derecho a la portabilidad, mediante peticiónescrita a
-        <a
-          href="mailto:atencioncliente@volkswagen.es"
-          class="link-teaser"
-        >
-          atencioncliente@volkswagen.es
-        </a>
-      </p>
-
-      <p class="AuthRegisterForm__privacy--text">
-        Puedes consultar con mayor detalle la información adicional sobre Protección de datos aquí
-        <inertia-link
-          href="#"
-          class="link-teaser"
-        >
-          aquí
-        </inertia-link>
-        .
-      </p>
-    </div>
+    <BaseSubmitButton
+      class="btn AuthRegisterForm__privacy--button"
+      :class="$HasVuelidate_submitButtonClass"
+      :disabled="$HasVuelidate_submitButtonDisabled"
+    >
+      Crear Perfil
+    </BaseSubmitButton>
   </form>
 </template>
 
@@ -211,9 +80,6 @@ import { email, required, sameAs } from 'vuelidate/lib/validators';
 
 /* Mixins */
 import HasVuelidate from 'mixins/HasVuelidate';
-
-/* helpers */
-import { checked } from 'helpers/vuelidate';
 
 export default {
   mixins: [HasVuelidate],
@@ -239,16 +105,6 @@ export default {
       email: {
         required,
         email,
-      },
-      legal1: {
-        required,
-      },
-      legal2: {
-        required,
-      },
-      legal3: {
-        required,
-        checked,
       },
     };
 

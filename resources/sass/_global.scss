@@ -16,7 +16,7 @@
   border: 0;
 
   &:hover {
-    background: $alerts;
+    background: $primary;
     color: $white;
   }
 
@@ -127,8 +127,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  margin-top: -8px;
-  margin-bottom: 5px;
+  margin-top: -10px;
+  margin-bottom: 8px;
   position: relative;
   background: $red;
   padding: 6px 15px;
