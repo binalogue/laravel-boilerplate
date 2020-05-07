@@ -56,7 +56,7 @@ export default {
     }
 
     &--subtitle {
-      @include title;
+      @include text;
 
       font-weight: 400;
       margin-bottom: 3vh;
