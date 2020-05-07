@@ -28,10 +28,6 @@
     height: auto;
     margin-left: auto;
 
-    @include tablet-m() {
-      width: 200px;
-    }
-
     img {
       width: 100%;
     }

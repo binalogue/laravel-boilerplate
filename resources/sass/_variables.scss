@@ -97,11 +97,11 @@ $red: #ea4f44;
   line-height: 1.5;
 
   @include tablet() {
-    font-size: 32px;
+    font-size: 28px;
   }
 
   @include tablet-m() {
-    font-size: 42px;
+    font-size: 32px;
   }
 }
 
