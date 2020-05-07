@@ -79,7 +79,7 @@ mix
           loader: 'eslint-loader',
           options: {
             fix: true,
-            cache: true,
+            cache: false,
           },
         },
       ],
