@@ -3,51 +3,37 @@
     :validator="v"
     :name="name"
     :attribute="label | toLowerCase"
-    class="BaseInputText input"
+    class="input"
     :class="{
       active: isActive,
     }"
   >
-    <div
-      class="BaseInputText__input-container"
-      :class="{
-        active: value,
-      }"
+    <label
+      :for="name"
+      class="input__label"
     >
-      <label
-        v-if="fakeLabel"
-        :for="name"
-        class="fake-label"
-        :class="{
-          active: isActive,
-        }"
-      >
-        {{ fakeLabel }}
-      </label>
+      {{ label }}
+    </label>
 
-      <label :for="name">
-        {{ label }}
-      </label>
+    <input
+      :id="name"
+      class="input__input"
+      :value="value"
+      :type="type"
+      :name="name"
+      :placeholder="placeholder"
+      :disabled="disabled"
+      :autocomplete="autocomplete"
+      @input="$emit('input', $event.target.value)"
+      @focusin="handleFocus(true)"
+      @focusout="handleFocus(false)"
+    >
 
-      <input
-        :id="name"
-        :value="value"
-        :type="type"
-        :name="name"
-        :placeholder="placeholder"
-        :disabled="disabled"
-        :autocomplete="autocomplete"
-        @input="$emit('input', $event.target.value)"
-        @focusin="handleFocus(true)"
-        @focusout="handleFocus(false)"
-      >
-
-      <div
-        v-if="icon"
-        class="BaseInputText__icon icon"
-      >
-        <component :is="icon" />
-      </div>
+    <div
+      v-if="icon"
+      class="input__icon"
+    >
+      <component :is="icon" />
     </div>
   </BaseFormGroup>
 </template>
@@ -57,11 +43,6 @@ export default {
   props: {
     disabled: {
       type: Boolean,
-    },
-
-    fakeLabel: {
-      type: String,
-      default: '',
     },
 
     icon: {

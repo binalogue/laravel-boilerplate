@@ -114,11 +114,6 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-
-    &__check {
-      display: flex;
-      margin-bottom: 10px;
-    }
   }
 
 </style>

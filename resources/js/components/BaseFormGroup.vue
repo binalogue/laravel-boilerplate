@@ -1,16 +1,14 @@
 <template>
-  <div class="form-group">
+  <div>
     <slot />
 
-    <div
+    <span
       v-if="hasFrontendOrBackendErrors"
-      class="errors"
+      class="input-error"
     >
-      <div class="input-error">
-        <IconExclamation />
-        {{ error }}
-      </div>
-    </div>
+      <IconExclamation />
+      {{ error }}
+    </span>
   </div>
 </template>
 

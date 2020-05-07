@@ -439,15 +439,15 @@ export default {
 
       @include transition;
 
-      &.active {
-        height: 125px;
-        background: transparent;
-        margin-bottom: 10px;
+      // &.active {
+      //   height: 125px;
+      //   background: transparent;
+      //   margin-bottom: 10px;
 
-        @include tablet {
-          height: 80px;
-        }
-      }
+      //   @include tablet {
+      //     height: 80px;
+      //   }
+      // }
     }
 
     &--button {

@@ -67,25 +67,25 @@ export default {
     @include transition;
   }
 
-  .active {
-    width: 15px;
-    height: 15px;
-    background: $primary;
-    cursor: pointer;
-    border: 1px solid $white;
+  // .active {
+  //   width: 15px;
+  //   height: 15px;
+  //   background: $primary;
+  //   cursor: pointer;
+  //   border: 1px solid $white;
 
-    @include transition;
-  }
+  //   @include transition;
+  // }
 }
 
-.active {
-  width: 15px;
-  height: 15px;
-  background: $primary;
-  margin-right: 10px;
-  cursor: pointer;
-  border: 1px solid $white;
+// .active {
+//   width: 15px;
+//   height: 15px;
+//   background: $primary;
+//   margin-right: 10px;
+//   cursor: pointer;
+//   border: 1px solid $white;
 
-  @include transition;
-}
+//   @include transition;
+// }
 </style>
