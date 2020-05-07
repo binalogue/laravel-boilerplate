@@ -21,18 +21,12 @@
       placeholder="Contraseña"
     />
 
-    <div class="AuthLoginForm__check">
-      <BaseInputCheckbox
-        v-model="remember"
-        :v="$v.form.remember"
-        label="Recuérdame"
-        name="remember"
-      />
-
-      <p class="AuthLoginFormm__check--text">
-        Recuérdame
-      </p>
-    </div>
+    <BaseInputCheckbox
+      v-model="remember"
+      :v="$v.form.remember"
+      label="Recuérdame"
+      name="remember"
+    />
 
     <BaseSubmitButton
       class="btn"

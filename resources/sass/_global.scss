@@ -79,7 +79,7 @@
 
   &__label {
     font-weight: 400;
-    font-size: 12px;
+    font-size: 11px;
     text-transform: uppercase;
     margin-bottom: 5px;
     color: $primary;
@@ -141,5 +141,30 @@
     width: auto;
     margin-right: 10px;
     fill: $white;
+  }
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+
+  &__check {
+    @include transition;
+    width: 15px;
+    height: 15px;
+    border: 1px solid $white;
+    background: transparent;
+    cursor: pointer;
+    margin-right: 10px;
+
+    &.active {
+      background: $primary;
+    }
+  }
+
+  &__label {
+    font-size: 14px;
+    padding-top: 1px;
   }
 }
