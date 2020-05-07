@@ -117,19 +117,7 @@ export default {
 
     &__check {
       display: flex;
-      margin-top: 15px;
-      margin-bottom: 20px;
-      // margin-right: auto;
-    }
-
-    .input {
-      color: $white;
-
-      input {
-        border: 1px solid $white;
-        background: transparent;
-        color: $white;
-      }
+      margin-bottom: 10px;
     }
   }
 

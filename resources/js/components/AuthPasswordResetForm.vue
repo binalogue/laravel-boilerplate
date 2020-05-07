@@ -75,18 +75,6 @@ export default {
 
 .AuthPasswordResetForm {
 
-  .BaseInputText__input-container {
-    border: 1px solid $white;
-  }
-
-  .input {
-    color: $white;
-
-    input {
-      background: transparent;
-      color: $white;
-    }
-  }
 }
 
 </style>

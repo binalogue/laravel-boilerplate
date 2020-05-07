@@ -13,6 +13,7 @@
   color: $black;
   background: $white;
   padding: 12px 40px 10px 40px;
+  border: 0;
 
   &:hover {
     background: $alerts;
@@ -75,6 +76,7 @@
   color: $black;
   margin-bottom: 15px;
   min-width: 300px;
+  height: 48px;
 
   label {
     position: absolute;
@@ -96,7 +98,6 @@
     font-family: "Gotham";
     font-weight: 800;
     font-size: 16px;
-    background: $white;
     border: 0;
     color: $black;
 

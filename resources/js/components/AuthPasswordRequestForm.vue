@@ -60,14 +60,5 @@ export default {
 <style lang="scss">
 .AuthPasswordRequestForm {
 
-  .input {
-    color: $white;
-
-    input {
-      background: transparent;
-      border: 1px solid $white;
-      color: $white;
-    }
-  }
 }
 </style>

@@ -357,19 +357,6 @@ export default {
   flex-direction: column;
   width: 100%;
 
-  label {
-    color: $white;
-  }
-
-  .input {
-
-    input {
-      background: transparent ;
-      color: $white ;
-      border: 1px solid $white ;
-    }
-  }
-
   &__text {
 
     p {

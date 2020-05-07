@@ -65,30 +65,6 @@ export default {
   display: flex;
   flex-direction: column;
   width: 100%;
-
-  &__input {
-
-    label {
-      color: $white;
-    }
-  }
-
-  &__button {
-    width: 100%;
-
-    @include tablet-m {
-      width: 150px;
-    }
-  }
-
-  .input {
-
-    input {
-      background: transparent;
-      color: $white;
-      border: 1px solid $white ;
-    }
-  }
 }
 
 </style>

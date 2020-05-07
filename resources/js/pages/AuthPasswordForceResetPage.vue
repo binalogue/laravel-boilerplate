@@ -47,16 +47,6 @@ export default {
       display: inline-block;
       margin: 30px 0 ;
     }
-
-    .input {
-      color: $white;
-
-      input {
-        background: transparent;
-        border: 1px solid $white;
-        color: $white;
-      }
-    }
   }
 }
 
