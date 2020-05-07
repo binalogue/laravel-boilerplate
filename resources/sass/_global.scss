@@ -71,6 +71,7 @@
 }
 
 .input {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 100%;
@@ -78,7 +79,8 @@
 
   &__label {
     font-weight: 400;
-    font-size: 13px;
+    font-size: 12px;
+    text-transform: uppercase;
     margin-bottom: 5px;
     color: $primary;
   }
@@ -86,7 +88,7 @@
   &__input {
     @include transition;
     outline: none;
-    border: 2px solid $white;
+    border: 1px solid $white;
     background: transparent;
     color: $white;
     padding: 12px 15px 11px 15px;
@@ -100,10 +102,22 @@
     }
   }
 
+  &__icon {
+    position: absolute;
+    fill: $white;
+    right: 15px;
+    top: 26px;
+
+    svg {
+      height: 22px;
+      width: auto;
+    }
+  }
+
   &.active {
 
     .input__input {
-      border: 2px solid $primary;
+      border: 1px solid $primary;
     }
   }
 }
