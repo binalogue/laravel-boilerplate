@@ -84,6 +84,7 @@ export default {
 <style lang="scss">
 .HomePage {
   @include page;
+  // background: red;
 
   &__main {
     @include container;

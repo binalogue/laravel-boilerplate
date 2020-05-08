@@ -79,6 +79,7 @@ $red: #ea4f44;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  flex-grow: 1;
 }
 
 @mixin container {
@@ -91,7 +92,6 @@ $red: #ea4f44;
 /* Fonts */
 
 @mixin title {
-  font-family: "Gotham";
   font-weight: 900;
   font-size: 24px;
   line-height: 1.5;
@@ -106,7 +106,6 @@ $red: #ea4f44;
 }
 
 @mixin text {
-  font-family: "Gotham";
   font-weight: 400;
   font-size: 14px;
   line-height: 1.5;
@@ -117,7 +116,6 @@ $red: #ea4f44;
 }
 
 @mixin text-s {
-  font-family: "Gotham";
   font-weight: 400;
   font-size: 12px;
   line-height: 1.5;
