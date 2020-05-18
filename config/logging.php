@@ -41,6 +41,11 @@ return [
             'ignore_exceptions' => false,
         ],
 
+        'stack::slack' => [
+            'driver' => 'stack',
+            'channels' => ['stack', 'slack'],
+        ],
+
         'single' => [
             'driver' => 'single',
             'path' => storage_path('logs/laravel.log'),
@@ -57,8 +62,6 @@ return [
         'slack' => [
             'driver' => 'slack',
             'url' => env('LOG_SLACK_WEBHOOK_URL'),
-            'username' => 'Laravel Log',
-            'emoji' => ':boom:',
             'level' => 'critical',
         ],
 
@@ -100,5 +103,16 @@ return [
             'driver' => 'flare',
         ],
     ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | Enable Logs
+    |--------------------------------------------------------------------------
+    |
+    | Activate/deactivate some app logs.
+    |
+    */
+
+    'log_actions_enabled' => env('LOG_ACTIONS_ENABLED', false),
 
 ];

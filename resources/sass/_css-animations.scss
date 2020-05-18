@@ -39,6 +39,21 @@
   animation-name: fadeOutLeft;
 }
 
+@keyframes btnLoading {
+
+  0% {
+    transform: translateY(-50%);
+  }
+
+  50% {
+    transform: translateY(-30%);
+  }
+
+  100% {
+    transform: translateY(-50%);
+  }
+}
+
 @keyframes fadeIn {
 
   from {
@@ -46,6 +61,19 @@
   }
 
   to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+
+  from {
+    transform: translate3d(0, 10%, 0);
+    opacity: 0;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
     opacity: 1;
   }
 }
@@ -96,18 +124,5 @@
   to {
     transform: translate3d(-20%, 0, 0);
     opacity: 0;
-  }
-}
-
-@keyframes fadeInUp {
-
-  from {
-    transform: translate3d(0, 10%, 0);
-    opacity: 0;
-  }
-
-  to {
-    transform: translate3d(0, 0, 0);
-    opacity: 1;
   }
 }

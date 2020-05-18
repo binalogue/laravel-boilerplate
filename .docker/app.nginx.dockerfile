@@ -1,4 +1,4 @@
-FROM php:7.3-fpm-stretch
+FROM php:7.4-fpm
 
 ENV PATH="./vendor/bin:${PATH}" \
   NGINX_SERVER_NAME="_" \
@@ -28,17 +28,16 @@ RUN apt-get update \
 
 # Install Node.js and some global dependencies.
 RUN wget -qO- https://deb.nodesource.com/setup_12.x | bash - && apt-get install -y nodejs
-RUN npm install -g bower yarn
+RUN npm install -g yarn
 
 # Install Docker PHP extensions.
-RUN docker-php-ext-configure gd --with-webp-dir=/usr/include/ --with-jpeg-dir=/usr/include/
-RUN docker-php-ext-configure zip --with-libzip
+RUN docker-php-ext-configure gd --with-webp=/usr/include/ --with-jpeg=/usr/include/
 RUN docker-php-ext-install \
   bcmath \
   exif \
   gd \
-  mbstring \
   opcache \
+  pcntl \
   pdo \
   pdo_mysql \
   zip
@@ -89,13 +88,13 @@ RUN chmod +x /usr/local/bin/composer-installer \
   && /usr/local/bin/composer-installer \
   && mv composer.phar /usr/local/bin/composer \
   && chmod +x /usr/local/bin/composer \
-  && composer check-platform-reqs --working-dir=/var/www \
+  && composer check-platform-reqs --working-dir=/var/www/ \
   && composer global require hirak/prestissimo --prefer-dist --no-progress --no-suggest --classmap-authoritative \
   && composer clear-cache \
   && composer --version
 
 # Set server permissions.
-RUN chown -R www-data:www-data /var/www
+RUN chown -R www-data:www-data /var/www/
 
 # Add alias.
 RUN echo 'alias pa="php artisan"' >> ~/.bashrc

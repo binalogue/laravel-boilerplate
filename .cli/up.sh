@@ -19,8 +19,18 @@ if [ -f artisan ]; then
   # Publish Laravel Telescope.
   dc:pa telescope:publish
 
+  # Publish Laravel Horizon.
+  dc:pa horizon:assets
+
+  # Publish Laravel Nova.
+  dc:pa nova:publish
+  dc:pa vendor:publish --provider='Binalogue\BinalogueNovaTheme\ThemeServiceProvider' --force
+
   # Migrate database.
-  dc:pa migrate --force
+  dc:pa migrate:fresh --force --seed
+
+  # Terminate the master Horizon process.
+  dc exec queue php artisan horizon:terminate
 fi
 
 # Run yarn.

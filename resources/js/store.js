@@ -6,13 +6,14 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    csrfToken: window.csrf_token,
 
     /*
     |---------------------------------------------------------------------------
-    | AppService
+    | Backend Data
     |
-    | See: app/Services/AppService.php
+    | See:
+    |  - app/Support/View/AppViewComposer.php
+    |  - app/Support/Providers/AppServiceProvider.php
     |---------------------------------------------------------------------------
     */
 
@@ -20,81 +21,78 @@ export default new Vuex.Store({
     env: 'production',
     url: 'https://laravel.binalogue.dev',
     locale: 'es',
-    serverPath: '',
-
-    // SEO meta tags for the current page.
-    // IMPORTANT: do not add to the ADD_SERVER_DATA mutation.
-    meta: {},
 
     /*
     |---------------------------------------------------------------------------
-    | Other
+    | Frontend Data
     |---------------------------------------------------------------------------
     */
+
+    // Auth.
+    user: undefined,
 
     // Device.
     isMobile: false,
     isPhone: false,
 
-    // Cookies.
-    isShownCookieBanner: true,
-
     // Loader.
-    isLoading: true,
-    loaderProgress: 0,
+    isLoading: false,
 
-    // Footer.
-    isShownModalFooter: false,
+    // Visibility.
+    isShownTheCookieBanner: false,
+    isShownTheFlashStatus: false,
+  },
+
+  getters: {
+    isAuth: (state) => !!state.user,
+    isGuest: (state) => !state.user,
+  },
+
+  actions: {
+    //
   },
 
   mutations: {
-    ADD_SERVER_DATA(state, serverData) {
-      // AppService
-      if (serverData.env) {
-        state.env = serverData.env;
+    ADD_BACKEND_STATIC_DATA(state, serverPayload) {
+      if (serverPayload.env) {
+        state.env = serverPayload.env;
       }
-      if (serverData.url) {
-        state.url = serverData.url;
+      if (serverPayload.url) {
+        state.url = serverPayload.url;
       }
-      if (serverData.locale) {
-        state.locale = serverData.locale;
-      }
-      if (serverData.path) {
-        state.serverPath = serverData.path;
-      }
-
-      // Controllers
-      if (serverData.customPlaylist) {
-        state.customPlaylist = serverData.customPlaylist;
+      if (serverPayload.locale) {
+        state.locale = serverPayload.locale;
       }
     },
 
-    SET_LOADER_PROGRESS(state, value) {
-      state.loaderProgress = value;
+    ADD_BACKEND_INERTIAJS_DATA(state, serverPayload) {
+      if (serverPayload.auth) {
+        state.user = serverPayload.auth.user;
+      }
+
+      if (serverPayload.flash) {
+        state.isShownTheFlashStatus = !!serverPayload.flash.status;
+      }
     },
 
-    SET_META(state, value) {
-      state.meta = value;
+    TOGGLE_IS_LOADING(state, payload) {
+      state.isLoading = payload;
     },
 
-    TOGGLE_COOKIE_BANNER(state, value) {
-      state.isShownCookieBanner = value;
+    TOGGLE_IS_MOBILE(state, payload) {
+      state.isMobile = payload;
     },
 
-    TOGGLE_IS_LOADING(state, value) {
-      state.isLoading = value;
+    TOGGLE_IS_PHONE(state, payload) {
+      state.isPhone = payload;
     },
 
-    TOGGLE_IS_MOBILE(state, value) {
-      state.isMobile = value;
+    TOGGLE_THE_COOKIE_BANNER(state, payload) {
+      state.isShownTheCookieBanner = payload;
     },
 
-    TOGGLE_IS_PHONE(state, value) {
-      state.isPhone = value;
-    },
-
-    TOGGLE_MODAL_FOOTER(state, value) {
-      state.isShownModalFooter = value;
+    TOGGLE_THE_FLASH_STATUS(state, payload) {
+      state.isShownTheFlashStatus = payload;
     },
   },
 });
