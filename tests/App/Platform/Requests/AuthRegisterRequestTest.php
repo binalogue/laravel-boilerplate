@@ -44,7 +44,7 @@ class AuthRegisterRequestTest extends TestCase
                 'data' => [
                     'first_surname' => $faker->lastName,
                     'email' => $faker->email,
-                ]
+                ],
             ],
 
             'request_should_fail_when_no_first_surname_is_provided' => [
@@ -52,7 +52,7 @@ class AuthRegisterRequestTest extends TestCase
                 'data' => [
                     'name' => $faker->firstName,
                     'email' => $faker->email,
-                ]
+                ],
             ],
 
             'request_should_fail_when_no_email_is_provided' => [
@@ -60,14 +60,14 @@ class AuthRegisterRequestTest extends TestCase
                 'data' => [
                     'name' => $faker->firstName,
                     'first_surname' => $faker->lastName,
-                ]
+                ],
             ],
 
             'request_should_fail_when_email_is_invalid' => [
                 'passed' => false,
                 'data' => [
                     'email' => 'invalid-email',
-                ]
+                ],
             ],
 
             'request_should_fail_when_password_is_not_confirmed' => [
@@ -77,7 +77,7 @@ class AuthRegisterRequestTest extends TestCase
                     'first_surname' => $faker->lastName,
                     'email' => $faker->email,
                     'password' => $password,
-                ]
+                ],
             ],
 
             'request_should_pass_when_data_is_provided' => [
@@ -88,8 +88,8 @@ class AuthRegisterRequestTest extends TestCase
                     'email' => $faker->email,
                     'password' => $password,
                     'password_confirmation' => $password,
-                ]
-            ]
+                ],
+            ],
         ];
     }
 

@@ -91,7 +91,7 @@ class User extends Resource
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}')
                 ->hideWhenUpdating(function ($request) {
-                    return !$request->user()->can('update-email', $this->model());
+                    return ! $request->user()->can('update-email', $this->model());
                 }),
 
             Password::make('Password')
@@ -99,7 +99,7 @@ class User extends Resource
                 ->updateRules('nullable', 'string', 'min:8')
                 ->onlyOnForms()
                 ->hideWhenUpdating(function ($request) {
-                    return !$request->user()->can('update-password', $this->model());
+                    return ! $request->user()->can('update-password', $this->model());
                 }),
 
             KeyValue::make('Extra Attributes', 'extra_attributes')

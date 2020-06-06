@@ -38,7 +38,7 @@ class AppServiceProvider extends ServiceProvider
     {
         Schema::defaultStringLength(191);
 
-        setlocale(LC_TIME, config('app.country_locale') . '.UTF-8');
+        setlocale(LC_TIME, config('app.country_locale').'.UTF-8');
         Carbon::setLocale(config('app.country_locale'));
 
         Blade::if('env', function ($environment) {

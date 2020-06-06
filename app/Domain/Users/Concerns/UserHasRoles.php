@@ -46,7 +46,7 @@ trait UserHasRoles
             $roles = $roles->all();
         }
 
-        if (!is_array($roles)) {
+        if (! is_array($roles)) {
             $roles = [$roles];
         }
 

@@ -57,14 +57,14 @@ class VerificationController
      */
     public function verify(Request $request)
     {
-        if (!hash_equals(
+        if (! hash_equals(
             (string) $request->route('id'),
             (string) $request->user()->getKey()
         )) {
             throw new AuthorizationException();
         }
 
-        if (!hash_equals(
+        if (! hash_equals(
             (string) $request->route('hash'),
             sha1($request->user()->getEmailForVerification())
         )) {
@@ -75,7 +75,7 @@ class VerificationController
             return Redirect::to($this->redirectTo());
         }
 
-        if (!$request->user()->markEmailAsVerified()) {
+        if (! $request->user()->markEmailAsVerified()) {
             throw new AuthorizationException();
         }
 

@@ -31,7 +31,7 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
-        if (!App::environment('production')) {
+        if (! App::environment('production')) {
             $this->mapDevelopmentRoutes();
         }
     }

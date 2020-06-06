@@ -29,11 +29,11 @@ class UserForgotPassword extends ResetPassword implements ShouldQueue
                 __('notifications.user.forgot_password.mail.action'),
                 url(route('password.reset', [
                     'token' => $this->token,
-                    'email' => $notifiable->getEmailForPasswordReset()
+                    'email' => $notifiable->getEmailForPasswordReset(),
                 ]))
             )
             ->line(__('notifications.user.forgot_password.mail.outro_line_1', [
-                'count' => config('auth.passwords.' . config('auth.defaults.passwords') . '.expire')
+                'count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire'),
             ]))
             ->line(__('notifications.user.forgot_password.mail.outro_line_2'))
             ->salutation(__('notifications.user.forgot_password.mail.salutation'));

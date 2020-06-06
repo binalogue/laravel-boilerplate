@@ -54,18 +54,15 @@ class TwitterCards implements TwitterCardsContract
     {
         foreach ($values as $key => $value) :
             if (is_array($value)) :
-                $this->eachValue($value, $key);
-            else :
+                $this->eachValue($value, $key); else :
                 if ($key === 'image') :
-                    $value = asset($value);
-                elseif (is_numeric($key)) :
-                    $key = $prefix . $key;
-                elseif (is_string($prefix)) :
-                    $key = $prefix . ':' . $key;
-                endif;
+                    $value = asset($value); elseif (is_numeric($key)) :
+                    $key = $prefix.$key; elseif (is_string($prefix)) :
+                    $key = $prefix.':'.$key;
+        endif;
 
-                $this->html[] = $this->makeTag($key, $value);
-            endif;
+        $this->html[] = $this->makeTag($key, $value);
+        endif;
         endforeach;
     }
 
@@ -79,7 +76,7 @@ class TwitterCards implements TwitterCardsContract
      */
     private function makeTag($key, $value)
     {
-        return '<meta name="' . $this->prefix . strip_tags($key) . '" content="' . strip_tags($value) . '" />';
+        return '<meta name="'.$this->prefix.strip_tags($key).'" content="'.strip_tags($value).'" />';
     }
 
     public function addValue($key, $value)

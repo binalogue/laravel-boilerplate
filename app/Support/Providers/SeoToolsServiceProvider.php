@@ -2,13 +2,13 @@
 
 namespace Support\Providers;
 
+use Illuminate\Config\Repository as Config;
+use Illuminate\Support\ServiceProvider;
 use Support\SeoTools\Contracts;
 use Support\SeoTools\FacebookSharing;
 use Support\SeoTools\MetaTags;
 use Support\SeoTools\OpenGraph;
 use Support\SeoTools\TwitterCards;
-use Illuminate\Config\Repository as Config;
-use Illuminate\Support\ServiceProvider;
 
 class SeoToolsServiceProvider extends ServiceProvider
 {

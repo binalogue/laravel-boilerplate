@@ -43,7 +43,7 @@ class UserVerified extends Notification implements ShouldQueue
                 route('profile.show')
             )
             ->line(__('notifications.user.verified.mail.outro_line', [
-                'url' => route('legal.conditions')
+                'url' => route('legal.conditions'),
             ]))
             ->salutation(__('notifications.user.verified.mail.salutation'));
     }

@@ -26,13 +26,14 @@ trait Notifiable
                     $message = __('notifications.custom.message');
                 }
 
-                if (!$message) {
+                if (! $message) {
                     $message = null;
                 }
 
                 $notification->message = $message;
                 $notification->created_at_formatted =
                     $notification->created_at->formatLocalized('%d %B, %Y - %H:%M');
+
                 return $notification;
             })
             ->reject(fn ($notification) => is_null($notification->message))

@@ -37,6 +37,6 @@ class MustResetPassword
             return false;
         }
 
-        return !$user->password_changed_at;
+        return ! $user->password_changed_at;
     }
 }

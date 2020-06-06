@@ -22,7 +22,7 @@ class OpenGraph implements OpenGraphContract
     protected $config;
 
     /**
-     * Url property
+     * Url property.
      *
      * @var string
      */
@@ -225,7 +225,7 @@ class OpenGraph implements OpenGraphContract
 
                 if (is_string($prefix)) {
                     $key = (is_string($property)) ?
-                        $prefix . ':' . $property :
+                        $prefix.':'.$property :
                         $prefix;
                 } else {
                     $key = $property;
@@ -286,7 +286,7 @@ class OpenGraph implements OpenGraphContract
                         ? app('url')->current()
                         : $this->config['defaults.url'])
                 );
-            } elseif (!empty($value) && !array_key_exists($key, $this->properties)) {
+            } elseif (! empty($value) && ! array_key_exists($key, $this->properties)) {
                 $this->addProperty($key, $value);
             }
         }
@@ -596,10 +596,11 @@ class OpenGraph implements OpenGraphContract
             'sale_price:amount',
             'sale_price:currency',
             'sale_price_dates:start',
-            'sale_price_dates:end'
+            'sale_price_dates:end',
         ];
 
         $this->setProperties('product', 'productProperties', $attributes, $validkeys);
+
         return $this;
     }
 

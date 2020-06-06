@@ -55,10 +55,10 @@ class UserData extends DataTransferObject
 
         return new self([
             'name' => $splitName[0],
-            'first_surname' => !empty($splitName[1])
+            'first_surname' => ! empty($splitName[1])
                 ? $splitName[1]
                 : '',
-            'second_surname' => !empty($splitName[2])
+            'second_surname' => ! empty($splitName[2])
                 ? $splitName[2]
                 : '',
             'email' => $socialiteUser->getEmail(),

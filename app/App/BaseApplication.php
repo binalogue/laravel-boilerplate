@@ -10,6 +10,6 @@ class BaseApplication extends LaravelApplication
 
     public function path($path = '')
     {
-        return $this->basePath . DIRECTORY_SEPARATOR . 'app/App' . ($path ? DIRECTORY_SEPARATOR . $path : $path);
+        return $this->basePath.DIRECTORY_SEPARATOR.'app/App'.($path ? DIRECTORY_SEPARATOR.$path : $path);
     }
 }

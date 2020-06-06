@@ -35,7 +35,7 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('view-any-id', fn ($user) => $user->isSuperAdmin());
 
-        Gate::define('update-email', UserPolicy::class . '@updateEmail');
-        Gate::define('update-password', UserPolicy::class . '@updatePassword');
+        Gate::define('update-email', UserPolicy::class.'@updateEmail');
+        Gate::define('update-password', UserPolicy::class.'@updatePassword');
     }
 }
