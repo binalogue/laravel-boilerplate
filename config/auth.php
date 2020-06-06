@@ -70,6 +70,11 @@ return [
             'driver' => 'eloquent',
             'model' => Domain\Users\Models\User::class,
         ],
+
+        // 'users' => [
+        //     'driver' => 'database',
+        //     'table' => 'users',
+        // ],
     ],
 
     /*
@@ -108,12 +113,6 @@ return [
     */
 
     'password_timeout' => 10800,
-
-    /*
-    |--------------------------------------------------------------------------
-    | Socialite
-    |--------------------------------------------------------------------------
-    */
 
     'socialite' => [
         'drivers' => [
