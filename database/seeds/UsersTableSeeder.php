@@ -1,7 +1,7 @@
 <?php
 
-use Domain\Users\Models\User;
 use Domain\Users\Models\Role;
+use Domain\Users\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
 

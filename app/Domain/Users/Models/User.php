@@ -4,13 +4,13 @@ namespace Domain\Users\Models;
 
 use Domain\Users\Builders\UserBuilder;
 use Domain\Users\Concerns\UserHasRoles;
-use Support\SchemalessAttributes\HasExtraAttributes;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Support\Eloquent\User as Authenticatable;
 use Support\Notifications\Notifiable;
+use Support\SchemalessAttributes\HasExtraAttributes;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
@@ -134,7 +134,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $avatar = $this->extra_attributes->avatar;
 
-        if (is_null($avatar) || !Storage::disk('public')->exists($avatar)) {
+        if (is_null($avatar) || ! Storage::disk('public')->exists($avatar)) {
             $avatar = asset('/images/default-avatar.png');
         }
 

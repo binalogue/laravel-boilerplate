@@ -57,6 +57,7 @@ class SocialiteController
             }
 
             Auth::login($existingUser, true);
+
             return Redirect::route('profile.show');
         }
 

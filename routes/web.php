@@ -54,8 +54,8 @@ Route::middleware('guest')->group(function () {
 
 // Socialite Routes...
 Route::middleware('guest')->group(function () {
-    Route::get('/oauth/{driver}', [SocialiteController::class, 'redirectToProvider'])->where('driver', implode('|', config('auth.socialite.drivers')))->name('oauth');
-    Route::get('/oauth/{driver}/callback', [SocialiteController::class, 'handleProviderCallback'])->where('driver', implode('|', config('auth.socialite.drivers')));
+    Route::get('/oauth/{driver}', [SocialiteController::class, 'redirectToProvider'])->where('driver', implode('|', config('socialite.drivers')))->name('oauth');
+    Route::get('/oauth/{driver}/callback', [SocialiteController::class, 'handleProviderCallback'])->where('driver', implode('|', config('socialite.drivers')));
 });
 
 // Password Reset Routes...

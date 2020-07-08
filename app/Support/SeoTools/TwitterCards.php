@@ -52,21 +52,21 @@ class TwitterCards implements TwitterCardsContract
      */
     protected function eachValue(array $values, $prefix = null)
     {
-        foreach ($values as $key => $value) :
-            if (is_array($value)) :
+        foreach ($values as $key => $value) {
+            if (is_array($value)) {
                 $this->eachValue($value, $key);
-            else :
-                if ($key === 'image') :
+            } else {
+                if ($key === 'image') {
                     $value = asset($value);
-                elseif (is_numeric($key)) :
+                } elseif (is_numeric($key)) {
                     $key = $prefix . $key;
-                elseif (is_string($prefix)) :
+                } elseif (is_string($prefix)) {
                     $key = $prefix . ':' . $key;
-                endif;
+                }
 
                 $this->html[] = $this->makeTag($key, $value);
-            endif;
-        endforeach;
+            }
+        }
     }
 
     /**

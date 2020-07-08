@@ -2,9 +2,9 @@
 
 namespace Support\SeoTools;
 
-use Support\SeoTools\Contracts\MetaTags as MetaTagsContract;
 use Illuminate\Config\Repository as Config;
 use Illuminate\Support\Arr;
+use Support\SeoTools\Contracts\MetaTags as MetaTagsContract;
 
 class MetaTags implements MetaTagsContract
 {
@@ -152,7 +152,7 @@ class MetaTags implements MetaTagsContract
             $html[] = "<meta name=\"description\" content=\"{$description}\">";
         }
 
-        if (!empty($keywords)) {
+        if (! empty($keywords)) {
             if ($keywords instanceof \Illuminate\Support\Collection) {
                 $keywords = $keywords->toArray();
             }
@@ -258,7 +258,7 @@ class MetaTags implements MetaTagsContract
 
     public function setKeywords($keywords)
     {
-        if (!is_array($keywords)) {
+        if (! is_array($keywords)) {
             $keywords = explode(', ', $keywords);
         }
 
@@ -482,8 +482,8 @@ class MetaTags implements MetaTagsContract
         $defaultBefore = $this->config->get('defaults.title_before', false);
 
         return $defaultBefore
-            ? $default . $this->getTitleSeparator() . $title
-            : $title . $this->getTitleSeparator() . $default;
+            ? $default.$this->getTitleSeparator().$title
+            : $title.$this->getTitleSeparator().$default;
     }
 
     /**
@@ -492,7 +492,7 @@ class MetaTags implements MetaTagsContract
     protected function loadWebMasterTags()
     {
         foreach ($this->config->get('webmaster_tags', []) as $name => $value) {
-            if (!empty($value)) {
+            if (! empty($value)) {
                 $meta = Arr::get($this->webmasterTags, $name, $name);
                 $this->addMeta($meta, $value);
             }

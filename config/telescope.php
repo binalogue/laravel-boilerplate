@@ -1,7 +1,7 @@
 <?php
 
-use Laravel\Telescope\Watchers;
 use Laravel\Telescope\Http\Middleware\Authorize;
+use Laravel\Telescope\Watchers;
 
 return [
 
@@ -92,7 +92,7 @@ return [
     */
 
     'ignore_paths' => [
-        //
+        'nova-api*',
     ],
 
     'ignore_commands' => [
@@ -119,7 +119,12 @@ return [
         ],
 
         Watchers\DumpWatcher::class => env('TELESCOPE_DUMP_WATCHER', true),
-        Watchers\EventWatcher::class => env('TELESCOPE_EVENT_WATCHER', true),
+
+        Watchers\EventWatcher::class => [
+            'enabled' => env('TELESCOPE_EVENT_WATCHER', true),
+            'ignore' => [],
+        ],
+
         Watchers\ExceptionWatcher::class => env('TELESCOPE_EXCEPTION_WATCHER', true),
         Watchers\JobWatcher::class => env('TELESCOPE_JOB_WATCHER', true),
         Watchers\LogWatcher::class => env('TELESCOPE_LOG_WATCHER', true),

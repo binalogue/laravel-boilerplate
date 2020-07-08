@@ -2,11 +2,11 @@
 
 namespace App\Platform\Users\Controllers\Auth;
 
+use App\Platform\Users\Requests\AuthPreRegisterRequest;
+use App\Platform\Users\Requests\AuthRegisterRequest;
 use Domain\Users\Actions\CreateUserAction;
 use Domain\Users\DataTransferObjects\AuthPreRegisterData;
 use Domain\Users\DataTransferObjects\UserData;
-use App\Platform\Users\Requests\AuthPreRegisterRequest;
-use App\Platform\Users\Requests\AuthRegisterRequest;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
