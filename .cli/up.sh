@@ -16,13 +16,9 @@ if [ -f artisan ]; then
   # Create a symbolic link from "public/storage" to "storage/app/public".
   [ -L 'public/storage' ] || ( dc:pa storage:link )
 
-  # Publish Laravel Telescope.
+  # Publish any vendor packages assets.
   dc:pa telescope:publish
-
-  # Publish Laravel Horizon.
-  dc:pa horizon:assets
-
-  # Publish Laravel Nova.
+  dc:pa horizon:publish
   dc:pa nova:publish
   dc:pa vendor:publish --provider='Binalogue\BinalogueNovaTheme\ThemeServiceProvider' --force
 
