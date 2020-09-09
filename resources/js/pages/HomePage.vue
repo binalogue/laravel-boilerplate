@@ -62,7 +62,7 @@ export default {
       return new Promise((resolve) => {
         this.pxloader = new PxLoader();
 
-        this.pxloader.addImage(this.webp('/images/binalogue-logo.png'));
+        this.pxloader.addImage(this.webp('/images/logo.png'));
 
         if (this.$store.state.isPhone) {
           this.pxloader.addImage(this.webp('/images/binalogue-bg-home-mobile.jpg'));

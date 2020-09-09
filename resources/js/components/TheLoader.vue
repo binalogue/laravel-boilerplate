@@ -1,7 +1,7 @@
 <template>
   <div class="TheLoader">
     <img
-      v-webp="'/images/binalogue-logo.png'"
+      v-webp="'/images/logo.png'"
       alt="Binalogue"
     >
   </div>

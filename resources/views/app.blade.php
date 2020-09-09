@@ -56,7 +56,7 @@
 <link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="{{ asset('fonts/Gotham-Black.woff2') }}">
 <link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="{{ asset('fonts/Gotham-Book.woff2') }}">
 <link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="{{ asset('fonts/Gotham-Medium.woff2') }}">
-<link rel="preload" as="image" href="{{ webp('images/binalogue-logo.png') }}">
+<link rel="preload" as="image" href="{{ webp('images/logo.png') }}">
 
 {{--
 @route('home')
