@@ -3,15 +3,11 @@
 namespace App\Platform\Home\Controllers;
 
 use Inertia\Inertia;
+use Inertia\Response;
 
 class HomeController
 {
-    /**
-     * Home.
-     *
-     * @return \Inertia\Response
-     */
-    public function __invoke()
+    public function __invoke(): Response
     {
         return Inertia::render('HomePage');
     }

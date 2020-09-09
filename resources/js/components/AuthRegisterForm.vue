@@ -5,30 +5,21 @@
     </h2>
 
     <BaseInputText
-      v-model="form.name"
-      :v="$v.form.name"
+      v-model="form.first_name"
+      :v="$v.form.first_name"
       type="text"
-      name="name"
+      name="first_name"
       label="Nombre"
       placeholder="Nombre"
     />
 
     <BaseInputText
-      v-model="form.first_surname"
-      :v="$v.form.first_surname"
+      v-model="form.last_name"
+      :v="$v.form.last_name"
       type="text"
-      name="first_surname"
-      label="Primer Apellido"
-      placeholder="Primer Apellido"
-    />
-
-    <BaseInputText
-      v-model="form.second_surname"
-      :v="$v.form.second_surname"
-      type="text"
-      name="second_surname"
-      label="Segundo Apellido"
-      placeholder="Segundo Apellido"
+      name="last_name"
+      label="Apellido"
+      placeholder="Apellido"
     />
 
     <BaseInputText
@@ -90,13 +81,10 @@ export default {
 
   validations() {
     const baseValidations = {
-      name: {
+      first_name: {
         required,
       },
-      first_surname: {
-        required,
-      },
-      second_surname: {
+      last_name: {
         required,
       },
       email: {
@@ -130,9 +118,8 @@ export default {
   data() {
     return {
       form: {
-        name: this.$page.newUser.name || '',
-        first_surname: this.$page.newUser.first_surname || '',
-        second_surname: this.$page.newUser.second_surname || '',
+        first_name: this.$page.newUser.first_name || '',
+        last_name: this.$page.newUser.last_name || '',
         email: this.$page.newUser.email || '',
         password: '',
         password_confirmation: '',
@@ -160,7 +147,7 @@ export default {
 
   methods: {
     async register() {
-      await this.$inertia.post(this.route('register.post'), this.form);
+      await this.$inertia.post(this.route('register'), this.form);
 
       if (!this.$page.hasErrorsOrExceptions) {
         this.$gtm.track('sign-up', {
@@ -179,7 +166,7 @@ export default {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
 
   .BaseSubmitButton {
     margin-top: 20px;

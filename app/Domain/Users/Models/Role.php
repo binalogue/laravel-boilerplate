@@ -6,6 +6,7 @@ use Domain\Users\Contracts\Role as RoleContract;
 use Domain\Users\Exceptions\RoleDoesNotExist;
 use Domain\Users\Models\User;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Support\Eloquent\Model;
 
 class Role extends Model implements RoleContract
@@ -20,12 +21,9 @@ class Role extends Model implements RoleContract
     |--------------------------------------------------------------------------
     */
 
-    /**
-     * The attributes that aren't mass assignable.
-     *
-     * @var array
-     */
     protected $guarded = ['id'];
+
+    public $timestamps = false;
 
     /*
     |--------------------------------------------------------------------------
@@ -33,14 +31,9 @@ class Role extends Model implements RoleContract
     |--------------------------------------------------------------------------
     */
 
-    /**
-     * A role belongs to some users.
-     *
-     * @return BelongsToMany
-     */
-    public function users(): BelongsToMany
+    public function users(): HasMany
     {
-        return $this->belongsToMany(User::class);
+        return $this->hasMany(User::class);
     }
 
     /*
@@ -49,33 +42,33 @@ class Role extends Model implements RoleContract
     |--------------------------------------------------------------------------
     */
 
-    public static function findByName(string $name): RoleContract
+    public static function findByName(string $name): self
     {
         $role = static::where('name', $name)->first();
 
-        if (! $role) {
+        if (!$role) {
             throw RoleDoesNotExist::named($name);
         }
 
         return $role;
     }
 
-    public static function findById(int $id): RoleContract
+    public static function findById(int $id): self
     {
         $role = static::where('id', $id)->first();
 
-        if (! $role) {
+        if (!$role) {
             throw RoleDoesNotExist::withId($id);
         }
 
         return $role;
     }
 
-    public static function findOrCreate(string $name): RoleContract
+    public static function findOrCreate(string $name): self
     {
         $role = static::where('name', $name)->first();
 
-        if (! $role) {
+        if (!$role) {
             return static::query()->create([
                 'name' => $name,
             ]);

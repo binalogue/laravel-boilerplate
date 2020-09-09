@@ -25,7 +25,7 @@
 
         <p class="text">
           Si aún no tienes cuenta,
-          <inertia-link class="link" :href="route('register')">
+          <inertia-link class="link" :href="route('preRegister.form')">
             Regístrate
           </inertia-link>
         </p>

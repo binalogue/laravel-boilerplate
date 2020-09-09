@@ -2,23 +2,18 @@
 
 namespace Tests;
 
-use Illuminate\Foundation\Testing\Concerns\InteractsWithContainer;
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
-use Illuminate\Testing\TestResponse;
 use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Artisan;
+use Illuminate\Testing\TestResponse;
 use PHPUnit\Framework\Assert;
 
 abstract class TestCase extends BaseTestCase
 {
     use CreatesApplication;
-    use InteractsWithContainer;
 
     protected function setUp(): void
     {
         parent::setUp();
-
-        Artisan::call('optimize:clear');
 
         TestResponse::macro('props', function ($key = null) {
             $props = json_decode(json_encode($this->original->getData()['page']['props']), JSON_OBJECT_AS_ARRAY);

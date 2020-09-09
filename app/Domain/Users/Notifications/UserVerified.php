@@ -11,24 +11,12 @@ class UserVerified extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    /**
-     * Get the notification's channels.
-     *
-     * @param  mixed  $notifiable
-     * @return array|string
-     */
-    public function via($notifiable)
+    public function via($notifiable): array
     {
         return ['mail'];
     }
 
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toMail($notifiable)
+    public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)
             ->subject(__('notifications.user.verified.mail.subject'))

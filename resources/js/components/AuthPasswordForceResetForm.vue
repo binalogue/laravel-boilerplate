@@ -64,7 +64,7 @@ export default {
   methods: {
     async createNewPassword() {
       await this.$inertia.post(
-        this.route('password.force_reset_update'),
+        this.route('password.forceResetUpdate'),
         this.form
       );
     },

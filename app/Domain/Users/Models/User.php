@@ -3,7 +3,7 @@
 namespace Domain\Users\Models;
 
 use Domain\Users\Builders\UserBuilder;
-use Domain\Users\Concerns\UserHasRoles;
+use Domain\Users\Concerns\HasRoles;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
@@ -15,9 +15,9 @@ use Support\SchemalessAttributes\HasExtraAttributes;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasExtraAttributes;
+    use HasRoles;
     use Notifiable;
     use SoftDeletes;
-    use UserHasRoles;
 
     /*
     |--------------------------------------------------------------------------
@@ -25,11 +25,6 @@ class User extends Authenticatable implements MustVerifyEmail
     |--------------------------------------------------------------------------
     */
 
-    /**
-     * The attributes that aren't mass assignable.
-     *
-     * @var array
-     */
     protected $guarded = [
         'id',
         'email_verified_at',
@@ -37,45 +32,25 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password',
         'password_changed_at',
         'remember_token',
     ];
 
-    /**
-     * The attributes that should be cast to native types.
-     *
-     * @var array
-     */
     protected $casts = [
         'email_verified_at' => 'datetime',
         'extra_attributes' => 'array',
+        'has_notifications_enabled' => 'boolean',
         'password_changed_at' => 'datetime',
     ];
 
-    /**
-     * The accessors to append to the model's array form.
-     *
-     * @var array
-     */
     protected $appends = [
         'avatar',
         'full_name',
     ];
 
-    /**
-     * Create a new Eloquent query builder for the model.
-     *
-     * @param  \Illuminate\Database\Query\Builder  $query
-     * @return \Domain\Users\Builders\UserBuilder
-     */
-    public function newEloquentBuilder($query)
+    public function newEloquentBuilder($query): UserBuilder
     {
         return new UserBuilder($query);
     }
@@ -86,37 +61,14 @@ class User extends Authenticatable implements MustVerifyEmail
     |--------------------------------------------------------------------------
     */
 
-    /**
-     * Get the user's name.
-     *
-     * @param  string  $value
-     * @return string
-     */
-    public function getNameAttribute($value)
+    public function getFirstNameAttribute($value): string
     {
-        return ucwords($value);
+        return mb_convert_case($value, MB_CASE_TITLE, 'UTF-8');
     }
 
-    /**
-     * Get the user's first surname.
-     *
-     * @param  string  $value
-     * @return string
-     */
-    public function getFirstSurnameAttribute($value)
+    public function getLastNameAttribute($value): string
     {
-        return ucwords($value);
-    }
-
-    /**
-     * Get the user's second surname.
-     *
-     * @param  string  $value
-     * @return string
-     */
-    public function getSecondSurnameAttribute($value)
-    {
-        return ucwords($value);
+        return mb_convert_case($value, MB_CASE_TITLE, 'UTF-8');
     }
 
     /*
@@ -125,16 +77,11 @@ class User extends Authenticatable implements MustVerifyEmail
     |--------------------------------------------------------------------------
     */
 
-    /**
-     * Get the user's avatar.
-     *
-     * @return string
-     */
-    public function getAvatarAttribute()
+    public function getAvatarAttribute(): string
     {
         $avatar = $this->extra_attributes->avatar;
 
-        if (is_null($avatar) || ! Storage::disk('public')->exists($avatar)) {
+        if (is_null($avatar) || !Storage::disk('public')->exists($avatar)) {
             $avatar = asset('/images/default-avatar.png');
         }
 
@@ -145,14 +92,9 @@ class User extends Authenticatable implements MustVerifyEmail
         return Storage::url($avatar);
     }
 
-    /**
-     * Get the user's full-name.
-     *
-     * @return string
-     */
-    public function getFullNameAttribute()
+    public function getFullNameAttribute(): string
     {
-        return "{$this->name} {$this->first_surname}";
+        return "{$this->first_name} {$this->last_name}";
     }
 
     /*
@@ -161,46 +103,17 @@ class User extends Authenticatable implements MustVerifyEmail
     |--------------------------------------------------------------------------
     */
 
-    /**
-     * Set the user's name.
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setNameAttribute($value)
+    public function setFirstNameAttribute(string $value): void
     {
-        $this->attributes['name'] = mb_strtolower($value, 'utf-8');
+        $this->attributes['first_name'] = mb_strtolower($value, 'utf-8');
     }
 
-    /**
-     * Set the user's first surname.
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setFirstSurnameAttribute($value)
+    public function setLastNameAttribute(string $value): void
     {
-        $this->attributes['first_surname'] = mb_strtolower($value, 'utf-8');
+        $this->attributes['last_name'] = mb_strtolower($value, 'utf-8');
     }
 
-    /**
-     * Set the user's second surname.
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setSecondSurnameAttribute($value)
-    {
-        $this->attributes['second_surname'] = mb_strtolower($value, 'utf-8');
-    }
-
-    /**
-     * Set the user's email.
-     *
-     * @param  string  $value
-     * @return void
-     */
-    public function setEmailAttribute($value)
+    public function setEmailAttribute(string $value): void
     {
         $this->attributes['email'] = strtolower($value);
     }

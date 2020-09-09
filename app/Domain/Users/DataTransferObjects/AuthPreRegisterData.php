@@ -2,7 +2,7 @@
 
 namespace Domain\Users\DataTransferObjects;
 
-use App\Platform\Users\Requests\AuthPreRegisterRequest;
+use App\Platform\Auth\Requests\AuthPreRegisterRequest;
 use Spatie\DataTransferObject\DataTransferObject;
 
 class AuthPreRegisterData extends DataTransferObject

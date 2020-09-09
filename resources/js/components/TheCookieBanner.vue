@@ -27,6 +27,17 @@ export default {
 };
 </script>
 
+<style lang="scss">
+.TheCookieBanner {
+  a {
+    @include text-s;
+
+    color: $white;
+    text-decoration: underline;
+  }
+}
+</style>
+
 <style lang="scss" scoped>
 .TheCookieBanner {
   position: fixed;
@@ -48,13 +59,6 @@ export default {
       @include text-s;
 
       margin-right: 5vw;
-    }
-
-    a {
-      @include text-s;
-
-      color: $white;
-      text-decoration: underline;
     }
   }
 

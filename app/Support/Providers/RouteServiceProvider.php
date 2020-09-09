@@ -8,67 +8,51 @@ use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
 {
-    /**
-     * Define your route model bindings, pattern filters, etc.
-     *
-     * @return void
-     */
-    public function boot()
+    public const ALREADY_AUTHENTICATED_MIDDLEWARE_ROUTE = 'profile';
+    public const NOT_AUTHENTICATED_MIDDLEWARE_ROUTE = 'login';
+
+    public const LOGIN_ROUTE = 'login';
+    public const LOGOUT_ROUTE = 'logout';
+    public const SUCCESSFUL_LOGIN_ROUTE = 'profile';
+    public const SUCCESSFUL_LOGOUT_ROUTE = '/';
+
+    public function boot(): void
     {
-        //
+        $this->bootRouteModelBinding();
 
         parent::boot();
     }
 
-    /**
-     * Define the routes for the application.
-     *
-     * @return void
-     */
-    public function map()
+    protected function bootRouteModelBinding(): void
+    {
+        //
+    }
+
+    public function map(): void
     {
         $this->mapApiRoutes();
 
         $this->mapWebRoutes();
 
-        if (! App::environment('production')) {
+        if (!App::environment('production')) {
             $this->mapDevelopmentRoutes();
         }
     }
 
-    /**
-     * Define the "web" routes for the application.
-     *
-     * These routes all receive session state, CSRF protection, etc.
-     *
-     * @return void
-     */
-    protected function mapWebRoutes()
+    protected function mapWebRoutes(): void
     {
         Route::middleware('web')
             ->group(base_path('routes/web.php'));
     }
 
-    /**
-     * Define the "api" routes for the application.
-     *
-     * These routes are typically stateless.
-     *
-     * @return void
-     */
-    protected function mapApiRoutes()
+    protected function mapApiRoutes(): void
     {
         Route::prefix('api')
             ->middleware('api')
             ->group(base_path('routes/api.php'));
     }
 
-    /**
-     * Define the "development" routes for the application.
-     *
-     * @return void
-     */
-    protected function mapDevelopmentRoutes()
+    protected function mapDevelopmentRoutes(): void
     {
         Route::middleware('web')
             ->group(base_path('routes/development.php'));

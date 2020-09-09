@@ -2,7 +2,7 @@
 
 namespace Domain\Users\DataTransferObjects;
 
-use App\Platform\Users\Requests\ForceResetPasswordRequest;
+use App\Platform\Auth\Requests\ForceResetPasswordRequest;
 use Spatie\DataTransferObject\DataTransferObject;
 
 class ForceResetPasswordData extends DataTransferObject

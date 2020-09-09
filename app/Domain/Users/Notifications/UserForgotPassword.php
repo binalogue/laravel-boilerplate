@@ -11,13 +11,7 @@ class UserForgotPassword extends ResetPassword implements ShouldQueue
 {
     use Queueable;
 
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toMail($notifiable)
+    public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)
             ->subject(__('notifications.user.forgot_password.mail.subject'))
@@ -33,7 +27,7 @@ class UserForgotPassword extends ResetPassword implements ShouldQueue
                 ]))
             )
             ->line(__('notifications.user.forgot_password.mail.outro_line_1', [
-                'count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire'),
+                'count' => config('auth.passwords.' . config('auth.defaults.passwords') . '.expire'),
             ]))
             ->line(__('notifications.user.forgot_password.mail.outro_line_2'))
             ->salutation(__('notifications.user.forgot_password.mail.salutation'));

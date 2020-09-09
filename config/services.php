@@ -14,13 +14,6 @@ return [
     |
     */
 
-    'facebook' => [
-
-        'client_id' => env('FACEBOOK_APP_ID'),
-        'client_secret' => env('FACEBOOK_APP_SECRET'),
-        'redirect' => '/oauth/facebook/callback',
-    ],
-
     'google' => [
 
         'client_id' => env('GOOGLE_CLIENT_ID'),
@@ -31,7 +24,6 @@ return [
     'google_tag_manager' => [
 
         'id' => env('GOOGLE_TAG_MANAGER_ID'),
-        'query' => env('GOOGLE_TAG_MANAGER_QUERY'),
     ],
 
 ];

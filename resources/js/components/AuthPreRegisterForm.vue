@@ -51,7 +51,7 @@ export default {
 
   methods: {
     async registerWithEmail() {
-      await this.$inertia.visit(this.route('register.email'), {
+      await this.$inertia.visit(this.route('register.form'), {
         data: this.form,
       });
     },
@@ -64,6 +64,6 @@ export default {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: flex-start;
 }
 </style>

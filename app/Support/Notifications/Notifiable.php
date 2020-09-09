@@ -9,12 +9,8 @@ trait Notifiable
 {
     use BaseNotifiable;
 
-    /**
-     * Get the messages entity's unread notifications, formatted to localized messages.
-     *
-     * @return array
-     */
-    public function unreadNotificationsMessages()
+    /** Get the messages entity's unread notifications, formatted to localized messages. */
+    public function unreadNotificationsMessages(): array
     {
         return $this
             ->unreadNotifications
@@ -26,14 +22,13 @@ trait Notifiable
                     $message = __('notifications.custom.message');
                 }
 
-                if (! $message) {
+                if (!$message) {
                     $message = null;
                 }
 
                 $notification->message = $message;
                 $notification->created_at_formatted =
                     $notification->created_at->formatLocalized('%d %B, %Y - %H:%M');
-
                 return $notification;
             })
             ->reject(fn ($notification) => is_null($notification->message))

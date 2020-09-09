@@ -11,13 +11,7 @@ class UserRegistered extends VerifyEmail implements ShouldQueue
 {
     use Queueable;
 
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toMail($notifiable)
+    public function toMail($notifiable): MailMessage
     {
         $verificationUrl = $this->verificationUrl($notifiable);
 

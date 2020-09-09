@@ -3,26 +3,15 @@
 namespace Support\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
-use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Foundation\Console\Kernel as BaseKernel;
 
-class Kernel extends ConsoleKernel
+class Kernel extends BaseKernel
 {
-    /**
-     * The Artisan commands provided by your application.
-     *
-     * @var array
-     */
     protected $commands = [
         //
     ];
 
-    /**
-     * Define the application's command schedule.
-     *
-     * @param  \Illuminate\Console\Scheduling\Schedule  $schedule
-     * @return void
-     */
-    protected function schedule(Schedule $schedule)
+    protected function schedule(Schedule $schedule): void
     {
         if (config('telescope.enabled')) {
             $schedule
@@ -35,14 +24,9 @@ class Kernel extends ConsoleKernel
             ->everyFiveMinutes();
     }
 
-    /**
-     * Register the commands for the application.
-     *
-     * @return void
-     */
-    protected function commands()
+    protected function commands(): void
     {
-        $this->load(base_path('app/App/Console/Commands'));
+        $this->load(base_path('app/App/Console'));
 
         require base_path('routes/console.php');
     }
