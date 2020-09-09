@@ -47,15 +47,18 @@ export default {
 
   &__container {
     @include container;
+
     justify-content: space-between;
 
     p {
       @include text-s;
+
       margin-right: 5vw;
     }
 
     a {
       @include text-s;
+
       color: $white;
       text-decoration: underline;
     }

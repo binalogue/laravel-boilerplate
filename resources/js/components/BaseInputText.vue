@@ -8,10 +8,7 @@
       active: isActive,
     }"
   >
-    <label
-      :for="name"
-      class="input__label"
-    >
+    <label :for="name" class="input__label">
       {{ label }}
     </label>
 
@@ -27,12 +24,9 @@
       @input="$emit('input', $event.target.value)"
       @focusin="handleFocus(true)"
       @focusout="handleFocus(false)"
-    >
+    />
 
-    <div
-      v-if="icon"
-      class="input__icon"
-    >
+    <div v-if="icon" class="input__icon">
       <component :is="icon" />
     </div>
   </BaseFormGroup>
@@ -110,7 +104,6 @@ export default {
 </script>
 <style lang="scss">
 .BaseInputText {
-
   &__icon {
     width: 50px;
     background: $black;

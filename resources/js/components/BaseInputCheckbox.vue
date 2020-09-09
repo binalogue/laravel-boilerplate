@@ -13,10 +13,7 @@
       @click="toggle"
     />
 
-    <span
-      v-if="label"
-      class="checkbox__label"
-    >
+    <span v-if="label" class="checkbox__label">
       {{ label }}
     </span>
   </BaseFormGroup>

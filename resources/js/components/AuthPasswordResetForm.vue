@@ -70,11 +70,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-
-.AuthPasswordResetForm {
-
-}
-
-</style>

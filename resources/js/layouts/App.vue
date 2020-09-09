@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~@sass/app";
+@import '~@sass/app';
 
 .App {
   display: flex;

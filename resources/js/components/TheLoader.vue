@@ -1,9 +1,6 @@
 <template>
   <div class="TheLoader">
-    <img
-      v-webp="'/images/logo.png'"
-      alt="Binalogue"
-    >
+    <img v-webp="'/images/logo.png'" alt="Binalogue" />
   </div>
 </template>
 

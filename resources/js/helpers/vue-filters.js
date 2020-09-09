@@ -1,4 +1,4 @@
-export const capitalize = (value) => {
+export const capitalize = value => {
   if (!value) {
     return '';
   }
@@ -6,7 +6,7 @@ export const capitalize = (value) => {
   return value.charAt(0).toUpperCase() + value.slice(1);
 };
 
-export const toLowerCase = (value) => {
+export const toLowerCase = value => {
   if (!value) {
     return '';
   }

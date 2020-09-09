@@ -4,15 +4,10 @@
       :href="route('home')"
       class="TheHeader__logo"
       :style="{
-        pointerEvents: route().current() === 'home'
-          ? 'none'
-          : 'auto',
+        pointerEvents: route().current() === 'home' ? 'none' : 'auto',
       }"
     >
-      <img
-        v-webp="'/images/logo.png'"
-        alt="Binalogue"
-      >
+      <img v-webp="'/images/logo.png'" alt="Binalogue" />
     </inertia-link>
   </div>
 </template>

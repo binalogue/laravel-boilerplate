@@ -16,22 +16,24 @@
         <!-- Do not use <inertia-link></inertia-link> for OAuth -->
         <a
           class="btn"
-          :href="route('oauth', {
-            driver: 'google',
-          })"
-          @click="$gtm.track('login', {
-            category: 'engagement',
-            label: 'Google',
-          })"
+          :href="
+            route('oauth', {
+              driver: 'google',
+            })
+          "
+          @click="
+            $gtm.track('login', {
+              category: 'engagement',
+              label: 'Google',
+            })
+          "
         >
           Inicia Sesión con Google <LogoGoogle />
         </a>
 
         <p class="AuthLoginPage__login-rrss--text">
-          Si aún no tienes cuenta, <inertia-link
-            class="link"
-            :href="route('register')"
-          >
+          Si aún no tienes cuenta,
+          <inertia-link class="link" :href="route('register')">
             Regístrate
           </inertia-link>
         </p>
@@ -73,6 +75,7 @@ export default {
 
   &__content {
     @include container;
+
     flex-direction: column-reverse;
     align-items: center;
 
@@ -87,29 +90,30 @@ export default {
   &__login-mail {
     width: 100%;
     max-width: 420px;
-    padding: 0vh 0px 5vh 0;
+    padding: 0 0 5vh 0;
 
     @include tablet-m {
       width: 50%;
-      padding: 5vh 0px 5vh 40px;
+      padding: 5vh 0 5vh 40px;
     }
 
     &--title {
       @include title;
+
       margin-bottom: 3vh;
     }
 
     .link {
       color: $white;
       display: inline-block;
-      margin: 20px 0 0px;
+      margin: 20px 0 0;
     }
   }
 
   &__login-rrss {
     width: 100%;
     max-width: 420px;
-    padding: 7vh 0px 0vh 0px;
+    padding: 7vh 0 0 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -152,6 +156,7 @@ export default {
 
     &--text {
       @include text;
+
       margin-top: 10px;
       margin-bottom: 20px;
 
@@ -165,9 +170,8 @@ export default {
       display: inline-block;
 
       &:hover {
-
         &::after {
-          content: "";
+          content: '';
           width: 100%;
           background: $primary;
         }

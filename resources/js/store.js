@@ -6,7 +6,6 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-
     /*
     |---------------------------------------------------------------------------
     | Backend Data
@@ -44,8 +43,8 @@ export default new Vuex.Store({
   },
 
   getters: {
-    isAuth: (state) => !!state.user,
-    isGuest: (state) => !state.user,
+    isAuth: state => !!state.user,
+    isGuest: state => !state.user,
   },
 
   actions: {

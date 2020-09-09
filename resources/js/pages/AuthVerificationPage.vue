@@ -8,7 +8,7 @@
       <h2 class="AuthVerificationPage__content--subtitle">
         Antes de continuar, debes verificar tu email.
 
-        <br>
+        <br />
 
         Si no has recibido ningún email:
       </h2>
@@ -52,6 +52,7 @@ export default {
 
     &--title {
       @include title;
+
       margin-bottom: 3vh;
     }
 
@@ -65,7 +66,7 @@ export default {
     .link {
       color: $white;
       display: inline-block;
-      margin: 30px 0 ;
+      margin: 30px 0;
     }
   }
 }

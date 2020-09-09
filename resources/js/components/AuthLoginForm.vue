@@ -1,8 +1,5 @@
 <template>
-  <form
-    class="AuthLoginForm"
-    @submit.prevent="$HasVuelidate_submit(login)"
-  >
+  <form class="AuthLoginForm" @submit.prevent="$HasVuelidate_submit(login)">
     <BaseInputText
       v-model="form.email"
       :v="$v.form.email"
@@ -36,10 +33,7 @@
       Inicia Sesión
     </BaseSubmitButton>
 
-    <inertia-link
-      class="link"
-      :href="route('password.request')"
-    >
+    <inertia-link class="link" :href="route('password.request')">
       ¿Has olvidado tu contraseña?
     </inertia-link>
   </form>
@@ -104,10 +98,9 @@ export default {
 </script>
 
 <style lang="scss">
-  .AuthLoginForm {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
+.AuthLoginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
 </style>

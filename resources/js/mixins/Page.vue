@@ -42,10 +42,10 @@ export default {
   created() {
     if (this.$store.state.isLoading) {
       this.$$setupLoader()
-        .then((result) => {
+        .then(result => {
           console.log('[Page] Finished loader:', result);
         })
-        .catch((error) => {
+        .catch(error => {
           console.error(error);
         })
         .finally(() => {
@@ -63,7 +63,7 @@ export default {
     },
 
     $$loadFake() {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         setTimeout(() => {
           resolve('loadFake');
         }, 800);

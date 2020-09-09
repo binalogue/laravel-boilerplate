@@ -4,6 +4,7 @@
 
 .btn {
   @include transition;
+
   position: relative;
   display: flex;
   align-items: center;
@@ -29,6 +30,10 @@
 .btn-loading {
   color: transparent;
 
+  &:hover {
+    color: transparent;
+  }
+
   &:disabled,
   &[disabled] {
     background: $white;
@@ -36,10 +41,6 @@
     &:hover {
       background: $white;
     }
-  }
-
-  &:hover {
-    color: transparent;
   }
 
   .dots {
@@ -88,6 +89,7 @@
 
   &__input {
     @include transition;
+
     outline: none;
     border: 1px solid $white;
     background: transparent;
@@ -152,6 +154,7 @@
 
   &__check {
     @include transition;
+
     width: 15px;
     height: 15px;
     border: 1px solid $white;

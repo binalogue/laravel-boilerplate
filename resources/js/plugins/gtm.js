@@ -32,11 +32,7 @@ export default {
     });
   },
 
-  track(action, {
-    category,
-    label,
-    value,
-  }) {
+  track(action, { category, label, value }) {
     window.dataLayer.push({
       event: 'binalogue.track',
       event_category: category,

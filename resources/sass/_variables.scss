@@ -5,11 +5,14 @@
 /* Colors */
 $black: #2b2b2b;
 $grey: #c0c0c0;
-$white: #ffffff;
+$white: #fff;
 
 $primary: #ff9a22;
 $alerts: #509bf5;
 $red: #ea4f44;
+
+/* Fonts */
+$gotham: 'Gotham', sans-serif;
 
 /**
  * Mixins.
@@ -18,43 +21,43 @@ $red: #ea4f44;
 /* Media Queries */
 
 @mixin mobile() {
-  @media (min-width:350px) {
+  @media (min-width: 350px) {
     @content;
   }
 }
 
 @mixin tablet() {
-  @media (min-width:576px) {
+  @media (min-width: 576px) {
     @content;
   }
 }
 
 @mixin tablet-m() {
-  @media (min-width:769px) {
+  @media (min-width: 769px) {
     @content;
   }
 }
 
 @mixin desktop-s() {
-  @media (min-width:992px) {
+  @media (min-width: 992px) {
     @content;
   }
 }
 
 @mixin desktop-sm() {
-  @media (min-width:1200px) {
+  @media (min-width: 1200px) {
     @content;
   }
 }
 
 @mixin desktop-m() {
-  @media (min-width:1400px) {
+  @media (min-width: 1400px) {
     @content;
   }
 }
 
 @mixin desktop-l() {
-  @media (min-width:1800px) {
+  @media (min-width: 1800px) {
     @content;
   }
 }

@@ -1,8 +1,5 @@
 <template>
-  <form
-    class="AuthVerificationForm"
-    @submit.prevent="requestVerificationEmail"
-  >
+  <form class="AuthVerificationForm" @submit.prevent="requestVerificationEmail">
     <BaseSubmitButton
       class="btn"
       :class="submitButtonClass"

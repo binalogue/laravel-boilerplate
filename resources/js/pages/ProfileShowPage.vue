@@ -1,7 +1,5 @@
 <template>
-  <div class="ProfileShowPage">
-    Hola {{ userName }}!
-  </div>
+  <div class="ProfileShowPage">Hola {{ userName }}!</div>
 </template>
 
 <script>

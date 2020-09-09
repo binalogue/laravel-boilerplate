@@ -45,13 +45,14 @@ export default {
     .link {
       color: $white;
       display: inline-block;
-      margin: 30px 0 ;
+      margin: 30px 0;
     }
   }
 }
 
 .AuthPasswordForceResetPagee__content--title {
   @include title;
+
   margin-bottom: 3vh;
 }
 </style>

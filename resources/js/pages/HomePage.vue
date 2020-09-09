@@ -8,9 +8,11 @@
       <inertia-link
         href="#"
         class="btn"
-        @click="$gtm.track('test-click', {
-          category: 'engagement',
-        })"
+        @click="
+          $gtm.track('test-click', {
+            category: 'engagement',
+          })
+        "
       >
         Comenzar
       </inertia-link>
@@ -59,15 +61,19 @@ export default {
     },
 
     loadImages() {
-      return new Promise((resolve) => {
+      return new Promise(resolve => {
         this.pxloader = new PxLoader();
 
         this.pxloader.addImage(this.webp('/images/logo.png'));
 
         if (this.$store.state.isPhone) {
-          this.pxloader.addImage(this.webp('/images/binalogue-bg-home-mobile.jpg'));
+          this.pxloader.addImage(
+            this.webp('/images/binalogue-bg-home-mobile.jpg')
+          );
         } else {
-          this.pxloader.addImage(this.webp('/images/binalogue-bg-home-desktop.jpg'));
+          this.pxloader.addImage(
+            this.webp('/images/binalogue-bg-home-desktop.jpg')
+          );
         }
 
         this.pxloader.addCompletionListener(() => {
@@ -88,6 +94,7 @@ export default {
 
   &__main {
     @include container;
+
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -95,6 +102,7 @@ export default {
 
     &--title {
       @include title;
+
       margin-bottom: 3vh;
     }
   }

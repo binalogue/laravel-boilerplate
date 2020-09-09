@@ -63,6 +63,7 @@ export default {
 <style lang="scss">
 .AuthRegisterPage {
   @include page;
+
   height: 100%;
   justify-content: flex-start;
 
@@ -76,6 +77,7 @@ export default {
 
     &--title {
       @include title;
+
       margin-bottom: 3vh;
     }
 

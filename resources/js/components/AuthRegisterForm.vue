@@ -172,9 +172,7 @@ export default {
     },
 
     vGoogleIdInvalid() {
-      return this.$v.form.google_id
-        ? this.$v.form.google_id.$invalid
-        : null;
+      return this.$v.form.google_id ? this.$v.form.google_id.$invalid : null;
     },
   },
 
@@ -213,38 +211,9 @@ export default {
   flex-direction: column;
   width: 100%;
 
-  &__text {
-
-    p {
-      text-align: left;
-      font-family: "Gotham";
-      font-weight: 400;
-      font-size: 13px;
-      line-height: 17px;
-      margin-bottom: 10px;
-    }
-
-    .link-teaser {
-      text-align: left;
-      font-family: "Gotham";
-      font-weight: 400;
-      font-size: 13px;
-      line-height: 17px;
-      margin-bottom: 10px;
-    }
-
-    .link-teaser {
-      color: $primary;
-      margin-bottom: 0;
-
-      &:hover {
-        text-decoration: underline;
-      }
-    }
-  }
-
   &__title {
     @include title;
+
     margin-bottom: 3vh;
   }
 
@@ -252,103 +221,9 @@ export default {
     border: 1px solid $white;
     padding: 20px;
 
-    &--title {
-      margin-bottom: 10px;
-    }
-
-    &--question {
-      @include text;
-      margin-bottom: 10px;
-    }
-
-    &--answer {
-      display: flex;
-      align-items: center;
-      position: relative;
-
-      span {
-        display: flex;
-        align-items: center;
-        margin-right: 30px;
-        margin-bottom: 15px;
-
-        @include text;
-        color: $primary;
-        font-weight: 800;
-      }
-    }
-
-    &--aditional {
-      font-weight: 800;
-      cursor: pointer;
-      position: absolute;
-      top: 0;
-      left: 140px;
-    }
-
-    &--aditional-show {
-      font-size: 14px;
-      line-height: 20px;
-      background: rgba($black, .4);
-      height: 0;
-      overflow: hidden;
-
-      @include transition;
-
-      // &.active {
-      //   height: 125px;
-      //   background: transparent;
-      //   margin-bottom: 10px;
-
-      //   @include tablet {
-      //     height: 80px;
-      //   }
-      // }
-    }
-
     &--button {
       margin-bottom: 10px;
     }
-
-    &--text {
-      text-align: left;
-      font-family: "Gotham";
-      font-weight: 400;
-      font-size: 13px;
-      line-height: 17px;
-      margin-bottom: 10px;
-
-      .link-teaser {
-        text-align: left;
-        font-family: "Gotham";
-        font-weight: 400;
-        font-size: 13px;
-        line-height: 17px;
-        margin-bottom: 10px;
-      }
-
-      .link-teaser {
-        color: $primary;
-        margin-bottom: 0;
-
-        &:hover {
-          text-decoration: underline;
-        }
-      }
-    }
   }
-
-  .link {
-    display: inline-block;
-    color: $primary;
-
-    &:hover {
-
-      &::after {
-        background: $primary;
-      }
-    }
-  }
-
 }
 </style>

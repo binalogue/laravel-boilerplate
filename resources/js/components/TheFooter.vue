@@ -16,6 +16,7 @@
 
   &__copyright {
     @include text;
+
     color: $grey;
   }
 }

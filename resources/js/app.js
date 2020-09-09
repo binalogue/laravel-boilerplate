@@ -20,11 +20,14 @@ import Vue from 'vue';
 /* Vue Plugins */
 import { InertiaApp } from '@inertiajs/inertia-vue';
 import Vuex from 'vuex';
-import VueGtm from 'plugins/gtm';
 import VueMeta from 'vue-meta';
-import VueWebP from 'plugins/webp';
 import Vuelidate from 'vuelidate';
 import VuelidateErrorExtractor from 'vuelidate-error-extractor';
+import Cookies from 'js-cookie';
+import Lang from 'lang.js';
+import MobileDetect from 'mobile-detect';
+import VueGtm from 'plugins/gtm';
+import VueWebP from 'plugins/webp';
 import BaseFormGroup from 'components/BaseFormGroup';
 
 /* Vue Helpers */
@@ -36,9 +39,6 @@ import mixin from 'helpers/vue-mixin';
 import store from 'store';
 
 /* Other dependencies */
-import Cookies from 'js-cookie';
-import Lang from 'lang.js';
-import MobileDetect from 'mobile-detect';
 
 /*
 |------------------------------------------------------------------------------
@@ -95,7 +95,15 @@ Vue.mixin(mixin);
  * automatically register them with their "basename".
  */
 const components = require.context('./components/', true, /\.vue$/i);
-components.keys().map((key) => Vue.component(key.split('/').pop().split('.')[0], components(key).default));
+components.keys().map(key =>
+  Vue.component(
+    key
+      .split('/')
+      .pop()
+      .split('.')[0],
+    components(key).default
+  )
+);
 
 /*
 |------------------------------------------------------------------------------
@@ -110,35 +118,36 @@ components.keys().map((key) => Vue.component(key.split('/').pop().split('.')[0],
 const app = document.getElementById('app');
 
 window.Laravel = new Vue({
-  render: (h) => h(InertiaApp, {
-    props: {
-      initialPage: JSON.parse(app.dataset.page),
+  render: h =>
+    h(InertiaApp, {
+      props: {
+        initialPage: JSON.parse(app.dataset.page),
 
-      resolveComponent: (name) => require(`./pages/${name}`).default,
+        resolveComponent: name => require(`./pages/${name}`).default,
 
-      transformProps: (props) => {
-        window.Laravel.$gtm.page(route().current(), window.location.pathname);
+        transformProps: props => {
+          window.Laravel.$gtm.page(route().current(), window.location.pathname);
 
-        window.Laravel.$store.commit('ADD_BACKEND_INERTIAJS_DATA', props);
+          window.Laravel.$store.commit('ADD_BACKEND_INERTIAJS_DATA', props);
 
-        const hasErrors = !_.isEmpty(props.errors);
-        if (hasErrors) {
-          console.warn('[app] Form error:', props.errors);
-        }
+          const hasErrors = !_.isEmpty(props.errors);
+          if (hasErrors) {
+            console.warn('[app] Form error:', props.errors);
+          }
 
-        const hasExceptions = !!props.flash.isError;
-        if (hasExceptions) {
-          console.warn('[app] Exception:', props.flash.status);
-        }
+          const hasExceptions = !!props.flash.isError;
+          if (hasExceptions) {
+            console.warn('[app] Exception:', props.flash.status);
+          }
 
-        return Object.assign(props, {
-          hasErrors,
-          hasExceptions,
-          hasErrorsOrExceptions: hasErrors || hasExceptions,
-        });
+          return Object.assign(props, {
+            hasErrors,
+            hasExceptions,
+            hasErrorsOrExceptions: hasErrors || hasExceptions,
+          });
+        },
       },
-    },
-  }),
+    }),
   store,
 });
 
@@ -153,7 +162,10 @@ if (window.navigator) {
 }
 
 /* Handle cookies */
-window.Laravel.$store.commit('TOGGLE_THE_COOKIE_BANNER', !Cookies.get('binalogue_cookies_notice'));
+window.Laravel.$store.commit(
+  'TOGGLE_THE_COOKIE_BANNER',
+  !Cookies.get('binalogue_cookies_notice')
+);
 
 /* Handle loader */
 window.Laravel.$store.commit('TOGGLE_IS_LOADING', true);

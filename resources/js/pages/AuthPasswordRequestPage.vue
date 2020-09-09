@@ -42,6 +42,7 @@ export default {
 
     &--title {
       @include title;
+
       margin-bottom: 3vh;
     }
   }

@@ -1,9 +1,5 @@
 <template>
-  <button
-    type="submit"
-    class="BaseSubmitButton"
-    :disabled="disabled"
-  >
+  <button type="submit" class="BaseSubmitButton" :disabled="disabled">
     <slot />
 
     <div class="dots">

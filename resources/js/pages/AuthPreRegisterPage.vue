@@ -9,9 +9,11 @@
         <!-- Do not use <inertia-link></inertia-link> for OAuth -->
         <a
           class="btn"
-          :href="route('oauth', {
-            driver: 'google',
-          })"
+          :href="
+            route('oauth', {
+              driver: 'google',
+            })
+          "
         >
           Regístrate con Google
           <LogoGoogle />
@@ -50,6 +52,7 @@ export default {
 <style lang="scss">
 .AuthPreRegisterPage {
   @include page;
+
   height: 100%;
   justify-content: flex-start;
 
@@ -83,6 +86,7 @@ export default {
 
     &--title {
       @include title;
+
       margin-bottom: 3vh;
     }
 
