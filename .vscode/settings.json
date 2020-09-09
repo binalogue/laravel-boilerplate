@@ -86,9 +86,6 @@
   /* Material Icon Theme (pkief.material-icon-theme) */
   "material-icon-theme.activeIconPack": "vue_vuex",
 
-  /* Stylelint (shinnn.stylelint) */
-  "stylelint.enable": true,
-
   /* Vetur (octref.vetur) */
   "vetur.completion.autoImport": true,
   "vetur.completion.tagCasing": "kebab",
