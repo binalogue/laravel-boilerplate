@@ -1,8 +1,8 @@
 {
-  "extends": "stylelint-config-airbnb",
-  "rules": {
-    "max-empty-lines": 1,
-    "max-nesting-depth": 5,
-    "order/order": null
-  }
+  "extends": [
+    "stylelint-config-standard",
+    "stylelint-config-prettier",
+    "stylelint-config-recommended-scss"
+  ],
+  "rules": {}
 }
