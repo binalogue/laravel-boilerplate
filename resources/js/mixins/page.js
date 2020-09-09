@@ -1,4 +1,6 @@
-<script>
+/* Vendor */
+import { mapGetters } from 'vuex';
+
 export default {
   props: {
     auth: {
@@ -39,9 +41,19 @@ export default {
     },
   },
 
+  metaInfo() {
+    return {
+      title: this.getPageTitle,
+    };
+  },
+
+  computed: {
+    ...mapGetters(['getPageTitle']),
+  },
+
   created() {
     if (this.$store.state.isLoading) {
-      this.$$setupLoader()
+      this.setupPageLoader()
         .then(result => {
           console.log('[Page] Finished loader:', result);
         })
@@ -55,14 +67,11 @@ export default {
   },
 
   methods: {
-    async $$setupLoader() {
-      return [
-        await this.$$loadFake(),
-        // await this.loadImages(),
-      ];
+    async setupPageLoader() {
+      return [await this.loadFake()];
     },
 
-    $$loadFake() {
+    loadFake() {
       return new Promise(resolve => {
         setTimeout(() => {
           resolve('loadFake');
@@ -71,4 +80,3 @@ export default {
     },
   },
 };
-</script>

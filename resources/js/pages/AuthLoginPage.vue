@@ -2,36 +2,28 @@
   <div class="AuthLoginPage">
     <div class="AuthLoginPage__content">
       <div class="AuthLoginPage__login-mail">
-        <h1 class="AuthLoginPage__login-mail--title">
+        <h1 class="title">
           O si lo prefieres...
         </h1>
 
         <AuthLoginForm />
       </div>
+
       <div class="AuthLoginPage__login-rrss">
-        <h2 class="AuthLoginPage__login-mail--title">
+        <h2 class="title">
           Inicia Sesión
         </h2>
 
-        <!-- Do not use <inertia-link></inertia-link> for OAuth -->
+        <!-- Do not use <inertia-link> for OAuth -->
         <a
           class="btn"
-          :href="
-            route('oauth', {
-              driver: 'google',
-            })
-          "
-          @click="
-            $gtm.track('login', {
-              category: 'engagement',
-              label: 'Google',
-            })
-          "
+          :href="route('oauth', { driver: 'google' })"
+          @click="trackClick('Google')"
         >
           Inicia Sesión con Google <LogoGoogle />
         </a>
 
-        <p class="AuthLoginPage__login-rrss--text">
+        <p class="text">
           Si aún no tienes cuenta,
           <inertia-link class="link" :href="route('register')">
             Regístrate
@@ -47,22 +39,31 @@
 import { mainLayout } from 'helpers/vue-layouts';
 
 /* Mixins */
-import Page from 'mixins/Page';
+import page from 'mixins/page';
 
 export default {
-  layout: mainLayout,
+  mixins: [page],
 
-  mixins: [Page],
+  layout: mainLayout,
 
   metaInfo() {
     return {
       title: 'Login',
     };
   },
+
+  methods: {
+    trackClick(label) {
+      this.$gtm.track('login', {
+        category: 'engagement',
+        label,
+      });
+    },
+  },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .AuthLoginPage {
   @include page;
 
@@ -71,6 +72,42 @@ export default {
 
   @include tablet-m {
     justify-content: flex-start;
+  }
+
+  .title {
+    margin-bottom: 3vh;
+  }
+
+  .text {
+    margin-top: 10px;
+    margin-bottom: 20px;
+
+    @include tablet-m() {
+      margin-left: auto;
+    }
+  }
+
+  .btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+
+    svg {
+      fill: $black;
+      height: 29px;
+      width: auto;
+      margin-left: 15px;
+
+      @include transition;
+    }
+
+    &:hover {
+      svg {
+        fill: $white;
+      }
+    }
   }
 
   &__content {
@@ -96,18 +133,6 @@ export default {
       width: 50%;
       padding: 5vh 0 5vh 40px;
     }
-
-    &--title {
-      @include title;
-
-      margin-bottom: 3vh;
-    }
-
-    .link {
-      color: $white;
-      display: inline-block;
-      margin: 20px 0 0;
-    }
   }
 
   &__login-rrss {
@@ -118,64 +143,10 @@ export default {
     flex-direction: column;
     align-items: flex-start;
 
-    // @include tablet-m {
-    //   width: 50%;
-    //   padding: 5vh 0px 5vh 40px;
-    // }
-
     @include tablet-m {
       width: 50%;
       padding: 5vh 40px 5vh 0;
       border-right: 1px solid $white;
-    }
-
-    .btn {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 15px;
-
-      svg {
-        fill: $black;
-        height: 29px;
-        width: auto;
-        margin-left: 15px;
-
-        @include transition;
-      }
-
-      &:hover {
-        background: $primary;
-
-        svg {
-          fill: $white;
-        }
-      }
-    }
-
-    &--text {
-      @include text;
-
-      margin-top: 10px;
-      margin-bottom: 20px;
-
-      @include tablet-m() {
-        margin-left: auto;
-      }
-    }
-
-    .link {
-      color: $primary;
-      display: inline-block;
-
-      &:hover {
-        &::after {
-          content: '';
-          width: 100%;
-          background: $primary;
-        }
-      }
     }
   }
 }

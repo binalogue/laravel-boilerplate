@@ -27,13 +27,17 @@
     "laravel/socialite": "^4.3",
     "laravel/telescope": "^3.2",
     "laravel/tinker": "^2.3",
+    "optimistdigital/nova-settings": "^2.5",
+    "orangehill/iseed": "^2.6",
     "reinink/remember-query-strings": "^0.1",
     "riverskies/laravel-mobile-detect": "^1.3",
+    "sbine/route-viewer": "^0.0.7",
     "spatie/data-transfer-object": "^1.13",
     "spatie/laravel-queueable-action": "^2.5",
     "spatie/laravel-robots-middleware": "^1.2",
     "spatie/laravel-schemaless-attributes": "^1.7",
-    "tightenco/ziggy": "^0.9"
+    "tightenco/ziggy": "^0.9",
+    "timothyasp/nova-color-field": "^1.0"
   },
   "require-dev": {
     "fzaninotto/faker": "^1.9",

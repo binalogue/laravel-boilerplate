@@ -1,10 +1,10 @@
 <template>
   <div class="TheLoader">
-    <img v-webp="'/images/logo.png'" alt="Binalogue" />
+    <img :src="$store.getters.getClientLogo" :alt="$store.getters.getAppName" />
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .TheLoader {
   position: fixed;
   top: 0;

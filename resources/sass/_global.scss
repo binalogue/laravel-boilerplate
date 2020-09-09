@@ -2,173 +2,56 @@
  * Globla Styles.
  */
 
+//
+
+/**
+ * Vendor.
+ */
+
+/* nprogress */
+
+#nprogress .bar {
+  background: $primary;
+}
+
+/**
+ * Components.
+ */
+
+/* Texts */
+
+.title {
+  @include title;
+}
+
+.text {
+  @include text;
+}
+
+.text-s {
+  @include text-s;
+}
+
+.link {
+  @include link;
+}
+
+/* Buttons */
+
 .btn {
-  @include transition;
-
-  position: relative;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-weight: 600;
-  text-transform: uppercase;
-  color: $black;
-  background: $white;
-  padding: 12px 40px 10px 40px;
-  border: 0;
-
-  &:hover {
-    background: $primary;
-    color: $white;
-  }
-
-  .dots {
-    display: none;
-  }
+  @include btn;
 }
 
-.btn-loading {
-  color: transparent;
-
-  &:hover {
-    color: transparent;
-  }
-
-  &:disabled,
-  &[disabled] {
-    background: $white;
-
-    &:hover {
-      background: $white;
-    }
-  }
-
-  .dots {
-    display: block;
-
-    span {
-      position: absolute;
-      top: 40%;
-      transform: translateY(-50%);
-      color: $black;
-      font-size: 22px;
-      margin: 0;
-      animation: btnLoading .9s infinite ease-in;
-
-      &:nth-child(1) {
-        left: 40%;
-      }
-
-      &:nth-child(2) {
-        left: 50%;
-        animation-delay: .3s;
-      }
-
-      &:nth-child(3) {
-        left: 60%;
-        animation-delay: .6s;
-      }
-    }
-  }
+.btn-secondary {
+  @include btn-secondary;
 }
 
-.input {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  min-width: 300px;
+/**
+ * Utilities.
+ */
 
-  &__label {
-    font-weight: 400;
-    font-size: 11px;
-    text-transform: uppercase;
-    margin-bottom: 5px;
-    color: $primary;
-  }
+/* Pointer Events */
 
-  &__input {
-    @include transition;
-
-    outline: none;
-    border: 1px solid $white;
-    background: transparent;
-    color: $white;
-    padding: 12px 15px 11px 15px;
-    font-size: 16px;
-    font-weight: 600;
-    margin-bottom: 20px;
-
-    &::placeholder {
-      color: $grey;
-      font-weight: 400;
-    }
-  }
-
-  &__icon {
-    position: absolute;
-    fill: $white;
-    right: 15px;
-    top: 26px;
-
-    svg {
-      height: 22px;
-      width: auto;
-    }
-  }
-
-  &.active {
-
-    .input__input {
-      border: 1px solid $primary;
-    }
-  }
-}
-
-.input-error {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  margin-top: -10px;
-  margin-bottom: 8px;
-  position: relative;
-  background: $red;
-  padding: 6px 15px;
-  color: $white;
-  font-weight: 600;
-  font-size: 13px;
-
-  svg {
-    height: 17px;
-    width: auto;
-    margin-right: 10px;
-    fill: $white;
-  }
-}
-
-.checkbox {
-  display: flex;
-  align-items: center;
-  margin-bottom: 20px;
-
-  &__check {
-    @include transition;
-
-    width: 15px;
-    height: 15px;
-    border: 1px solid $white;
-    background: transparent;
-    cursor: pointer;
-    margin-right: 10px;
-
-    &.active {
-      background: $primary;
-    }
-  }
-
-  &__label {
-    font-size: 14px;
-    padding-top: 1px;
-  }
+.pointer-events-none {
+  pointer-events: none;
 }

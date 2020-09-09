@@ -33,10 +33,10 @@ class MustResetPassword
 
     private function mustResetPassword(User $user)
     {
-        if ($user->facebook_id || $user->google_id) {
+        if ($user->google_id) {
             return false;
         }
 
-        return ! $user->password_changed_at;
+        return !$user->password_changed_at;
     }
 }

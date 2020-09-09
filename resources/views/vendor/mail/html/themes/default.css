@@ -189,10 +189,19 @@ img {
     width: 100%;
 }
 
+.table.custom table {
+   margin: 20px auto 30px;
+}
+
 .table th {
     border-bottom: 1px solid #edeff2;
     margin: 0;
     padding-bottom: 8px;
+}
+
+.table.custom th {
+    border-bottom: 0;
+    margin: 0;
 }
 
 .table td {
@@ -286,4 +295,16 @@ img {
 
 .break-all {
     word-break: break-all;
+}
+
+/* Promotion */
+.promotion {
+    margin: 21px 0;
+    border: #2d3748 dashed 1px;
+    padding: 16px;
+}
+
+.promotion p {
+    margin-bottom: 0;
+    text-align: center;
 }

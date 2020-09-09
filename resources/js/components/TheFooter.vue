@@ -1,14 +1,12 @@
 <template>
   <div class="TheFooter">
-    <div class="TheFooter__left">
-      <p class="TheFooter__copyright">
-        ©2020 Binalogue
-      </p>
-    </div>
+    <p class="TheFooter__copyright">
+      ©2020 Binalogue
+    </p>
   </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .TheFooter {
   width: 100%;
   display: flex;

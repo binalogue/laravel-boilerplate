@@ -39,8 +39,6 @@
 @font-face {
   font-weight: 400;
   font-family: "Gotham";
-
-  // This font's `woff2` format will be preloaded.
   src: url("/fonts/Gotham-Book.woff2") format("woff2"),
     url("/fonts/Gotham-Book.woff") format("woff"),
     url("/fonts/Gotham-Book.ttf") format("truetype"),

@@ -40,6 +40,5 @@ $factory->state(User::class, 'unverified', [
 $factory->state(User::class, 'must_reset_password', [
     'password' => Hash::make(Str::random(22)),
     'password_changed_at' => null,
-    'facebook_id' => null,
     'google_id' => null,
 ]);

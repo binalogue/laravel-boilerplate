@@ -54,23 +54,13 @@
 <!-- Fonts/Media-->
 {{-- Every browser that supports preloading also supports WOFF2, so that's always the format that we should preload. --}}
 <link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="{{ asset('fonts/Gotham-Black.woff2') }}">
-<link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="{{ asset('fonts/Gotham-Book.woff2') }}">
+<link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="{{ asset('fonts/Gotham-Bold.woff2') }}">
 <link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="{{ asset('fonts/Gotham-Medium.woff2') }}">
-<link rel="preload" as="image" href="{{ webp('images/logo.png') }}">
+<link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="{{ asset('fonts/Gotham-Book.woff2') }}">
 
-{{--
-@route('home')
-
-@desktop
-<link rel="preload" as="image" href="{{ webp('images/binalogue-bg-home-desktop.jpg') }}">
-@enddesktop
-
-@mobile
-<link rel="preload" as="image" href="{{ webp('images/binalogue-bg-home-mobile.jpg') }}">
-@endmobile
-
-@endroute
---}}
+@if ($logo = Arr::get($data, 'nova_settings.logo'))
+<link rel="preload" as="image" href="{{ $logo }}">
+@endif
 <!-- End Fonts/Media -->
 
 <!--
@@ -93,7 +83,7 @@
 (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
 j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl+'{!! config('services.google_tag_manager.query') !!}';f.parentNode.insertBefore(j,f);
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','{{ config('services.google_tag_manager.id') }}');
 </script>
 @endif
@@ -112,7 +102,14 @@ window.app_server_data = @json($data);
 <script src="{{ mix('js/app.js') }}" defer></script>
 </head>
 
-<body>
+<body style="
+    --color-primary: {{ Arr::get($data, 'nova_settings.color_primary') }};
+    --color-primary-hover: {{ Arr::get($data, 'nova_settings.color_primary_hover') }};
+    --color-black: {{ Arr::get($data, 'nova_settings.color_black') }};
+    --color-grey: {{ Arr::get($data, 'nova_settings.color_grey') }};
+    --color-white: {{ Arr::get($data, 'nova_settings.color_white') }};
+    --color-alerts: {{ Arr::get($data, 'nova_settings.color_alerts') }};
+">
 @inertia
 </body>
 </html>

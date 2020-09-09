@@ -1,10 +1,10 @@
 <template>
   <div class="AuthRegisterPage">
-    <div class="AuthRegisterPage__main">
-      <div class="AuthRegisterPage__main--form">
+    <main class="AuthRegisterPage__main">
+      <div class="AuthRegisterPage__form">
         <AuthRegisterForm :sign-up-method="signUpMethod" />
       </div>
-    </div>
+    </main>
   </div>
 </template>
 
@@ -13,12 +13,10 @@
 import { mainLayout } from 'helpers/vue-layouts';
 
 /* Mixins */
-import Page from 'mixins/Page';
+import page from 'mixins/page';
 
 export default {
-  layout: mainLayout,
-
-  mixins: [Page],
+  mixins: [page],
 
   props: {
     newUser: {
@@ -26,6 +24,8 @@ export default {
       default: () => {},
     },
   },
+
+  layout: mainLayout,
 
   metaInfo() {
     return {
@@ -35,10 +35,6 @@ export default {
 
   computed: {
     oauth() {
-      if (this.newUser.facebook_id) {
-        return 'facebook';
-      }
-
       if (this.newUser.google_id) {
         return 'google';
       }
@@ -60,7 +56,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .AuthRegisterPage {
   @include page;
 
@@ -74,24 +70,18 @@ export default {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+  }
 
-    &--title {
-      @include title;
+  &__form {
+    width: 90vw;
+    max-width: 550px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 30px;
 
-      margin-bottom: 3vh;
-    }
-
-    &--form {
-      width: 90vw;
-      max-width: 550px;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      margin-bottom: 30px;
-
-      @include tablet {
-        margin-bottom: 0;
-      }
+    @include tablet {
+      margin-bottom: 0;
     }
   }
 }

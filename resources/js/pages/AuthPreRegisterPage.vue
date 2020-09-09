@@ -1,25 +1,20 @@
 <template>
   <div class="AuthPreRegisterPage">
-    <div class="AuthPreRegisterPage__content">
-      <div class="AuthPreRegisterPage__register">
-        <h2 class="AuthPreRegisterPage__register--title">
+    <div class="AuthPreRegisterPage__container">
+      <div class="AuthPreRegisterPage__content">
+        <h2 class="title">
           Regístrate con:
         </h2>
 
         <!-- Do not use <inertia-link></inertia-link> for OAuth -->
-        <a
-          class="btn"
-          :href="
-            route('oauth', {
-              driver: 'google',
-            })
-          "
-        >
+        <a class="btn" :href="route('oauth', { driver: 'google' })">
           Regístrate con Google
           <LogoGoogle />
         </a>
 
-        <h2 class="AuthPreRegisterPage__register--title">
+        <hr class="AuthPreRegisterPage__separator" />
+
+        <h2 class="title">
           O si lo prefieres...
         </h2>
 
@@ -34,12 +29,12 @@
 import { mainLayout } from 'helpers/vue-layouts';
 
 /* Mixins */
-import Page from 'mixins/Page';
+import page from 'mixins/page';
 
 export default {
   layout: mainLayout,
 
-  mixins: [Page],
+  mixins: [page],
 
   metaInfo() {
     return {
@@ -49,14 +44,18 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .AuthPreRegisterPage {
   @include page;
 
   height: 100%;
   justify-content: flex-start;
 
-  &__content {
+  .title {
+    margin-bottom: 3vh;
+  }
+
+  &__container {
     width: 90%;
     padding: 10vh 0;
     display: flex;
@@ -70,7 +69,7 @@ export default {
     }
   }
 
-  &__register {
+  &__content {
     width: auto;
     padding: 0;
     display: flex;
@@ -82,12 +81,6 @@ export default {
       width: 550px;
       margin-bottom: 0;
       padding: 0 50px;
-    }
-
-    &--title {
-      @include title;
-
-      margin-bottom: 3vh;
     }
 
     .btn {
@@ -102,18 +95,14 @@ export default {
         height: 29px;
         width: auto;
         margin-left: 15px;
-
-        @include transition;
-      }
-
-      &:hover {
-        background: $primary;
-
-        svg {
-          fill: $white;
-        }
       }
     }
+  }
+
+  &__separator {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 30px;
   }
 }
 </style>

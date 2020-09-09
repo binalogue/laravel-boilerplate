@@ -3,19 +3,17 @@
     :validator="v"
     :name="name"
     :attribute="label | toLowerCase"
-    class="checkbox"
+    class="BaseInputCheckbox"
   >
-    <div
-      class="checkbox__check"
-      :class="{
-        active: value,
-      }"
-      @click="toggle"
-    />
+    <div class="BaseInputCheckbox__container">
+      <div
+        class="BaseInputCheckbox__checkbox"
+        :class="{ active: value }"
+        @click="toggle"
+      />
 
-    <span v-if="label" class="checkbox__label">
-      {{ label }}
-    </span>
+      <span class="BaseInputCheckbox__label" @click="toggle" v-html="label" />
+    </div>
   </BaseFormGroup>
 </template>
 
@@ -49,3 +47,44 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.BaseInputCheckbox {
+  a {
+    text-decoration: underline;
+  }
+}
+</style>
+
+<style lang="scss" scoped>
+.BaseInputCheckbox {
+  display: flex;
+  flex-direction: column;
+
+  &__container {
+    display: flex;
+    align-items: center;
+  }
+
+  &__label {
+    margin-left: 10px;
+    color: $grey;
+  }
+
+  &__checkbox {
+    width: 15px;
+    height: 15px;
+    border: 1px solid $grey;
+    background-color: transparent;
+    cursor: pointer;
+
+    &.active {
+      width: 15px;
+      height: 15px;
+      background: $primary;
+      border: 1px solid $grey;
+      cursor: pointer;
+    }
+  }
+}
+</style>

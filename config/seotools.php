@@ -50,8 +50,8 @@ return [
             'site_name' => 'Laravel Boilerplate',
             'images' => [
                 [
-                    'url' => '/images/binalogue-og.jpg',
-                    'secure_url' => '/images/binalogue-og.jpg',
+                    'url' => '/images/og-image.jpg',
+                    'secure_url' => '/images/og-image.jpg',
                     'type' => 'image/jpeg',
                     'width' => '1200',
                     'height' => '630',
@@ -73,7 +73,7 @@ return [
             'card' => 'summary_large_image',
             'title' => 'Laravel Boilerplate',
             'description' => 'We ❤️ code',
-            'image' => '/images/binalogue-og.jpg',
+            'image' => '/images/og-image.jpg',
             'site' => '@binalogue',
             'creator' => '@binalogue',
         ],

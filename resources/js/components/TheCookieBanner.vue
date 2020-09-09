@@ -1,7 +1,7 @@
 <template>
   <div class="TheCookieBanner">
     <div class="TheCookieBanner__container">
-      <p v-html="$trans.get('messages.global.cookie_banner')" />
+      <p v-html="$lang.get('components.the_cookie_banner.html')" />
 
       <button
         type="button"
@@ -17,23 +17,17 @@
 </template>
 
 <script>
-/* Vendor */
-import { mapMutations } from 'vuex';
-import Cookies from 'js-cookie';
-
 export default {
   methods: {
-    ...mapMutations(['TOGGLE_THE_COOKIE_BANNER']),
-
     acceptCookies() {
-      Cookies.set('binalogue_cookies_notice', '1');
-      this.TOGGLE_THE_COOKIE_BANNER(false);
+      this.$cookies.set('bina_cookies_notice', '1');
+      this.$store.commit('TOGGLE_THE_COOKIE_BANNER', false);
     },
   },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .TheCookieBanner {
   position: fixed;
   top: 0;

@@ -1,10 +1,5 @@
 @component('mail::layout')
-{{-- Header --}}
-@slot('header')
-@component('mail::header', ['url' => config('app.url')])
-{{ config('app.name') }}
-@endcomponent
-@endslot
+<img src="{{ asset('images/home-hero.png') }}" width="100%" alt="ASICS" style="margin-bottom: 30px;" />
 
 {{-- Body --}}
 {{ $slot }}
@@ -21,7 +16,7 @@
 {{-- Footer --}}
 @slot('footer')
 @component('mail::footer')
-© {{ date('Y') }} {{ config('app.name') }}. @lang('All rights reserved.')
+© {{ date('Y') }} {{ nova_get_setting('app_name', config('app.name')) }}. @lang('All rights reserved.')
 @endcomponent
 @endslot
 @endcomponent

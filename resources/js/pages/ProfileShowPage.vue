@@ -7,12 +7,10 @@
 import { mainLayout } from 'helpers/vue-layouts';
 
 /* Mixins */
-import Page from 'mixins/Page';
+import page from 'mixins/page';
 
 export default {
-  layout: mainLayout,
-
-  mixins: [Page],
+  mixins: [page],
 
   props: {
     profile: {
@@ -20,6 +18,8 @@ export default {
       required: true,
     },
   },
+
+  layout: mainLayout,
 
   metaInfo() {
     return {
@@ -35,7 +35,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .ProfileShowPage {
   @include page;
 }

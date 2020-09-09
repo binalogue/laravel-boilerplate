@@ -4,17 +4,19 @@ namespace Support\Providers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Laravel\Nova\Fields\Code;
+use Laravel\Nova\Fields\Image;
+use Laravel\Nova\Fields\Text;
 use Laravel\Nova\Nova;
 use Laravel\Nova\NovaApplicationServiceProvider;
+use Laravel\Nova\Panel;
+use OptimistDigital\NovaSettings\NovaSettings;
+use Sbine\RouteViewer\RouteViewer;
+use Timothyasp\Color\Color;
 
 class NovaServiceProvider extends NovaApplicationServiceProvider
 {
-    /**
-     * Bootstrap any application services.
-     *
-     * @return void
-     */
-    public function boot()
+    public function boot(): void
     {
         parent::boot();
 
@@ -22,18 +24,56 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             app()->setLocale('en');
         });
 
-        // Force Nova user's timezone to use 'Europe/Madrid'.
         Nova::userTimezone(function (Request $request) {
-            return 'Europe/Madrid';
+            return config('app.timezone');
         });
+
+        NovaSettings::addSettingsFields([
+            new Panel('App', [
+                Text::make('Name', 'app_name'),
+            ]),
+
+            new Panel('Media', [
+                Image::make('Logo', 'logo')
+                    ->disk('public')
+                    ->path('nova-settings/logo'),
+            ]),
+
+            new Panel('Styles', [
+                Color::make('Primary', 'color_primary')
+                    ->slider(),
+                Color::make('Primary Hover', 'color_primary_hover')
+                    ->slider(),
+                Color::make('Black', 'color_black')
+                    ->slider(),
+                Color::make('Grey', 'color_grey')
+                    ->slider(),
+                Color::make('White', 'color_white')
+                    ->slider(),
+                Color::make('Alerts', 'color_alerts')
+                    ->slider(),
+            ]),
+
+            new Panel('Content', [
+                //
+            ]),
+
+            new Panel('Mail', [
+                Text::make('From Address', 'mail_from_address'),
+                Text::make('From Name', 'mail_from_name'),
+                Text::make('Reply To Address', 'mail_reply_to_address'),
+                Text::make('Reply To Name', 'mail_reply_to_name'),
+            ]),
+
+            new Panel('Admin', [
+                Code::make('Admin Logo', 'admin_logo'),
+            ]),
+        ], [
+            //
+        ]);
     }
 
-    /**
-     * Register the Nova routes.
-     *
-     * @return void
-     */
-    protected function routes()
+    protected function routes(): void
     {
         Nova::routes()
             ->withAuthenticationRoutes()
@@ -41,56 +81,33 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
             ->register();
     }
 
-    /**
-     * Register the Nova gate.
-     *
-     * This gate determines who can access Nova in non-local environments.
-     *
-     * @return void
-     */
-    protected function gate()
+    protected function gate(): void
     {
         Gate::define('viewNova', function ($user) {
             return $user->isEditor();
         });
     }
 
-    /**
-     * Get the cards that should be displayed on the default Nova dashboard.
-     *
-     * @return array
-     */
-    protected function cards()
+    protected function cards(): array
     {
         return [];
     }
 
-    /**
-     * Get the extra dashboards that should be displayed on the Nova dashboard.
-     *
-     * @return array
-     */
-    protected function dashboards()
+    protected function dashboards(): array
     {
         return [];
     }
 
-    /**
-     * Get the tools that should be listed in the Nova sidebar.
-     *
-     * @return array
-     */
-    public function tools()
+    public function tools(): array
     {
-        return [];
+        return [
+            new NovaSettings(),
+            (new RouteViewer())
+                ->canSee(fn ($request) => $request->user()->isSuperAdmin()),
+        ];
     }
 
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
+    public function register(): void
     {
         //
     }

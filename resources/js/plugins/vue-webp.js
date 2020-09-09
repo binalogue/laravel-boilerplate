@@ -2,10 +2,16 @@ export default {
   install(Vue) {
     const webpSupport = this.hasWebpSupport();
 
+    const convertToWebp = $imagePath =>
+      !webpSupport
+        ? $imagePath
+        : $imagePath.toString().replace(/(\.jpe?g|\.png)/g, '.webp');
+
     /**
      * Add property to Vue prototype.
      */
-    Vue.prototype.$webp = webpSupport;
+    Vue.prototype.$webpSupport = webpSupport;
+    Vue.prototype.$webp = convertToWebp;
 
     /**
      * Add class to the `html` tag.
@@ -32,21 +38,6 @@ export default {
       } catch (err) {
         console.error(err);
       }
-    });
-
-    /**
-     * Add Vue global method.
-     */
-    Vue.mixin({
-      methods: {
-        webp($imagePath) {
-          if (!webpSupport) {
-            return $imagePath;
-          }
-
-          return $imagePath.toString().replace(/(\.jpe?g|\.png)/g, '.webp');
-        },
-      },
     });
   },
 

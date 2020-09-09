@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0c2a7bc9cfe4d1a3425d266ff9c80cf7",
+    "content-hash": "365580d18ec973f2f23544d634a7f405",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -258,12 +258,12 @@
             "version": "6.0.3",
             "source": {
                 "type": "git",
-                "url": "https://github.com/caouecs/Laravel-lang.git",
+                "url": "https://github.com/caouecs/lang.git",
                 "reference": "dbbbad7019645f88882b0ab03d51eaedab43917c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/caouecs/Laravel-lang/zipball/dbbbad7019645f88882b0ab03d51eaedab43917c",
+                "url": "https://api.github.com/repos/caouecs/lang/zipball/dbbbad7019645f88882b0ab03d51eaedab43917c",
                 "reference": "dbbbad7019645f88882b0ab03d51eaedab43917c",
                 "shasum": ""
             },
@@ -294,6 +294,7 @@
                 "laravel",
                 "lpm"
             ],
+            "abandoned": "https://github.com/Laravel-Lang/lang",
             "time": "2020-06-21T09:04:45+00:00"
         },
         {
@@ -2799,6 +2800,110 @@
             "time": "2020-06-17T14:59:55+00:00"
         },
         {
+            "name": "optimistdigital/nova-settings",
+            "version": "2.5.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/optimistdigital/nova-settings.git",
+                "reference": "2c00bbda3392d79ccac85497ab1931a41d032689"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/optimistdigital/nova-settings/zipball/2c00bbda3392d79ccac85497ab1931a41d032689",
+                "reference": "2c00bbda3392d79ccac85497ab1931a41d032689",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/nova": "^2.0.11 || ^3.0",
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "OptimistDigital\\NovaSettings\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "OptimistDigital\\NovaSettings\\": "src/"
+                },
+                "files": [
+                    "./src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova tool for editing custom settings using native Nova fields.",
+            "keywords": [
+                "laravel",
+                "nova"
+            ],
+            "time": "2020-07-29T09:50:46+00:00"
+        },
+        {
+            "name": "orangehill/iseed",
+            "version": "v2.6.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/orangehill/iseed.git",
+                "reference": "454d4aa0eacedf02d7bcbb2633e363170d3db49b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/orangehill/iseed/zipball/454d4aa0eacedf02d7bcbb2633e363170d3db49b",
+                "reference": "454d4aa0eacedf02d7bcbb2633e363170d3db49b",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "illuminate/filesystem": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+                "laravel/framework": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+                "mockery/mockery": "^1.0.0",
+                "phpunit/phpunit": "^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Orangehill\\Iseed\\IseedServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Orangehill\\Iseed": "src/"
+                },
+                "classmap": [
+                    "src/Orangehill/Iseed/Exceptions.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-2-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Tihomir Opacic",
+                    "email": "tihomir.opacic@orangehilldev.com"
+                }
+            ],
+            "description": "Generate a new Laravel database seed file based on data from the existing database table.",
+            "keywords": [
+                "artisan",
+                "generators",
+                "laravel",
+                "seed"
+            ],
+            "time": "2020-03-06T08:28:39+00:00"
+        },
+        {
             "name": "phpoption/phpoption",
             "version": "1.7.4",
             "source": {
@@ -3623,6 +3728,56 @@
                 "mobile"
             ],
             "time": "2017-09-02T08:11:53+00:00"
+        },
+        {
+            "name": "sbine/route-viewer",
+            "version": "0.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/sbine/nova-route-viewer.git",
+                "reference": "df3f241a9dc8497887ed996a141d97a7c9cd0643"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/sbine/nova-route-viewer/zipball/df3f241a9dc8497887ed996a141d97a7c9cd0643",
+                "reference": "df3f241a9dc8497887ed996a141d97a7c9cd0643",
+                "shasum": ""
+            },
+            "require": {
+                "laravel/nova": "*",
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Sbine\\RouteViewer\\ToolServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Sbine\\RouteViewer\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Sara Bine",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A Laravel Nova tool to view your registered routes.",
+            "homepage": "https://github.com/sbine/nova-route-viewer",
+            "keywords": [
+                "laravel",
+                "nova",
+                "routes"
+            ],
+            "time": "2020-05-23T17:40:15+00:00"
         },
         {
             "name": "scrivo/highlight.php",
@@ -6386,6 +6541,49 @@
             "time": "2019-10-24T08:53:34+00:00"
         },
         {
+            "name": "timothyasp/nova-color-field",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/timothyasp/nova-color-field.git",
+                "reference": "e94011fb80fa1807e7a607deab1cdc9f8adb0ccb"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/timothyasp/nova-color-field/zipball/e94011fb80fa1807e7a607deab1cdc9f8adb0ccb",
+                "reference": "e94011fb80fa1807e7a607deab1cdc9f8adb0ccb",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Timothyasp\\Color\\FieldServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Timothyasp\\Color\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "A Laravel Nova Color Picker field.",
+            "keywords": [
+                "color picker",
+                "field",
+                "laravel",
+                "nova"
+            ],
+            "time": "2019-03-14T07:29:30+00:00"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v4.1.7",
             "source": {
@@ -7463,6 +7661,7 @@
             "keywords": [
                 "tokenizer"
             ],
+            "abandoned": true,
             "time": "2019-09-17T06:23:10+00:00"
         },
         {
@@ -7887,6 +8086,7 @@
             ],
             "description": "FinderFacade is a convenience wrapper for Symfony's Finder component.",
             "homepage": "https://github.com/sebastianbergmann/finder-facade",
+            "abandoned": true,
             "time": "2020-02-08T06:07:58+00:00"
         },
         {

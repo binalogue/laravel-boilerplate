@@ -1,34 +1,34 @@
 <template>
-  <form class="AuthLoginForm" @submit.prevent="$HasVuelidate_submit(login)">
+  <form class="AuthLoginForm" @submit.prevent="vuelidate(login)">
     <BaseInputText
       v-model="form.email"
       :v="$v.form.email"
-      label="Email"
       type="email"
       name="email"
+      label="Email"
       placeholder="Email"
     />
 
     <BaseInputText
       v-model="form.password"
       :v="$v.form.password"
-      label="Contraseña"
       type="password"
       name="password"
+      label="Contraseña"
       placeholder="Contraseña"
     />
 
     <BaseInputCheckbox
       v-model="remember"
       :v="$v.form.remember"
-      label="Recuérdame"
       name="remember"
+      label="Recuérdame"
     />
 
     <BaseSubmitButton
-      class="btn"
-      :class="$HasVuelidate_submitButtonClass"
-      :disabled="$HasVuelidate_submitButtonDisabled"
+      :submitting="submitting"
+      :disabled="submitting"
+      :has-errors="hasErrors"
     >
       Inicia Sesión
     </BaseSubmitButton>
@@ -44,10 +44,10 @@
 import { required, email } from 'vuelidate/lib/validators';
 
 /* Mixins */
-import HasVuelidate from 'mixins/HasVuelidate';
+import vuelidate from 'mixins/vuelidate';
 
 export default {
-  mixins: [HasVuelidate],
+  mixins: [vuelidate],
 
   validations: {
     form: {
@@ -97,10 +97,15 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .AuthLoginForm {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+
+  .BaseSubmitButton {
+    margin-top: 30px;
+    margin-bottom: 20px;
+  }
 }
 </style>

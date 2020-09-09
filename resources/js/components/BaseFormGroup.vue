@@ -3,7 +3,6 @@
     <slot />
 
     <span v-if="hasFrontendOrBackendErrors" class="input-error">
-      <IconExclamation />
       {{ error }}
     </span>
   </div>

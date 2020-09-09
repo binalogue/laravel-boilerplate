@@ -1,8 +1,8 @@
 <template>
   <div class="AuthPasswordRequestPage">
     <div class="AuthPasswordRequestPage__content">
-      <h1 class="AuthPasswordRequestPage__content--title">
-        Recuperar Contraseña
+      <h1 class="title">
+        Recuperar contraseña
       </h1>
 
       <AuthPasswordRequestForm />
@@ -15,12 +15,12 @@
 import { mainLayout } from 'helpers/vue-layouts';
 
 /* Mixins */
-import Page from 'mixins/Page';
+import page from 'mixins/page';
 
 export default {
-  layout: mainLayout,
+  mixins: [page],
 
-  mixins: [Page],
+  layout: mainLayout,
 
   metaInfo() {
     return {
@@ -30,21 +30,19 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .AuthPasswordRequestPage {
   height: 100%;
   justify-content: flex-start;
+
+  .title {
+    margin-bottom: 3vh;
+  }
 
   &__content {
     width: 90%;
     max-width: 550px;
     padding: 15vh 0;
-
-    &--title {
-      @include title;
-
-      margin-bottom: 3vh;
-    }
   }
 }
 </style>
