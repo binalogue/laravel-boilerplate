@@ -20,7 +20,6 @@ if [ -f artisan ]; then
   dc:pa telescope:publish
   dc:pa horizon:publish
   dc:pa nova:publish
-  dc:pa vendor:publish --provider='Binalogue\BinalogueNovaTheme\ThemeServiceProvider' --force
 
   # Migrate database.
   dc:pa migrate:fresh --force --seed
@@ -28,6 +27,9 @@ if [ -f artisan ]; then
   # Terminate the master Horizon process.
   dc exec queue php artisan horizon:terminate
 fi
+
+# Copy logo.
+[ -f storage/app/public/nova-settings/logo/logo.png ] || (mkdir -p storage/app/public/nova-settings/logo && cp resources/images/logo.png storage/app/public/nova-settings/logo/logo.png)
 
 # Run yarn.
 dc:yarn
