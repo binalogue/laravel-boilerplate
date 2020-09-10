@@ -19,7 +19,7 @@ class User extends Resource
 {
     public static $model = \Domain\Users\Models\User::class;
 
-    public static $group = 'Admins';
+    public static $group = 'Users';
 
     public static $title = 'full_name';
 

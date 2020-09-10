@@ -13,7 +13,7 @@ class Role extends Resource
 {
     public static $model = \Domain\Users\Models\Role::class;
 
-    public static $group = 'Admins';
+    public static $group = 'Users';
 
     public static $title = 'name';
 
