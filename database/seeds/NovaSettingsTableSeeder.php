@@ -12,19 +12,19 @@ class NovaSettingsTableSeeder extends Seeder
      */
     public function run()
     {
-        
+
 
         \DB::table('nova_settings')->delete();
-        
-        \DB::table('nova_settings')->insert(array (
-            0 => 
-            array (
+
+        \DB::table('nova_settings')->insert(array(
+            0 =>
+            array(
                 'key' => 'admin_logo',
                 'value' => '<svg
 class="fill-current"
-width="{{ $width ?? \'236\' }}"
-height="{{ $height ?? \'40\' }}"
-viewBox="{{ $viewBox ?? \'0 0 236 40\' }}"
+width="236"
+height="40"
+viewBox="0 0 236 40"
 xmlns="http://www.w3.org/2000/svg"
 >
 <path d="m0 .138h6.239v6.234h-6.239z" fill="#ff9a22"/>
@@ -46,63 +46,61 @@ xmlns="http://www.w3.org/2000/svg"
 </g>
 </svg>',
             ),
-            1 => 
-            array (
+            1 =>
+            array(
                 'key' => 'app_name',
                 'value' => 'Binalogue - Laravel Boilerplate',
             ),
-            2 => 
-            array (
+            2 =>
+            array(
                 'key' => 'color_alerts',
                 'value' => '#509bf5',
             ),
-            3 => 
-            array (
+            3 =>
+            array(
                 'key' => 'color_black',
                 'value' => '#2b2b2b',
             ),
-            4 => 
-            array (
+            4 =>
+            array(
                 'key' => 'color_grey',
                 'value' => '#c0c0c0',
             ),
-            5 => 
-            array (
+            5 =>
+            array(
                 'key' => 'color_primary',
                 'value' => '#ff9a22',
             ),
-            6 => 
-            array (
+            6 =>
+            array(
                 'key' => 'color_primary_hover',
                 'value' => '#FF8a22',
             ),
-            7 => 
-            array (
+            7 =>
+            array(
                 'key' => 'color_white',
                 'value' => '#fff',
             ),
-            8 => 
-            array (
+            8 =>
+            array(
                 'key' => 'mail_from_address',
                 'value' => 'noreply@binalogue.com',
             ),
-            9 => 
-            array (
+            9 =>
+            array(
                 'key' => 'mail_from_name',
                 'value' => 'Binalogue',
             ),
-            10 => 
-            array (
+            10 =>
+            array(
                 'key' => 'mail_reply_to_address',
                 'value' => 'noreply@binalogue.com',
             ),
-            11 => 
-            array (
+            11 =>
+            array(
                 'key' => 'mail_reply_to_name',
                 'value' => 'Binalogue',
             ),
         ));
-        
-        
     }
 }
