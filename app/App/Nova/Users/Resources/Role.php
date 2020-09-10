@@ -27,6 +27,8 @@ class Role extends Resource
 
     public static $defaultIndexOrderDirection = 'asc';
 
+    public static $priority = 2;
+
     public function fields(Request $request): array
     {
         return [
