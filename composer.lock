@@ -1813,16 +1813,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v7.28.0",
+            "version": "v7.28.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "5d3b4e3e62294716e3c810be3d2eb1375685b87d"
+                "reference": "f7493ab717ca2a9598b1db2d6a3bae8ac8c755e8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/5d3b4e3e62294716e3c810be3d2eb1375685b87d",
-                "reference": "5d3b4e3e62294716e3c810be3d2eb1375685b87d",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/f7493ab717ca2a9598b1db2d6a3bae8ac8c755e8",
+                "reference": "f7493ab717ca2a9598b1db2d6a3bae8ac8c755e8",
                 "shasum": ""
             },
             "require": {
@@ -1967,7 +1967,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2020-09-08T15:10:40+00:00"
+            "time": "2020-09-09T15:02:46+00:00"
         },
         {
             "name": "laravel/horizon",
@@ -2044,17 +2044,17 @@
         },
         {
             "name": "laravel/nova",
-            "version": "v3.9.1",
+            "version": "v3.9.2",
             "source": {
                 "type": "git",
                 "url": "git@github.com:laravel/nova.git",
-                "reference": "62adfe1a1e3e3bc5c6cde93d66084a05ae6271c4"
+                "reference": "512af9cfca0c50b9c391492b1a327d9944b35f12"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-62adfe1a1e3e3bc5c6cde93d66084a05ae6271c4-zip-7982d7.zip",
-                "reference": "62adfe1a1e3e3bc5c6cde93d66084a05ae6271c4",
-                "shasum": "1337799499de5a75bf1c824cc2cdd75e5fb2e32a"
+                "url": "https://nova.laravel.com/dist/laravel/nova/laravel-nova-512af9cfca0c50b9c391492b1a327d9944b35f12-zip-48aed5.zip",
+                "reference": "512af9cfca0c50b9c391492b1a327d9944b35f12",
+                "shasum": "d21807b526e66f1fa79756ede57c73e45fc636c5"
             },
             "require": {
                 "brick/money": "^0.5.0",
@@ -2115,7 +2115,7 @@
                 "admin",
                 "laravel"
             ],
-            "time": "2020-09-08T20:01:26+00:00"
+            "time": "2020-09-09T15:34:29+00:00"
         },
         {
             "name": "laravel/socialite",
@@ -2311,16 +2311,16 @@
         },
         {
             "name": "laravel/ui",
-            "version": "v2.2.1",
+            "version": "v2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/ui.git",
-                "reference": "456daa330a32483b0fa9794334e60af6b2db3bf6"
+                "reference": "2ccaa3b821ea8ac7e05393b946d0578bdb46099b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/ui/zipball/456daa330a32483b0fa9794334e60af6b2db3bf6",
-                "reference": "456daa330a32483b0fa9794334e60af6b2db3bf6",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/2ccaa3b821ea8ac7e05393b946d0578bdb46099b",
+                "reference": "2ccaa3b821ea8ac7e05393b946d0578bdb46099b",
                 "shasum": ""
             },
             "require": {
@@ -2362,7 +2362,7 @@
                 "laravel",
                 "ui"
             ],
-            "time": "2020-09-08T13:09:39+00:00"
+            "time": "2020-09-09T12:07:59+00:00"
         },
         {
             "name": "league/commonmark",
@@ -3467,25 +3467,25 @@
         },
         {
             "name": "orangehill/iseed",
-            "version": "v2.6.3",
+            "version": "v2.6.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/orangehill/iseed.git",
-                "reference": "454d4aa0eacedf02d7bcbb2633e363170d3db49b"
+                "reference": "03c73d3f829a74065e14a757f0d749ad4928a15f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/orangehill/iseed/zipball/454d4aa0eacedf02d7bcbb2633e363170d3db49b",
-                "reference": "454d4aa0eacedf02d7bcbb2633e363170d3db49b",
+                "url": "https://api.github.com/repos/orangehill/iseed/zipball/03c73d3f829a74065e14a757f0d749ad4928a15f",
+                "reference": "03c73d3f829a74065e14a757f0d749ad4928a15f",
                 "shasum": ""
             },
             "require": {
-                "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+                "illuminate/support": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0|^8.0",
                 "php": "^7.2"
             },
             "require-dev": {
-                "illuminate/filesystem": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
-                "laravel/framework": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0",
+                "illuminate/filesystem": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0|^8.0",
+                "laravel/framework": "~5.5.0|~5.6.0|~5.7.0|~5.8.0|^6.0|^7.0|^8.0",
                 "mockery/mockery": "^1.0.0",
                 "phpunit/phpunit": "^8.0"
             },
@@ -3522,7 +3522,7 @@
                 "laravel",
                 "seed"
             ],
-            "time": "2020-03-06T08:28:39+00:00"
+            "time": "2020-09-10T06:25:21+00:00"
         },
         {
             "name": "paragonie/random_compat",

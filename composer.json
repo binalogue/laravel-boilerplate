@@ -34,6 +34,7 @@
     "facade/ignition": "^2.0",
     "fideloper/proxy": "^4.3",
     "fruitcake/laravel-cors": "^1.0",
+    "gladcodes/keygen": "^1.1",
     "gregoriohc/laravel-nova-theme-responsive": "^0.8.1",
     "guzzlehttp/guzzle": "^6.5",
     "inertiajs/inertia-laravel": "^0.2",
