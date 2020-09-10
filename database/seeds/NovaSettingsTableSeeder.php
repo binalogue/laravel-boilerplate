@@ -49,7 +49,7 @@ xmlns="http://www.w3.org/2000/svg"
             1 =>
             array(
                 'key' => 'app_name',
-                'value' => 'Binalogue - Laravel Boilerplate',
+                'value' => 'Laravel Boilerplate',
             ),
             2 =>
             array(
