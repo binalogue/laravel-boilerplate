@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\App\Platform\Users\Controllers;
+namespace Tests\App\Platform\Users\Middlewares;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Support\Providers\RouteServiceProvider;
