@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
 
+/** @see \Tests\App\Platform\Users\Controllers\ProfileControllerTest */
 class ProfileController
 {
     public function show(): Response
@@ -54,7 +55,7 @@ class ProfileController
             UserData::fromProfileUpdateRequest($profileUpdateRequest)
         );
 
-        flash()->success(__('status.profile.updated'));
+        flash()->success(__('profile.flash.updated'));
 
         return Redirect::route('profile.show');
     }
@@ -63,7 +64,7 @@ class ProfileController
     {
         $deleteUserAction->execute(Auth::user());
 
-        flash()->success(__('status.profile.destroyed'));
+        flash()->success(__('profile.flash.destroyed'));
 
         return Redirect::route('home');
     }

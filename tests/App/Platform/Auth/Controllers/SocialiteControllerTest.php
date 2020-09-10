@@ -80,7 +80,7 @@ class SocialiteControllerTest extends TestCase
             ->assertRedirect(RouteServiceProvider::SUCCESSFUL_LOGIN_ROUTE);
 
         $this->assertAuthenticatedAs($user);
-        // $this->assertNotNull($user->fresh()->google_id); // 🤷‍♂️
+        $this->assertNotNull($user->fresh()->google_id);
     }
 
     /** @test */
@@ -97,7 +97,7 @@ class SocialiteControllerTest extends TestCase
             ->assertRedirect(RouteServiceProvider::SUCCESSFUL_LOGIN_ROUTE);
 
         $this->assertAuthenticatedAs($user);
-        // $this->assertNotNull($user->fresh()->google_id); // 🤷‍♂️
+        $this->assertNotNull($user->fresh()->google_id);
         $this->assertNull($user->fresh()->deleted_at);
     }
 
@@ -112,7 +112,7 @@ class SocialiteControllerTest extends TestCase
             ->assertPropValue('newUser', function ($newUser) {
                 $this->assertNotNull('first_name');
                 $this->assertNotNull('last_name');
-                // $this->assertEquals('pepe@grillo.com', $newUser['email']); // 🤷‍♂️
+                $this->assertEquals('pepe@grillo.com', $newUser['email']);
                 $this->assertNotNull('google_id');
                 $this->assertNotNull('avatar');
             });

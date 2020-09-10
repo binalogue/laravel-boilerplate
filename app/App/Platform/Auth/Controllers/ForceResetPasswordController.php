@@ -3,7 +3,7 @@
 namespace App\Platform\Auth\Controllers;
 
 use App\Platform\Auth\Requests\ForceResetPasswordRequest;
-use Domain\Users\DataTransferObjects\ForceResetPasswordData;
+use Domain\Auth\DataTransferObjects\ForceResetPasswordData;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use Support\Providers\RouteServiceProvider;
 
 class ForceResetPasswordController
 {
@@ -20,8 +21,9 @@ class ForceResetPasswordController
         return Inertia::render('AuthPasswordForceResetPage');
     }
 
-    public function reset(ForceResetPasswordRequest $forceResetPasswordRequest): RedirectResponse
-    {
+    public function reset(
+        ForceResetPasswordRequest $forceResetPasswordRequest
+    ): RedirectResponse {
         $validated = ForceResetPasswordData::fromRequest($forceResetPasswordRequest);
 
         /** @var \Domain\Users\Models\User */
@@ -33,8 +35,8 @@ class ForceResetPasswordController
 
         Auth::guard()->login($user);
 
-        flash()->success(__('status.auth.password_reseted'));
+        flash()->success(__('auth.flash.password_reseted'));
 
-        return Redirect::route('profile.show');
+        return Redirect::to(RouteServiceProvider::SUCCESSFUL_LOGIN_ROUTE);
     }
 }

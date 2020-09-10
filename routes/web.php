@@ -2,6 +2,7 @@
 
 use App\Platform\Home\Controllers\HomeController;
 use App\Platform\Notifications\Controllers\NotificationsController;
+use App\Platform\Auth\Controllers\EmailVerificationController;
 use App\Platform\Auth\Controllers\ForceResetPasswordController;
 use App\Platform\Auth\Controllers\ForgotPasswordController;
 use App\Platform\Auth\Controllers\LoginController;
@@ -9,7 +10,6 @@ use App\Platform\Auth\Controllers\PreRegisterController;
 use App\Platform\Auth\Controllers\RegisterController;
 use App\Platform\Auth\Controllers\ResetPasswordController;
 use App\Platform\Auth\Controllers\SocialiteController;
-use App\Platform\Auth\Controllers\VerificationController;
 use App\Platform\Users\Controllers\ProfileController;
 use App\Platform\Users\Controllers\UpdateProfileAvatarController;
 use Illuminate\Support\Facades\Route;
@@ -60,9 +60,9 @@ Route::middleware('guest')->group(function () {
 
 // Email Verification Routes...
 Route::middleware('auth')->group(function () {
-    Route::get('email/verify', [VerificationController::class, 'showVerificationNotice'])->name('verification.notice');
-    Route::get('email/verify/{id}/{hash}', [VerificationController::class, 'verify'])->name('verification.verify')->middleware('signed', 'throttle:6,1');
-    Route::post('email/resend', [VerificationController::class, 'resend'])->name('verification.resend')->middleware('throttle:6,1');
+    Route::get('email/verify', [EmailVerificationController::class, 'showVerificationNotice'])->name('verification.notice');
+    Route::get('email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify')->middleware('signed', 'throttle:6,1');
+    Route::post('email/resend', [EmailVerificationController::class, 'resend'])->name('verification.resend')->middleware('throttle:6,1');
 });
 
 // Socialite Routes...

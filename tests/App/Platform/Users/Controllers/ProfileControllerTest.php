@@ -2,63 +2,27 @@
 
 namespace Tests\App\Platform\Users\Controllers;
 
-use Domain\Users\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Tests\Factories\UserFactory;
 use Tests\TestCase;
 
+/** @see \App\Platform\Users\Controllers\ProfileController */
 class ProfileControllerTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function guest_user_can_not_view_profile_page()
-    {
-        $response = $this->get(route('profile.show'));
-
-        $response->assertRedirect(route('login.form'));
-    }
+    /*
+    |----------------------------------------------------------------------
+    | Show
+    |----------------------------------------------------------------------
+    */
 
     /** @test */
-    public function user_that_must_reset_password_can_not_view_profile_page()
+    public function user_can_see_their_profile()
     {
-        $user = factory(User::class)
-            ->state('must_reset_password')
-            ->create();
-
-        $response = $this
-            ->actingAs($user)
-            ->get(route('profile.show'));
-
-        $response->assertRedirect(route('password.forceReset'));
-    }
-
-    /** @test */
-    public function unverified_user_can_not_view_profile_page()
-    {
-        $user = factory(User::class)
-            ->state('unverified')
-            ->create();
-
-        $response = $this
-            ->actingAs($user)
-            ->get(route('profile.show'));
-
-        $response->assertRedirect(route('verification.notice'));
-    }
-
-    /** @test */
-    public function auth_user_can_view_profile_page()
-    {
-        $user = factory(User::class)
-            ->state('verified')
-            ->state('has_completed_quiz')
-            ->create();
-
-        $response = $this
-            ->actingAs($user)
-            ->get(route('profile.show'));
-
-        $response
+        $this
+            ->actingAs(UserFactory::new()->verified()->create())
+            ->get(route('profile.show'))
             ->assertSuccessful();
     }
 }

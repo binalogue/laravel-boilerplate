@@ -7,7 +7,12 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
+use Support\Providers\RouteServiceProvider;
 
+/**
+ * @see \Illuminate\Foundation\Auth\AuthenticatesUsers
+ * @see \Tests\App\Platform\Auth\Controllers\LoginControllerTest
+ */
 class LoginController
 {
     /*
@@ -16,8 +21,7 @@ class LoginController
     |--------------------------------------------------------------------------
     |
     | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
+    | redirecting them to the correct route.
     |
     */
 
@@ -25,12 +29,12 @@ class LoginController
 
     protected function redirectTo(): string
     {
-        return route('profile.show');
+        return RouteServiceProvider::SUCCESSFUL_LOGIN_ROUTE;
     }
 
     /*
     |--------------------------------------------------------------------------
-    | AuthenticatesUsers
+    | use AuthenticatesUsers
     |--------------------------------------------------------------------------
     */
 
@@ -41,6 +45,6 @@ class LoginController
 
     protected function loggedOut(): RedirectResponse
     {
-        return Redirect::route('home');
+        return Redirect::to(RouteServiceProvider::SUCCESSFUL_LOGOUT_ROUTE);
     }
 }

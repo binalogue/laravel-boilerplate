@@ -7,6 +7,7 @@ use Domain\Users\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
+/** @see \Domain\Users\Actions\CreateUserActionTest */
 class CreateUserAction
 {
     public function execute(UserData $data): User

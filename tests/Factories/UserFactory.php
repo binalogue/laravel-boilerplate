@@ -6,6 +6,7 @@ use Domain\Users\Models\Role;
 use Domain\Users\Models\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 use Support\Testing\Factory;
 
 class UserFactory extends Factory
@@ -30,6 +31,7 @@ class UserFactory extends Factory
             'email' => $faker->unique()->safeEmail,
             'email_verified_at' => now(),
             'password' => Hash::make('secret'),
+            'password_changed_at' => now(),
         ];
     }
 
@@ -50,6 +52,15 @@ class UserFactory extends Factory
     {
         return tap(clone $this)->overwriteDefaults([
             'email_verified_at' => null,
+        ]);
+    }
+
+    public function mustResetPassword(): self
+    {
+        return tap(clone $this)->overwriteDefaults([
+            'password' => Hash::make(Str::random(22)),
+            'password_changed_at' => null,
+            'google_id' => null,
         ]);
     }
 

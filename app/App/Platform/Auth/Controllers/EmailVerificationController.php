@@ -8,9 +8,13 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use Support\Providers\RouteServiceProvider;
 
-/** @see \Illuminate\Foundation\Auth\VerifiesEmails */
-class VerificationController
+/**
+ * @see \Illuminate\Foundation\Auth\VerifiesEmails
+ * @see \Tests\App\Platform\Auth\Controllers\EmailVerificationControllerTest
+ */
+class EmailVerificationController
 {
     /*
     |--------------------------------------------------------------------------
@@ -23,16 +27,13 @@ class VerificationController
     |
     */
 
-    /**
-     * Where to redirect users after verifying their email.
-     *
-     * @return string
-     */
+    /** Where to redirect users after verifying their email. */
     protected function redirectTo(): string
     {
-        return route('profile.show');
+        return RouteServiceProvider::SUCCESSFUL_LOGIN_ROUTE;
     }
 
+    /** @return \Illuminate\Http\RedirectResponse|\Inertia\Response */
     public function showVerificationNotice(Request $request)
     {
         return $request->user()->hasVerifiedEmail()
@@ -67,7 +68,7 @@ class VerificationController
 
         event(new Verified($request->user()));
 
-        flash()->success(__('status.auth.verified'));
+        flash()->success(__('auth.flash.verified'));
 
         return Redirect::to($this->redirectTo());
     }
@@ -75,12 +76,12 @@ class VerificationController
     public function resend(Request $request): RedirectResponse
     {
         if ($request->user()->hasVerifiedEmail()) {
-            return Redirect::route('profile.show');
+            return Redirect::to($this->redirectTo());
         }
 
         $request->user()->sendEmailVerificationNotification();
 
-        flash()->success(__('status.auth.requested_verification'));
+        flash()->success(__('auth.flash.requested_verification'));
 
         return Redirect::back();
     }

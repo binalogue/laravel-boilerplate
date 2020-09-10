@@ -5,15 +5,16 @@ namespace Tests\App\Platform\Home\Controllers;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
+/** @see \App\Platform\Home\Controllers\HomeController */
 class HomeControllerTest extends TestCase
 {
     use RefreshDatabase;
 
     /** @test */
-    public function user_can_view_home_page()
+    public function user_can_see_home_page()
     {
-        $response = $this->get(route('home'));
-
-        $response->assertStatus(200);
+        $this
+            ->get(route('home'))
+            ->assertStatus(200);
     }
 }

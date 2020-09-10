@@ -1,6 +1,6 @@
 <?php
 
-namespace Domain\Users\DataTransferObjects;
+namespace Domain\Auth\DataTransferObjects;
 
 use App\Platform\Auth\Requests\ForceResetPasswordRequest;
 use Spatie\DataTransferObject\DataTransferObject;
@@ -13,7 +13,7 @@ class ForceResetPasswordData extends DataTransferObject
         ForceResetPasswordRequest $forceResetPasswordRequest
     ): self {
         return new self([
-            'password' => $forceResetPasswordRequest->get('password'),
+            'password' => $forceResetPasswordRequest->input('password'),
         ]);
     }
 }

@@ -32,9 +32,4 @@ trait RegistrationRoutes
     {
         return RouteServiceProvider::SUCCESSFUL_LOGIN_ROUTE;
     }
-
-    protected function postRegisterRoute()
-    {
-        return route('postRegister.form');
-    }
 }

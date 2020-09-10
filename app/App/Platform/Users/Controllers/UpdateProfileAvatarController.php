@@ -20,7 +20,7 @@ class UpdateProfileAvatarController
             UserData::fromUpdateProfileAvatarRequest($updateProfileAvatarRequest)
         );
 
-        flash()->success(__('status.profile.avatar_updated'));
+        flash()->success(__('profile.flash.avatar_updated'));
 
         return Redirect::back();
     }

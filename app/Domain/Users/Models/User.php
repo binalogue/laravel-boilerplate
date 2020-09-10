@@ -27,8 +27,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected $guarded = [
         'id',
-        'email_verified_at',
-        'password_changed_at',
         'remember_token',
     ];
 

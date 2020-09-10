@@ -2,14 +2,17 @@
 
 namespace App\Platform\Auth\Controllers;
 
+use App\Platform\Auth\Requests\ForgotPasswordRequest;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
 use Inertia\Response;
 
-/** @see \Illuminate\Foundation\Auth\SendsPasswordResetEmails */
+/**
+ * @see \Illuminate\Foundation\Auth\SendsPasswordResetEmails
+ * @see \Tests\App\Platform\Auth\Controllers\ForgotPasswordControllerTest
+ */
 class ForgotPasswordController
 {
     /*
@@ -17,9 +20,7 @@ class ForgotPasswordController
     | Password Reset Controller
     |--------------------------------------------------------------------------
     |
-    | This controller is responsible for handling password reset emails and
-    | includes a trait which assists in sending these notifications from
-    | your application to your users. Feel free to explore this trait.
+    | This controller is responsible for handling password reset emails.
     |
     */
 
@@ -28,35 +29,36 @@ class ForgotPasswordController
         return Inertia::render('AuthPasswordRequestPage');
     }
 
-    public function sendResetLinkEmail(Request $request): RedirectResponse
-    {
-        $request->validate([
-            'email' => 'required|email',
-        ]);
-
+    public function sendResetLinkEmail(
+        ForgotPasswordRequest $forgotPasswordRequest
+    ): RedirectResponse {
         // We will send the password reset link to this user. Once we have attempted
         // to send the link, we will examine the response then see the message we
         // need to show to the user. Finally, we'll send out a proper response.
         $response = Password::broker()->sendResetLink(
-            $request->only('email')
+            $forgotPasswordRequest->only('email')
         );
 
         return $response == Password::RESET_LINK_SENT
-            ? $this->sendResetLinkResponse($request, $response)
-            : $this->sendResetLinkFailedResponse($request, $response);
+            ? $this->sendResetLinkResponse($forgotPasswordRequest, $response)
+            : $this->sendResetLinkFailedResponse($forgotPasswordRequest, $response);
     }
 
-    protected function sendResetLinkResponse(Request $request, string $response): RedirectResponse
-    {
+    protected function sendResetLinkResponse(
+        ForgotPasswordRequest $forgotPasswordRequest,
+        string $response
+    ): RedirectResponse {
         flash()->success(__($response));
 
         return Redirect::back();
     }
 
-    protected function sendResetLinkFailedResponse(Request $request, string $response): RedirectResponse
-    {
+    protected function sendResetLinkFailedResponse(
+        ForgotPasswordRequest $forgotPasswordRequest,
+        string $response
+    ): RedirectResponse {
         return Redirect::back()
-            ->withInput($request->only('email'))
+            ->withInput($forgotPasswordRequest->only('email'))
             ->withErrors([
                 'email' => __($response),
             ]);
