@@ -2,6 +2,7 @@
 
 namespace Support\Providers;
 
+use Ericlagarda\NovaTextCard\TextCard;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Nova\Fields\Code;
@@ -90,7 +91,14 @@ class NovaServiceProvider extends NovaApplicationServiceProvider
 
     protected function cards(): array
     {
-        return [];
+        return [
+            TextCard::make()
+                ->forceFullWidth()
+                ->center(false)
+                ->height(90)
+                ->heading('<h1 class="text-3xl">Welcome!</h1>')
+                ->headingAsHtml(),
+        ];
     }
 
     protected function dashboards(): array
