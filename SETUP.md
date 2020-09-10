@@ -20,6 +20,7 @@ Follow these steps to get a fresh copy of this boilerplate:
 
 ## GitLab
 
+- [ ] Remove the `production:forge` job at `.gitlab-ci.yml`
 - [ ] Add the Slack integration: https://gitlab.com/binalogue/laravel-boilerplate/-/settings/integrations
 
 **When you are done with the steps above delete this file!**
