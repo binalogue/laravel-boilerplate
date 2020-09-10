@@ -1,4 +1,4 @@
-/* global _, moment, route */
+/* global _, route */
 
 /*
 |------------------------------------------------------------------------------
@@ -11,34 +11,38 @@
 |
 */
 
-/* App Bootstrap */
-import './bootstrap';
-
 /* Vue */
 import Vue from 'vue';
 
-/* Vue Plugins */
+/* Vendor */
 import { InertiaApp } from '@inertiajs/inertia-vue';
 import Vuex from 'vuex';
-import VueGtm from 'plugins/gtm';
-import VueMeta from 'vue-meta';
-import VueWebP from 'plugins/webp';
-import Vuelidate from 'vuelidate';
-import VuelidateErrorExtractor from 'vuelidate-error-extractor';
-import BaseFormGroup from 'components/BaseFormGroup';
+import MobileDetect from 'mobile-detect';
+
+/* Vue Plugins */
+import VueCookies from 'plugins/vue-cookies';
+import VueGsap from 'plugins/vue-gsap';
+import VueGtm from 'plugins/vue-gtm';
+import VueLang from 'plugins/vue-lang';
+import VueLodash from 'plugins/vue-lodash';
+import VueMeta from 'plugins/vue-meta';
+import VueVuelidate from 'plugins/vue-vuelidate';
+import VueWebp from 'plugins/vue-webp';
+
+// Optional
+// import VueMoment from 'plugins/vue-moment';
+// import VueSelect from 'plugins/vue-select';
+// import VueYoutube from 'plugins/vue-youtube';
 
 /* Vue Helpers */
-import { scroll, clickOutside } from 'helpers/vue-directives';
-import { capitalize, toLowerCase } from 'helpers/vue-filters';
+import { toLowerCase } from 'helpers/vue-filters';
 import mixin from 'helpers/vue-mixin';
 
-/* Vue Instance */
-import store from 'store';
+// Optional
+// import { scroll, clickOutside } from 'helpers/vue-directives';
 
-/* Other dependencies */
-import Cookies from 'js-cookie';
-import Lang from 'lang.js';
-import MobileDetect from 'mobile-detect';
+/* Vue Instance */
+import store from 'store/store';
 
 /*
 |------------------------------------------------------------------------------
@@ -56,35 +60,19 @@ if (process.env.MIX_APP_ENV === 'production') {
   Vue.config.productionTip = false;
 }
 
-Vue.prototype.$lodash = _;
-Vue.prototype.$moment = moment;
-Vue.prototype.$trans = new Lang({
-  messages: window.app_server_data.messages,
-  locale: window.app_server_data.locale,
-  fallback: window.app_server_data.fallback,
-});
-
 Vue.use(InertiaApp);
 Vue.use(Vuex);
+Vue.use(VueCookies);
+Vue.use(VueGsap);
 Vue.use(VueGtm);
+Vue.use(VueLang);
+Vue.use(VueLodash);
 Vue.use(VueMeta);
-Vue.use(VueWebP);
-Vue.use(Vuelidate);
-Vue.use(VuelidateErrorExtractor, {
-  template: BaseFormGroup,
-  name: 'BaseFormGroup',
-  messages: {
-    checked: 'Es obligatorio confirmar este campo.',
-    email: 'El email no tiene un formato válido.',
-    maxLength: 'Este campo es demasiado largo.',
-    required: 'Este campo no puede estar vacío.',
-    sameAsPassword: 'Las contraseñas deben ser iguales.',
-  },
-});
+Vue.use(VueVuelidate);
+Vue.use(VueWebp);
 
-Vue.directive('scroll', scroll);
-Vue.directive('click-outside', clickOutside);
-Vue.filter('capitalize', capitalize);
+// Vue.directive('foo', foo);
+
 Vue.filter('toLowerCase', toLowerCase);
 
 Vue.mixin(mixin);
@@ -95,7 +83,15 @@ Vue.mixin(mixin);
  * automatically register them with their "basename".
  */
 const components = require.context('./components/', true, /\.vue$/i);
-components.keys().map((key) => Vue.component(key.split('/').pop().split('.')[0], components(key).default));
+components.keys().map(key =>
+  Vue.component(
+    key
+      .split('/')
+      .pop()
+      .split('.')[0],
+    components(key).default
+  )
+);
 
 /*
 |------------------------------------------------------------------------------
@@ -110,37 +106,41 @@ components.keys().map((key) => Vue.component(key.split('/').pop().split('.')[0],
 const app = document.getElementById('app');
 
 window.Laravel = new Vue({
-  render: (h) => h(InertiaApp, {
-    props: {
-      initialPage: JSON.parse(app.dataset.page),
+  render: h =>
+    h(InertiaApp, {
+      props: {
+        initialPage: JSON.parse(app.dataset.page),
 
-      resolveComponent: (name) => require(`./pages/${name}`).default,
+        resolveComponent: name => require(`./pages/${name}`).default,
 
-      transformProps: (props) => {
-        window.Laravel.$gtm.page(route().current(), window.location.pathname);
+        transformProps: props => {
+          window.Laravel.$gtm.page(route().current(), window.location.pathname);
 
-        window.Laravel.$store.commit('ADD_BACKEND_INERTIAJS_DATA', props);
+          window.Laravel.$store.dispatch('addBackendInertiajsData', props);
 
-        const hasErrors = !_.isEmpty(props.errors);
-        if (hasErrors) {
-          console.warn('[app] Form error:', props.errors);
-        }
+          const hasErrors = !_.isEmpty(props.errors);
+          if (hasErrors) {
+            console.warn('[app] Form error:', props.errors);
+          }
 
-        const hasExceptions = !!props.flash.isError;
-        if (hasExceptions) {
-          console.warn('[app] Exception:', props.flash.status);
-        }
+          const hasExceptions = !!props.flash.isError;
+          if (hasExceptions) {
+            console.warn('[app] Exception:', props.flash.status);
+          }
 
-        return Object.assign(props, {
-          hasErrors,
-          hasExceptions,
-          hasErrorsOrExceptions: hasErrors || hasExceptions,
-        });
+          return Object.assign(props, {
+            hasErrors,
+            hasExceptions,
+            hasErrorsOrExceptions: hasErrors || hasExceptions,
+          });
+        },
       },
-    },
-  }),
+    }),
   store,
 });
+
+/* Handle loader */
+window.Laravel.$store.commit('TOGGLE_IS_LOADING', true);
 
 /* Handle server data */
 window.Laravel.$store.commit('ADD_BACKEND_STATIC_DATA', window.app_server_data);
@@ -153,9 +153,9 @@ if (window.navigator) {
 }
 
 /* Handle cookies */
-window.Laravel.$store.commit('TOGGLE_THE_COOKIE_BANNER', !Cookies.get('binalogue_cookies_notice'));
-
-/* Handle loader */
-window.Laravel.$store.commit('TOGGLE_IS_LOADING', true);
+window.Laravel.$store.commit(
+  'TOGGLE_THE_COOKIE_BANNER',
+  !Vue.$cookies.isKey('bina_cookies_notice')
+);
 
 window.Laravel.$mount(app);

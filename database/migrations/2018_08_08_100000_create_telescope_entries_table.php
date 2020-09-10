@@ -1,23 +1,13 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 class CreateTelescopeEntriesTable extends Migration
 {
-    /**
-     * The database schema.
-     *
-     * @var Schema
-     */
     protected $schema;
 
-    /**
-     * Create a new migration instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->schema = Schema::connection(
@@ -25,12 +15,7 @@ class CreateTelescopeEntriesTable extends Migration
         );
     }
 
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
+    public function up(): void
     {
         $this->schema->create('telescope_entries', function (Blueprint $table) {
             $table->bigIncrements('sequence');
@@ -55,9 +40,9 @@ class CreateTelescopeEntriesTable extends Migration
             $table->index('tag');
 
             $table->foreign('entry_uuid')
-                  ->references('uuid')
-                  ->on('telescope_entries')
-                  ->onDelete('cascade');
+                ->references('uuid')
+                ->on('telescope_entries')
+                ->onDelete('cascade');
         });
 
         $this->schema->create('telescope_monitoring', function (Blueprint $table) {
@@ -65,12 +50,7 @@ class CreateTelescopeEntriesTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
+    public function down(): void
     {
         $this->schema->dropIfExists('telescope_entries_tags');
         $this->schema->dropIfExists('telescope_entries');

@@ -1,12 +1,12 @@
 <template>
   <form
     class="AuthVerificationForm"
-    @submit.prevent="requestVerificationEmail"
+    @submit.prevent="vuelidate(requestVerificationEmail)"
   >
     <BaseSubmitButton
-      class="btn"
-      :class="submitButtonClass"
-      :disabled="submitButtonDisabled"
+      :submitting="submitting"
+      :disabled="submitting"
+      :has-errors="hasErrors"
     >
       Volver a Enviar
     </BaseSubmitButton>
@@ -14,23 +14,15 @@
 </template>
 
 <script>
+/* Mixins */
+import vuelidate from 'mixins/vuelidate';
+
 export default {
-  data() {
-    return {
-      submitButtonClass: null,
-      submitButtonDisabled: false,
-    };
-  },
+  mixins: [vuelidate],
 
   methods: {
     async requestVerificationEmail() {
-      this.submitButtonClass = 'btn-loading';
-      this.submitButtonDisabled = true;
-
       await this.$inertia.post(this.route('verification.resend'));
-
-      this.submitButtonClass = '';
-      this.submitButtonDisabled = false;
     },
   },
 };

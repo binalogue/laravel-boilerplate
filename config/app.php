@@ -15,8 +15,6 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
-    'description' => 'We ❤️ code',
-
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -180,6 +178,7 @@ return [
         Support\Providers\AuthServiceProvider::class,
         // Support\Providers\BroadcastServiceProvider::class,
         Support\Providers\EventServiceProvider::class,
+        Support\Providers\FlashServiceProvider::class,
         Support\Providers\HorizonServiceProvider::class,
         Support\Providers\InertiaServiceProvider::class,
         Support\Providers\NovaServiceProvider::class,

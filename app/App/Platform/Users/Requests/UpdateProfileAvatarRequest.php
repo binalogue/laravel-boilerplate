@@ -8,34 +8,19 @@ use Illuminate\Validation\ValidationException;
 
 class UpdateProfileAvatarRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     *
-     * @return bool
-     */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array
-     */
-    public function rules()
+    public function rules(): array
     {
         return [
-            'avatar' => 'image|mimes:jpeg,jpg,png,gif,svg|max:2000',
+            'avatar' => ['image', 'mimes:jpeg,jpg,png,gif,svg', 'max:2000'],
         ];
     }
 
-    /**
-     * Get the error messages for the defined validation rules.
-     *
-     * @return array
-     */
-    public function messages()
+    public function messages(): array
     {
         return [
             'avatar.mimes' => __('validation.custom.avatar.mimes'),
@@ -43,20 +28,10 @@ class UpdateProfileAvatarRequest extends FormRequest
         ];
     }
 
-    /**
-     * Handle a failed validation attempt.
-     *
-     * @param  \Illuminate\Contracts\Validation\Validator  $validator
-     * @return void
-     *
-     * @throws \Illuminate\Validation\ValidationException
-     */
-    protected function failedValidation(Validator $validator)
+    /** @throws \Illuminate\Validation\ValidationException */
+    protected function failedValidation(Validator $validator): void
     {
-        flash([
-            'status' => $validator->errors()->getMessageBag()->first(),
-            'isError' => true,
-        ]);
+        flash()->error($validator->errors()->getMessageBag()->first());
 
         throw (new ValidationException($validator))
             ->errorBag($this->errorBag)

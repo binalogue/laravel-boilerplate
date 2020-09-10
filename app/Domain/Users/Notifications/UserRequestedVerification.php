@@ -11,26 +11,20 @@ class UserRequestedVerification extends VerifyEmail implements ShouldQueue
 {
     use Queueable;
 
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toMail($notifiable)
+    public function toMail($notifiable): MailMessage
     {
         $verificationUrl = $this->verificationUrl($notifiable);
 
         return (new MailMessage)
-            ->subject(__('notifications.user.requested_verification.mail.subject'))
-            ->greeting(__('notifications.user.requested_verification.mail.greeting', [
-                'name' => $notifiable->name,
+            ->subject(__('users.notifications.requested_verification.mail.subject'))
+            ->greeting(__('users.notifications.requested_verification.mail.greeting', [
+                'name' => $notifiable->first_name,
             ]))
-            ->line(__('notifications.user.requested_verification.mail.intro_line'))
+            ->line(__('users.notifications.requested_verification.mail.intro_line'))
             ->action(
-                __('notifications.user.requested_verification.mail.action'),
+                __('users.notifications.requested_verification.mail.action'),
                 $verificationUrl
             )
-            ->salutation(__('notifications.user.requested_verification.mail.salutation'));
+            ->salutation(__('users.notifications.requested_verification.mail.salutation'));
     }
 }

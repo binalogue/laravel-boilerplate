@@ -1,23 +1,23 @@
 <template>
   <form
     class="AuthPasswordRequestForm"
-    @submit.prevent="$HasVuelidate_submit(requestPassword)"
+    @submit.prevent="vuelidate(requestPassword)"
   >
     <BaseInputText
       v-model="form.email"
       :v="$v.form.email"
-      label="Email"
       type="email"
       name="email"
+      label="Email"
       placeholder="Email"
     />
 
     <BaseSubmitButton
-      class="btn"
-      :class="$HasVuelidate_submitButtonClass"
-      :disabled="$HasVuelidate_submitButtonDisabled"
+      :submitting="submitting"
+      :disabled="submitting"
+      :has-errors="hasErrors"
     >
-      Recuperar Contraseña
+      Recuperar contraseña
     </BaseSubmitButton>
   </form>
 </template>
@@ -27,10 +27,10 @@
 import { required, email } from 'vuelidate/lib/validators';
 
 /* Mixins */
-import HasVuelidate from 'mixins/HasVuelidate';
+import vuelidate from 'mixins/vuelidate';
 
 export default {
-  mixins: [HasVuelidate],
+  mixins: [vuelidate],
 
   validations: {
     form: {
@@ -56,9 +56,3 @@ export default {
   },
 };
 </script>
-
-<style lang="scss">
-.AuthPasswordRequestForm {
-
-}
-</style>

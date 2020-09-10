@@ -7,6 +7,7 @@ use Domain\Users\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
+/** @see \Domain\Users\Actions\CreateUserActionTest */
 class CreateUserAction
 {
     public function execute(UserData $data): User
@@ -20,9 +21,8 @@ class CreateUserAction
     {
         $user = new User();
 
-        $user->name = $data->name;
-        $user->first_surname = $data->first_surname;
-        $user->second_surname = $data->second_surname;
+        $user->first_name = $data->first_name;
+        $user->last_name = $data->last_name;
 
         $user->email = $data->email;
         $user->email_verified_at = $data->hasVerifiedEmail()

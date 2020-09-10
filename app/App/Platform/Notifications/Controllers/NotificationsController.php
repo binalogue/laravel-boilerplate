@@ -2,18 +2,14 @@
 
 namespace App\Platform\Notifications\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Notifications\DatabaseNotification;
 use Illuminate\Support\Facades\Redirect;
 
 class NotificationsController
 {
-    /**
-     * Mark notification as read.
-     *
-     * @param  \Illuminate\Notifications\DatabaseNotification  $notification
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function __invoke(DatabaseNotification $notification)
+    /** Mark notification as read. */
+    public function __invoke(DatabaseNotification $notification): RedirectResponse
     {
         $notification->markAsRead();
 

@@ -27,7 +27,12 @@ width: 100% !important;
 <tr>
 <td align="center">
 <table class="content" width="100%" cellpadding="0" cellspacing="0" role="presentation">
-{{ $header ?? '' }}
+<td class="header">
+<a href="{{ config('app.url') }}">
+@component('mail::logo')
+@endcomponent
+</a>
+</td>
 
 <!-- Email Body -->
 <tr>

@@ -6,27 +6,24 @@ use App\Platform\Users\Requests\ProfileUpdateRequest;
 use Domain\Users\Actions\DeleteUserAction;
 use Domain\Users\Actions\UpdateUserAction;
 use Domain\Users\DataTransferObjects\UserData;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Inertia\Inertia;
+use Inertia\Response;
 
+/** @see \Tests\App\Platform\Users\Controllers\ProfileControllerTest */
 class ProfileController
 {
-    /**
-     * Display the specified resource.
-     *
-     * @return \Inertia\Response
-     */
-    public function show()
+    public function show(): Response
     {
         /** @var \Domain\Users\Models\User */
         $user = Auth::user();
 
         return Inertia::render('ProfileShowPage', [
             'profile' => fn () => [
-                'name' => $user->name,
-                'first_surname' => $user->first_surname,
-                'second_surname' => $user->second_surname,
+                'first_name' => $user->first_name,
+                'last_name' => $user->last_name,
                 'email' => $user->email,
                 'extra_attributes' => $user->extra_attributes,
                 'avatar' => $user->avatar,
@@ -34,20 +31,14 @@ class ProfileController
         ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @return \Inertia\Response
-     */
-    public function edit()
+    public function edit(): Response
     {
         $user = Auth::user();
 
         return Inertia::render('ProfileEditPage', [
             'profile' => fn () => [
-                'name' => $user->name,
-                'first_surname' => $user->first_surname,
-                'second_surname' => $user->second_surname,
+                'first_name' => $user->first_name,
+                'last_name' => $user->last_name,
                 'email' => $user->email,
                 'extra_attributes' => $user->extra_attributes,
                 'avatar' => $user->avatar,
@@ -55,42 +46,25 @@ class ProfileController
         ]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Domain\Users\Actions\UpdateUserAction  $updateUserAction
-     * @param  \App\Platform\Users\Requests\ProfileUpdateRequest  $profileUpdateRequest
-     * @return \Illuminate\Http\RedirectResponse
-     */
     public function update(
         UpdateUserAction $updateUserAction,
         ProfileUpdateRequest $profileUpdateRequest
-    ) {
+    ): RedirectResponse {
         $updateUserAction->execute(
             Auth::user(),
             UserData::fromProfileUpdateRequest($profileUpdateRequest)
         );
 
-        flash([
-            'status' => __('status.profile.updated'),
-        ]);
+        flash()->success(__('profile.flash.updated'));
 
         return Redirect::route('profile.show');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \Domain\Users\Actions\DeleteUserAction  $deleteUserAction
-     * @return \Illuminate\Http\RedirectResponse
-     */
-    public function destroy(DeleteUserAction $deleteUserAction)
+    public function destroy(DeleteUserAction $deleteUserAction): RedirectResponse
     {
         $deleteUserAction->execute(Auth::user());
 
-        flash([
-            'status' => __('status.profile.destroyed'),
-        ]);
+        flash()->success(__('profile.flash.destroyed'));
 
         return Redirect::route('home');
     }

@@ -2,15 +2,16 @@
 
 namespace Support\Http;
 
-use App\Platform\Users\Middleware\Authenticate;
-use App\Platform\Users\Middleware\MustResetPassword;
-use App\Platform\Users\Middleware\RedirectIfAuthenticated;
+use App\Platform\Auth\Middleware\Authenticate;
+use App\Platform\Auth\Middleware\MustResetPassword;
+use App\Platform\Auth\Middleware\RedirectIfAuthenticated;
+use Fruitcake\Cors\HandleCors;
 use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
 use Illuminate\Auth\Middleware\Authorize;
 use Illuminate\Auth\Middleware\EnsureEmailIsVerified;
 use Illuminate\Auth\Middleware\RequirePassword;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
-use Illuminate\Foundation\Http\Kernel as HttpKernel;
+use Illuminate\Foundation\Http\Kernel as BaseKernel;
 use Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull;
 use Illuminate\Foundation\Http\Middleware\ValidatePostSize;
 use Illuminate\Http\Middleware\SetCacheHeaders;
@@ -20,7 +21,6 @@ use Illuminate\Routing\Middleware\ValidateSignature;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Reinink\RememberQueryStrings;
 use Support\Http\Middleware\CheckForMaintenanceMode;
 use Support\Http\Middleware\EncryptCookies;
 use Support\Http\Middleware\RobotsMiddleware;
@@ -28,7 +28,7 @@ use Support\Http\Middleware\TrimStrings;
 use Support\Http\Middleware\TrustProxies;
 use Support\Http\Middleware\VerifyCsrfToken;
 
-class Kernel extends HttpKernel
+class Kernel extends BaseKernel
 {
     /**
      * The application's global HTTP middleware stack.
@@ -38,11 +38,12 @@ class Kernel extends HttpKernel
      * @var array
      */
     protected $middleware = [
+        TrustProxies::class,
+        HandleCors::class,
         CheckForMaintenanceMode::class,
         ValidatePostSize::class,
         TrimStrings::class,
         ConvertEmptyStringsToNull::class,
-        TrustProxies::class,
         RobotsMiddleware::class,
     ];
 
@@ -84,7 +85,6 @@ class Kernel extends HttpKernel
         'guest' => RedirectIfAuthenticated::class,
         'password.confirm' => RequirePassword::class,
         'password.reset' => MustResetPassword::class,
-        'remember' => RememberQueryStrings::class,
         'signed' => ValidateSignature::class,
         'throttle' => ThrottleRequests::class,
         'verified' => EnsureEmailIsVerified::class,

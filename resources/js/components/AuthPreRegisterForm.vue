@@ -1,22 +1,21 @@
 <template>
   <form
     class="AuthPreRegisterForm"
-    @submit.prevent="$HasVuelidate_submit(registerWithEmail)"
+    @submit.prevent="vuelidate(registerWithEmail)"
   >
     <BaseInputText
       v-model="form.email"
       :v="$v.form.email"
-      label="Email"
       type="email"
       name="email"
+      label="Email"
       placeholder="Email"
-      class="AuthPreRegisterForm__input"
     />
 
     <BaseSubmitButton
-      class="AuthPreRegisterForm__button btn"
-      :class="$HasVuelidate_submitButtonClass"
-      :disabled="$HasVuelidate_submitButtonDisabled"
+      :submitting="submitting"
+      :disabled="submitting"
+      :has-errors="hasErrors"
     >
       Siguiente
     </BaseSubmitButton>
@@ -28,10 +27,10 @@
 import { email, required } from 'vuelidate/lib/validators';
 
 /* Mixins */
-import HasVuelidate from 'mixins/HasVuelidate';
+import vuelidate from 'mixins/vuelidate';
 
 export default {
-  mixins: [HasVuelidate],
+  mixins: [vuelidate],
 
   validations: {
     form: {
@@ -52,7 +51,7 @@ export default {
 
   methods: {
     async registerWithEmail() {
-      await this.$inertia.visit(this.route('register.email'), {
+      await this.$inertia.visit(this.route('register.form'), {
         data: this.form,
       });
     },
@@ -60,11 +59,11 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .AuthPreRegisterForm {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   width: 100%;
 }
-
 </style>

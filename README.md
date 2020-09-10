@@ -6,7 +6,7 @@
 
 <!-- ⬇️ REMOVE -->
 
-This repository contains a skeleton to easily create Laravel 5 and Vue.js applications 🚀
+This repository contains a skeleton to easily create Laravel 7 and Vue.js applications 🚀
 
 If you are cloning this repository to use in another project, please see the SETUP.md file to get a fresh copy of this boilerplate.
 
@@ -18,7 +18,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-- [Docker](https://www.docker.com/) >= 18.09.2
+- [Docker](https://www.docker.com/) >= 19.03.12
 
 ### Installing
 
@@ -48,7 +48,11 @@ These instructions will get you a copy of the project up and running on your loc
 
 ## Running the tests
 
-This site doesn't have any tests.
+To run all the PHPUnit tests:
+
+```bash
+composer test
+```
 
 ## Deployment
 
@@ -59,19 +63,6 @@ We have set up **continuous deployment** with Laravel Forge. Every time we push 
 - [Laravel](https://laravel.com) - The PHP Framework For Web Artisans
 - [Composer](https://getcomposer.org/) - Dependency Manager for PHP
 - [Docker](https://www.docker.com/) - Enterprise-ready container platform to cost-effectively build and manage your application
-
-<!-- ⬇️ OPTIONAL -->
-
-## Versioning
-
-We use [SemVer](https://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://gitlab.com/binalogue/laravel-boilerplate/-/tags).
-
-New release checklist:
-
-- Change version in `package.json`
-- Update `CHANGELOG.md`
-
-<!-- ⬆️ OPTIONAL -->
 
 ## Authors
 

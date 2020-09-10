@@ -1,6 +1,6 @@
 export const scroll = {
   inserted(el, binding) {
-    const f = (evt) => {
+    const f = evt => {
       if (binding.value(evt, el)) {
         window.removeEventListener('scroll', f);
       }
@@ -14,12 +14,14 @@ export const clickOutside = {
     if (typeof binding.value !== 'function') {
       const compName = vNode.context.name;
       let warn = `[Vue-click-outside:] provided expression '${binding.expression}' is not a function, but has to be`;
-      if (compName) { warn += `Found in component '${compName}'`; }
+      if (compName) {
+        warn += `Found in component '${compName}'`;
+      }
 
       console.warn(warn);
     }
     const { bubble } = binding.modifiers;
-    const handler = (e) => {
+    const handler = e => {
       if (bubble || (!el.contains(e.target) && el !== e.target)) {
         binding.value(e);
       }

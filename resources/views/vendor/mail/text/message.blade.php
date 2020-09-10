@@ -2,7 +2,7 @@
     {{-- Header --}}
     @slot('header')
         @component('mail::header', ['url' => config('app.url')])
-            {{ config('app.name') }}
+            {{ nova_get_setting('app_name', config('app.name')) }}
         @endcomponent
     @endslot
 
@@ -21,7 +21,7 @@
     {{-- Footer --}}
     @slot('footer')
         @component('mail::footer')
-            © {{ date('Y') }} {{ config('app.name') }}. @lang('All rights reserved.')
+        © {{ date('Y') }} {{ nova_get_setting('app_name', config('app.name')) }}. @lang('All rights reserved.')
         @endcomponent
     @endslot
 @endcomponent

@@ -12,22 +12,12 @@ use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
 {
-    /**
-     * The policy mappings for the application.
-     *
-     * @var array
-     */
     protected $policies = [
         Role::class => RolePolicy::class,
         User::class => UserPolicy::class,
     ];
 
-    /**
-     * Register any authentication / authorization services.
-     *
-     * @return void
-     */
-    public function boot()
+    public function boot(): void
     {
         $this->registerPolicies();
 
@@ -35,7 +25,12 @@ class AuthServiceProvider extends ServiceProvider
 
         Gate::define('view-any-id', fn ($user) => $user->isSuperAdmin());
 
-        Gate::define('update-email', UserPolicy::class.'@updateEmail');
-        Gate::define('update-password', UserPolicy::class.'@updatePassword');
+        Gate::define('update-role-attribute', UserPolicy::class . '@updateRoleAttribute');
+        Gate::define('update-email-attribute', UserPolicy::class . '@updateEmailAttribute');
+        Gate::define('update-password-attribute', UserPolicy::class . '@updatePasswordAttribute');
+        Gate::define(
+            'update-has-notifications-enabled-attribute',
+            UserPolicy::class . '@updateHasNotificationsEnabledAttribute'
+        );
     }
 }

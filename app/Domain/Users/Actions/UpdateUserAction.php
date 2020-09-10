@@ -19,9 +19,8 @@ class UpdateUserAction
     {
         // Do not update email!
 
-        $user->name = $data->name ?? $user->name;
-        $user->first_surname = $data->first_surname ?? $user->first_surname;
-        $user->second_surname = $data->second_surname ?? $user->second_surname;
+        $user->first_name = $data->first_name ?? $user->first_name;
+        $user->last_name = $data->last_name ?? $user->last_name;
 
         if ($data->password) {
             $user->password = Hash::make($data->password);

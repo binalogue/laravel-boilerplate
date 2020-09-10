@@ -11,31 +11,25 @@ class UserForgotPassword extends ResetPassword implements ShouldQueue
 {
     use Queueable;
 
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
-    public function toMail($notifiable)
+    public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject(__('notifications.user.forgot_password.mail.subject'))
-            ->greeting(__('notifications.user.forgot_password.mail.greeting', [
-                'name' => $notifiable->name,
+            ->subject(__('users.notifications.forgot_password.mail.subject'))
+            ->greeting(__('users.notifications.forgot_password.mail.greeting', [
+                'name' => $notifiable->first_name,
             ]))
-            ->line(__('notifications.user.forgot_password.mail.intro_line'))
+            ->line(__('users.notifications.forgot_password.mail.intro_line'))
             ->action(
-                __('notifications.user.forgot_password.mail.action'),
+                __('users.notifications.forgot_password.mail.action'),
                 url(route('password.reset', [
                     'token' => $this->token,
                     'email' => $notifiable->getEmailForPasswordReset(),
                 ]))
             )
-            ->line(__('notifications.user.forgot_password.mail.outro_line_1', [
-                'count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire'),
+            ->line(__('users.notifications.forgot_password.mail.outro_line_1', [
+                'count' => config('auth.passwords.' . config('auth.defaults.passwords') . '.expire'),
             ]))
-            ->line(__('notifications.user.forgot_password.mail.outro_line_2'))
-            ->salutation(__('notifications.user.forgot_password.mail.salutation'));
+            ->line(__('users.notifications.forgot_password.mail.outro_line_2'))
+            ->salutation(__('users.notifications.forgot_password.mail.salutation'));
     }
 }

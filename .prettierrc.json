@@ -1,6 +1,5 @@
 {
-  "bracketSpacing": false,
-  "printWidth": 100,
+  "bracketSpacing": true,
   "semi": true,
   "singleQuote": true,
   "tabWidth": 2,

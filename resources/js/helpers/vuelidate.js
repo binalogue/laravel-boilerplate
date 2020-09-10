@@ -1,6 +1,6 @@
-export const checked = (value) => value;
+export const checked = value => value;
 
-export const time = (value) => {
+export const time = value => {
   if (!value) {
     return true;
   }

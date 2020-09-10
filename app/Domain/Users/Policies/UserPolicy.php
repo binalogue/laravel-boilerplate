@@ -11,64 +11,31 @@ class UserPolicy
 
     public function before($user, $ability)
     {
-        if (in_array($ability, [
-            'delete',
-            'forceDelete',
-        ])) {
-            return;
-        }
-
         if ($user->isSuperAdmin()) {
             return true;
         }
     }
 
-    /**
-     * Determine whether the user can view any users.
-     *
-     * @param \Domain\Users\Models\User $user
-     *
-     * @return bool
-     */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
     {
         return true;
     }
 
-    /**
-     * Determine whether the user can view the model.
-     *
-     * @param \Domain\Users\Models\User $user
-     * @param \Domain\Users\Models\User $model
-     *
-     * @return bool
-     */
-    public function view(User $user, User $model)
+    public function view(User $user, User $model): bool
     {
         return true;
     }
 
-    /**
-     * Determine whether the user can create models.
-     *
-     * @param \Domain\Users\Models\User $user
-     *
-     * @return bool
-     */
-    public function create(User $user)
+    public function create(User $user): bool
     {
+        if ($user->isAdmin()) {
+            return true;
+        }
+
         return false;
     }
 
-    /**
-     * Determine whether the user can update the model.
-     *
-     * @param \Domain\Users\Models\User $user
-     * @param \Domain\Users\Models\User $model
-     *
-     * @return bool
-     */
-    public function update(User $user, User $model)
+    public function update(User $user, User $model): bool
     {
         if ($model->is($user)) {
             return true;
@@ -85,58 +52,30 @@ class UserPolicy
         return false;
     }
 
-    /**
-     * Determine whether the user can delete the model.
-     *
-     * @param \Domain\Users\Models\User $user
-     * @param \Domain\Users\Models\User $model
-     *
-     * @return bool
-     */
-    public function delete(User $user, User $model)
+    public function delete(User $user, User $model): bool
     {
-        if ($model->isSuperAdmin()) {
-            return false;
-        }
-
-        if ($user->isSuperAdmin()) {
+        if ($model->is($user)) {
             return true;
         }
 
-        return $user->id === $model->id;
+        if ($model->isAdmin()) {
+            return false;
+        }
+
+        if ($user->isEditor()) {
+            return true;
+        }
+
+        return false;
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     *
-     * @param \Domain\Users\Models\User $user
-     * @param \Domain\Users\Models\User $model
-     *
-     * @return bool
-     */
-    public function restore(User $user, User $model)
+    public function restore(User $user, User $model): bool
     {
         return false;
     }
 
-    /**
-     * Determine whether the user can permanently delete the model.
-     *
-     * @param \Domain\Users\Models\User $user
-     * @param \Domain\Users\Models\User $model
-     *
-     * @return bool
-     */
-    public function forceDelete(User $user, User $model)
+    public function forceDelete(User $user, User $model): bool
     {
-        if ($model->isSuperAdmin()) {
-            return false;
-        }
-
-        if ($user->isSuperAdmin()) {
-            return true;
-        }
-
         return false;
     }
 
@@ -146,7 +85,16 @@ class UserPolicy
     |--------------------------------------------------------------------------
     */
 
-    public function updateEmail(User $user, User $model)
+    public function updateRoleAttribute(User $user, User $model): bool
+    {
+        if ($user->isAdmin()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function updateEmailAttribute(User $user, User $model): bool
     {
         if ($model->is($user)) {
             return true;
@@ -155,7 +103,16 @@ class UserPolicy
         return false;
     }
 
-    public function updatePassword(User $user, User $model)
+    public function updatePasswordAttribute(User $user, User $model): bool
+    {
+        if ($model->is($user)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function updateHasNotificationsEnabledAttribute(User $user, User $model): bool
     {
         if ($model->is($user)) {
             return true;

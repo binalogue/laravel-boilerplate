@@ -1,32 +1,32 @@
 <template>
   <form
     class="AuthPasswordForceResetForm"
-    @submit.prevent="$HasVuelidate_submit(createNewPassword)"
+    @submit.prevent="vuelidate(createNewPassword)"
   >
     <BaseInputText
       v-model="form.password"
       :v="$v.form.password"
-      label="Contraseña"
       type="password"
       name="password"
+      label="Contraseña"
       placeholder="Contraseña"
     />
 
     <BaseInputText
       v-model="form.password_confirmation"
       :v="$v.form.password_confirmation"
-      label="Confirmar Contraseña"
       type="password"
       name="password_confirmation"
-      placeholder="Confirmar Contraseña"
+      label="Confirmar contraseña"
+      placeholder="Confirmar contraseña"
     />
 
     <BaseSubmitButton
-      class="btn"
-      :class="$HasVuelidate_submitButtonClass"
-      :disabled="$HasVuelidate_submitButtonDisabled"
+      :submitting="submitting"
+      :disabled="submitting"
+      :has-errors="hasErrors"
     >
-      Resetear Contraseña
+      Resetear contraseña
     </BaseSubmitButton>
   </form>
 </template>
@@ -36,10 +36,10 @@
 import { required, sameAs } from 'vuelidate/lib/validators';
 
 /* Mixins */
-import HasVuelidate from 'mixins/HasVuelidate';
+import vuelidate from 'mixins/vuelidate';
 
 export default {
-  mixins: [HasVuelidate],
+  mixins: [vuelidate],
 
   validations: {
     form: {
@@ -63,7 +63,10 @@ export default {
 
   methods: {
     async createNewPassword() {
-      await this.$inertia.post(this.route('password.force_reset_update'), this.form);
+      await this.$inertia.post(
+        this.route('password.forceResetUpdate'),
+        this.form
+      );
     },
   },
 };

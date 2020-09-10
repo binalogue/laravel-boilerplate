@@ -1,13 +1,17 @@
 <template>
   <main class="App">
+    <transition name="fade">
+      <TheLoader v-if="$store.state.isLoading" />
+    </transition>
+
     <slot />
 
     <transition name="fade">
-      <TheCookieBanner v-if="$store.state.isShownTheCookieBanner" />
+      <TheFlashStatus v-if="$store.state.isShownTheFlashStatus" />
     </transition>
 
     <transition name="fade">
-      <TheLoader v-if="$store.state.isLoading" />
+      <TheCookieBanner v-if="$store.state.isShownTheCookieBanner" />
     </transition>
   </main>
 </template>
@@ -24,7 +28,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "~@sass/app";
+@import '~@sass/app';
 
 .App {
   display: flex;

@@ -2,11 +2,7 @@
   <div>
     <slot />
 
-    <span
-      v-if="hasFrontendOrBackendErrors"
-      class="input-error"
-    >
-      <IconExclamation />
+    <span v-if="hasFrontendOrBackendErrors" class="input-error">
       {{ error }}
     </span>
   </div>
@@ -33,8 +29,10 @@ export default {
     },
 
     hasBackendErrors() {
-      return this.$page.hasErrors
-        && Object.prototype.hasOwnProperty.call(this.$page.errors, this.name);
+      return (
+        this.$page.hasErrors &&
+        Object.prototype.hasOwnProperty.call(this.$page.errors, this.name)
+      );
     },
 
     hasFrontendErrors() {

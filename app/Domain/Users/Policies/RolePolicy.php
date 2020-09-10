@@ -17,84 +17,41 @@ class RolePolicy
         }
     }
 
-    /**
-     * Determine whether the user can view any roles.
-     *
-     * @param  \Domain\Users\Models\User  $user
-     * @return mixed
-     */
-    public function viewAny(User $user)
+    public function viewAny(User $user): bool
+    {
+        if ($user->isAdmin()) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function view(User $user, Role $role): bool
+    {
+        return true;
+    }
+
+    public function create(User $user): bool
     {
         return false;
     }
 
-    /**
-     * Determine whether the user can view the role.
-     *
-     * @param  \Domain\Users\Models\User  $user
-     * @param  \Domain\Users\Models\Role  $role
-     * @return mixed
-     */
-    public function view(User $user, Role $role)
+    public function update(User $user, Role $role): bool
     {
         return false;
     }
 
-    /**
-     * Determine whether the user can create roles.
-     *
-     * @param  \Domain\Users\Models\User  $user
-     * @return mixed
-     */
-    public function create(User $user)
+    public function delete(User $user, Role $role): bool
     {
         return false;
     }
 
-    /**
-     * Determine whether the user can update the role.
-     *
-     * @param  \Domain\Users\Models\User  $user
-     * @param  \Domain\Users\Models\Role  $role
-     * @return mixed
-     */
-    public function update(User $user, Role $role)
+    public function restore(User $user, Role $role): bool
     {
         return false;
     }
 
-    /**
-     * Determine whether the user can delete the role.
-     *
-     * @param  \Domain\Users\Models\User  $user
-     * @param  \Domain\Users\Models\Role  $role
-     * @return mixed
-     */
-    public function delete(User $user, Role $role)
-    {
-        return false;
-    }
-
-    /**
-     * Determine whether the user can restore the role.
-     *
-     * @param  \Domain\Users\Models\User  $user
-     * @param  \Domain\Users\Models\Role  $role
-     * @return mixed
-     */
-    public function restore(User $user, Role $role)
-    {
-        return false;
-    }
-
-    /**
-     * Determine whether the user can permanently delete the role.
-     *
-     * @param  \Domain\Users\Models\User  $user
-     * @param  \Domain\Users\Models\Role  $role
-     * @return mixed
-     */
-    public function forceDelete(User $user, Role $role)
+    public function forceDelete(User $user, Role $role): bool
     {
         return false;
     }

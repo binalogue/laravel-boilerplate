@@ -8,6 +8,7 @@ use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Logout;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Events\Verified;
+use Illuminate\Events\Dispatcher;
 
 class UserSubscriber
 {
@@ -37,32 +38,26 @@ class UserSubscriber
         //
     }
 
-    /**
-     * Register the listeners for the subscriber.
-     *
-     * @param  \Illuminate\Events\Dispatcher  $dispatcher
-     * @return void
-     */
-    public function subscribe($dispatcher)
+    public function subscribe(Dispatcher $dispatcher): void
     {
         $dispatcher->listen(
             Registered::class,
-            self::class.'@handleUserRegistered'
+            self::class . '@handleUserRegistered'
         );
 
         $dispatcher->listen(
             Verified::class,
-            self::class.'@handleUserVerified'
+            self::class . '@handleUserVerified'
         );
 
         $dispatcher->listen(
             Login::class,
-            self::class.'@handleUserLogin'
+            self::class . '@handleUserLogin'
         );
 
         $dispatcher->listen(
             Logout::class,
-            self::class.'@handleUserLogout'
+            self::class . '@handleUserLogout'
         );
     }
 }

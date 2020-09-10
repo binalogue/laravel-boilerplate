@@ -1,7 +1,7 @@
 <template>
   <div class="TheCookieBanner">
     <div class="TheCookieBanner__container">
-      <p v-html="$trans.get('messages.global.cookie_banner')" />
+      <p v-html="$lang.get('components.the_cookie_banner.html')" />
 
       <button
         type="button"
@@ -17,17 +17,11 @@
 </template>
 
 <script>
-/* Vendor */
-import { mapMutations } from 'vuex';
-import Cookies from 'js-cookie';
-
 export default {
   methods: {
-    ...mapMutations(['TOGGLE_THE_COOKIE_BANNER']),
-
     acceptCookies() {
-      Cookies.set('binalogue_cookies_notice', '1');
-      this.TOGGLE_THE_COOKIE_BANNER(false);
+      this.$cookies.set('bina_cookies_notice', '1');
+      this.$store.commit('TOGGLE_THE_COOKIE_BANNER', false);
     },
   },
 };
@@ -35,35 +29,42 @@ export default {
 
 <style lang="scss">
 .TheCookieBanner {
+  a {
+    @include text-s;
+
+    color: $white;
+    text-decoration: underline;
+  }
+}
+</style>
+
+<style lang="scss" scoped>
+.TheCookieBanner {
   position: fixed;
   top: 0;
   right: 0;
   left: 0;
   display: flex;
-  justify-content: center;
   align-items: center;
-  background: $alerts;
+  justify-content: center;
   padding: 1vh 0;
+  background: $alerts;
 
   &__container {
     @include container;
+
     justify-content: space-between;
 
     p {
       @include text-s;
-      margin-right: 5vw;
-    }
 
-    a {
-      @include text-s;
-      color: $white;
-      text-decoration: underline;
+      margin-right: 5vw;
     }
   }
 
   &__close {
-    border: 0;
     background: transparent;
+    border: 0;
 
     span {
       font-size: 30px;

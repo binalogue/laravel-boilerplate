@@ -53,7 +53,7 @@
 {{-- Subcopy --}}
 @isset ($actionText)
 @component('mail::subcopy')
-@lang('messages.notifications.subcopy', [
+@lang('mail.subcopy', [
     'action_text' => $actionText,
     'action_url' => $actionUrl,
 ])

@@ -1,23 +1,31 @@
 <template>
   <div class="TheHeader">
     <inertia-link
-      :href="route('home')"
       class="TheHeader__logo"
-      :style="{
-        pointerEvents: route().current() === 'home'
-          ? 'none'
-          : 'auto',
+      :class="{
+        'pointer-events-none': $store.state.route.name === 'home',
       }"
+      :href="route('home')"
+      @click="handleClickLogo"
     >
-      <img
-        v-webp="'/images/binalogue-logo.png'"
-        alt="Binalogue"
-      >
+      <img v-webp="'/images/logo.png'" alt="Binalogue" />
     </inertia-link>
   </div>
 </template>
 
-<style lang="scss">
+<script>
+export default {
+  methods: {
+    handleClickLogo() {
+      this.$gtm.track('go-to-home-page', {
+        category: 'engagement',
+      });
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
 .TheHeader {
   display: flex;
   width: 100%;

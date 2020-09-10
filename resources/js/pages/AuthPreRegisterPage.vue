@@ -1,23 +1,20 @@
 <template>
   <div class="AuthPreRegisterPage">
-    <div class="AuthPreRegisterPage__content">
-      <div class="AuthPreRegisterPage__register">
-        <h2 class="AuthPreRegisterPage__register--title">
+    <div class="AuthPreRegisterPage__container">
+      <div class="AuthPreRegisterPage__content">
+        <h2 class="title">
           Regístrate con:
         </h2>
 
         <!-- Do not use <inertia-link></inertia-link> for OAuth -->
-        <a
-          class="btn"
-          :href="route('oauth', {
-            driver: 'google',
-          })"
-        >
+        <a class="btn" :href="route('oauth', { driver: 'google' })">
           Regístrate con Google
           <LogoGoogle />
         </a>
 
-        <h2 class="AuthPreRegisterPage__register--title">
+        <hr class="AuthPreRegisterPage__separator" />
+
+        <h2 class="title">
           O si lo prefieres...
         </h2>
 
@@ -32,12 +29,12 @@
 import { mainLayout } from 'helpers/vue-layouts';
 
 /* Mixins */
-import Page from 'mixins/Page';
+import page from 'mixins/page';
 
 export default {
   layout: mainLayout,
 
-  mixins: [Page],
+  mixins: [page],
 
   metaInfo() {
     return {
@@ -47,69 +44,65 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .AuthPreRegisterPage {
   @include page;
-  height: 100%;
-  justify-content: flex-start;
 
-  &__content {
-    width: 90%;
-    padding: 10vh 0;
+  justify-content: flex-start;
+  height: 100%;
+
+  .title {
+    margin-bottom: 3vh;
+  }
+
+  &__container {
     display: flex;
-    justify-content: center;
     flex-direction: column-reverse;
     align-items: center;
+    justify-content: center;
+    width: 90%;
+    padding: 10vh 0;
 
     @include tablet-m {
       flex-direction: row;
-      align-items: start;
+      align-items: flex-start;
     }
   }
 
-  &__register {
-    width: auto;
-    padding: 0;
+  &__content {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: auto;
+    padding: 0;
     margin-bottom: 30px;
 
     @include tablet {
       width: 550px;
-      margin-bottom: 0;
       padding: 0 50px;
-    }
-
-    &--title {
-      @include title;
-      margin-bottom: 3vh;
+      margin-bottom: 0;
     }
 
     .btn {
-      width: 100%;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      width: 100%;
       margin-bottom: 15px;
 
       svg {
-        fill: $black;
-        height: 29px;
         width: auto;
+        height: 29px;
         margin-left: 15px;
-
-        @include transition;
-      }
-
-      &:hover {
-        background: $primary;
-
-        svg {
-          fill: $white;
-        }
+        fill: $black;
       }
     }
+  }
+
+  &__separator {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 30px;
   }
 }
 </style>

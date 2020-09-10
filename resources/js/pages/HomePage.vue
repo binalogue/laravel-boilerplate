@@ -1,17 +1,11 @@
 <template>
   <div class="HomePage">
     <main class="HomePage__main animated fade-in-up delay-05s">
-      <h1 class="HomePage__main--title">
+      <h1 class="title">
         We ❤️ code
       </h1>
 
-      <inertia-link
-        href="#"
-        class="btn"
-        @click="$gtm.track('test-click', {
-          category: 'engagement',
-        })"
-      >
+      <inertia-link href="#" class="btn" @click="trackClick">
         Comenzar
       </inertia-link>
     </main>
@@ -27,12 +21,12 @@ import 'pxloader/PxLoaderImage';
 import { mainLayout } from 'helpers/vue-layouts';
 
 /* Mixins */
-import Page from 'mixins/Page';
+import page from 'mixins/page';
 
 export default {
-  layout: mainLayout,
+  mixins: [page],
 
-  mixins: [Page],
+  layout: mainLayout,
 
   metaInfo() {
     return {
@@ -40,63 +34,62 @@ export default {
     };
   },
 
-  data() {
-    return {
-      pxloader: null,
-    };
-  },
-
   created() {
-    this.$$setupLoader();
+    this.setupPageLoader();
   },
 
   methods: {
-    async $$setupLoader() {
+    async setupPageLoader() {
       return [
-        await this.$$loadFake(),
+        await this.loadFake(),
         // await this.loadImages(),
       ];
     },
 
     loadImages() {
-      return new Promise((resolve) => {
-        this.pxloader = new PxLoader();
+      return new Promise(resolve => {
+        const pxloader = new PxLoader();
 
-        this.pxloader.addImage(this.webp('/images/binalogue-logo.png'));
+        pxloader.addImage(this.webp('/images/logo.png'));
 
         if (this.$store.state.isPhone) {
-          this.pxloader.addImage(this.webp('/images/binalogue-bg-home-mobile.jpg'));
+          pxloader.addImage(this.webp('/images/binalogue-bg-home-mobile.jpg'));
         } else {
-          this.pxloader.addImage(this.webp('/images/binalogue-bg-home-desktop.jpg'));
+          pxloader.addImage(this.webp('/images/binalogue-bg-home-desktop.jpg'));
         }
 
-        this.pxloader.addCompletionListener(() => {
+        pxloader.addCompletionListener(() => {
           resolve('loadImages');
         });
 
-        this.pxloader.start();
+        pxloader.start();
+      });
+    },
+
+    trackClick() {
+      this.$gtm.track('test-click', {
+        category: 'engagement',
       });
     },
   },
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .HomePage {
   @include page;
-  // background: red;
+
+  .title {
+    margin-bottom: 3vh;
+  }
 
   &__main {
     @include container;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 10vh;
 
-    &--title {
-      @include title;
-      margin-bottom: 3vh;
-    }
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10vh;
   }
 }
 </style>

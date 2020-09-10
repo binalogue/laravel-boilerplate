@@ -9,11 +9,6 @@ trait MustVerifyEmail
 {
     use BaseMustVerifyEmail;
 
-    /**
-     * Send the email verification notification.
-     *
-     * @return void
-     */
     public function sendEmailVerificationNotification()
     {
         $this->notify(new UserRequestedVerification());

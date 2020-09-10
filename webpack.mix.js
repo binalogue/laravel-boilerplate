@@ -44,9 +44,7 @@ const options = {
   // - [Autoprefixer PostCSS plugin](https://github.com/postcss/autoprefixer)
   // - [browserslist](https://github.com/browserslist/browserslist)
   autoprefixer: true,
-  postCss: [
-    autoprefixer,
-  ],
+  postCss: [autoprefixer],
 };
 
 mix
@@ -67,6 +65,7 @@ mix
     plugins: [
       new StyleLintPlugin({
         files: ['./resources/**/*.{scss,vue}'],
+        fix: true,
       }),
     ],
 
@@ -103,9 +102,9 @@ mix
 
     await imagemin([allImages], {
       destination: outputFolder,
-      pngquant: ({
+      pngquant: {
         quality: '65-65',
-      }),
+      },
       plugins: [
         ImageminMozjpeg({
           quality: 65,
@@ -162,13 +161,10 @@ if (mix.inProduction()) {
     .purgeCss({
       whitelistPatternsChildren: [
         /active/,
-        /animated/,
-        /delay/,
-        /enter/,
-        /fade-in/,
-        /fade-out/,
-        /leave/,
+        /hooper/,
         /nprogress/,
+        /v-select/,
+        /vs/,
       ],
     });
 }

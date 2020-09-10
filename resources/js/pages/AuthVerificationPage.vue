@@ -1,14 +1,14 @@
 <template>
   <div class="AuthVerificationPage">
     <div class="AuthVerificationPage__content">
-      <h1 class="AuthVerificationPage__content--title">
+      <h1 class="title">
         Verificar Email
       </h1>
 
-      <h2 class="AuthVerificationPage__content--subtitle">
+      <h2 class="text">
         Antes de continuar, debes verificar tu email.
 
-        <br>
+        <br />
 
         Si no has recibido ningún email:
       </h2>
@@ -23,12 +23,12 @@
 import { mainLayout } from 'helpers/vue-layouts';
 
 /* Mixins */
-import Page from 'mixins/Page';
+import page from 'mixins/page';
 
 export default {
-  layout: mainLayout,
+  mixins: [page],
 
-  mixins: [Page],
+  layout: mainLayout,
 
   metaInfo() {
     return {
@@ -38,35 +38,26 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .AuthVerificationPage {
   @include page;
 
-  height: 100%;
   justify-content: flex-start;
+  height: 100%;
+
+  .title {
+    margin-bottom: 3vh;
+  }
+
+  .text {
+    margin-bottom: 3vh;
+    font-weight: 400;
+  }
 
   &__content {
     width: 90%;
     max-width: 550px;
     padding: 15vh 0;
-
-    &--title {
-      @include title;
-      margin-bottom: 3vh;
-    }
-
-    &--subtitle {
-      @include text;
-
-      font-weight: 400;
-      margin-bottom: 3vh;
-    }
-
-    .link {
-      color: $white;
-      display: inline-block;
-      margin: 30px 0 ;
-    }
   }
 }
 </style>

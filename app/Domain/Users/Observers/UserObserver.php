@@ -7,24 +7,12 @@ use Domain\Users\Models\User;
 
 class UserObserver
 {
-    /**
-     * Handle the user "deleting" event.
-     *
-     * @param  \Domain\Users\Models\User  $user
-     * @return void
-     */
-    public function deleting(User $user)
+    public function deleting(User $user): void
     {
         //
     }
 
-    /**
-     * Handle the user "deleted" event.
-     *
-     * @param  \Domain\Users\Models\User  $user
-     * @return void
-     */
-    public function deleted(User $user)
+    public function deleted(User $user): void
     {
         (new DeleteUserAvatarsAction())->execute($user);
     }

@@ -10,50 +10,45 @@ use Support\SeoTools\Facades\MetaTags;
 
 class InertiaServiceProvider extends ServiceProvider
 {
-    /**
-     * Register services.
-     *
-     * @return void
-     */
-    public function register()
+    public function register(): void
     {
         Inertia::version(function () {
             return md5_file(public_path('mix-manifest.json'));
         });
 
         Inertia::share([
-            'auth' => fn () => Auth::check()
-                ? [
-                    'user' => [
-                        'id' => Auth::user()->id,
-                        'name' => Auth::user()->name,
-                        'email' => Auth::user()->email,
-                    ],
+            'auth' => function () {
+                if (Auth::check()) {
+                    /** @var \Domain\Users\Models\User */
+                    $user = Auth::user();
 
-                    'notifications' => Auth::user()->unreadNotificationsMessages(),
-                ]
-                : null,
+                    return [
+                        'user' => [
+                            'id' => $user->id,
+                            'name' => $user->name,
+                            'email' => $user->email,
+                        ],
 
-            'csrfToken' => function () {
-                return csrf_token();
+                        'notifications' => $user->unreadNotificationsMessages(),
+                    ];
+                }
+
+                return null;
             },
 
-            'errors' => function () {
-                return Session::get('errors')
-                    ? Session::get('errors')->getBag('default')->getMessages()
-                    : (object) [];
-            },
+            'csrfToken' => fn () => csrf_token(),
 
-            'flash' => function () {
-                return [
-                    'status' => Session::get('status'),
-                    'isError' => Session::get('isError'),
-                ];
-            },
+            'errors' => fn () => Session::get('errors')
+                ? Session::get('errors')->getBag('default')->getMessages()
+                : (object) [],
 
-            'meta' => function () {
-                return MetaTags::generateVueMeta();
-            },
+            'flash' => fn () => [
+                'message' => flash()->message,
+                'level' => flash()->level,
+                'class' => flash()->class,
+            ],
+
+            'meta' => fn () => MetaTags::generateVueMeta(),
         ]);
     }
 }

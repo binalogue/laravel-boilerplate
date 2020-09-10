@@ -2,7 +2,7 @@
 
 namespace Domain\Users\DataTransferObjects;
 
-use App\Platform\Users\Requests\AuthRegisterRequest;
+use App\Platform\Auth\Requests\RegisterRequest;
 use App\Platform\Users\Requests\ProfileUpdateRequest;
 use App\Platform\Users\Requests\UpdateProfileAvatarRequest;
 use Illuminate\Http\UploadedFile;
@@ -11,9 +11,8 @@ use Spatie\DataTransferObject\DataTransferObject;
 
 class UserData extends DataTransferObject
 {
-    public ?string $name;
-    public ?string $first_surname;
-    public ?string $second_surname;
+    public ?string $first_name;
+    public ?string $last_name;
     public ?string $email;
     public ?string $password;
 
@@ -34,36 +33,32 @@ class UserData extends DataTransferObject
         return new self($array);
     }
 
-    public static function fromAuthRegisterRequest(
-        AuthRegisterRequest $authRegisterRequest
+    public static function fromRegisterRequest(
+        RegisterRequest $registerRequest
     ): self {
         return new self([
-            'name' => $authRegisterRequest->get('name'),
-            'first_surname' => $authRegisterRequest->get('first_surname'),
-            'second_surname' => $authRegisterRequest->get('second_surname'),
-            'email' => $authRegisterRequest->get('email'),
-            'password' => $authRegisterRequest->get('password'),
+            'first_name' => $registerRequest->get('first_name'),
+            'last_name' => $registerRequest->get('last_name'),
+            'email' => $registerRequest->get('email'),
+            'password' => $registerRequest->get('password'),
 
-            'google_id' => $authRegisterRequest->get('google_id'),
-            'avatar' => $authRegisterRequest->get('avatar'),
+            'google_id' => $registerRequest->get('google_id'),
+            'avatar' => $registerRequest->get('avatar'),
         ]);
     }
 
     public static function fromSocialiteUser(User $socialiteUser, string $driver): self
     {
-        $splitName = explode(' ', $socialiteUser->getName(), 3);
+        $splitName = explode(' ', $socialiteUser->getName(), 2);
 
         return new self([
-            'name' => $splitName[0],
-            'first_surname' => ! empty($splitName[1])
+            'first_name' => $splitName[0],
+            'last_name' => !empty($splitName[1])
                 ? $splitName[1]
                 : '',
-            'second_surname' => ! empty($splitName[2])
-                ? $splitName[2]
-                : '',
-            'email' => $socialiteUser->getEmail(),
-            "{$driver}_id" => $socialiteUser->getId(),
-            'avatar' => $socialiteUser->getAvatar(),
+            'email' => $socialiteUser->email,
+            "{$driver}_id" => $socialiteUser->id,
+            'avatar' => $socialiteUser->avatar,
         ]);
     }
 
@@ -71,9 +66,8 @@ class UserData extends DataTransferObject
         ProfileUpdateRequest $profileUpdateRequest
     ): self {
         return new self([
-            'name' => $profileUpdateRequest->get('name'),
-            'first_surname' => $profileUpdateRequest->get('first_surname'),
-            'second_surname' => $profileUpdateRequest->get('second_surname'),
+            'first_name' => $profileUpdateRequest->get('first_name'),
+            'last_name' => $profileUpdateRequest->get('last_name'),
             'email' => $profileUpdateRequest->get('email'),
             'password' => $profileUpdateRequest->get('password'),
         ]);
