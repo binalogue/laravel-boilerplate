@@ -1,6 +1,4 @@
 @component('mail::layout')
-<img src="{{ asset('images/home-hero.png') }}" width="100%" alt="ASICS" style="margin-bottom: 30px;" />
-
 {{-- Body --}}
 {{ $slot }}
 

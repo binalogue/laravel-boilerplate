@@ -9,5 +9,5 @@ $logo = asset($logo ?: 'images/logo.png');
 @endphp
 
 @if ($logo)
-<img src="{{ $logo }}" width="100" alt="" />
+<img src="{{ $logo }}" width="200" alt="" />
 @endif

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\PlatformDev\Users\Controllers;
+namespace App\PlatformDev\Mails\Controllers;
 
 use Domain\Users\Models\User;
 use Domain\Users\Notifications\UserForgotPassword;
@@ -8,7 +8,7 @@ use Domain\Users\Notifications\UserRegistered;
 use Domain\Users\Notifications\UserRequestedVerification;
 use Domain\Users\Notifications\UserVerified;
 
-class MailsToUsersController
+class MailsController
 {
     protected User $notifiable;
 

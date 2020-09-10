@@ -1,6 +1,6 @@
 <?php
 
-use App\PlatformDev\Users\Controllers\MailsToUsersController;
+use App\PlatformDev\Mails\Controllers\MailsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Mails to users...
-Route::get('/mails/user-registered', [MailsToUsersController::class, 'userRegistered']);
-Route::get('/mails/user-requested-verification', [MailsToUsersController::class, 'userRequestedVerification']);
-Route::get('/mails/user-verified', [MailsToUsersController::class, 'userVerified']);
-Route::get('/mails/user-forgot-password', [MailsToUsersController::class, 'userForgotPassword']);
+Route::get('/mails/users/registered', [MailsController::class, 'userRegistered']);
+Route::get('/mails/users/requested-verification', [MailsController::class, 'userRequestedVerification']);
+Route::get('/mails/users/verified', [MailsController::class, 'userVerified']);
+Route::get('/mails/users/forgot-password', [MailsController::class, 'userForgotPassword']);
