@@ -48,20 +48,20 @@ export default {
 .AuthPreRegisterPage {
   @include page;
 
-  height: 100%;
   justify-content: flex-start;
+  height: 100%;
 
   .title {
     margin-bottom: 3vh;
   }
 
   &__container {
-    width: 90%;
-    padding: 10vh 0;
     display: flex;
-    justify-content: center;
     flex-direction: column-reverse;
     align-items: center;
+    justify-content: center;
+    width: 90%;
+    padding: 10vh 0;
 
     @include tablet-m {
       flex-direction: row;
@@ -70,31 +70,31 @@ export default {
   }
 
   &__content {
-    width: auto;
-    padding: 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: auto;
+    padding: 0;
     margin-bottom: 30px;
 
     @include tablet {
       width: 550px;
-      margin-bottom: 0;
       padding: 0 50px;
+      margin-bottom: 0;
     }
 
     .btn {
-      width: 100%;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      width: 100%;
       margin-bottom: 15px;
 
       svg {
-        fill: $black;
-        height: 29px;
         width: auto;
+        height: 29px;
         margin-left: 15px;
+        fill: $black;
       }
     }
   }

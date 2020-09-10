@@ -32,8 +32,8 @@ export default {
 
 <style lang="scss" scoped>
 .AuthPasswordRequestPage {
-  height: 100%;
   justify-content: flex-start;
+  height: 100%;
 
   .title {
     margin-bottom: 3vh;

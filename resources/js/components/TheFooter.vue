@@ -8,8 +8,8 @@
 
 <style lang="scss" scoped>
 .TheFooter {
-  width: 100%;
   display: flex;
+  width: 100%;
   padding: 2vh 5vw;
 
   &__copyright {

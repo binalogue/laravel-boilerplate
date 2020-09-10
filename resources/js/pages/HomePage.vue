@@ -87,8 +87,8 @@ export default {
     @include container;
 
     flex-direction: column;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     margin-bottom: 10vh;
   }
 }

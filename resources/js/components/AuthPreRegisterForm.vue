@@ -61,9 +61,9 @@ export default {
 
 <style lang="scss" scoped>
 .AuthPreRegisterForm {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  width: 100%;
 }
 </style>

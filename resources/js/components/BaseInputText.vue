@@ -110,38 +110,38 @@ export default {
   min-width: 300px;
 
   &__label {
-    font-size: 14px;
     margin-bottom: 5px;
+    font-size: 14px;
     color: $white;
   }
 
   &__input {
     @include transition;
 
-    outline: none;
-    background: transparent;
-    color: $white;
     padding: 12px 15px 11px 15px;
+    margin-bottom: 20px;
     font-size: 16px;
     font-weight: 600;
-    margin-bottom: 20px;
+    color: $white;
+    background: transparent;
     border: 1px solid $white;
+    outline: none;
 
     &::placeholder {
-      opacity: 0.3;
       font-size: 16px;
+      opacity: 0.3;
     }
   }
 
   &__icon {
     position: absolute;
-    fill: $white;
-    right: 15px;
     top: 26px;
+    right: 15px;
+    fill: $white;
 
     svg {
-      height: 22px;
       width: auto;
+      height: 22px;
     }
   }
 

@@ -42,16 +42,16 @@ export default {
 .AuthVerificationPage {
   @include page;
 
-  height: 100%;
   justify-content: flex-start;
+  height: 100%;
 
   .title {
     margin-bottom: 3vh;
   }
 
   .text {
-    font-weight: 400;
     margin-bottom: 3vh;
+    font-weight: 400;
   }
 
   &__content {

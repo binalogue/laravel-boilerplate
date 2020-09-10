@@ -74,16 +74,16 @@ export default {
   &__checkbox {
     width: 15px;
     height: 15px;
-    border: 1px solid $grey;
-    background-color: transparent;
     cursor: pointer;
+    background-color: transparent;
+    border: 1px solid $grey;
 
     &.active {
       width: 15px;
       height: 15px;
+      cursor: pointer;
       background: $primary;
       border: 1px solid $grey;
-      cursor: pointer;
     }
   }
 }

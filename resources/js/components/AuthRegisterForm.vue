@@ -162,11 +162,11 @@ export default {
 
 <style lang="scss" scoped>
 .AuthRegisterForm {
-  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: flex-start;
+  justify-content: center;
+  width: 100%;
 
   .BaseSubmitButton {
     margin-top: 20px;

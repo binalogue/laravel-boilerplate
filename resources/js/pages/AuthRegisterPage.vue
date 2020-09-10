@@ -60,24 +60,24 @@ export default {
 .AuthRegisterPage {
   @include page;
 
-  height: 100%;
   justify-content: flex-start;
+  height: 100%;
 
   &__main {
-    width: 90%;
-    padding: 10vh 0;
     display: flex;
-    justify-content: center;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width: 90%;
+    padding: 10vh 0;
   }
 
   &__form {
-    width: 90vw;
-    max-width: 550px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 90vw;
+    max-width: 550px;
     margin-bottom: 30px;
 
     @include tablet {

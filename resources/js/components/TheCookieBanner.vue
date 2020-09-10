@@ -45,10 +45,10 @@ export default {
   right: 0;
   left: 0;
   display: flex;
-  justify-content: center;
   align-items: center;
-  background: $alerts;
+  justify-content: center;
   padding: 1vh 0;
+  background: $alerts;
 
   &__container {
     @include container;
@@ -63,8 +63,8 @@ export default {
   }
 
   &__close {
-    border: 0;
     background: transparent;
+    border: 0;
 
     span {
       font-size: 30px;

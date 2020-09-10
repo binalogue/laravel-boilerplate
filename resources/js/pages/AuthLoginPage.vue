@@ -67,8 +67,8 @@ export default {
 .AuthLoginPage {
   @include page;
 
-  height: 100%;
   justify-content: center;
+  height: 100%;
 
   @include tablet-m {
     justify-content: flex-start;
@@ -88,19 +88,19 @@ export default {
   }
 
   .btn {
-    width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
     margin-bottom: 15px;
 
     svg {
-      fill: $black;
-      height: 29px;
-      width: auto;
-      margin-left: 15px;
-
       @include transition;
+
+      width: auto;
+      height: 29px;
+      margin-left: 15px;
+      fill: $black;
     }
 
     &:hover {
@@ -118,8 +118,8 @@ export default {
 
     @include tablet-m {
       flex-direction: row-reverse;
-      justify-content: center;
       align-items: initial;
+      justify-content: center;
       padding: 10vh 0;
     }
   }
@@ -136,12 +136,12 @@ export default {
   }
 
   &__login-rrss {
-    width: 100%;
-    max-width: 420px;
-    padding: 7vh 0 0 0;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 100%;
+    max-width: 420px;
+    padding: 7vh 0 0 0;
 
     @include tablet-m {
       width: 50%;

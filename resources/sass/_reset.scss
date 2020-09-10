@@ -4,8 +4,8 @@
 
 * {
   box-sizing: border-box;
-  margin: 0;
   padding: 0;
+  margin: 0;
   font-family: $gotham;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -18,9 +18,9 @@ body {
 }
 
 html {
-  color: $white;
-  font-size: 16px;
   font-family: $gotham;
+  font-size: 16px;
+  color: $white;
   text-decoration: none;
 }
 
@@ -29,6 +29,6 @@ a {
 }
 
 button {
-  outline: none;
   cursor: pointer;
+  outline: none;
 }

@@ -34,8 +34,8 @@ export default {
 .AuthPasswordForceResetPage {
   @include page;
 
-  height: 100%;
   justify-content: flex-start;
+  height: 100%;
 
   .title {
     margin-bottom: 3vh;

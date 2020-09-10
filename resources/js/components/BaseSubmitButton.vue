@@ -43,8 +43,8 @@ export default {
       position: absolute;
       top: 40%;
       margin: 0;
-      color: $white;
       font-size: 22px;
+      color: $white;
       transform: translateY(-50%);
       animation: btnLoading 0.9s infinite ease-in;
 
