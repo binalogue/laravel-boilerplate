@@ -9,11 +9,11 @@ class RobotsMiddleware extends BaseRobotsMiddleware
 {
     protected function shouldIndex(Request $request): bool
     {
-        if (!config('app.allow_robots')) {
+        if (! config('app.allow_robots')) {
             return false;
         }
 
-        if (!app()->environment('production')) {
+        if (! app()->environment('production')) {
             return false;
         }
 

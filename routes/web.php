@@ -1,7 +1,5 @@
 <?php
 
-use App\Platform\Home\Controllers\HomeController;
-use App\Platform\Notifications\Controllers\NotificationsController;
 use App\Platform\Auth\Controllers\EmailVerificationController;
 use App\Platform\Auth\Controllers\ForceResetPasswordController;
 use App\Platform\Auth\Controllers\ForgotPasswordController;
@@ -10,6 +8,8 @@ use App\Platform\Auth\Controllers\PreRegisterController;
 use App\Platform\Auth\Controllers\RegisterController;
 use App\Platform\Auth\Controllers\ResetPasswordController;
 use App\Platform\Auth\Controllers\SocialiteController;
+use App\Platform\Home\Controllers\HomeController;
+use App\Platform\Notifications\Controllers\NotificationsController;
 use App\Platform\Users\Controllers\ProfileController;
 use App\Platform\Users\Controllers\UpdateProfileAvatarController;
 use Illuminate\Support\Facades\Route;

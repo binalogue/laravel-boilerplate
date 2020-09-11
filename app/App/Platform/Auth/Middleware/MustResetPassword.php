@@ -25,10 +25,10 @@ class MustResetPassword
 
     protected function mustResetPassword(User $user)
     {
-        if (!is_null($user->google_id)) {
+        if (! is_null($user->google_id)) {
             return false;
         }
 
-        return !$user->password_changed_at;
+        return ! $user->password_changed_at;
     }
 }

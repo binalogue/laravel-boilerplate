@@ -30,7 +30,7 @@ class AppViewComposer
             })
             ->toArray();
 
-        if (!Arr::get($novaSettings, 'logo')) {
+        if (! Arr::get($novaSettings, 'logo')) {
             Arr::set($novaSettings, 'logo', asset('images/logo.png'));
         }
 

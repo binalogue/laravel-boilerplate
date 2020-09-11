@@ -42,22 +42,22 @@ class UserSubscriber
     {
         $dispatcher->listen(
             Registered::class,
-            self::class . '@handleUserRegistered'
+            self::class.'@handleUserRegistered'
         );
 
         $dispatcher->listen(
             Verified::class,
-            self::class . '@handleUserVerified'
+            self::class.'@handleUserVerified'
         );
 
         $dispatcher->listen(
             Login::class,
-            self::class . '@handleUserLogin'
+            self::class.'@handleUserLogin'
         );
 
         $dispatcher->listen(
             Logout::class,
-            self::class . '@handleUserLogout'
+            self::class.'@handleUserLogout'
         );
     }
 }

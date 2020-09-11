@@ -63,7 +63,7 @@ class User extends Resource
                 ->creationRules('unique:users,email')
                 ->updateRules('unique:users,email,{{resourceId}}')
                 ->hideWhenUpdating(function ($request) {
-                    return !$request->user()->can('update-email-attribute', $this->model());
+                    return ! $request->user()->can('update-email-attribute', $this->model());
                 }),
 
             Password::make('Password')
@@ -71,7 +71,7 @@ class User extends Resource
                 ->updateRules('nullable', 'string', 'min:8')
                 ->onlyOnForms()
                 ->hideWhenUpdating(function ($request) {
-                    return !$request->user()->can('update-password-attribute', $this->model());
+                    return ! $request->user()->can('update-password-attribute', $this->model());
                 }),
 
             Boolean::make('Has Notifications Enabled')
@@ -81,7 +81,7 @@ class User extends Resource
 
             BelongsTo::make('Role', 'role', \App\Nova\Users\Resources\Role::class)
                 ->hideWhenUpdating(function ($request) {
-                    return !$request->user()->can('update-role-attribute', $this->model());
+                    return ! $request->user()->can('update-role-attribute', $this->model());
                 })
                 ->nullable(),
 

@@ -47,7 +47,7 @@ trait HasRoles
 
     protected function matchesRole($roles): bool
     {
-        if (!$this->role) {
+        if (! $this->role) {
             return false;
         }
 

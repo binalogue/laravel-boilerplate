@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        setlocale(LC_TIME, config('app.country_locale') . '.UTF-8');
+        setlocale(LC_TIME, config('app.country_locale').'.UTF-8');
         Carbon::setLocale(config('app.country_locale'));
 
         Blade::if('env', function ($environment) {

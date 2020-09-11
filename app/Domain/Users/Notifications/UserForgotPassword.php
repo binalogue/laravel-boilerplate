@@ -27,7 +27,7 @@ class UserForgotPassword extends ResetPassword implements ShouldQueue
                 ]))
             )
             ->line(__('users.notifications.forgot_password.mail.outro_line_1', [
-                'count' => config('auth.passwords.' . config('auth.defaults.passwords') . '.expire'),
+                'count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire'),
             ]))
             ->line(__('users.notifications.forgot_password.mail.outro_line_2'))
             ->salutation(__('users.notifications.forgot_password.mail.salutation'));

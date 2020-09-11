@@ -31,14 +31,14 @@ class ForgotPasswordRequestTest extends RequestTestCase
                 'passed' => false,
                 'data' => $this->overwriteDefaults([
                     'email' => '',
-                ])
+                ]),
             ],
 
             'email_must_be_valid' => [
                 'passed' => false,
                 'data' => $this->overwriteDefaults([
                     'email' => 'invalid-email',
-                ])
+                ]),
             ],
         ];
     }
