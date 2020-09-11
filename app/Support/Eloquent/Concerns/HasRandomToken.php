@@ -9,7 +9,8 @@ trait HasRandomToken
     protected function initializeHasRandomToken(): void
     {
         if (property_exists($this, 'tokenWithTimestamps') && $this->tokenWithTimestamps) {
-            $this->token = Keygen::numeric(7)->prefix(now()->format('ymd') . '-')->generate(true);
+            $this->token = Keygen::numeric(7)->prefix(now()->format('ymd').'-')->generate(true);
+
             return;
         }
 

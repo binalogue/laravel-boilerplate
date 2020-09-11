@@ -2,13 +2,13 @@
 
 namespace Tests\App\Platform\Auth\Controllers;
 
+use Database\Factories\UserFactory;
 use Domain\Users\Notifications\UserForgotPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use Support\Testing\Concerns\ForgotPasswordRoutes;
-use Tests\Factories\UserFactory;
 use Tests\TestCase;
 
 /** @see \App\Platform\Auth\Controllers\ForgotPasswordController */

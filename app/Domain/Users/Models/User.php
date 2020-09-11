@@ -5,6 +5,7 @@ namespace Domain\Users\Models;
 use Domain\Users\Builders\UserBuilder;
 use Domain\Users\Concerns\HasRoles;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -15,6 +16,7 @@ use Support\SchemalessAttributes\HasExtraAttributes;
 class User extends Authenticatable implements MustVerifyEmail
 {
     use HasExtraAttributes;
+    use HasFactory;
     use HasRoles;
     use Notifiable;
     use SoftDeletes;

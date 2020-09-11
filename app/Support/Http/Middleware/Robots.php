@@ -3,9 +3,9 @@
 namespace Support\Http\Middleware;
 
 use Illuminate\Http\Request;
-use Spatie\RobotsMiddleware\RobotsMiddleware as BaseRobotsMiddleware;
+use Spatie\RobotsMiddleware\RobotsMiddleware;
 
-class RobotsMiddleware extends BaseRobotsMiddleware
+class Robots extends RobotsMiddleware
 {
     protected function shouldIndex(Request $request): bool
     {

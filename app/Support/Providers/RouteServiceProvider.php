@@ -2,8 +2,11 @@
 
 namespace Support\Providers;
 
+use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\Facades\Route;
 
 class RouteServiceProvider extends ServiceProvider
@@ -18,43 +21,43 @@ class RouteServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
-        $this->bootRouteModelBinding();
+        $this->configureRateLimiting();
 
-        parent::boot();
+        $this->bootRoutes();
+        $this->bootRouteModelBinding();
+    }
+
+    /**
+     * Configure the rate limiters for the application.
+     *
+     * @return void
+     */
+    protected function configureRateLimiting(): void
+    {
+        RateLimiter::for('api', function (Request $request) {
+            return Limit::perMinute(60);
+        });
+    }
+
+    protected function bootRoutes(): void
+    {
+        $this->routes(function () {
+            Route::middleware('web')
+                ->group(base_path('routes/web.php'));
+
+            Route::prefix('api')
+                ->middleware('api')
+                ->group(base_path('routes/api.php'));
+
+            if (!App::environment('production')) {
+                Route::middleware('web')
+                    ->group(base_path('routes/development.php'));
+            }
+        });
     }
 
     protected function bootRouteModelBinding(): void
     {
         //
-    }
-
-    public function map(): void
-    {
-        $this->mapApiRoutes();
-
-        $this->mapWebRoutes();
-
-        if (!App::environment('production')) {
-            $this->mapDevelopmentRoutes();
-        }
-    }
-
-    protected function mapWebRoutes(): void
-    {
-        Route::middleware('web')
-            ->group(base_path('routes/web.php'));
-    }
-
-    protected function mapApiRoutes(): void
-    {
-        Route::prefix('api')
-            ->middleware('api')
-            ->group(base_path('routes/api.php'));
-    }
-
-    protected function mapDevelopmentRoutes(): void
-    {
-        Route::middleware('web')
-            ->group(base_path('routes/development.php'));
     }
 }

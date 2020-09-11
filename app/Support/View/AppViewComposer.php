@@ -5,7 +5,6 @@ namespace Support\View;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
-use KgBot\LaravelLocalization\Facades\ExportLocalizations;
 
 class AppViewComposer
 {
@@ -48,7 +47,8 @@ class AppViewComposer
             // Localization.
             'locale' => config('app.locale'),
             'fallback' => config('app.fallback_locale'),
-            'messages' => ExportLocalizations::export()->toFlat(),
+            // 'messages' => ExportLocalizations::export()->toFlat(),
+            'messages' => [],
         ]);
     }
 }

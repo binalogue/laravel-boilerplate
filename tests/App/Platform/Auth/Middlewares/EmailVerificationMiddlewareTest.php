@@ -2,10 +2,10 @@
 
 namespace Tests\App\Platform\Auth\Middlewares;
 
+use Database\Factories\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Support\Providers\RouteServiceProvider;
 use Support\Testing\Concerns\EmailVerificationRoutes;
-use Tests\Factories\UserFactory;
 use Tests\TestCase;
 
 class EmailVerificationMiddlewareTest extends TestCase

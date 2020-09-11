@@ -74,7 +74,7 @@ trait HasExtraAttributes
         string $attribute,
         bool $persist = true
     ): self {
-        if (!is_array($this->{$attribute}->all())) {
+        if (! is_array($this->{$attribute}->all())) {
             return $this;
         }
 

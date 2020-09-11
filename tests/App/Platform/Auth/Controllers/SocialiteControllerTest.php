@@ -2,13 +2,13 @@
 
 namespace Tests\App\Platform\Auth\Controllers;
 
+use Database\Factories\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 use Laravel\Socialite\Two\GoogleProvider;
-use Laravel\Socialite\Two\User;
+use Laravel\Socialite\Two\User as SocialiteUser;
 use Support\Providers\RouteServiceProvider;
 use Support\Testing\Concerns\SocialiteRoutes;
-use Tests\Factories\UserFactory;
 use Tests\TestCase;
 
 /** @see \App\Platform\Auth\Controllers\SocialiteController */
@@ -22,7 +22,7 @@ class SocialiteControllerTest extends TestCase
         string $token = 'foo',
         string $id = '1'
     ): void {
-        $socialiteUser = $this->createMock(User::class);
+        $socialiteUser = $this->createMock(SocialiteUser::class);
 
         $socialiteUser->token = $token;
         $socialiteUser->id = $id;

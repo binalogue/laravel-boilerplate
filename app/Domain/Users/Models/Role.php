@@ -46,7 +46,7 @@ class Role extends Model implements RoleContract
     {
         $role = static::where('name', $name)->first();
 
-        if (!$role) {
+        if (! $role) {
             throw RoleDoesNotExist::named($name);
         }
 
@@ -57,7 +57,7 @@ class Role extends Model implements RoleContract
     {
         $role = static::where('id', $id)->first();
 
-        if (!$role) {
+        if (! $role) {
             throw RoleDoesNotExist::withId($id);
         }
 
@@ -68,7 +68,7 @@ class Role extends Model implements RoleContract
     {
         $role = static::where('name', $name)->first();
 
-        if (!$role) {
+        if (! $role) {
             return static::query()->create([
                 'name' => $name,
             ]);

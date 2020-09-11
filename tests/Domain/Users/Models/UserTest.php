@@ -2,10 +2,10 @@
 
 namespace Tests\Domain\Users\Models;
 
+use Database\Factories\UserFactory;
 use Domain\Users\Models\Role;
 use Domain\Users\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\Factories\UserFactory;
 use Tests\TestCase;
 
 /** @see \Domain\Users\Models\User */

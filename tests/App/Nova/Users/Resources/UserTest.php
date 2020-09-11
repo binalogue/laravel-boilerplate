@@ -3,8 +3,8 @@
 namespace Tests\App\Nova\Users\Resources;
 
 use App\Nova\Users\Resources\User as UserResource;
+use Database\Factories\UserFactory;
 use Domain\Users\Models\Role;
-use Tests\Factories\UserFactory;
 use Tests\NovaTestCase;
 
 /** @see \App\Nova\Users\Resources\User */
@@ -344,9 +344,9 @@ class UserTest extends NovaTestCase
         $this
             ->put(
                 "nova-api/users/{$this->user->id}",
-                UserFactory::new()->raw([
+                UserFactory::new()->make([
                     'email' => $this->user->email,
-                ])
+                ])->toArray()
             )
             ->assertSuccessful();
     }
@@ -357,9 +357,9 @@ class UserTest extends NovaTestCase
         $this
             ->put(
                 "nova-api/users/{$this->user->id}",
-                UserFactory::new()->raw([
+                UserFactory::new()->make([
                     'password' => null,
-                ])
+                ])->toArray()
             )
             ->assertSuccessful();
     }

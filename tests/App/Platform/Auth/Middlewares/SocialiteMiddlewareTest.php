@@ -2,10 +2,10 @@
 
 namespace Tests\App\Platform\Auth\Middlewares;
 
+use Database\Factories\UserFactory;
 use Domain\Users\Models\User;
 use Support\Providers\RouteServiceProvider;
 use Support\Testing\Concerns\SocialiteRoutes;
-use Tests\Factories\UserFactory;
 use Tests\TestCase;
 
 class SocialiteMiddlewareTest extends TestCase

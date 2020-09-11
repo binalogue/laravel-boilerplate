@@ -2,11 +2,11 @@
 
 namespace Tests\App\Platform\Users\Middlewares;
 
+use Database\Factories\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Support\Providers\RouteServiceProvider;
 use Support\Testing\Concerns\EmailVerificationRoutes;
 use Support\Testing\Concerns\ForceResetPasswordRoutes;
-use Tests\Factories\UserFactory;
 use Tests\TestCase;
 
 class ProfileMiddlewareTest extends TestCase

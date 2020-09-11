@@ -1,6 +1,6 @@
 <?php
 
-if (!function_exists('accepted')) {
+if (! function_exists('accepted')) {
     /**
      * Check if the value under validation is true, 1, 'true', 'yes' or 'on'.
      *
@@ -21,7 +21,7 @@ if (!function_exists('accepted')) {
     }
 }
 
-if (!function_exists('webp')) {
+if (! function_exists('webp')) {
     /**
      * Switch image extensions to WebP when supported by the browser.
      *
@@ -42,7 +42,7 @@ if (!function_exists('webp')) {
     }
 }
 
-if (!function_exists('webp_support')) {
+if (! function_exists('webp_support')) {
     /**
      * Check if the browser has webP support.
      *

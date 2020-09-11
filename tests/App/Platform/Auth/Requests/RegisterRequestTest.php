@@ -39,28 +39,28 @@ class RegisterRequestTest extends RequestTestCase
                 'passed' => false,
                 'data' => $this->overwriteDefaults([
                     'first_name' => '',
-                ])
+                ]),
             ],
 
             'last_name_is_required' => [
                 'passed' => false,
                 'data' => $this->overwriteDefaults([
                     'last_name' => '',
-                ])
+                ]),
             ],
 
             'email_is_required' => [
                 'passed' => false,
                 'data' => $this->overwriteDefaults([
                     'email' => '',
-                ])
+                ]),
             ],
 
             'email_must_be_valid' => [
                 'passed' => false,
                 'data' => $this->overwriteDefaults([
                     'email' => 'invalid-email',
-                ])
+                ]),
             ],
 
             'password_is_required' => [
@@ -68,14 +68,14 @@ class RegisterRequestTest extends RequestTestCase
                 'data' => $this->overwriteDefaults([
                     'password' => '',
                     'password_confirmation' => '',
-                ])
+                ]),
             ],
 
             'password_confirmation_is_required' => [
                 'passed' => false,
                 'data' => $this->overwriteDefaults([
                     'password_confirmation' => '',
-                ])
+                ]),
             ],
 
             'password_must_have_a_matching_confirmation' => [
@@ -83,7 +83,7 @@ class RegisterRequestTest extends RequestTestCase
                 'data' => $this->overwriteDefaults([
                     'password' => 'awesome-password',
                     'password_confirmation' => 'other-awesome-password',
-                ])
+                ]),
             ],
         ];
     }

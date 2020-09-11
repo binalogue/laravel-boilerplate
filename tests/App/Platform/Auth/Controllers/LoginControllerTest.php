@@ -2,11 +2,11 @@
 
 namespace Tests\App\Platform\Auth\Controllers;
 
+use Database\Factories\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Support\Providers\RouteServiceProvider;
-use Tests\Factories\UserFactory;
 use Tests\TestCase;
 
 /** @see \App\Platform\Auth\Controllers\LoginController */
@@ -106,7 +106,7 @@ class LoginControllerTest extends TestCase
             ->assertRedirect(RouteServiceProvider::LOGIN_ROUTE)
             ->assertSessionHasErrors('email');
 
-        $this->assertRegExp(
+        $this->assertMatchesRegularExpression(
             $this->getTooManyLoginAttemptsMessage(),
             collect(
                 $response

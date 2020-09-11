@@ -27,7 +27,7 @@ class AuthRegisterRequest extends FormRequest
     public function withValidator(Validator $validator): void
     {
         $validator->after(function ($validator) {
-            if (!$this->get('google_id') && !$this->get('password')) {
+            if (! $this->get('google_id') && ! $this->get('password')) {
                 $validator->errors()->add('password', 'La contraseña es obligatoria');
             }
         });

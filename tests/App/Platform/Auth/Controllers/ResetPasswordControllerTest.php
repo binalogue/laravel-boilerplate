@@ -2,12 +2,12 @@
 
 namespace Tests\App\Platform\Auth\Controllers;
 
+use Database\Factories\UserFactory;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Hash;
 use Support\Testing\Concerns\ResetPasswordRoutes;
-use Tests\Factories\UserFactory;
 use Tests\TestCase;
 
 /** @see \App\Platform\Auth\Controllers\ResetPasswordController */

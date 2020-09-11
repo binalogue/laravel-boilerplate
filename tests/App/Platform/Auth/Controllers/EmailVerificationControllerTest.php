@@ -2,13 +2,13 @@
 
 namespace Tests\App\Platform\Auth\Controllers;
 
+use Database\Factories\UserFactory;
 use Domain\Users\Notifications\UserRequestedVerification;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Notification;
 use Support\Testing\Concerns\EmailVerificationRoutes;
-use Tests\Factories\UserFactory;
 use Tests\TestCase;
 
 /** @see \App\Platform\Auth\Controllers\EmailVerificationController */

@@ -3,9 +3,9 @@
 namespace Tests\App\Platform\Auth\Requests;
 
 use App\Platform\Auth\Requests\PreRegisterRequest;
+use Database\Factories\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\App;
-use Tests\Factories\UserFactory;
 use Tests\RequestTestCase;
 
 /** @see \App\Platform\Auth\Requests\PreRegisterRequest */

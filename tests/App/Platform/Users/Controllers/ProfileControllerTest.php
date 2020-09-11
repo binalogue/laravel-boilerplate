@@ -2,8 +2,8 @@
 
 namespace Tests\App\Platform\Users\Controllers;
 
+use Database\Factories\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Tests\Factories\UserFactory;
 use Tests\TestCase;
 
 /** @see \App\Platform\Users\Controllers\ProfileController */

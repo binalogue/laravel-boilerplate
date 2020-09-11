@@ -59,9 +59,9 @@ class TwitterCards implements TwitterCardsContract
                 if ($key === 'image') {
                     $value = asset($value);
                 } elseif (is_numeric($key)) {
-                    $key = $prefix . $key;
+                    $key = $prefix.$key;
                 } elseif (is_string($prefix)) {
-                    $key = $prefix . ':' . $key;
+                    $key = $prefix.':'.$key;
                 }
 
                 $this->html[] = $this->makeTag($key, $value);
@@ -79,7 +79,7 @@ class TwitterCards implements TwitterCardsContract
      */
     private function makeTag($key, $value)
     {
-        return '<meta name="' . $this->prefix . strip_tags($key) . '" content="' . strip_tags($value) . '" />';
+        return '<meta name="'.$this->prefix.strip_tags($key).'" content="'.strip_tags($value).'" />';
     }
 
     public function addValue($key, $value)
