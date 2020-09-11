@@ -91,7 +91,7 @@
 
   /* PHP Sniffer & Beautifier (valeryanm.vscode-phpsab) */
   "phpsab.fixerEnable": true,
-  "phpsab.snifferEnable": true,
+  "phpsab.snifferEnable": false,
   "phpsab.standard": "PSR2",
 
   /* Vetur (octref.vetur) */
