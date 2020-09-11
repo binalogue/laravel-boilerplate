@@ -21,9 +21,9 @@ use Illuminate\Routing\Middleware\ValidateSignature;
 use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
-use Support\Http\Middleware\CheckForMaintenanceMode;
 use Support\Http\Middleware\EncryptCookies;
-use Support\Http\Middleware\RobotsMiddleware;
+use Support\Http\Middleware\PreventRequestsDuringMaintenance;
+use Support\Http\Middleware\Robots;
 use Support\Http\Middleware\TrimStrings;
 use Support\Http\Middleware\TrustProxies;
 use Support\Http\Middleware\VerifyCsrfToken;
@@ -40,11 +40,11 @@ class Kernel extends BaseKernel
     protected $middleware = [
         TrustProxies::class,
         HandleCors::class,
-        CheckForMaintenanceMode::class,
+        PreventRequestsDuringMaintenance::class,
         ValidatePostSize::class,
         TrimStrings::class,
         ConvertEmptyStringsToNull::class,
-        RobotsMiddleware::class,
+        Robots::class,
     ];
 
     /**
