@@ -2,7 +2,7 @@
 
 namespace Tests\App\Platform\Auth\Controllers;
 
-use Domain\Users\Models\User;
+use Database\Factories\UserFactory;
 use Domain\Users\Notifications\UserRequestedVerification;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -27,7 +27,7 @@ class EmailVerificationControllerTest extends TestCase
     public function unverified_user_can_see_the_verification_notice()
     {
         $this
-            ->actingAs(User::factory()->unverified()->create())
+            ->actingAs(UserFactory::new()->unverified()->create())
             ->get($this->verificationNoticeRoute())
             ->assertSuccessful();
     }
@@ -36,7 +36,7 @@ class EmailVerificationControllerTest extends TestCase
     public function verified_user_is_redirected_when_visiting_verification_notice_route()
     {
         $this
-            ->actingAs(User::factory()->verified()->create())
+            ->actingAs(UserFactory::new()->verified()->create())
             ->get($this->verificationNoticeRoute())
             ->assertRedirect($this->successfulVerificationRoute());
     }
@@ -50,11 +50,11 @@ class EmailVerificationControllerTest extends TestCase
     /** @test */
     public function user_cannot_verify_others()
     {
-        $user = User::factory()->unverified()->create([
+        $user = UserFactory::new()->unverified()->create([
             'id' => 1,
         ]);
 
-        $user2 = User::factory()->unverified()->create([
+        $user2 = UserFactory::new()->unverified()->create([
             'id' => 2,
         ]);
 
@@ -69,7 +69,7 @@ class EmailVerificationControllerTest extends TestCase
     /** @test */
     public function verified_user_is_redirected_when_visiting_verification_verify_route()
     {
-        $user = User::factory()->verified()->create();
+        $user = UserFactory::new()->verified()->create();
 
         $this
             ->actingAs($user)
@@ -82,7 +82,7 @@ class EmailVerificationControllerTest extends TestCase
     {
         Event::fake();
 
-        $user = User::factory()->unverified()->create();
+        $user = UserFactory::new()->unverified()->create();
 
         $this
             ->actingAs($user)
@@ -104,7 +104,7 @@ class EmailVerificationControllerTest extends TestCase
     public function verified_user_is_redirected_when_visiting_verification_resend_route()
     {
         $this
-            ->actingAs(User::factory()->verified()->create())
+            ->actingAs(UserFactory::new()->verified()->create())
             ->post($this->verificationResendRoute())
             ->assertRedirect($this->successfulVerificationRoute());
     }
@@ -114,7 +114,7 @@ class EmailVerificationControllerTest extends TestCase
     {
         Notification::fake();
 
-        $user = User::factory()->unverified()->create();
+        $user = UserFactory::new()->unverified()->create();
 
         $this
             ->actingAs($user)

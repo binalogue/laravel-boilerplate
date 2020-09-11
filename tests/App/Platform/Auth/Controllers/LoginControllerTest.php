@@ -2,7 +2,7 @@
 
 namespace Tests\App\Platform\Auth\Controllers;
 
-use Domain\Users\Models\User;
+use Database\Factories\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -44,7 +44,7 @@ class LoginControllerTest extends TestCase
     /** @test */
     public function guest_cannot_login_with_incorrect_password()
     {
-        $user = User::factory()->create([
+        $user = UserFactory::new()->create([
             'password' => Hash::make('secret'),
         ]);
 
@@ -87,7 +87,7 @@ class LoginControllerTest extends TestCase
     /** @test */
     public function guest_cannot_make_more_than_five_attempts_in_one_minute()
     {
-        $user = User::factory()->create([
+        $user = UserFactory::new()->create([
             'password' => Hash::make($password = 'secret'),
         ]);
 
@@ -106,7 +106,7 @@ class LoginControllerTest extends TestCase
             ->assertRedirect(RouteServiceProvider::LOGIN_ROUTE)
             ->assertSessionHasErrors('email');
 
-        $this->assertRegExp(
+        $this->assertMatchesRegularExpression(
             $this->getTooManyLoginAttemptsMessage(),
             collect(
                 $response
@@ -125,7 +125,7 @@ class LoginControllerTest extends TestCase
     /** @test */
     public function guest_can_login_with_correct_credentials()
     {
-        $user = User::factory()->create([
+        $user = UserFactory::new()->create([
             'password' => Hash::make($password = 'secret'),
         ]);
 
@@ -144,7 +144,7 @@ class LoginControllerTest extends TestCase
     /** @test */
     public function guest_can_login_with_remember_me_functionality()
     {
-        $user = User::factory()->create([
+        $user = UserFactory::new()->create([
             'id' => random_int(1, 100),
             'password' => Hash::make($password = 'secret'),
         ]);
@@ -183,7 +183,7 @@ class LoginControllerTest extends TestCase
     public function auth_user_can_logout()
     {
         $this
-            ->actingAs(User::factory()->create())
+            ->actingAs(UserFactory::new()->create())
             ->post(RouteServiceProvider::LOGOUT_ROUTE)
             ->assertRedirect(RouteServiceProvider::SUCCESSFUL_LOGOUT_ROUTE);
 

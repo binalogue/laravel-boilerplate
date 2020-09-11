@@ -3,7 +3,7 @@
 namespace Tests\App\Platform\Auth\Requests;
 
 use App\Platform\Auth\Requests\ResetPasswordRequest;
-use Domain\Users\Models\User;
+use Database\Factories\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Hash;
 use Support\Testing\Concerns\ResetPasswordRoutes;
@@ -26,7 +26,7 @@ class ResetPasswordRequestTest extends RequestTestCase
 
     protected function getDefaults(): array
     {
-        $user = User::factory()->create([
+        $user = UserFactory::new()->create([
             'password' => Hash::make('old-password'),
         ]);
 

@@ -2,7 +2,7 @@
 
 namespace Tests\App\Platform\Auth\Controllers;
 
-use Domain\Users\Models\User;
+use Database\Factories\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 use Laravel\Socialite\Two\GoogleProvider;
@@ -69,7 +69,7 @@ class SocialiteControllerTest extends TestCase
     /** @test */
     public function it_redirects_to_the_successful_route_when_existing_user()
     {
-        $user = User::factory()->create([
+        $user = UserFactory::new()->create([
             'email' => 'pepe@grillo.com',
         ]);
 
@@ -86,7 +86,7 @@ class SocialiteControllerTest extends TestCase
     /** @test */
     public function it_restores_the_user_when_trashed()
     {
-        $user = User::factory()->trashed()->create([
+        $user = UserFactory::new()->trashed()->create([
             'email' => 'pepe@grillo.com',
         ]);
 

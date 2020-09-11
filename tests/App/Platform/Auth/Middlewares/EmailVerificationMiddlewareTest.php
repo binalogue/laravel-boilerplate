@@ -2,7 +2,7 @@
 
 namespace Tests\App\Platform\Auth\Middlewares;
 
-use Domain\Users\Models\User;
+use Database\Factories\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Support\Providers\RouteServiceProvider;
 use Support\Testing\Concerns\EmailVerificationRoutes;
@@ -42,7 +42,7 @@ class EmailVerificationMiddlewareTest extends TestCase
 
         $this
             ->get($this->validVerificationVerifyRoute(
-                User::factory()->unverified()->create()
+                UserFactory::new()->unverified()->create()
             ))
             ->assertRedirect(RouteServiceProvider::NOT_AUTHENTICATED_MIDDLEWARE_ROUTE);
     }
@@ -50,7 +50,7 @@ class EmailVerificationMiddlewareTest extends TestCase
     /** @test */
     public function forbidden_is_returned_when_signature_is_invalid_in_verification_verify_route()
     {
-        $user = User::factory()->verified()->create();
+        $user = UserFactory::new()->verified()->create();
 
         $this
             ->actingAs($user)

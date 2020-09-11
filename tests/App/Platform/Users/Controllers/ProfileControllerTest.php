@@ -2,7 +2,7 @@
 
 namespace Tests\App\Platform\Users\Controllers;
 
-use Domain\Users\Models\User;
+use Database\Factories\UserFactory;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
@@ -21,7 +21,7 @@ class ProfileControllerTest extends TestCase
     public function user_can_see_their_profile()
     {
         $this
-            ->actingAs(User::factory()->verified()->create())
+            ->actingAs(UserFactory::new()->verified()->create())
             ->get(route('profile.show'))
             ->assertSuccessful();
     }
