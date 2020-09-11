@@ -2,6 +2,7 @@
 
 namespace Tests;
 
+use Database\Seeders\RolesTableSeeder;
 use Domain\Users\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\Factories\UserFactory;
