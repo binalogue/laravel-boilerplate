@@ -4,7 +4,7 @@ namespace Tests\App\Nova\Users\Resources;
 
 use App\Nova\Users\Resources\User as UserResource;
 use Domain\Users\Models\Role;
-use Tests\Factories\UserFactory;
+use Domain\Users\Models\User;
 use Tests\NovaTestCase;
 
 /** @see \App\Nova\Users\Resources\User */
@@ -44,7 +44,7 @@ class UserTest extends NovaTestCase
     /** @test **/
     public function users_can_be_retrieved_ordered_by_id_desc()
     {
-        $user2 = UserFactory::new()->create();
+        $user2 = User::factory()->create();
 
         $this
             ->get('nova-api/users')
@@ -158,7 +158,7 @@ class UserTest extends NovaTestCase
     /** @test **/
     public function email_must_be_unique_on_create()
     {
-        UserFactory::new()->create([
+        User::factory()->create([
             'email' => 'pepe@grillo.com',
         ]);
 
@@ -251,7 +251,7 @@ class UserTest extends NovaTestCase
                             'component' => 'file-field',
                             'name' => 'Avatar',
                             'value' => null,
-                            'thumbnailUrl' => 'https://www.gravatar.com/avatar/'.md5($this->user->email).'?s=300',
+                            'thumbnailUrl' => 'https://www.gravatar.com/avatar/' . md5($this->user->email) . '?s=300',
                         ],
                         [
                             'attribute' => 'first_name',
@@ -322,7 +322,7 @@ class UserTest extends NovaTestCase
     /** @test **/
     public function email_must_be_unique_on_update()
     {
-        UserFactory::new()->create([
+        User::factory()->create([
             'email' => 'pepe@grillo.com',
         ]);
 
@@ -344,7 +344,7 @@ class UserTest extends NovaTestCase
         $this
             ->put(
                 "nova-api/users/{$this->user->id}",
-                UserFactory::new()->raw([
+                User::factory()->raw([
                     'email' => $this->user->email,
                 ])
             )
@@ -357,7 +357,7 @@ class UserTest extends NovaTestCase
         $this
             ->put(
                 "nova-api/users/{$this->user->id}",
-                UserFactory::new()->raw([
+                User::factory()->raw([
                     'password' => null,
                 ])
             )

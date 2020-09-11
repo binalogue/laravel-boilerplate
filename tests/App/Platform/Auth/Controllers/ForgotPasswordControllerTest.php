@@ -2,13 +2,13 @@
 
 namespace Tests\App\Platform\Auth\Controllers;
 
+use Domain\Users\Models\User;
 use Domain\Users\Notifications\UserForgotPassword;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Notification;
 use Support\Testing\Concerns\ForgotPasswordRoutes;
-use Tests\Factories\UserFactory;
 use Tests\TestCase;
 
 /** @see \App\Platform\Auth\Controllers\ForgotPasswordController */
@@ -37,7 +37,7 @@ class ForgotPasswordControllerTest extends TestCase
     public function auth_user_can_see_the_link_request_form()
     {
         $this
-            ->actingAs(UserFactory::new()->make())
+            ->actingAs(User::factory()->make())
             ->get($this->passwordRequestRoute())
             ->assertSuccessful();
     }
@@ -62,7 +62,7 @@ class ForgotPasswordControllerTest extends TestCase
             ->assertSessionHasErrors('email');
 
         Notification::assertNotSentTo(
-            UserFactory::new()->make([
+            User::factory()->make([
                 'email' => 'nobody@example.com',
             ]),
             UserForgotPassword::class
@@ -74,7 +74,7 @@ class ForgotPasswordControllerTest extends TestCase
     {
         Notification::fake();
 
-        $user = UserFactory::new()->create();
+        $user = User::factory()->create();
 
         $this
             ->from($this->passwordRequestRoute())

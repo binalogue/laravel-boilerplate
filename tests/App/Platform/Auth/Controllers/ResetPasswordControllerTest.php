@@ -2,12 +2,12 @@
 
 namespace Tests\App\Platform\Auth\Controllers;
 
+use Domain\Users\Models\User;
 use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Support\Facades\Hash;
 use Support\Testing\Concerns\ResetPasswordRoutes;
-use Tests\Factories\UserFactory;
 use Tests\TestCase;
 
 /** @see \App\Platform\Auth\Controllers\ResetPasswordController */
@@ -25,7 +25,7 @@ class ResetPasswordControllerTest extends TestCase
     /** @test */
     public function guest_can_see_the_password_reset_form()
     {
-        $user = UserFactory::new()->create();
+        $user = User::factory()->create();
 
         // 🙅‍♂️ No authenticated user.
 
@@ -39,7 +39,7 @@ class ResetPasswordControllerTest extends TestCase
     /** @test */
     public function auth_user_can_see_the_password_reset_form()
     {
-        $user = UserFactory::new()->create();
+        $user = User::factory()->create();
 
         $this
             ->actingAs($user)
@@ -58,7 +58,7 @@ class ResetPasswordControllerTest extends TestCase
     /** @test */
     public function user_cannot_reset_password_with_invalid_token()
     {
-        $user = UserFactory::new()->create([
+        $user = User::factory()->create([
             'password' => Hash::make('old-password'),
         ]);
 
@@ -82,7 +82,7 @@ class ResetPasswordControllerTest extends TestCase
     {
         Event::fake();
 
-        $user = UserFactory::new()->create();
+        $user = User::factory()->create();
 
         $this
             ->post($this->passwordResetPostRoute(), [

@@ -3,9 +3,9 @@
 namespace Tests\App\Platform\Auth\Requests;
 
 use App\Platform\Auth\Requests\PreRegisterRequest;
+use Domain\Users\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\App;
-use Tests\Factories\UserFactory;
 use Tests\RequestTestCase;
 
 /** @see \App\Platform\Auth\Requests\PreRegisterRequest */
@@ -49,7 +49,7 @@ class PreRegisterRequestTest extends RequestTestCase
     /** @test */
     public function email_must_be_unique()
     {
-        UserFactory::new()->create([
+        User::factory()->create([
             'email' => 'pepe@pepe.es',
         ]);
 

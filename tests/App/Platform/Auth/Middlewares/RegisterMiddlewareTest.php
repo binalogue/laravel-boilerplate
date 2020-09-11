@@ -5,7 +5,6 @@ namespace Tests\App\Platform\Auth\Middlewares;
 use Domain\Users\Models\User;
 use Support\Providers\RouteServiceProvider;
 use Support\Testing\Concerns\RegistrationRoutes;
-use Tests\Factories\UserFactory;
 use Tests\TestCase;
 
 class RegisterMiddlewareTest extends TestCase
@@ -18,7 +17,7 @@ class RegisterMiddlewareTest extends TestCase
     {
         parent::setUp();
 
-        $this->user = UserFactory::new()->make();
+        $this->user = User::factory()->make();
     }
 
     /*

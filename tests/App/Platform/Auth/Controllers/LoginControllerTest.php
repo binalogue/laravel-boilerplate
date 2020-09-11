@@ -2,11 +2,11 @@
 
 namespace Tests\App\Platform\Auth\Controllers;
 
+use Domain\Users\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Support\Providers\RouteServiceProvider;
-use Tests\Factories\UserFactory;
 use Tests\TestCase;
 
 /** @see \App\Platform\Auth\Controllers\LoginController */
@@ -44,7 +44,7 @@ class LoginControllerTest extends TestCase
     /** @test */
     public function guest_cannot_login_with_incorrect_password()
     {
-        $user = UserFactory::new()->create([
+        $user = User::factory()->create([
             'password' => Hash::make('secret'),
         ]);
 
@@ -87,7 +87,7 @@ class LoginControllerTest extends TestCase
     /** @test */
     public function guest_cannot_make_more_than_five_attempts_in_one_minute()
     {
-        $user = UserFactory::new()->create([
+        $user = User::factory()->create([
             'password' => Hash::make($password = 'secret'),
         ]);
 
@@ -125,7 +125,7 @@ class LoginControllerTest extends TestCase
     /** @test */
     public function guest_can_login_with_correct_credentials()
     {
-        $user = UserFactory::new()->create([
+        $user = User::factory()->create([
             'password' => Hash::make($password = 'secret'),
         ]);
 
@@ -144,7 +144,7 @@ class LoginControllerTest extends TestCase
     /** @test */
     public function guest_can_login_with_remember_me_functionality()
     {
-        $user = UserFactory::new()->create([
+        $user = User::factory()->create([
             'id' => random_int(1, 100),
             'password' => Hash::make($password = 'secret'),
         ]);
@@ -183,7 +183,7 @@ class LoginControllerTest extends TestCase
     public function auth_user_can_logout()
     {
         $this
-            ->actingAs(UserFactory::new()->create())
+            ->actingAs(User::factory()->create())
             ->post(RouteServiceProvider::LOGOUT_ROUTE)
             ->assertRedirect(RouteServiceProvider::SUCCESSFUL_LOGOUT_ROUTE);
 

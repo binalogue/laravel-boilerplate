@@ -2,13 +2,13 @@
 
 namespace Tests\App\Platform\Auth\Controllers;
 
+use Domain\Users\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 use Laravel\Socialite\Two\GoogleProvider;
-use Laravel\Socialite\Two\User;
+use Laravel\Socialite\Two\User as SocialiteUser;
 use Support\Providers\RouteServiceProvider;
 use Support\Testing\Concerns\SocialiteRoutes;
-use Tests\Factories\UserFactory;
 use Tests\TestCase;
 
 /** @see \App\Platform\Auth\Controllers\SocialiteController */
@@ -22,7 +22,7 @@ class SocialiteControllerTest extends TestCase
         string $token = 'foo',
         string $id = '1'
     ): void {
-        $socialiteUser = $this->createMock(User::class);
+        $socialiteUser = $this->createMock(SocialiteUser::class);
 
         $socialiteUser->token = $token;
         $socialiteUser->id = $id;
@@ -69,7 +69,7 @@ class SocialiteControllerTest extends TestCase
     /** @test */
     public function it_redirects_to_the_successful_route_when_existing_user()
     {
-        $user = UserFactory::new()->create([
+        $user = User::factory()->create([
             'email' => 'pepe@grillo.com',
         ]);
 
@@ -86,7 +86,7 @@ class SocialiteControllerTest extends TestCase
     /** @test */
     public function it_restores_the_user_when_trashed()
     {
-        $user = UserFactory::new()->trashed()->create([
+        $user = User::factory()->trashed()->create([
             'email' => 'pepe@grillo.com',
         ]);
 
