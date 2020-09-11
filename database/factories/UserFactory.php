@@ -1,9 +1,11 @@
 <?php
 
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+
+namespace Database\Factories;
+
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Domain\Users\Models\User;
-use Faker\Generator as Faker;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 
@@ -18,27 +20,44 @@ use Illuminate\Support\Str;
 |
 */
 
-$factory->define(User::class, function (Faker $faker) {
-    return [
-        'name' => $faker->firstName,
-        'first_surname' => $faker->lastName,
-        'email' => $faker->unique()->safeEmail,
+class UserFactory extends Factory
+{
+    /**
+     * The name of the factory's corresponding model.
+     *
+     * @var string
+     */
+    protected $model = User::class;
+
+    /**
+     * Define the model's default state.
+     *
+     * @return array
+     */
+    public function definition()
+    {
+        return [
+        'name' => $this->faker->firstName,
+        'first_surname' => $this->faker->lastName,
+        'email' => $this->faker->unique()->safeEmail,
         'email_verified_at' => now(),
         'password' => Hash::make('secret'),
         'password_changed_at' => now(),
     ];
-});
+    }
 
-$factory->state(User::class, 'verified', [
-    'email_verified_at' => now(),
-]);
+    public function verified()
+    {
+        return $this->state(['email_verified_at' => now()]);
+    }
 
-$factory->state(User::class, 'unverified', [
-    'email_verified_at' => null,
-]);
+    public function unverified()
+    {
+        return $this->state(['email_verified_at' => null]);
+    }
 
-$factory->state(User::class, 'must_reset_password', [
-    'password' => Hash::make(Str::random(22)),
-    'password_changed_at' => null,
-    'google_id' => null,
-]);
+    public function mustResetPassword()
+    {
+        return $this->state(['password' => Hash::make(Str::random(22)), 'password_changed_at' => null, 'google_id' => null]);
+    }
+}
