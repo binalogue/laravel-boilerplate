@@ -28,19 +28,21 @@ These instructions will get you a copy of the project up and running on your loc
    git clone git@gitlab.com:binalogue/laravel-boilerplate.git && cd laravel-boilerplate
    ```
 
-2. Build the project:
+2. Add an `auth.json` file with the Laravel Nova credentials.
+
+3. Build the project:
 
    ```bash
    .cli/build.sh
    ```
 
-3. Run the project:
+4. Run the project:
 
    ```bash
    .cli/up.sh
    ```
 
-4. Stop the project:
+5. Stop the project:
 
    ```bash
    .cli/down.sh
