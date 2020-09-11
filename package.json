@@ -4,8 +4,7 @@
   "scripts": {
     "lint:js": "./node_modules/.bin/eslint --ext .js,.vue --fix resources/js",
     "lint:css": "./node_modules/.bin/stylelint --fix resources/**/*.{scss,vue}",
-    "lint:php": "./vendor/bin/phpcpd app/ --min-lines=50 && ./vendor/bin/phpcbf --standard=PSR2 --extensions=php app && ./vendor/bin/phpcs --standard=PSR2 --extensions=php app",
-    "lint": "yarn lint:js && yarn lint:css && yarn lint:php",
+    "lint": "yarn lint:js && yarn lint:css && composer lint",
     "favicon:generate": "./node_modules/.bin/real-favicon generate .favicon/faviconDescription.json .favicon/faviconData.json public",
     "favicon:inject": "./node_modules/.bin/real-favicon inject .favicon/faviconData.json resources/views/modules resources/views/modules/icons.blade.php",
     "favicon:check": "./node_modules/.bin/real-favicon check-for-update --fail-on-update .favicon/faviconData.json",

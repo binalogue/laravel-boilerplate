@@ -12,6 +12,9 @@
   "[jsonc]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
+  "[php]": {
+    "editor.defaultFormatter": "valeryanm.vscode-phpsab"
+  },
   "[scss]": {
     "editor.formatOnSave": false
   },
@@ -85,6 +88,11 @@
 
   /* Material Icon Theme (pkief.material-icon-theme) */
   "material-icon-theme.activeIconPack": "vue_vuex",
+
+  /* PHP Sniffer & Beautifier (valeryanm.vscode-phpsab) */
+  "phpsab.fixerEnable": true,
+  "phpsab.snifferEnable": true,
+  "phpsab.standard": "PSR2",
 
   /* Vetur (octref.vetur) */
   "vetur.completion.autoImport": true,
