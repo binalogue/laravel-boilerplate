@@ -62,6 +62,12 @@ These instructions will get you a copy of the project up and running on your loc
    .cli/down.sh
    ```
 
+## Exposing your local web server
+
+[ngrok](https://ngrok.com) allows you to expose a web server running on your local machine to the internet, with HTTPS support.
+
+ngrok provides a real-time web UI where you can introspect all of the HTTP traffic running over your tunnels. Just open http://localhost:4040 in a web browser to inspect request details.
+
 ## Running the tests
 
 To run all the PHPUnit tests:
