@@ -17,6 +17,7 @@ services:
       - app-tier
     ports:
       - 80:80
+      - 8080:8080
       - 3000:3000
     env_file:
       - .env
@@ -82,6 +83,20 @@ services:
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: root
       MYSQL_PASSWORD: root
+
+  ngrok:
+    container_name: laravel-boilerplate-ngrok
+    image: wernight/ngrok
+    depends_on:
+      - app
+    networks:
+      - app-tier
+    ports:
+      - 4040:4040
+    environment:
+      NGROK_AUTH: 1hPaZmcLLQ1dxkAIe3p0BJILVq8_3cEX2gxeUUpLtHBLZbnBj
+      NGROK_PORT: host.docker.internal:80
+      NGROK_REGION: eu
 
 volumes:
   mysql:
