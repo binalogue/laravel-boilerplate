@@ -52,7 +52,7 @@ mix
 
   .browserSync({
     files: 'resources/**/*',
-    proxy: process.env.APP_URL,
+    proxy: mix.config.hmr ? '0.0.0.0' : process.env.APP_URL,
     open: false,
   })
 
@@ -62,6 +62,17 @@ mix
   .sourceMaps()
 
   .webpackConfig(() => ({
+    devServer: {
+      proxy: {
+        host: '0.0.0.0',
+        port: 8080,
+      },
+      watchOptions: {
+        aggregateTimeout: 200,
+        poll: 5000,
+      },
+    },
+
     plugins: [
       new StyleLintPlugin({
         files: ['./resources/**/*.{scss,vue}'],

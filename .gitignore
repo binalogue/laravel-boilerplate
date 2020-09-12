@@ -1,5 +1,6 @@
 /.composer
 /node_modules
+/public/mix-manifest.json
 /public/css
 /public/fonts
 /public/hot

@@ -42,6 +42,20 @@ These instructions will get you a copy of the project up and running on your loc
    .cli/up.sh
    ```
 
+   You can compile your assets in two ways:
+
+   - **Watching assets for changes**. This is the default option. The `yarn watch` command will continue running in your terminal and watch all relevant files for changes. Webpack will then automatically recompile your assets when it detects a change.
+
+     ```bash
+     docker-compose exec app yarn watch
+     ```
+
+   - **With support for hot module replacement**. You can add HMR support to the assets watcher. Now, you should see your browser instantly refresh to reflect the changes, without losing your state.
+
+     ```bash
+     docker-compose exec app yarn hot
+     ```
+
 5. Stop the project:
 
    ```bash
