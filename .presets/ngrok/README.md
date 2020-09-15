@@ -4,10 +4,6 @@
   </a>
   <h1 align="center">laravel-boilerplate-ngrok-preset</h1>
   <p align="center">
-    <a href="https://github.com/use-preset/use-preset/releases">
-      <img alt="npx use-preset binalogue/laravel-boilerplate-ngrok-preset" src="https://img.shields.io/badge/use--preset-laravel--boilerplate--ngrok--preset-blue?style=flat-square">
-    </a>
-    &nbsp;
     <a href="https://www.npmjs.com/package/use-preset">
       <img alt="use-preset version" src="https://img.shields.io/npm/v/use-preset?color=32c854&style=flat-square&label=use-preset">
     </a>
