@@ -2,7 +2,6 @@
 
 namespace Support\View;
 
-use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\View\View;
 
@@ -19,18 +18,10 @@ class AppViewComposer
             $collection = collect([]);
         }
 
-        $novaSettings = collect(nova_get_settings())
-            ->mapWithKeys(function ($value, $key) {
-                if ($key === 'logo' && $value) {
-                    $value = asset("storage/{$value}");
-                }
+        // @use-preset-nova-settings
 
-                return [$key => $value];
-            })
-            ->toArray();
-
-        if (!Arr::get($novaSettings, 'logo')) {
-            Arr::set($novaSettings, 'logo', asset('images/logo.png'));
+        if (!isset($settings)) {
+            $settings = config('binalogue');
         }
 
         return $collection->merge([
@@ -42,7 +33,7 @@ class AppViewComposer
             'webp_support' => webp_support(),
 
             // Config
-            'nova_settings' => $novaSettings,
+            'settings' => $settings,
 
             // Localization.
             'locale' => config('app.locale'),

@@ -17,9 +17,9 @@ if [ -f artisan ]; then
   [ -L 'public/storage' ] || ( dc:pa storage:link )
 
   # Publish any vendor packages assets.
+  # @use-preset-vendor-publish
   dc:pa telescope:publish
   dc:pa horizon:publish
-  dc:pa nova:publish
 
   # Migrate database.
   dc:pa migrate:fresh --force --seed
@@ -28,8 +28,7 @@ if [ -f artisan ]; then
   dc exec queue php artisan horizon:terminate
 fi
 
-# Copy logo.
-[ -f storage/app/public/nova-settings/logo/logo.png ] || (mkdir -p storage/app/public/nova-settings/logo && cp resources/images/logo.png storage/app/public/nova-settings/logo/logo.png)
+# @use-preset-before-yarn
 
 # Run yarn.
 dc:yarn
