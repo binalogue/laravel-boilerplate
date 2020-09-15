@@ -61,7 +61,7 @@ mix
 
   .sourceMaps()
 
-  .webpackConfig(() => ({
+  .webpackConfig(webpack => ({
     devServer: {
       proxy: {
         host: '0.0.0.0',
@@ -78,6 +78,8 @@ mix
         files: ['./resources/**/*.{scss,vue}'],
         fix: true,
       }),
+
+      // @use-preset-webpack-plugins
     ],
 
     module: {

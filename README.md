@@ -30,9 +30,18 @@ These instructions will get you a copy of the project up and running on your loc
 
 2. Add the necessary presets:
 
-   - [apache](./.presets/apache/README.md) - Allows you to use Apache instead of nginx.
+   **Development environment presets**
+
+   - [apache](./.presets/apache/README.md) - Allows you to use Apache instead of Nginx.
    - [ngrok](./.presets/ngrok/README.md) - Allows you to expose a web server running on your local machine to the internet, with HTTPS support.
+
+   **Backend presets**
+
    - [nova](./.presets/nova/README.md) - Allows you to use Nova as administration panel for Laravel.
+
+   **Frontend presets**
+
+   - [three](./.presets/three/README.md) - Allows you to install three.js.
 
 3. Build the project:
 
