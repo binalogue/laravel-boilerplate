@@ -30,8 +30,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 2. Add the necessary presets:
 
+   - [apache](./.presets/apache/README.md) - Allows you to use Apache instead of nginx.
    - [ngrok](./.presets/ngrok/README.md) - Allows you to expose a web server running on your local machine to the internet, with HTTPS support.
-   - [nova](./.presets/nova/README.md) - Nova is a beautifully designed administration panel for Laravel.
+   - [nova](./.presets/nova/README.md) - Allows you to use Nova as administration panel for Laravel.
 
 3. Build the project:
 
