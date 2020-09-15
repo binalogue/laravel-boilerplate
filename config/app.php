@@ -181,11 +181,12 @@ return [
         Support\Providers\FlashServiceProvider::class,
         Support\Providers\HorizonServiceProvider::class,
         Support\Providers\InertiaServiceProvider::class,
-        Support\Providers\NovaServiceProvider::class,
         Support\Providers\RouteServiceProvider::class,
         Support\Providers\SeoToolsServiceProvider::class,
         Support\Providers\TelescopeServiceProvider::class,
         Support\Providers\ViewServiceProvider::class,
+
+        // @use-preset-app-service-providers
 
     ],
 

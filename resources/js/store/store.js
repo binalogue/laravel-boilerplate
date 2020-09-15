@@ -113,8 +113,8 @@ export default new Vuex.Store({
         state.url = serverPayload.url;
       }
 
-      if (serverPayload.nova_settings) {
-        state.settings = serverPayload.nova_settings;
+      if (serverPayload.settings) {
+        state.settings = serverPayload.settings;
       }
 
       if (serverPayload.locale) {

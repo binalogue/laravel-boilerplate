@@ -8,14 +8,11 @@ class DatabaseSeeder extends Seeder
 {
     public function run(): void
     {
+        // @use-preset-database-seeders
+
         $this->call([
             RolesTableSeeder::class,
             UsersTableSeeder::class,
         ]);
-
-        // These seeders are generated with [orangehill/iseed]
-        $this->call(
-            NovaSettingsTableSeeder::class,
-        );
     }
 }

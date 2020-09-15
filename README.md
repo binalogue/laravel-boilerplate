@@ -28,7 +28,10 @@ These instructions will get you a copy of the project up and running on your loc
    git clone git@gitlab.com:binalogue/laravel-boilerplate.git && cd laravel-boilerplate
    ```
 
-2. Add an `auth.json` file with the Laravel Nova credentials.
+2. Add the necessary presets:
+
+   - [ngrok](./.presets/ngrok/README.md) - Allows you to expose a web server running on your local machine to the internet, with HTTPS support.
+   - [nova](./.presets/nova/README.md) - Nova is a beautifully designed administration panel for Laravel.
 
 3. Build the project:
 
@@ -61,10 +64,6 @@ These instructions will get you a copy of the project up and running on your loc
    ```bash
    .cli/down.sh
    ```
-
-### Adding presets
-
-- [ngrok](https://github.com/binalogue/laravel-boilerplate-ngrok-preset) - Allows you to expose a web server running on your local machine to the internet, with HTTPS support.
 
 ## Running the tests
 

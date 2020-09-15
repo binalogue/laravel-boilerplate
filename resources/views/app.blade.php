@@ -58,7 +58,7 @@
 <link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="{{ asset('fonts/Gotham-Medium.woff2') }}">
 <link rel="preload" as="font" crossorigin="crossorigin" type="font/woff2" href="{{ asset('fonts/Gotham-Book.woff2') }}">
 
-@if ($logo = Arr::get($data, 'nova_settings.logo'))
+@if ($logo = Arr::get($data, 'settings.logo'))
 <link rel="preload" as="image" href="{{ $logo }}">
 @endif
 <!-- End Fonts/Media -->
@@ -103,12 +103,12 @@ window.app_server_data = @json($data);
 </head>
 
 <body style="
-    --color-primary: {{ Arr::get($data, 'nova_settings.color_primary') }};
-    --color-primary-hover: {{ Arr::get($data, 'nova_settings.color_primary_hover') }};
-    --color-black: {{ Arr::get($data, 'nova_settings.color_black') }};
-    --color-grey: {{ Arr::get($data, 'nova_settings.color_grey') }};
-    --color-white: {{ Arr::get($data, 'nova_settings.color_white') }};
-    --color-alerts: {{ Arr::get($data, 'nova_settings.color_alerts') }};
+    --color-primary: {{ Arr::get($data, 'settings.color_primary') }};
+    --color-primary-hover: {{ Arr::get($data, 'settings.color_primary_hover') }};
+    --color-black: {{ Arr::get($data, 'settings.color_black') }};
+    --color-grey: {{ Arr::get($data, 'settings.color_grey') }};
+    --color-white: {{ Arr::get($data, 'settings.color_white') }};
+    --color-alerts: {{ Arr::get($data, 'settings.color_alerts') }};
 ">
 @inertia
 </body>
