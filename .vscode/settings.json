@@ -84,7 +84,7 @@
   "eslint.run": "onType",
   // Enable validation for `.vue` files.
   "eslint.validate": ["javascript", "vue"],
-  "eslint.workingDirectories": ["resources/js"],
+  "eslint.workingDirectories": [".presets", "resources/js"],
 
   /* Material Icon Theme (pkief.material-icon-theme) */
   "material-icon-theme.activeIconPack": "vue_vuex",
