@@ -183,7 +183,6 @@ return [
         Support\Providers\InertiaServiceProvider::class,
         Support\Providers\RouteServiceProvider::class,
         Support\Providers\SeoToolsServiceProvider::class,
-        Support\Providers\TelescopeServiceProvider::class,
         Support\Providers\ViewServiceProvider::class,
 
         // @use-preset-app-service-providers

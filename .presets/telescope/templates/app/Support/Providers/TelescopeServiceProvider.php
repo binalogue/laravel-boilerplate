@@ -3,7 +3,6 @@
 namespace Support\Providers;
 
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Gate;
 use Laravel\Telescope\IncomingEntry;
 use Laravel\Telescope\Telescope;
@@ -11,19 +10,14 @@ use Laravel\Telescope\TelescopeApplicationServiceProvider;
 
 class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
 {
-    /**
-     * Register any application services.
-     *
-     * @return void
-     */
-    public function register()
+    public function register(): void
     {
         Telescope::night();
 
         $this->hideSensitiveRequestDetails();
 
         Telescope::filter(function (IncomingEntry $entry) {
-            if (App::environment(['local', 'staging'])) {
+            if ($this->app->environment(['local', 'staging'])) {
                 return true;
             }
 
@@ -35,7 +29,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
         });
 
         Telescope::filterBatch(function (Collection $entries) {
-            if (App::environment(['local', 'staging'])) {
+            if ($this->app->environment(['local', 'staging'])) {
                 return true;
             }
 
@@ -53,9 +47,9 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
      *
      * @return void
      */
-    protected function hideSensitiveRequestDetails()
+    protected function hideSensitiveRequestDetails(): void
     {
-        if (App::environment(['local', 'staging'])) {
+        if ($this->app->environment(['local', 'staging'])) {
             return;
         }
 
@@ -75,7 +69,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
      *
      * @return void
      */
-    protected function gate()
+    protected function gate(): void
     {
         Gate::define('viewTelescope', function ($user) {
             return $user->isSuperAdmin();

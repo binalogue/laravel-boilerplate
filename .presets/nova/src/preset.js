@@ -74,7 +74,7 @@ module.exports = Preset.make('laravel-boilerplate-nova-preset')
   .chain()
 
   .edit('config/app.php')
-  .title('🏗 Add NovaServiceProvider')
+  .title('🏗 Add service provider')
   .search(/@use-preset-app-service-providers$/)
   .addAfter('Support\\Providers\\NovaServiceProvider::class,')
   .end()

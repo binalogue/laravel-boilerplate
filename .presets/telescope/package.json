@@ -1,0 +1,7 @@
+{
+  "name": "laravel-boilerplate-telescope-preset",
+  "license": "MIT",
+  "preset": "src/preset.js",
+  "version": "0.0.0",
+  "private": "true"
+}

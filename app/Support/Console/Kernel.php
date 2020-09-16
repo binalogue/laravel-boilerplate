@@ -13,15 +13,11 @@ class Kernel extends BaseKernel
 
     protected function schedule(Schedule $schedule): void
     {
-        if (config('telescope.enabled')) {
-            $schedule
-                ->command('telescope:prune --hours=72')
-                ->daily();
-        }
-
         $schedule
             ->command('horizon:snapshot')
             ->everyFiveMinutes();
+
+        // @use-preset-schedule
     }
 
     protected function commands(): void

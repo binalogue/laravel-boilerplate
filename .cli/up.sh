@@ -6,7 +6,7 @@ source .cli/alias.sh
 dc up -d
 
 # Install Composer dependencies.
-dc:composer check-platform-reqs
+[ -f composer.lock ] && ( dc:composer check-platform-reqs )
 dc:composer install --prefer-dist --no-progress --no-suggest --no-interaction
 
 if [ -f artisan ]; then
@@ -18,7 +18,6 @@ if [ -f artisan ]; then
 
   # Publish any vendor packages assets.
   # @use-preset-vendor-publish
-  dc:pa telescope:publish
   dc:pa horizon:publish
 
   # Migrate database.
