@@ -5,6 +5,9 @@ source .cli/alias.sh
 # Run Docker in "detached" mode.
 dc up -d
 
+# Delete cache files.
+find bootstrap/cache/ -name "*.php" -type f -delete
+
 # Install Composer dependencies.
 [ -f composer.lock ] && ( dc:composer check-platform-reqs )
 dc:composer install --prefer-dist --no-progress --no-suggest --no-interaction
