@@ -84,6 +84,8 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: root
 
+  # @use-preset-docker-compose-services
+
 volumes:
   mysql:
     driver: 'local'

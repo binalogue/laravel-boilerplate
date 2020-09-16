@@ -8,7 +8,7 @@ module.exports = Preset.make('laravel-boilerplate-ngrok-preset')
 
   .edit('docker-compose.yml')
   .title('🐳 Add ngrok job')
-  .search(/MYSQL_PASSWORD: root/)
+  .search(/@use-preset-docker-compose-services$/)
   .addAfter(
     `
   ngrok:
