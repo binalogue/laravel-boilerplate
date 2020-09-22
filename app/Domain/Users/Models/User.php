@@ -2,9 +2,11 @@
 
 namespace Domain\Users\Models;
 
+use Database\Factories\UserFactory;
 use Domain\Users\Builders\UserBuilder;
 use Domain\Users\Concerns\HasRoles;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
@@ -53,6 +55,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function newEloquentBuilder($query): UserBuilder
     {
         return new UserBuilder($query);
+    }
+
+    public static function newFactory(): Factory
+    {
+        return UserFactory::new();
     }
 
     /*

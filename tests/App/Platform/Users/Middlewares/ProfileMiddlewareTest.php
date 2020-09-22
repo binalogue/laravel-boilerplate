@@ -2,7 +2,7 @@
 
 namespace Tests\App\Platform\Users\Middlewares;
 
-use Database\Factories\UserFactory;
+use Domain\Users\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Support\Providers\RouteServiceProvider;
 use Support\Testing\Concerns\EmailVerificationRoutes;
@@ -27,7 +27,7 @@ class ProfileMiddlewareTest extends TestCase
     public function unverified_user_can_not_see_their_profile()
     {
         $this
-            ->actingAs(UserFactory::new()->unverified()->create())
+            ->actingAs(User::factory()->unverified()->create())
             ->get(route('profile.show'))
             ->assertRedirect($this->verificationNoticeRoute());
     }
@@ -36,7 +36,7 @@ class ProfileMiddlewareTest extends TestCase
     public function user_that_must_reset_password_can_not_see_their_profile()
     {
         $this
-            ->actingAs(UserFactory::new()->mustResetPassword()->create())
+            ->actingAs(User::factory()->mustResetPassword()->create())
             ->get(route('profile.show'))
             ->assertRedirect($this->forceResetPasswordRoute());
     }

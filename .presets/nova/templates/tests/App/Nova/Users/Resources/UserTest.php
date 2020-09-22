@@ -3,8 +3,8 @@
 namespace Tests\App\Nova\Users\Resources;
 
 use App\Nova\Users\Resources\User as UserResource;
-use Database\Factories\UserFactory;
 use Domain\Users\Models\Role;
+use Domain\Users\Models\User;
 use Tests\NovaTestCase;
 
 /** @see \App\Nova\Users\Resources\User */
@@ -44,7 +44,7 @@ class UserTest extends NovaTestCase
     /** @test **/
     public function users_can_be_retrieved_ordered_by_id_desc()
     {
-        $user2 = UserFactory::new()->create();
+        $user2 = User::factory()->create();
 
         $this
             ->get('nova-api/users')
@@ -158,7 +158,7 @@ class UserTest extends NovaTestCase
     /** @test **/
     public function email_must_be_unique_on_create()
     {
-        UserFactory::new()->create([
+        User::factory()->create([
             'email' => 'pepe@grillo.com',
         ]);
 
@@ -322,7 +322,7 @@ class UserTest extends NovaTestCase
     /** @test **/
     public function email_must_be_unique_on_update()
     {
-        UserFactory::new()->create([
+        User::factory()->create([
             'email' => 'pepe@grillo.com',
         ]);
 
@@ -344,7 +344,7 @@ class UserTest extends NovaTestCase
         $this
             ->put(
                 "nova-api/users/{$this->user->id}",
-                UserFactory::new()->make([
+                User::factory()->make([
                     'email' => $this->user->email,
                 ])->toArray()
             )
@@ -357,7 +357,7 @@ class UserTest extends NovaTestCase
         $this
             ->put(
                 "nova-api/users/{$this->user->id}",
-                UserFactory::new()->make([
+                User::factory()->make([
                     'password' => null,
                 ])->toArray()
             )

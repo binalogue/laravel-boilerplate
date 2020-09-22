@@ -2,7 +2,6 @@
 
 namespace Tests\Domain\Users\Models;
 
-use Database\Factories\UserFactory;
 use Domain\Users\Models\Role;
 use Domain\Users\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -22,10 +21,10 @@ class UserTest extends TestCase
     /** @test */
     public function it_can_be_scoped_by_role()
     {
-        UserFactory::new()->create();
-        UserFactory::new()->create()->assignRole(Role::EDITOR);
-        UserFactory::new()->create()->assignRole(Role::ADMIN);
-        UserFactory::new()->create()->assignRole(Role::SUPERADMIN);
+        User::factory()->create();
+        User::factory()->create()->assignRole(Role::EDITOR);
+        User::factory()->create()->assignRole(Role::ADMIN);
+        User::factory()->create()->assignRole(Role::SUPERADMIN);
 
         $this->assertCount(3, User::whereHasRole(Role::EDITOR)->get());
         $this->assertCount(2, User::whereHasRole(Role::ADMIN)->get());
@@ -35,10 +34,10 @@ class UserTest extends TestCase
     /** @test */
     public function it_can_be_scoped_by_strict_role()
     {
-        UserFactory::new()->create();
-        UserFactory::new()->create()->assignRole(Role::EDITOR);
-        UserFactory::new()->create()->assignRole(Role::ADMIN);
-        UserFactory::new()->create()->assignRole(Role::SUPERADMIN);
+        User::factory()->create();
+        User::factory()->create()->assignRole(Role::EDITOR);
+        User::factory()->create()->assignRole(Role::ADMIN);
+        User::factory()->create()->assignRole(Role::SUPERADMIN);
 
         $this->assertCount(1, User::whereHasStrictRole(Role::EDITOR)->get());
         $this->assertCount(1, User::whereHasStrictRole(Role::ADMIN)->get());
@@ -48,7 +47,7 @@ class UserTest extends TestCase
     /** @test */
     public function it_can_be_assigned_a_role()
     {
-        $user = UserFactory::new()->create()->assignRole(Role::EDITOR);
+        $user = User::factory()->create()->assignRole(Role::EDITOR);
 
         $this->assertInstanceOf(Role::class, $user->fresh()->role);
         $this->assertEquals(Role::EDITOR, $user->fresh()->role->name);
@@ -57,8 +56,8 @@ class UserTest extends TestCase
     /** @test */
     public function it_can_check_if_has_a_given_role()
     {
-        $editor = UserFactory::new()->asEditor()->create();
-        $admin = UserFactory::new()->asAdmin()->create();
+        $editor = User::factory()->asEditor()->create();
+        $admin = User::factory()->asAdmin()->create();
 
         $this->assertTrue($editor->hasRole(Role::EDITOR));
         $this->assertTrue($admin->hasRole(Role::EDITOR));
@@ -67,8 +66,8 @@ class UserTest extends TestCase
     /** @test */
     public function it_can_check_if_has_a_given_strict_role()
     {
-        $editor = UserFactory::new()->asEditor()->create();
-        $admin = UserFactory::new()->asAdmin()->create();
+        $editor = User::factory()->asEditor()->create();
+        $admin = User::factory()->asAdmin()->create();
 
         $this->assertTrue($editor->hasStrictRole(Role::EDITOR));
         $this->assertFalse($admin->hasStrictRole(Role::EDITOR));
@@ -83,7 +82,7 @@ class UserTest extends TestCase
     /** @test */
     public function it_can_be_soft_deleted()
     {
-        $user = UserFactory::new()->create();
+        $user = User::factory()->create();
 
         $this->assertFalse($user->trashed());
 
@@ -105,7 +104,7 @@ class UserTest extends TestCase
     /** @test */
     public function it_can_get_first_name()
     {
-        $user = UserFactory::new()->make([
+        $user = User::factory()->make([
             'first_name' => 'pepe',
         ]);
 
@@ -115,7 +114,7 @@ class UserTest extends TestCase
     /** @test */
     public function it_can_get_first_name_with_accents()
     {
-        $user = UserFactory::new()->make([
+        $user = User::factory()->make([
             'first_name' => 'álvaro',
         ]);
 
@@ -125,7 +124,7 @@ class UserTest extends TestCase
     /** @test */
     public function it_can_get_last_name()
     {
-        $user = UserFactory::new()->make([
+        $user = User::factory()->make([
             'last_name' => 'grillo',
         ]);
 
@@ -135,7 +134,7 @@ class UserTest extends TestCase
     /** @test */
     public function it_can_get_last_name_with_accents()
     {
-        $user = UserFactory::new()->make([
+        $user = User::factory()->make([
             'last_name' => 'álvarez',
         ]);
 
@@ -151,7 +150,7 @@ class UserTest extends TestCase
     /** @test */
     public function it_can_get_full_name()
     {
-        $user = UserFactory::new()->make([
+        $user = User::factory()->make([
             'first_name' => 'pepe',
             'last_name' => 'grillo',
         ]);
@@ -168,7 +167,7 @@ class UserTest extends TestCase
     /** @test */
     public function it_can_mutate_first_name()
     {
-        UserFactory::new()->create([
+        User::factory()->create([
             'first_name' => 'Pepe',
         ]);
 
@@ -180,7 +179,7 @@ class UserTest extends TestCase
     /** @test */
     public function it_can_mutate_first_name_with_accents()
     {
-        UserFactory::new()->create([
+        User::factory()->create([
             'first_name' => 'Álvaro',
         ]);
 
@@ -192,7 +191,7 @@ class UserTest extends TestCase
     /** @test */
     public function it_can_mutate_last_name()
     {
-        UserFactory::new()->create([
+        User::factory()->create([
             'last_name' => 'Grillo',
         ]);
 
@@ -204,7 +203,7 @@ class UserTest extends TestCase
     /** @test */
     public function it_can_mutate_last_name_with_accents()
     {
-        UserFactory::new()->create([
+        User::factory()->create([
             'last_name' => 'Álvarez',
         ]);
 
@@ -216,7 +215,7 @@ class UserTest extends TestCase
     /** @test */
     public function it_can_mutate_email()
     {
-        UserFactory::new()->create([
+        User::factory()->create([
             'email' => 'PEPE@GRILLO.COM',
         ]);
 
@@ -234,7 +233,7 @@ class UserTest extends TestCase
     /** @test */
     public function it_belongs_to_a_role()
     {
-        $user = UserFactory::new()->asEditor()->create();
+        $user = User::factory()->asEditor()->create();
 
         $this->assertInstanceOf(Role::class, $user->role);
     }

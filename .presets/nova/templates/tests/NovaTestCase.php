@@ -2,7 +2,6 @@
 
 namespace Tests;
 
-use Database\Factories\UserFactory;
 use Domain\Users\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
@@ -18,7 +17,7 @@ abstract class NovaTestCase extends TestCase
 
         $this->seed('RolesTableSeeder');
 
-        $this->user = UserFactory::new()->create();
+        $this->user = User::factory()->create();
         $this->actingAs($this->user);
     }
 }
