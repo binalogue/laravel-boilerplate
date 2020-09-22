@@ -898,11 +898,6 @@
     axios "^0.19.0"
     nprogress "^0.2.0"
 
-"@mgoigfer/vue-social-media@^0.2.0":
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/@mgoigfer/vue-social-media/-/vue-social-media-0.2.0.tgz#be338d23258bbd57035c3d0bfd6568d600bcf084"
-  integrity sha512-Cs6TcyvLmqDqdQ+Ee5tspWvjtUhqcFWwitNdRUEhQE9aagLhYwfPZgo9EJJPbXV3gDCKJhAQPDmNP2/5Kb/C1w==
-
 "@mrmlnc/readdir-enhanced@^2.2.1":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@mrmlnc/readdir-enhanced/-/readdir-enhanced-2.2.1.tgz#524af240d1a360527b730475ecfa1344aa540dde"
