@@ -30,7 +30,6 @@ import VueVuelidate from 'plugins/vue-vuelidate';
 import VueWebp from 'plugins/vue-webp';
 
 // Optional
-// import VueMoment from 'plugins/vue-moment';
 // import VueSelect from 'plugins/vue-select';
 // import VueYoutube from 'plugins/vue-youtube';
 
