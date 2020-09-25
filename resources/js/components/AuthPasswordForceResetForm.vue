@@ -1,8 +1,5 @@
 <template>
-  <form
-    class="AuthPasswordForceResetForm"
-    @submit.prevent="vuelidate(createNewPassword)"
-  >
+  <form class="AuthPasswordForceResetForm" @submit.prevent="createNewPassword">
     <BaseInputText
       v-model="form.password"
       :v="$v.form.password"
@@ -62,11 +59,8 @@ export default {
   },
 
   methods: {
-    async createNewPassword() {
-      await this.$inertia.post(
-        this.route('password.forceResetUpdate'),
-        this.form
-      );
+    createNewPassword() {
+      this.$inertia.post(this.route('password.forceResetUpdate'), this.form);
     },
   },
 };

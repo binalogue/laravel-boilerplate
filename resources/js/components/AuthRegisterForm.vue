@@ -1,5 +1,5 @@
 <template>
-  <form class="AuthRegisterForm" @submit.prevent="vuelidate(register)">
+  <form class="AuthRegisterForm" @submit.prevent="register">
     <h2 class="title">
       Completa tus datos
     </h2>
@@ -146,15 +146,17 @@ export default {
   },
 
   methods: {
-    async register() {
-      await this.$inertia.post(this.route('register'), this.form);
-
-      if (!this.$page.hasErrorsOrExceptions) {
-        this.$gtm.track('sign-up', {
-          category: 'engagement',
-          label: this.signUpMethod,
-        });
-      }
+    register() {
+      this.$inertia.post(this.route('register'), this.form, {
+        onFinish: () => {
+          if (!this.$page.hasErrorsOrExceptions) {
+            this.$gtm.track('sign-up', {
+              category: 'engagement',
+              label: this.signUpMethod,
+            });
+          }
+        },
+      });
     },
   },
 };

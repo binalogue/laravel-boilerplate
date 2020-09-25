@@ -1,5 +1,5 @@
 <template>
-  <form class="AuthLoginForm" @submit.prevent="vuelidate(login)">
+  <form class="AuthLoginForm" @submit.prevent="login">
     <BaseInputText
       v-model="form.email"
       :v="$v.form.email"
@@ -83,15 +83,17 @@ export default {
   },
 
   methods: {
-    async login() {
-      await this.$inertia.post(this.route('login'), this.form);
-
-      if (!this.$page.hasErrorsOrExceptions) {
-        this.$gtm.track('login', {
-          category: 'engagement',
-          label: 'Email',
-        });
-      }
+    login() {
+      this.$inertia.post(this.route('login'), this.form, {
+        onSuccess: () => {
+          if (!this.$page.hasErrorsOrExceptions) {
+            this.$gtm.track('login', {
+              category: 'engagement',
+              label: 'Email',
+            });
+          }
+        },
+      });
     },
   },
 };

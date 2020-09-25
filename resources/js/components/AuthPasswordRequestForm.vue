@@ -1,8 +1,5 @@
 <template>
-  <form
-    class="AuthPasswordRequestForm"
-    @submit.prevent="vuelidate(requestPassword)"
-  >
+  <form class="AuthPasswordRequestForm" @submit.prevent="requestPassword">
     <BaseInputText
       v-model="form.email"
       :v="$v.form.email"
@@ -50,8 +47,8 @@ export default {
   },
 
   methods: {
-    async requestPassword() {
-      await this.$inertia.post(this.route('password.email'), this.form);
+    requestPassword() {
+      this.$inertia.post(this.route('password.email'), this.form);
     },
   },
 };

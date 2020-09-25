@@ -1,8 +1,5 @@
 <template>
-  <form
-    class="AuthPreRegisterForm"
-    @submit.prevent="vuelidate(registerWithEmail)"
-  >
+  <form class="AuthPreRegisterForm" @submit.prevent="registerWithEmail">
     <BaseInputText
       v-model="form.email"
       :v="$v.form.email"
@@ -50,8 +47,8 @@ export default {
   },
 
   methods: {
-    async registerWithEmail() {
-      await this.$inertia.visit(this.route('register.form'), {
+    registerWithEmail() {
+      this.$inertia.visit(this.route('register.form'), {
         data: this.form,
       });
     },

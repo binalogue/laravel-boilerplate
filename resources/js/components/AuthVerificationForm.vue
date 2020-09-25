@@ -1,8 +1,5 @@
 <template>
-  <form
-    class="AuthVerificationForm"
-    @submit.prevent="vuelidate(requestVerificationEmail)"
-  >
+  <form class="AuthVerificationForm" @submit.prevent="requestVerificationEmail">
     <BaseSubmitButton
       :submitting="submitting"
       :disabled="submitting"
@@ -21,8 +18,8 @@ export default {
   mixins: [vuelidate],
 
   methods: {
-    async requestVerificationEmail() {
-      await this.$inertia.post(this.route('verification.resend'));
+    requestVerificationEmail() {
+      this.$inertia.post(this.route('verification.resend'));
     },
   },
 };
