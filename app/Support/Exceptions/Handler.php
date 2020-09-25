@@ -38,16 +38,16 @@ class Handler extends ExceptionHandler
         //
     }
 
-    public function render($request, Throwable $e)
+    public function render($request, Throwable $exception)
     {
-        $response = parent::render($request, $e);
+        $response = parent::render($request, $exception);
 
         if (App::environment('production')
             && $request->header('X-Inertia')
-            && in_array($response->getStatusCode(), [403, 404, 500, 503])
+            && in_array($response->getStatusCode(), [401, 403, 404, 419, 429, 500, 503])
         ) {
             return Inertia::render('ErrorPage', [
-                'statusCode' => $response->getStatusCode(),
+                'code' => $response->getStatusCode(),
             ])
                 ->toResponse($request)
                 ->setStatusCode($response->getStatusCode());
