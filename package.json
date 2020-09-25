@@ -46,8 +46,9 @@
     "vue-template-compiler": "^2.6.11"
   },
   "dependencies": {
-    "@inertiajs/inertia": "^0.1.9",
-    "@inertiajs/inertia-vue": "^0.1.4",
+    "@inertiajs/inertia": "^0.3.4",
+    "@inertiajs/inertia-vue": "^0.2.4",
+    "@inertiajs/progress": "^0.1.2",
     "gsap": "^3.4.2",
     "lang.js": "^1.1.14",
     "lodash": "^4.17.19",

@@ -15,9 +15,12 @@
 import Vue from 'vue';
 
 /* Vendor */
-import { InertiaApp } from '@inertiajs/inertia-vue';
-import Vuex from 'vuex';
 import MobileDetect from 'mobile-detect';
+import Vuex from 'vuex';
+import { InertiaApp } from '@inertiajs/inertia-vue';
+
+/* Inertia Plugins */
+import InertiaProgress from 'plugins/inertia-progress';
 
 /* Vue Plugins */
 import VueCookies from 'plugins/vue-cookies';
@@ -59,7 +62,10 @@ if (process.env.MIX_APP_ENV === 'production') {
   Vue.config.productionTip = false;
 }
 
+/* Inertia Plugins */
 Vue.use(InertiaApp);
+
+/* Vue Plugins */
 Vue.use(Vuex);
 Vue.use(VueCookies);
 Vue.use(VueGsap);
@@ -105,6 +111,9 @@ components.keys().map(key =>
 const app = document.getElementById('app');
 
 window.Laravel = new Vue({
+  mounted() {
+    Vue.use(InertiaProgress, this.$store);
+  },
   render: h =>
     h(InertiaApp, {
       props: {
