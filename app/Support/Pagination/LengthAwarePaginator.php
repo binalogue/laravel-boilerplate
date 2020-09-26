@@ -27,11 +27,11 @@ class LengthAwarePaginator extends BaseLengthAwarePaginator
     {
         return [
             'data' => $this->items->toArray(),
-            'links' => $this->links(),
+            'links' => $this->linkCollection()->toArray(),
         ];
     }
 
-    public function links($view = null, $data = [])
+    public function linkCollection()
     {
         $this->appends(Request::all());
 

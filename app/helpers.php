@@ -5,7 +5,7 @@ if (! function_exists('accepted')) {
      * Check if the value under validation is true, 1, 'true', 'yes' or 'on'.
      *
      * @param  bool|int|string  $value
-     * @return void
+     * @return bool
      */
     function accepted($value)
     {

@@ -18,7 +18,7 @@ class MetaTags implements MetaTagsContract
     /**
      * The meta title session.
      *
-     * @var string
+     * @var string|null
      */
     protected $title_session;
 
@@ -32,14 +32,14 @@ class MetaTags implements MetaTagsContract
     /**
      * The title tag separator.
      *
-     * @var array
+     * @var string
      */
     protected $title_separator;
 
     /**
      * The meta description.
      *
-     * @var string
+     * @var string|null
      */
     protected $description;
 
@@ -60,28 +60,28 @@ class MetaTags implements MetaTagsContract
     /**
      * The canonical URL.
      *
-     * @var string
+     * @var string|null
      */
     protected $canonical;
 
     /**
      * The AMP URL.
      *
-     * @var string
+     * @var string|null
      */
     protected $amphtml;
 
     /**
      * The prev URL in pagination.
      *
-     * @var string
+     * @var string|null
      */
     protected $prev;
 
     /**
      * The next URL in pagination.
      *
-     * @var string
+     * @var string|null
      */
     protected $next;
 
@@ -95,7 +95,7 @@ class MetaTags implements MetaTagsContract
     /**
      * The meta robots.
      *
-     * @var string
+     * @var string|null
      */
     protected $robots;
 
@@ -204,10 +204,10 @@ class MetaTags implements MetaTagsContract
     {
         $title = $this->getTitle();
 
-        $meta = (object) [];
+        $meta = [];
 
         if ($title) {
-            $meta->title = $title;
+            $meta['title'] = $title;
         }
 
         return $meta;
@@ -402,8 +402,8 @@ class MetaTags implements MetaTagsContract
 
     public function getDescription()
     {
-        if (false === $this->description) {
-            return;
+        if ($this->description === false) {
+            return null;
         }
 
         return $this->description ?: $this->config->get('defaults.description', null);
