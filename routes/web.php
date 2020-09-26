@@ -31,7 +31,8 @@ use Illuminate\Support\Facades\Route;
 |--------------------------------------------------------------------------
 */
 
-Route::get('/', HomeController::class)->name('home');
+Route::get('/', HomeController::class)
+    ->name('home');
 
 /*
 |--------------------------------------------------------------------------
@@ -39,49 +40,82 @@ Route::get('/', HomeController::class)->name('home');
 |--------------------------------------------------------------------------
 */
 
-// Authentication Routes...
-Route::middleware('guest')->group(function () {
-    Route::get('login', [LoginController::class, 'showLoginForm'])->name('login.form');
-    Route::post('login', [LoginController::class, 'login']);
-});
+// Authentication
 
-Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+Route::get('login', [LoginController::class, 'showLoginForm'])
+    ->name('login.form')
+    ->middleware('guest');
 
-// Pre Registration Routes...
-Route::middleware('guest')->group(function () {
-    Route::get('register', [PreRegisterController::class, 'showPreRegisterForm'])->name('preRegister.form');
-});
+Route::post('login', [LoginController::class, 'login'])
+    ->middleware('guest');
 
-// Registration Routes...
-Route::middleware('guest')->group(function () {
-    Route::get('register/email', [RegisterController::class, 'showRegisterForm'])->name('register.form');
-    Route::post('register', [RegisterController::class, 'register'])->name('register');
-});
+Route::post('logout', [LoginController::class, 'logout'])
+    ->name('logout');
 
-// Email Verification Routes...
-Route::middleware('auth')->group(function () {
-    Route::get('email/verify', [EmailVerificationController::class, 'showVerificationNotice'])->name('verification.notice');
-    Route::get('email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])->name('verification.verify')->middleware('signed', 'throttle:6,1');
-    Route::post('email/resend', [EmailVerificationController::class, 'resend'])->name('verification.resend')->middleware('throttle:6,1');
-});
+// Pre Registration
 
-// Socialite Routes...
-Route::middleware('guest')->group(function () {
-    Route::get('oauth/{driver}', [SocialiteController::class, 'redirectToProvider'])->where('driver', implode('|', config('socialite.drivers')))->name('oauth');
-    Route::get('oauth/{driver}/callback', [SocialiteController::class, 'handleProviderCallback'])->where('driver', implode('|', config('socialite.drivers')))->name('oauth.callback');
-});
+Route::get('register', [PreRegisterController::class, 'showPreRegisterForm'])
+    ->name('preRegister.form')
+    ->middleware('guest');
 
-// Password Reset Routes...
-Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
-Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
-Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
-Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+// Registration
 
-// Force Password Reset Routes...
-Route::middleware('auth')->group(function () {
-    Route::get('password/new', [ForceResetPasswordController::class, 'showResetForm'])->name('password.forceReset');
-    Route::post('password/new', [ForceResetPasswordController::class, 'reset'])->name('password.forceResetUpdate');
-});
+Route::get('register/email', [RegisterController::class, 'showRegisterForm'])
+    ->name('register.form')
+    ->middleware('guest');
+
+Route::post('register', [RegisterController::class, 'register'])
+    ->name('register')
+    ->middleware('guest');
+
+// Email Verification
+
+Route::get('email/verify', [EmailVerificationController::class, 'showVerificationNotice'])
+    ->name('verification.notice')
+    ->middleware('auth');
+
+Route::get('email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])
+    ->name('verification.verify')
+    ->middleware('auth', 'signed', 'throttle:6,1');
+
+Route::post('email/resend', [EmailVerificationController::class, 'resend'])
+    ->name('verification.resend')
+    ->middleware('auth', 'throttle:6,1');
+
+// Socialite
+
+Route::get('oauth/{driver}', [SocialiteController::class, 'redirectToProvider'])
+    ->where('driver', implode('|', config('socialite.drivers')))
+    ->name('oauth')
+    ->middleware('guest');
+
+Route::get('oauth/{driver}/callback', [SocialiteController::class, 'handleProviderCallback'])
+    ->where('driver', implode('|', config('socialite.drivers')))
+    ->name('oauth.callback');
+
+// Password Reset
+
+Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])
+    ->name('password.request');
+
+Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])
+    ->name('password.email');
+
+Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])
+    ->name('password.reset');
+
+Route::post('password/reset', [ResetPasswordController::class, 'reset'])
+    ->name('password.update');
+
+// Force Password Reset
+
+Route::get('password/new', [ForceResetPasswordController::class, 'showResetForm'])
+    ->name('password.forceReset')
+    ->middleware('auth');
+
+Route::post('password/new', [ForceResetPasswordController::class, 'reset'])
+    ->name('password.forceResetUpdate')
+    ->middleware('auth');
 
 /*
 |--------------------------------------------------------------------------
@@ -89,14 +123,25 @@ Route::middleware('auth')->group(function () {
 |--------------------------------------------------------------------------
 */
 
-Route::middleware(['auth', 'verified', 'password.reset'])->group(function () {
-    Route::get('profile', [ProfileController::class, 'show'])->name('profile.show');
-    Route::get('profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::put('profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+Route::get('profile', [ProfileController::class, 'show'])
+    ->name('profile.show')
+    ->middleware('auth', 'verified', 'password.reset');
 
-    Route::post('profile/avatar', UpdateProfileAvatarController::class)->name('profile.avatar');
-});
+Route::get('profile/edit', [ProfileController::class, 'edit'])
+    ->name('profile.edit')
+    ->middleware('auth', 'verified', 'password.reset');
+
+Route::put('profile', [ProfileController::class, 'update'])
+    ->name('profile.update')
+    ->middleware('auth', 'verified', 'password.reset');
+
+Route::delete('profile', [ProfileController::class, 'destroy'])
+    ->name('profile.destroy')
+    ->middleware('auth', 'verified', 'password.reset');
+
+Route::post('profile/avatar', UpdateProfileAvatarController::class)
+    ->name('profile.avatar')
+    ->middleware('auth', 'verified', 'password.reset');
 
 /*
 |--------------------------------------------------------------------------
@@ -104,4 +149,5 @@ Route::middleware(['auth', 'verified', 'password.reset'])->group(function () {
 |--------------------------------------------------------------------------
 */
 
-Route::delete('notifications/{notification}', NotificationsController::class)->name('notifications.read');
+Route::delete('notifications/{notification}', NotificationsController::class)
+    ->name('notifications.read');
