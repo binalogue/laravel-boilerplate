@@ -18,9 +18,11 @@ class AppViewComposer
             $collection = collect([]);
         }
 
+        $settings = null;
+
         // @use-preset-nova-settings
 
-        if (! isset($settings)) {
+        if (is_null($settings)) {
             $settings = config('binalogue');
         }
 

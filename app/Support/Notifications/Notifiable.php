@@ -22,7 +22,7 @@ trait Notifiable
                     $message = __('notifications.custom.message');
                 }
 
-                if (! $message) {
+                if (! isset($message)) {
                     $message = null;
                 }
 
