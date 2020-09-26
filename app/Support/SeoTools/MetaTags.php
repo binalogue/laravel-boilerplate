@@ -110,11 +110,11 @@ class MetaTags implements MetaTagsContract
      * @var array
      */
     protected $webmasterTags = [
-        'google'   => 'google-site-verification',
-        'bing'     => 'msvalidate.01',
-        'alexa'    => 'alexaVerifyID',
+        'google' => 'google-site-verification',
+        'bing' => 'msvalidate.01',
+        'alexa' => 'alexaVerifyID',
         'pintrest' => 'p:domain_verify',
-        'yandex'   => 'yandex-verification',
+        'yandex' => 'yandex-verification',
     ];
 
     /**

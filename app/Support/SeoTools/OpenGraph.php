@@ -166,22 +166,22 @@ class OpenGraph implements OpenGraphContract
         $output = $this->eachProperties($this->properties);
 
         $props = [
-            'images'                      => ['image',   true],
-            'articleProperties'           => ['article', false],
-            'profileProperties'           => ['profile', false],
-            'bookProperties'              => ['book',    false],
-            'musicSongProperties'         => ['music',   false],
-            'musicAlbumProperties'        => ['music',   false],
-            'musicPlaylistProperties'     => ['music',   false],
-            'musicRadioStationProperties' => ['music',   false],
-            'videoMovieProperties'        => ['video',   false],
-            'videoEpisodeProperties'      => ['video',   false],
-            'videoTVShowProperties'       => ['video',   false],
-            'videoOtherProperties'        => ['video',   false],
-            'videoProperties'             => ['video',   true],
-            'audioProperties'             => ['audio',   true],
-            'placeProperties'             => ['place',   false],
-            'productProperties'           => ['product', false],
+            'images' => ['image', true],
+            'articleProperties' => ['article', false],
+            'profileProperties' => ['profile', false],
+            'bookProperties' => ['book', false],
+            'musicSongProperties' => ['music', false],
+            'musicAlbumProperties' => ['music', false],
+            'musicPlaylistProperties' => ['music', false],
+            'musicRadioStationProperties' => ['music', false],
+            'videoMovieProperties' => ['video', false],
+            'videoEpisodeProperties' => ['video', false],
+            'videoTVShowProperties' => ['video', false],
+            'videoOtherProperties' => ['video', false],
+            'videoProperties' => ['video', true],
+            'audioProperties' => ['audio', true],
+            'placeProperties' => ['place', false],
+            'productProperties' => ['product', false],
         ];
 
         foreach ($props as $prop => $options) {
