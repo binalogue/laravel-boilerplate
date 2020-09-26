@@ -75,8 +75,8 @@
   },
   "lint-staged": {
     "**/*.php": [
-      "vendor/bin/phpcpd",
       "vendor/bin/php-cs-fixer fix --config .php_cs.dist",
+      "vendor/bin/phpcpd",
       "git add"
     ],
     "resources/js/**/*.js": [
