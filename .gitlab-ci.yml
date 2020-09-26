@@ -52,15 +52,14 @@ styles:php-cs-fixer:
     - .only-backend-changes
   stage: styles
   image: edbizarro/gitlab-ci-pipeline-php:7.4
-  dependencies: []
+  dependencies:
+    - install:composer
   script:
-    - test -f php-cs-fixer-v2.phar || curl -L https://cs.symfony.com/download/php-cs-fixer-v2.phar -o php-cs-fixer-v2.phar
-    - php php-cs-fixer-v2.phar fix --dry-run --no-interaction
+    - vendor/bin/php-cs-fixer fix --dry-run --no-interaction
   cache:
     key: '$CI_JOB_NAME-$CI_COMMIT_REF_SLUG'
     paths:
       - .php_cs.cache
-      - php-cs-fixer-v2.phar
 
 styles:phpcpd:
   extends:
