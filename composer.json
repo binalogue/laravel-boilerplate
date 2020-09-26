@@ -109,9 +109,9 @@
     "post-create-project-cmd": [
       "@php artisan key:generate --ansi"
     ],
-    "check": "composer check:phpcsfixer && composer check:phpcpd",
-    "check:phpcpd": "vendor/bin/phpcpd --exclude=vendor --exclude=node_modules .",
-    "check:phpcsfixer": "vendor/bin/php-cs-fixer fix",
+    "styles": "composer styles:phpcsfixer && composer styles:phpcpd",
+    "styles:phpcpd": "vendor/bin/phpcpd --exclude=vendor --exclude=node_modules .",
+    "styles:phpcsfixer": "vendor/bin/php-cs-fixer fix",
     "test": "vendor/bin/phpunit"
   }
 }
