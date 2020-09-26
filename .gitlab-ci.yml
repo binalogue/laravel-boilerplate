@@ -111,6 +111,7 @@ security:sensiolabs:
       - security-checker/
   only:
     refs:
+      - master
       - merge_requests
     changes:
       - composer.json
