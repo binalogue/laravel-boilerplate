@@ -1,4 +1,3 @@
-/* Vendor */
 import { mapGetters } from 'vuex';
 
 export default {
@@ -55,7 +54,7 @@ export default {
     if (this.$store.state.isLoading) {
       this.setupPageLoader()
         .then(result => {
-          console.log('[Page] Finished loader:', result);
+          console.log('[page]', 'Finished loader:', result);
         })
         .catch(error => {
           console.error(error);
