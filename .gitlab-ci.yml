@@ -52,10 +52,10 @@ styles:php-cs-fixer:
     - .only-backend-changes
   stage: styles
   image: edbizarro/gitlab-ci-pipeline-php:7.4
+  dependencies: []
   script:
     - test -f php-cs-fixer-v2.phar || curl -L https://cs.symfony.com/download/php-cs-fixer-v2.phar -o php-cs-fixer-v2.phar
     - php php-cs-fixer-v2.phar fix --dry-run --no-interaction
-  dependencies: []
   cache:
     key: '$CI_JOB_NAME-$CI_COMMIT_REF_SLUG'
     paths:
@@ -66,10 +66,10 @@ styles:phpcpd:
     - .only-backend-changes
   stage: test
   image: edbizarro/gitlab-ci-pipeline-php:7.4
+  dependencies: []
   script:
     - test -f phpcpd.phar || curl -L https://phar.phpunit.de/phpcpd.phar -o phpcpd.phar
     - php phpcpd.phar .
-  dependencies: []
   cache:
     key: '$CI_JOB_NAME-$CI_COMMIT_REF_SLUG'
     paths:
