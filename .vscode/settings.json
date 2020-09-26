@@ -13,7 +13,7 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[php]": {
-    "editor.defaultFormatter": "valeryanm.vscode-phpsab"
+    "editor.defaultFormatter": "junstyle.php-cs-fixer"
   },
   "[scss]": {
     "editor.formatOnSave": false
@@ -89,10 +89,10 @@
   /* Material Icon Theme (pkief.material-icon-theme) */
   "material-icon-theme.activeIconPack": "vue_vuex",
 
-  /* PHP Sniffer & Beautifier (valeryanm.vscode-phpsab) */
-  "phpsab.fixerEnable": true,
-  "phpsab.snifferEnable": false,
-  "phpsab.standard": "PSR2",
+  /* PHP CS Fixer (junstyle.php-cs-fixer) */
+  "php-cs-fixer.config": ".php_cs.dist",
+  "php-cs-fixer.executablePath": "${workspaceFolder}/vendor/bin/php-cs-fixer",
+  "php-cs-fixer.onsave": true,
 
   /* Vetur (octref.vetur) */
   "vetur.completion.autoImport": true,
