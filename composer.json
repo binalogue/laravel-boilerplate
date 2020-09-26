@@ -60,8 +60,7 @@
     "mockery/mockery": "^1.4",
     "nunomaduro/collision": "^5.0",
     "phpunit/phpunit": "^9.3",
-    "sebastian/phpcpd": "^6.0",
-    "squizlabs/php_codesniffer": "^3.5"
+    "sebastian/phpcpd": "^6.0"
   },
   "repositories": [],
   "config": {
