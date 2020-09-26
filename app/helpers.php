@@ -4,7 +4,7 @@ if (! function_exists('accepted')) {
     /**
      * Check if the value under validation is true, 1, 'true', 'yes' or 'on'.
      *
-     * @param  mixed  $array
+     * @param  bool|int|string  $value
      * @return void
      */
     function accepted($value)

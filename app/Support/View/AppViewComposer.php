@@ -2,22 +2,17 @@
 
 namespace Support\View;
 
-use Illuminate\Support\Collection;
 use Illuminate\View\View;
 
 class AppViewComposer
 {
     public function compose(View $view): void
     {
-        $view->with('data', $this->addGlobalData($view->data));
+        $view->with('data', $this->addGlobalData($view->getData()));
     }
 
-    protected function addGlobalData($collection = null): Collection
+    protected function addGlobalData(array $baseData): array
     {
-        if (is_null($collection)) {
-            $collection = collect([]);
-        }
-
         $settings = null;
 
         // @use-preset-nova-settings
@@ -26,7 +21,7 @@ class AppViewComposer
             $settings = config('binalogue');
         }
 
-        return $collection->merge([
+        return array_merge($baseData, [
             // App.
             'env' => config('app.env'),
             'url' => config('app.url'),

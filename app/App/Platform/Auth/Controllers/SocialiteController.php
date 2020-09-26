@@ -39,8 +39,9 @@ class SocialiteController
             return Redirect::to(RouteServiceProvider::LOGIN_ROUTE);
         }
 
+        /** @var \Domain\Users\Models\User */
         $existingUser = User::withTrashed()
-            ->where('email', $socialiteUser->email)
+            ->where('email', $socialiteUser->getEmail())
             ->first();
 
         if ($existingUser) {
@@ -52,7 +53,7 @@ class SocialiteController
 
             if (is_null($existingUser->{"{$driver}_id"})) {
                 $existingUser->update([
-                    "{$driver}_id" => $socialiteUser->id,
+                    "{$driver}_id" => $socialiteUser->getId(),
                 ]);
             }
 

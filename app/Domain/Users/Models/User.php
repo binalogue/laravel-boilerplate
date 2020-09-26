@@ -83,7 +83,7 @@ class User extends Authenticatable
 
     public function getAvatarAttribute(): string
     {
-        $avatar = $this->extra_attributes->avatar;
+        $avatar = $this->extra_attributes['avatar'];
 
         if (is_null($avatar) || ! Storage::disk('public')->exists($avatar)) {
             $avatar = asset('/images/default-avatar.png');

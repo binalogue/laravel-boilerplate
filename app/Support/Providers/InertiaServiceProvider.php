@@ -18,13 +18,12 @@ class InertiaServiceProvider extends ServiceProvider
         Inertia::share([
             'auth' => function () {
                 if (Auth::check()) {
-                    /** @var \Domain\Users\Models\User */
                     $user = Auth::user();
 
                     return [
                         'user' => [
                             'id' => $user->id,
-                            'name' => $user->name,
+                            'name' => $user->first_name,
                             'email' => $user->email,
                         ],
 

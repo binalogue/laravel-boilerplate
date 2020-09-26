@@ -14,6 +14,7 @@ class CreateRoleCommand extends Command
 
     public function handle()
     {
+        /** @var \Domain\Users\Models\Role */
         $role = app(RoleContract::class)::findOrCreate($this->argument('name'));
 
         $this->info("Role \"{$role->name}\" created");

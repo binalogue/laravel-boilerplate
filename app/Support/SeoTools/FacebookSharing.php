@@ -17,7 +17,7 @@ class FacebookSharing implements FacebookSharingContract
     protected $appId = [];
 
     /**
-     * @param array $defaults
+     * @param array $config
      */
     public function __construct(array $config = [])
     {

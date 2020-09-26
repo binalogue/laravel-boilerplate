@@ -4,9 +4,9 @@ namespace Tests\App\Platform\Auth\Controllers;
 
 use Domain\Users\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Laravel\Socialite\AbstractUser as SocialiteUser;
 use Laravel\Socialite\Contracts\Factory as Socialite;
 use Laravel\Socialite\Two\GoogleProvider;
-use Laravel\Socialite\Two\User as SocialiteUser;
 use Support\Providers\RouteServiceProvider;
 use Support\Testing\Concerns\SocialiteRoutes;
 use Tests\TestCase;
@@ -29,6 +29,11 @@ class SocialiteControllerTest extends TestCase
         $socialiteUser->email = $email;
         $socialiteUser->name = 'Pepe Grillo';
         $socialiteUser->avatar = 'pepegrillo.jpg';
+
+        $socialiteUser->method('getId')->willReturn($socialiteUser->id);
+        $socialiteUser->method('getEmail')->willReturn($socialiteUser->email);
+        $socialiteUser->method('getName')->willReturn($socialiteUser->name);
+        $socialiteUser->method('getAvatar')->willReturn($socialiteUser->avatar);
 
         $provider = $this->createMock(GoogleProvider::class);
 

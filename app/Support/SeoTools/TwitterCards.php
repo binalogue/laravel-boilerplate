@@ -71,7 +71,7 @@ class TwitterCards implements TwitterCardsContract
 
     /**
      * @param string $key
-     * @param $value
+     * @param string $value
      *
      * @return string
      *

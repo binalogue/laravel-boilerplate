@@ -56,9 +56,9 @@ class UserData extends DataTransferObject
             'last_name' => ! empty($splitName[1])
                 ? $splitName[1]
                 : '',
-            'email' => $socialiteUser->email,
-            "{$driver}_id" => $socialiteUser->id,
-            'avatar' => $socialiteUser->avatar,
+            'email' => $socialiteUser->getEmail(),
+            "{$driver}_id" => $socialiteUser->getId(),
+            'avatar' => $socialiteUser->getAvatar(),
         ]);
     }
 
