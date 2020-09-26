@@ -59,6 +59,7 @@ styles:php-cs-fixer:
   cache:
     key: '$CI_JOB_NAME-$CI_COMMIT_REF_SLUG'
     paths:
+      - .php_cs.cache
       - php-cs-fixer-v2.phar
 
 styles:phpcpd:
@@ -89,6 +90,10 @@ test:phpunit:
     - ./vendor/phpunit/phpunit/phpunit --version
     - php -d short_open_tag=off ./vendor/phpunit/phpunit/phpunit -v --colors=never --stderr
     - sudo cp /usr/local/etc/php/conf.d/docker-php-ext-xdebug.bak /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+  cache:
+    key: '$CI_JOB_NAME-$CI_COMMIT_REF_SLUG'
+    paths:
+      - .phpunit.result.cache
   artifacts:
     name: '$CI_JOB_NAME-$CI_COMMIT_REF_NAME'
     paths:
