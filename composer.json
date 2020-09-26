@@ -54,15 +54,20 @@
     "tightenco/ziggy": "^0.9"
   },
   "require-dev": {
+    "binalogue/php-cs-fixer-config": "dev-master",
     "facade/ignition": "^2.3",
-    "friendsofphp/php-cs-fixer": "^2.16",
     "fzaninotto/faker": "^1.9",
     "mockery/mockery": "^1.4",
     "nunomaduro/collision": "^5.0",
     "phpunit/phpunit": "^9.3",
     "sebastian/phpcpd": "^6.0"
   },
-  "repositories": [],
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/binalogue/php-cs-fixer-config"
+    }
+  ],
   "config": {
     "optimize-autoloader": true,
     "preferred-install": "dist",

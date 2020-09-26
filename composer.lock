@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "119942b5d4189632d78a9faa9e31082e",
+    "content-hash": "30adc77b88883655eda4c529040b85d4",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -5471,6 +5471,54 @@
     ],
     "packages-dev": [
         {
+            "name": "binalogue/php-cs-fixer-config",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/binalogue/php-cs-fixer-config.git",
+                "reference": "41d9dc096eaa7dd27ae76bc74766cee116810387"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/binalogue/php-cs-fixer-config/zipball/41d9dc096eaa7dd27ae76bc74766cee116810387",
+                "reference": "41d9dc096eaa7dd27ae76bc74766cee116810387",
+                "shasum": ""
+            },
+            "require": {
+                "friendsofphp/php-cs-fixer": "^2.16.4"
+            },
+            "type": "library",
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "scripts": {
+                "styles": [
+                    "vendor/bin/php-cs-fixer fix"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mikel Goig",
+                    "email": "mikel@binalogue.com",
+                    "homepage": "https://mikelgoig.com"
+                }
+            ],
+            "description": "PHP CS Fixer config.",
+            "keywords": [
+                "php",
+                "php-cs-fixer"
+            ],
+            "support": {
+                "source": "https://github.com/binalogue/php-cs-fixer-config/tree/master"
+            },
+            "time": "2020-09-26T16:54:22+00:00"
+        },
+        {
             "name": "composer/semver",
             "version": "1.7.0",
             "source": {
@@ -8474,7 +8522,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "binalogue/php-cs-fixer-config": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
