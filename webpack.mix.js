@@ -27,26 +27,6 @@ const autoprefixer = require('autoprefixer');
  |
  */
 
-const options = {
-  // Extract `.vue` component styling to a dedicated file.
-  extractVueStyles: 'public/css/app.css',
-
-  // Include CSS variables in every component styles.
-  // This option only works when `extractVueStyles` is enabled.
-  globalVueStyles: 'resources/sass/_variables.scss',
-
-  // Since we don't do any image preprocessing and write url's that are relative
-  // to the site root, we don't want the css loader to try to follow paths in
-  // `url()` functions.
-  processCssUrls: false,
-
-  // By default, Mix will pipe all of our CSS through:
-  // - [Autoprefixer PostCSS plugin](https://github.com/postcss/autoprefixer)
-  // - [browserslist](https://github.com/browserslist/browserslist)
-  autoprefixer: true,
-  postCss: [autoprefixer],
-};
-
 mix
   .js('resources/js/app.js', 'public/js')
 
@@ -59,7 +39,7 @@ mix
   .copyDirectory('resources/fonts', 'public/fonts')
   .copyDirectory('resources/video', 'public/video')
 
-  .sourceMaps()
+  .sourceMaps(!mix.inProduction())
 
   .webpackConfig(webpack => ({
     devServer: {
@@ -144,32 +124,43 @@ mix
     });
   })
 
-  .options(options);
+  .options({
+    // Extract `.vue` component styling to a dedicated file.
+    extractVueStyles: 'public/css/app.css',
 
-/*
- |--------------------------------------------------------------------------
- | Production Mode
- |--------------------------------------------------------------------------
- */
+    // Include CSS variables in every component styles.
+    // This option only works when `extractVueStyles` is enabled.
+    globalVueStyles: 'resources/sass/_variables.scss',
+
+    // Since we don't do any image preprocessing and write url's that are relative
+    // to the site root, we don't want the css loader to try to follow paths in
+    // `url()` functions.
+    processCssUrls: false,
+
+    // By default, Mix will pipe all of our CSS through:
+    // - [Autoprefixer PostCSS plugin](https://github.com/postcss/autoprefixer)
+    // - [browserslist](https://github.com/browserslist/browserslist)
+    autoprefixer: true,
+    postCss: [autoprefixer],
+
+    ...(mix.inProduction()
+      ? {
+          terser: {
+            terserOptions: {
+              compress: {
+                drop_console: true,
+              },
+            },
+          },
+        }
+      : {}),
+  });
 
 if (mix.inProduction()) {
   mix
-    .sourceMaps(false)
-
     // Enable file hashing to assist with long-term caching, such as
     // `app.js?id=8e5c48eadbfdd5458ec6`.
     .version()
-
-    .options({
-      terser: {
-        terserOptions: {
-          compress: {
-            drop_console: true,
-          },
-        },
-      },
-      ...options,
-    })
 
     .purgeCss({
       whitelistPatternsChildren: [
