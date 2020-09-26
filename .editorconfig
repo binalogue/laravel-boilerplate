@@ -8,6 +8,9 @@ end_of_line = lf
 insert_final_newline = true
 trim_trailing_whitespace = true
 
+[*.dist]
+indent_size = 4
+
 [*.php]
 indent_size = 4
 

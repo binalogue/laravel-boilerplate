@@ -104,7 +104,9 @@
     "post-create-project-cmd": [
       "@php artisan key:generate --ansi"
     ],
-    "test": "vendor/bin/phpunit",
-    "lint": "vendor/bin/phpcpd app/ --min-lines=5 && vendor/bin/phpcbf --standard=PSR2 --extensions=php app && vendor/bin/phpcs --standard=PSR2 --extensions=php app"
+    "check": "composer check:phpcsfixer",
+    "check:phpcsfixer": "vendor/bin/php-cs-fixer fix",
+    "lint": "vendor/bin/phpcpd app/ --min-lines=5 && vendor/bin/phpcbf --standard=PSR2 --extensions=php app && vendor/bin/phpcs --standard=PSR2 --extensions=php app",
+    "test": "vendor/bin/phpunit"
   }
 }

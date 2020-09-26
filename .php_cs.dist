@@ -1,0 +1,31 @@
+<?php
+
+// Reference: https://cs.symfony.com
+
+$finder = PhpCsFixer\Finder::create()
+    ->in(__DIR__)
+    ->exclude(['bootstrap', 'storage', 'vendor'])
+    ->name('*.php')
+    ->notName('*.blade.php')
+    ->ignoreDotFiles(true)
+    ->ignoreVCS(true);
+
+return PhpCsFixer\Config::create()
+    ->setRules([
+        '@PSR1' => true,
+        '@PSR2' => true,
+        '@PHP70Migration' => true,
+        '@PHP71Migration' => true,
+        '@PHP73Migration' => true,
+        'array_syntax' => ['syntax' => 'short'],
+        'increment_style' => ['style' => 'post'],
+        'multiline_whitespace_before_semicolons' => ['strategy' => 'no_multi_line'],
+        'no_unused_imports' => true,
+        'not_operator_with_successor_space' => true,
+        'ordered_imports' => ['sort_algorithm' => 'alpha'],
+        'psr4' => true,
+        'strict_comparison' => true,
+        'yoda_style' => false,
+        ])
+    ->setRiskyAllowed(true)
+    ->setFinder($finder);
