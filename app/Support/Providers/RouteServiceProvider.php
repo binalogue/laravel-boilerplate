@@ -49,7 +49,7 @@ class RouteServiceProvider extends ServiceProvider
                 ->middleware('api')
                 ->group(base_path('routes/api.php'));
 
-            if (!App::environment('production')) {
+            if (! App::environment('production')) {
                 Route::middleware('web')
                     ->group(base_path('routes/development.php'));
             }

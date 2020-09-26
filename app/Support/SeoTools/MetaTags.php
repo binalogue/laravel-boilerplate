@@ -249,7 +249,7 @@ class MetaTags implements MetaTagsContract
     {
         // clean and store description
         // if is false, set false
-        $this->description = (false == $description)
+        $this->description = (false === $description)
             ? $description
             : htmlspecialchars($description, ENT_QUOTES, 'UTF-8', false);
 

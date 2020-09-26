@@ -88,7 +88,7 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         $avatar = $this->extra_attributes->avatar;
 
-        if (is_null($avatar) || !Storage::disk('public')->exists($avatar)) {
+        if (is_null($avatar) || ! Storage::disk('public')->exists($avatar)) {
             $avatar = asset('/images/default-avatar.png');
         }
 

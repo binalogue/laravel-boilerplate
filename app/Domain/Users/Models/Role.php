@@ -4,8 +4,6 @@ namespace Domain\Users\Models;
 
 use Domain\Users\Contracts\Role as RoleContract;
 use Domain\Users\Exceptions\RoleDoesNotExist;
-use Domain\Users\Models\User;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Support\Eloquent\Model;
 

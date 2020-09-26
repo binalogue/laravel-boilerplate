@@ -39,7 +39,7 @@ class ForgotPasswordController
             $forgotPasswordRequest->only('email')
         );
 
-        return $response == Password::RESET_LINK_SENT
+        return $response === Password::RESET_LINK_SENT
             ? $this->sendResetLinkResponse($forgotPasswordRequest, $response)
             : $this->sendResetLinkFailedResponse($forgotPasswordRequest, $response);
     }

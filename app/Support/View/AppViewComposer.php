@@ -20,7 +20,7 @@ class AppViewComposer
 
         // @use-preset-nova-settings
 
-        if (!isset($settings)) {
+        if (! isset($settings)) {
             $settings = config('binalogue');
         }
 

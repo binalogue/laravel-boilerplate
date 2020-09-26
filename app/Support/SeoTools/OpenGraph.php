@@ -275,11 +275,11 @@ class OpenGraph implements OpenGraphContract
             [];
 
         foreach ($defaults as $key => $value) {
-            if ($key == 'images') {
+            if ($key === 'images') {
                 if (empty($this->images)) {
                     $this->images = $value;
                 }
-            } elseif ($key == 'url' && $value === null) {
+            } elseif ($key === 'url' && $value === null) {
                 $this->addProperty(
                     'url',
                     $this->url ?: (($value === null)
@@ -641,7 +641,7 @@ class OpenGraph implements OpenGraphContract
         $attributes = [],
         $validKeys = []
     ) {
-        if (isset($this->properties['type']) && $this->properties['type'] == $type) {
+        if (isset($this->properties['type']) && $this->properties['type'] === $type) {
             foreach ($attributes as $attribute => $value) {
                 if (in_array($attribute, $validKeys)) {
                     $this->{$key}[$attribute] = $value;

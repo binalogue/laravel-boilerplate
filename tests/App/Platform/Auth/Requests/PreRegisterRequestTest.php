@@ -5,7 +5,6 @@ namespace Tests\App\Platform\Auth\Requests;
 use App\Platform\Auth\Requests\PreRegisterRequest;
 use Domain\Users\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\App;
 use Tests\RequestTestCase;
 
 /** @see \App\Platform\Auth\Requests\PreRegisterRequest */

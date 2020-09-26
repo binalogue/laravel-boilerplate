@@ -4,7 +4,6 @@ namespace Tests\App\Platform\Auth\Requests;
 
 use App\Platform\Auth\Requests\RegisterRequest;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Support\Facades\App;
 use Tests\RequestTestCase;
 
 /** @see \App\Platform\Auth\Requests\RegisterRequest */
