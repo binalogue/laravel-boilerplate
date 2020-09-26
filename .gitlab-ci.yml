@@ -64,7 +64,7 @@ styles:php-cs-fixer:
 styles:phpcpd:
   extends:
     - .only-backend-changes
-  stage: test
+  stage: styles
   image: edbizarro/gitlab-ci-pipeline-php:7.4
   dependencies: []
   script:
