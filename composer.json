@@ -59,6 +59,7 @@
     "fzaninotto/faker": "^1.9",
     "mockery/mockery": "^1.4",
     "nunomaduro/collision": "^5.0",
+    "nunomaduro/larastan": "^0.6.4",
     "phpunit/phpunit": "^9.3",
     "sebastian/phpcpd": "^6.0"
   },
