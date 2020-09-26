@@ -1,6 +1,9 @@
 <?php
 
-// Reference: https://cs.symfony.com
+/**
+ * Reference: https://github.com/FriendsOfPHP/PHP-CS-Fixer
+ * Examples: https://mlocati.github.io/php-cs-fixer-configurator/#version:2.16
+ */
 
 $finder = PhpCsFixer\Finder::create()
     ->in(__DIR__)
