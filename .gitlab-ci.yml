@@ -46,17 +46,17 @@ install:composer:
     paths:
       - vendor/
 
-test:codestyle:
-  stage: test
-  image: lorisleiva/laravel-docker
-  script:
-    - phpcs --standard=PSR2 --extensions=php app
-  dependencies: []
-  only:
-    refs:
-      - merge_requests
-    changes:
-      - app/**/*
+# test:codestyle:
+#   stage: test
+#   image: lorisleiva/laravel-docker
+#   script:
+#     - phpcs --standard=PSR2 --extensions=php app
+#   dependencies: []
+#   only:
+#     refs:
+#       - merge_requests
+#     changes:
+#       - app/**/*
 
 test:phpcpd:
   stage: test

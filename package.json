@@ -74,10 +74,9 @@
     }
   },
   "lint-staged": {
-    "app/**/*.php": [
-      "./vendor/bin/phpcpd --min-lines=50",
-      "./vendor/bin/phpcbf --standard=PSR2",
-      "./vendor/bin/phpcs --standard=PSR2",
+    "**/*.php": [
+      "vendor/bin/phpcpd",
+      "vendor/bin/php-cs-fixer fix --config .php_cs.dist",
       "git add"
     ],
     "resources/js/**/*.js": [
