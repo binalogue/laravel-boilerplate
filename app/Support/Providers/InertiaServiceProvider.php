@@ -3,7 +3,6 @@
 namespace Support\Providers;
 
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
 use Support\SeoTools\Facades\MetaTags;
@@ -37,10 +36,6 @@ class InertiaServiceProvider extends ServiceProvider
             },
 
             'csrfToken' => fn () => csrf_token(),
-
-            'errors' => fn () => Session::get('errors')
-                ? Session::get('errors')->getBag('default')->getMessages()
-                : (object) [],
 
             'flash' => fn () => [
                 'message' => flash()->message,

@@ -22,7 +22,7 @@ export default {
       }
 
       if (this.hasBackendErrors) {
-        return this.$page.errors[this.name][0];
+        return this.$page.errors[this.name];
       }
 
       return '';
