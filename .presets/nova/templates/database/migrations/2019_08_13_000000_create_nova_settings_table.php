@@ -6,6 +6,11 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateNovaSettingsTable extends Migration
 {
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
     public function up(): void
     {
         Schema::create('nova_settings', function (Blueprint $table) {
@@ -14,6 +19,11 @@ class CreateNovaSettingsTable extends Migration
         });
     }
 
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
     public function down(): void
     {
         Schema::dropIfExists('nova_settings');
