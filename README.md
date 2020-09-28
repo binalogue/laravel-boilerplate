@@ -6,7 +6,7 @@
 
 <!-- ⬇️ REMOVE -->
 
-This repository contains a skeleton to easily create Laravel 7 and Vue.js applications 🚀
+This repository contains a skeleton to easily create Laravel 8 and Vue.js applications 🚀
 
 If you are cloning this repository to use in another project, please see the SETUP.md file to get a fresh copy of this boilerplate.
 
