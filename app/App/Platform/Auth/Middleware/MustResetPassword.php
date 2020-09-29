@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Redirect;
 
 class MustResetPassword
 {
+    /** @return \Closure|\Illuminate\Http\RedirectResponse */
     public function handle(Request $request, Closure $next)
     {
         /** @var \Domain\Users\Models\User */
@@ -23,7 +24,7 @@ class MustResetPassword
         return $next($request);
     }
 
-    protected function mustResetPassword(User $user)
+    protected function mustResetPassword(User $user): bool
     {
         if (! is_null($user->google_id)) {
             return false;

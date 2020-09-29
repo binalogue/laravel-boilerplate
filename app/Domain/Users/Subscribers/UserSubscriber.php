@@ -12,7 +12,7 @@ use Illuminate\Events\Dispatcher;
 
 class UserSubscriber
 {
-    public function handleUserRegistered(Registered $event)
+    public function handleUserRegistered(Registered $event): void
     {
         /** @var \Domain\Users\Models\User */
         $user = $event->user;
@@ -20,7 +20,7 @@ class UserSubscriber
         $user->notify(new UserRegistered());
     }
 
-    public function handleUserVerified(Verified $event)
+    public function handleUserVerified(Verified $event): void
     {
         /** @var \Domain\Users\Models\User */
         $user = $event->user;
@@ -28,12 +28,12 @@ class UserSubscriber
         $user->notify(new UserVerified());
     }
 
-    public function handleUserLogin(Login $event)
+    public function handleUserLogin(Login $event): void
     {
         //
     }
 
-    public function handleUserLogout(Logout $event)
+    public function handleUserLogout(Logout $event): void
     {
         //
     }

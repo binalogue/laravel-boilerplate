@@ -9,21 +9,21 @@ use Illuminate\Support\Facades\Request;
 
 class LengthAwarePaginator extends BaseLengthAwarePaginator
 {
-    public function only($attributes)
+    public function only(array $attributes): self
     {
         return $this->transform(function ($item) use ($attributes) {
             return $item->only($attributes);
         });
     }
 
-    public function transform($callback)
+    public function transform(callable $callback): self
     {
         $this->items->transform($callback);
 
         return $this;
     }
 
-    public function toArray()
+    public function toArray(): array
     {
         return [
             'data' => $this->items->toArray(),
@@ -31,7 +31,7 @@ class LengthAwarePaginator extends BaseLengthAwarePaginator
         ];
     }
 
-    public function linkCollection()
+    public function linkCollection(): Collection
     {
         $this->appends(Request::all());
 

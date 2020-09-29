@@ -6,17 +6,18 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
+use Support\Eloquent\User;
 
 class UserVerified extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    public function via($notifiable): array
+    public function via(User $notifiable): array
     {
         return ['mail'];
     }
 
-    public function toMail($notifiable): MailMessage
+    public function toMail(User $notifiable): MailMessage
     {
         return (new MailMessage)
             ->subject(__('users.notifications.verified.mail.subject'))

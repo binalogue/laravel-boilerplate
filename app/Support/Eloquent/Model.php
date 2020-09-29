@@ -6,7 +6,8 @@ use Illuminate\Database\Eloquent\Model as BaseModel;
 
 class Model extends BaseModel
 {
-    public static function findBy($model)
+    /** @param self|int|string $model */
+    public static function findBy($model): ?self
     {
         if ($model instanceof static) {
             return $model;

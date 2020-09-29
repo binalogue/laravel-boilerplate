@@ -32,6 +32,7 @@ trait HasRoles
         }
     }
 
+    /** @param int|string|\Domain\Users\Contracts\Role $role */
     protected function getStoredRole($role): RoleContract
     {
         if (is_numeric($role)) {
@@ -45,6 +46,7 @@ trait HasRoles
         return $role;
     }
 
+    /** @param array|string $roles */
     protected function matchesRole($roles): bool
     {
         if (! $this->role) {
@@ -70,14 +72,14 @@ trait HasRoles
     |--------------------------------------------------------------------------
     */
 
-    public function scopeWhereHasRole(Builder $query, string $role)
+    public function scopeWhereHasRole(Builder $query, string $role): Builder
     {
         return $query->whereHas('role', function (Builder $query) use ($role) {
             $query->whereIn('name', $this->mapRoles($role));
         });
     }
 
-    public function scopeWhereHasStrictRole(Builder $query, string $role)
+    public function scopeWhereHasStrictRole(Builder $query, string $role): Builder
     {
         return $query->whereHas('role', function (Builder $query) use ($role) {
             $query->where('name', $role);
@@ -101,7 +103,7 @@ trait HasRoles
     |--------------------------------------------------------------------------
     */
 
-    public function assignRole($role): self
+    public function assignRole(string $role): self
     {
         $role = Role::findOrCreate($role);
 

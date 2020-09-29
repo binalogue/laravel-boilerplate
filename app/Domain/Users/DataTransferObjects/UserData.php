@@ -28,7 +28,7 @@ class UserData extends DataTransferObject
         return (bool) $this->google_id;
     }
 
-    public static function new($array): self
+    public static function new(array $array): self
     {
         return new self($array);
     }

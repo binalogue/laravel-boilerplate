@@ -7,6 +7,7 @@ use Domain\Users\Notifications\UserForgotPassword;
 use Domain\Users\Notifications\UserRegistered;
 use Domain\Users\Notifications\UserRequestedVerification;
 use Domain\Users\Notifications\UserVerified;
+use Illuminate\Notifications\Messages\MailMessage;
 
 class MailsController
 {
@@ -17,22 +18,22 @@ class MailsController
         $this->notifiable = User::find(1);
     }
 
-    public function userRegistered()
+    public function userRegistered(): MailMessage
     {
         return (new UserRegistered())->toMail($this->notifiable);
     }
 
-    public function userRequestedVerification()
+    public function userRequestedVerification(): MailMessage
     {
         return (new UserRequestedVerification())->toMail($this->notifiable);
     }
 
-    public function userVerified()
+    public function userVerified(): MailMessage
     {
         return (new UserVerified())->toMail($this->notifiable);
     }
 
-    public function userForgotPassword()
+    public function userForgotPassword(): MailMessage
     {
         return (new UserForgotPassword('invalid-token'))->toMail($this->notifiable);
     }

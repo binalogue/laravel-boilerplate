@@ -10,7 +10,8 @@ class RolePolicy
 {
     use HandlesAuthorization;
 
-    public function before($user)
+    /** @return bool|void */
+    public function before(User $user, string $ability)
     {
         if ($user->isSuperAdmin()) {
             return true;

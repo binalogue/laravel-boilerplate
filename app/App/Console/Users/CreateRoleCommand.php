@@ -12,7 +12,7 @@ class CreateRoleCommand extends Command
 
     protected $description = 'Create a new role';
 
-    public function handle()
+    public function handle(): void
     {
         /** @var \Domain\Users\Models\Role */
         $role = app(RoleContract::class)::findOrCreate($this->argument('name'));

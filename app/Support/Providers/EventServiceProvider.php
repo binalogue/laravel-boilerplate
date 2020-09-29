@@ -32,7 +32,7 @@ class EventServiceProvider extends ServiceProvider
         $this->bootModelObservers();
     }
 
-    protected function bootModelObservers()
+    protected function bootModelObservers(): void
     {
         User::observe(UserObserver::class);
     }

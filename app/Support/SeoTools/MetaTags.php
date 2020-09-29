@@ -487,7 +487,7 @@ class MetaTags implements MetaTagsContract
     /**
      * Load webmaster tags from configuration.
      */
-    protected function loadWebMasterTags()
+    protected function loadWebMasterTags(): void
     {
         foreach ($this->config->get('webmaster_tags', []) as $name => $value) {
             if (! empty($value)) {
