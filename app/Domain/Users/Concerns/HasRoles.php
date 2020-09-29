@@ -105,9 +105,7 @@ trait HasRoles
     {
         $role = Role::findOrCreate($role);
 
-        if ($role) {
-            $this->role()->associate($this->getStoredRole($role))->save();
-        }
+        $this->role()->associate($this->getStoredRole($role))->save();
 
         return $this;
     }

@@ -39,14 +39,14 @@ class MetaTags implements MetaTagsContract
     /**
      * The meta description.
      *
-     * @var string|null
+     * @var string|bool|null
      */
     protected $description;
 
     /**
      * The meta keywords.
      *
-     * @var array
+     * @var array|\Illuminate\Support\Collection
      */
     protected $keywords = [];
 
@@ -247,9 +247,7 @@ class MetaTags implements MetaTagsContract
 
     public function setDescription($description)
     {
-        // clean and store description
-        // if is false, set false
-        $this->description = (false === $description)
+        $this->description = ($description === false)
             ? $description
             : htmlspecialchars($description, ENT_QUOTES, 'UTF-8', false);
 

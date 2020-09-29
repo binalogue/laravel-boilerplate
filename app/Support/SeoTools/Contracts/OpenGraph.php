@@ -43,7 +43,7 @@ interface OpenGraph
     /**
      * Add image to properties.
      *
-     * @param string $url
+     * @param array|string $url
      * @param array  $attributes
      *
      * @return static
@@ -62,20 +62,20 @@ interface OpenGraph
     /**
      * Define title property.
      *
-     * @param string $title
+     * @param string|null $title
      *
      * @return static
      */
-    public function setTitle($title);
+    public function setTitle($title = null);
 
     /**
      * Define description property.
      *
-     * @param string $description
+     * @param string|null $description
      *
      * @return static
      */
-    public function setDescription($description);
+    public function setDescription($description = null);
 
     /**
      * Define url property.

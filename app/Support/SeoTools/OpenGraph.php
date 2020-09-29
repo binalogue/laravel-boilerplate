@@ -280,12 +280,7 @@ class OpenGraph implements OpenGraphContract
                     $this->images = $value;
                 }
             } elseif ($key === 'url' && $value === null) {
-                $this->addProperty(
-                    'url',
-                    $this->url ?: (($value === null)
-                        ? app('url')->current()
-                        : $this->config['defaults.url'])
-                );
+                $this->addProperty('url', $this->url ?: app('url')->current());
             } elseif (! empty($value) && ! array_key_exists($key, $this->properties)) {
                 $this->addProperty($key, $value);
             }
@@ -657,7 +652,7 @@ class OpenGraph implements OpenGraphContract
         return $this;
     }
 
-    public function addImage($source = null, $attributes = [])
+    public function addImage($url, $attributes = [])
     {
         $validKeys = [
             'url',
@@ -667,11 +662,11 @@ class OpenGraph implements OpenGraphContract
             'height',
         ];
 
-        if (is_array($source)) {
-            $this->images[] = $this->cleanProperties($source, $validKeys);
+        if (is_array($url)) {
+            $this->images[] = $this->cleanProperties($url, $validKeys);
         } else {
             $this->images[] = [
-                $source,
+                $url,
                 $this->cleanProperties($attributes, $validKeys),
             ];
         }

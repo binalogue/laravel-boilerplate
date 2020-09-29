@@ -39,12 +39,12 @@ class SocialiteController
             return Redirect::to(RouteServiceProvider::LOGIN_ROUTE);
         }
 
-        /** @var \Domain\Users\Models\User */
+        /** @var \Domain\Users\Models\User|null */
         $existingUser = User::withTrashed()
             ->where('email', $socialiteUser->getEmail())
             ->first();
 
-        if ($existingUser) {
+        if ($existingUser instanceof User) {
             if ($existingUser->trashed()) {
                 $existingUser->restore();
 

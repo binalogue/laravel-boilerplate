@@ -61,7 +61,7 @@ interface MetaTags
     /**
      * Set the description.
      *
-     * @param string $description
+     * @param string|bool $description
      *
      * @return static
      */
@@ -183,7 +183,7 @@ interface MetaTags
     /**
      * Get the Meta keywords.
      *
-     * @return array
+     * @return array|\Illuminate\Support\Collection
      */
     public function getKeywords();
 
