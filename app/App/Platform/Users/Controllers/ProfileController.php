@@ -35,6 +35,10 @@ class ProfileController
     {
         $user = Auth::user();
 
+        if (is_null($user)) {
+            abort(403);
+        }
+
         return Inertia::render('ProfileEditPage', [
             'profile' => fn () => [
                 'first_name' => $user->first_name,
@@ -50,8 +54,14 @@ class ProfileController
         UpdateUserAction $updateUserAction,
         ProfileUpdateRequest $profileUpdateRequest
     ): RedirectResponse {
+        $user = Auth::user();
+
+        if (is_null($user)) {
+            abort(403);
+        }
+
         $updateUserAction->execute(
-            Auth::user(),
+            $user,
             UserData::fromProfileUpdateRequest($profileUpdateRequest)
         );
 
@@ -62,7 +72,13 @@ class ProfileController
 
     public function destroy(DeleteUserAction $deleteUserAction): RedirectResponse
     {
-        $deleteUserAction->execute(Auth::user());
+        $user = Auth::user();
+
+        if (is_null($user)) {
+            abort(403);
+        }
+
+        $deleteUserAction->execute($user);
 
         flash()->success(is_string($flash = __('profile.flash.destroyed')) ? $flash : '');
 

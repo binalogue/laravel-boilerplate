@@ -17,9 +17,10 @@ class InertiaServiceProvider extends ServiceProvider
 
         Inertia::share([
             'auth' => function () {
-                if (Auth::check()) {
-                    $user = Auth::user();
+                /** @var \Support\Eloquent\User|null $user */
+                $user = Auth::user();
 
+                if (Auth::check() && ! is_null($user)) {
                     return [
                         'user' => [
                             'id' => $user->id,

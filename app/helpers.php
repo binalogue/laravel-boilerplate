@@ -31,11 +31,15 @@ if (! function_exists('webp')) {
     function webp($imagePath)
     {
         if (webp_support()) {
-            $imagePath = preg_replace(
+            $imagePathToWebp = preg_replace(
                 '/(.+)*\.(?:jpe?g|png)/i',
                 '$1.webp',
                 $imagePath
             );
+
+            if (! is_null($imagePathToWebp)) {
+                $imagePath = $imagePathToWebp;
+            }
         }
 
         return asset($imagePath);

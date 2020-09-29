@@ -15,8 +15,14 @@ class UpdateProfileAvatarController
         UpdateProfileAvatarRequest $updateProfileAvatarRequest,
         UpdateUserAvatarAction $updateUserAvatarAction
     ): RedirectResponse {
+        $user = Auth::user();
+
+        if (is_null($user)) {
+            abort(403);
+        }
+
         $updateUserAvatarAction->execute(
-            Auth::user(),
+            $user,
             UserData::fromUpdateProfileAvatarRequest($updateProfileAvatarRequest)
         );
 

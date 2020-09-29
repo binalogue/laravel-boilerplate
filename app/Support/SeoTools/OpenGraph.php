@@ -261,8 +261,8 @@ class OpenGraph implements OpenGraphContract
         return sprintf(
             '<meta property="%s%s" content="%s" />%s',
             $ogPrefix ? $this->og_prefix : '',
-            strip_tags($key),
-            strip_tags($value),
+            is_string($key) ? strip_tags($key) : '',
+            is_string($value) ? strip_tags($value) : '',
             PHP_EOL
         );
     }
@@ -687,17 +687,17 @@ class OpenGraph implements OpenGraphContract
 
     public function setType($type = null)
     {
-        return $this->addProperty('type', $type);
+        return $this->addProperty('type', is_string($type) ? $type : '');
     }
 
     public function setTitle($title = null)
     {
-        return $this->addProperty('title', $title);
+        return $this->addProperty('title', is_string($title) ? $title : '');
     }
 
     public function setDescription($description = null)
     {
-        return $this->addProperty('description', htmlspecialchars($description, ENT_QUOTES, 'UTF-8', false));
+        return $this->addProperty('description', htmlspecialchars(is_string($description) ? $description : '', ENT_QUOTES, 'UTF-8', false));
     }
 
     public function setUrl($url)

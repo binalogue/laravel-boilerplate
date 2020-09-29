@@ -21,10 +21,10 @@ class CreateUserAction
     {
         $user = new User();
 
-        $user->first_name = $data->first_name;
-        $user->last_name = $data->last_name;
+        $user->first_name = $data->first_name ?: '';
+        $user->last_name = $data->last_name ?: '';
 
-        $user->email = $data->email;
+        $user->email = $data->email ?: '';
         $user->email_verified_at = $data->hasVerifiedEmail()
             ? now()
             : null;

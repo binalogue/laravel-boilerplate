@@ -204,14 +204,14 @@ interface MetaTags
     /**
      * Get the prev URL.
      *
-     * @return string
+     * @return string|null
      */
     public function getPrev();
 
     /**
      * Get the next URL.
      *
-     * @return string
+     * @return string|null
      */
     public function getNext();
 

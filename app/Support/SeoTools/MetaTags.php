@@ -417,7 +417,7 @@ class MetaTags implements MetaTagsContract
     /**
      * Get the AMP html URL.
      *
-     * @return string
+     * @return string|null
      */
     public function getAmpHtml()
     {

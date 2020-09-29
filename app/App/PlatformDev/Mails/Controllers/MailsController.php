@@ -15,7 +15,13 @@ class MailsController
 
     public function __construct()
     {
-        $this->notifiable = User::find(1);
+        $user = User::find(1);
+
+        if (! is_null($user)) {
+            $this->notifiable = $user;
+        } else {
+            throw new \Exception("User not found");
+        }
     }
 
     public function userRegistered(): MailMessage
