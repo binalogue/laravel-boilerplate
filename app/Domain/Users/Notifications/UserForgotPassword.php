@@ -14,13 +14,13 @@ class UserForgotPassword extends ResetPassword implements ShouldQueue
     public function toMail($notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject(__('users.notifications.forgot_password.mail.subject'))
-            ->greeting(__('users.notifications.forgot_password.mail.greeting', [
+            ->subject(is_string($subject = __('users.notifications.forgot_password.mail.subject')) ? $subject : '')
+            ->greeting(is_string($greeting = __('users.notifications.forgot_password.mail.greeting', [
                 'name' => $notifiable->first_name,
-            ]))
+            ])) ? $greeting : '')
             ->line(__('users.notifications.forgot_password.mail.intro_line'))
             ->action(
-                __('users.notifications.forgot_password.mail.action'),
+                is_string($action = __('users.notifications.forgot_password.mail.action')) ? $action : '',
                 url(route('password.reset', [
                     'token' => $this->token,
                     'email' => $notifiable->getEmailForPasswordReset(),
@@ -30,6 +30,6 @@ class UserForgotPassword extends ResetPassword implements ShouldQueue
                 'count' => config('auth.passwords.'.config('auth.defaults.passwords').'.expire'),
             ]))
             ->line(__('users.notifications.forgot_password.mail.outro_line_2'))
-            ->salutation(__('users.notifications.forgot_password.mail.salutation'));
+            ->salutation(is_string($salutation = __('users.notifications.forgot_password.mail.salutation')) ? $salutation : '');
     }
 }

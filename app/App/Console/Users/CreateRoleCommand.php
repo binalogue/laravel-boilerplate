@@ -14,6 +14,12 @@ class CreateRoleCommand extends Command
 
     public function handle(): void
     {
+        if (! is_string($this->argument('name'))) {
+            $this->error('The "name" argument must be a string');
+
+            return;
+        }
+
         /** @var \Domain\Users\Models\Role */
         $role = app(RoleContract::class)::findOrCreate($this->argument('name'));
 

@@ -46,14 +46,14 @@ class TwitterCards implements TwitterCardsContract
      * Make tags.
      *
      * @param array       $values
-     * @param null|string $prefix
+     * @param string|null $prefix
      *
      * @internal param array $properties
      */
     protected function eachValue(array $values, $prefix = null): void
     {
         foreach ($values as $key => $value) {
-            if (is_array($value)) {
+            if (is_array($value) && is_string($key)) {
                 $this->eachValue($value, $key);
             } else {
                 if ($key === 'image') {

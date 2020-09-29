@@ -16,7 +16,7 @@ class MustResetPassword
         $user = $request->user();
 
         if ($this->mustResetPassword($user)) {
-            flash()->warning(__('auth.flash.must_reset_password'));
+            flash()->warning(is_string($flash = __('auth.flash.must_reset_password')) ? $flash : '');
 
             return Redirect::route('password.forceReset');
         }

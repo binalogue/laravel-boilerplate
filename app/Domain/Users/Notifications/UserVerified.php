@@ -20,20 +20,20 @@ class UserVerified extends Notification implements ShouldQueue
     public function toMail(User $notifiable): MailMessage
     {
         return (new MailMessage)
-            ->subject(__('users.notifications.verified.mail.subject'))
-            ->greeting(__('users.notifications.verified.mail.greeting', [
+            ->subject(is_string($subject = __('users.notifications.verified.mail.subject')) ? $subject : '')
+            ->greeting(is_string($greeting = __('users.notifications.verified.mail.greeting', [
                 'name' => $notifiable->first_name,
-            ]))
+            ])) ? $greeting : '')
             ->line(__('users.notifications.verified.mail.intro_line_1'))
             ->line(__('users.notifications.verified.mail.intro_line_2'))
             ->line(__('users.notifications.verified.mail.intro_line_3'))
             ->action(
-                __('users.notifications.verified.mail.action'),
+                is_string($action = __('users.notifications.verified.mail.action')) ? $action : '',
                 route('profile.show')
             )
             ->line(__('users.notifications.verified.mail.outro_line', [
                 'url' => route('home'),
             ]))
-            ->salutation(__('users.notifications.verified.mail.salutation'));
+            ->salutation(is_string($salutation = __('users.notifications.verified.mail.salutation')) ? $salutation : '');
     }
 }

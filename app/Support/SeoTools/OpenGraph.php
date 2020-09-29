@@ -199,7 +199,7 @@ class OpenGraph implements OpenGraphContract
      * Make list of open graph tags.
      *
      * @param array       $properties array of properties
-     * @param null|string $prefix     prefix of property
+     * @param string|null $prefix     prefix of property
      * @param bool        $ogPrefix   opengraph prefix
      *
      * @return string
@@ -233,6 +233,10 @@ class OpenGraph implements OpenGraphContract
 
                 // if empty jump to next
                 if (empty($value)) {
+                    continue;
+                }
+
+                if (is_int($key)) {
                     continue;
                 }
 

@@ -55,7 +55,7 @@ class ProfileController
             UserData::fromProfileUpdateRequest($profileUpdateRequest)
         );
 
-        flash()->success(__('profile.flash.updated'));
+        flash()->success(is_string($flash = __('profile.flash.updated')) ? $flash : '');
 
         return Redirect::route('profile.show');
     }
@@ -64,7 +64,7 @@ class ProfileController
     {
         $deleteUserAction->execute(Auth::user());
 
-        flash()->success(__('profile.flash.destroyed'));
+        flash()->success(is_string($flash = __('profile.flash.destroyed')) ? $flash : '');
 
         return Redirect::route('home');
     }

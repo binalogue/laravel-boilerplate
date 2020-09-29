@@ -68,7 +68,7 @@ class EmailVerificationController
 
         event(new Verified($request->user()));
 
-        flash()->success(__('auth.flash.verified'));
+        flash()->success(is_string($message = __('auth.flash.verified')) ? $message : '');
 
         return Redirect::to($this->redirectTo());
     }
@@ -81,7 +81,7 @@ class EmailVerificationController
 
         $request->user()->sendEmailVerificationNotification();
 
-        flash()->success(__('auth.flash.requested_verification'));
+        flash()->success(is_string($message = __('auth.flash.requested_verification')) ? $message : '');
 
         return Redirect::back();
     }

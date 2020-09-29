@@ -48,7 +48,7 @@ class SocialiteController
             if ($existingUser->trashed()) {
                 $existingUser->restore();
 
-                flash()->success(__('auth.flash.restored'));
+                flash()->success(is_string($flash = __('auth.flash.restored')) ? $flash : '');
             }
 
             if (is_null($existingUser->{"{$driver}_id"})) {

@@ -48,7 +48,7 @@ class ForgotPasswordController
         ForgotPasswordRequest $forgotPasswordRequest,
         string $response
     ): RedirectResponse {
-        flash()->success(__($response));
+        flash()->success(is_string($message = __($response)) ? $message : '');
 
         return Redirect::back();
     }

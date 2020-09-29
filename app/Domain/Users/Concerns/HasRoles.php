@@ -35,7 +35,7 @@ trait HasRoles
     /** @param int|string|\Domain\Users\Contracts\Role $role */
     protected function getStoredRole($role): RoleContract
     {
-        if (is_numeric($role)) {
+        if (is_int($role)) {
             return Role::findById($role);
         }
 

@@ -35,7 +35,7 @@ class ForceResetPasswordController
 
         Auth::guard()->login($user);
 
-        flash()->success(__('auth.flash.password_reseted'));
+        flash()->success(is_string($message = __('auth.flash.password_reseted')) ? $message : '');
 
         return Redirect::to(RouteServiceProvider::SUCCESSFUL_LOGIN_ROUTE);
     }

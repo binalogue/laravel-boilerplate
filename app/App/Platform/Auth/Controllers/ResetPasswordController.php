@@ -84,7 +84,7 @@ class ResetPasswordController
 
     protected function sendResetResponse(string $response): RedirectResponse
     {
-        flash()->success(__($response));
+        flash()->success(is_string($flash = __($response)) ? $flash : '');
 
         return Redirect::to($this->redirectTo());
     }
@@ -93,12 +93,12 @@ class ResetPasswordController
         ResetPasswordRequest $resetPasswordRequest,
         string $response
     ): RedirectResponse {
-        flash()->error(__($response));
+        flash()->error(is_string($message = __($response)) ? $message : '');
 
         return Redirect::back()
             ->withInput($resetPasswordRequest->only('email'))
             ->withErrors([
-                'email' => __($response),
+                'email' => $message,
             ]);
     }
 }

@@ -16,15 +16,15 @@ class UserRequestedVerification extends VerifyEmail implements ShouldQueue
         $verificationUrl = $this->verificationUrl($notifiable);
 
         return (new MailMessage)
-            ->subject(__('users.notifications.requested_verification.mail.subject'))
-            ->greeting(__('users.notifications.requested_verification.mail.greeting', [
+            ->subject(is_string($subject = __('users.notifications.requested_verification.mail.subject')) ? $subject : '')
+            ->greeting(is_string($greeting = __('users.notifications.requested_verification.mail.greeting', [
                 'name' => $notifiable->first_name,
-            ]))
+            ])) ? $greeting : '')
             ->line(__('users.notifications.requested_verification.mail.intro_line'))
             ->action(
-                __('users.notifications.requested_verification.mail.action'),
+                is_string($action = __('users.notifications.requested_verification.mail.action')) ? $action : '',
                 $verificationUrl
             )
-            ->salutation(__('users.notifications.requested_verification.mail.salutation'));
+            ->salutation(is_string($salutation = __('users.notifications.requested_verification.mail.salutation')) ? $salutation : '');
     }
 }
