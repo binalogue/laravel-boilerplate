@@ -37,8 +37,9 @@ These instructions will get you a copy of the project up and running on your loc
 
    **Backend presets**
 
+   - [auth](./.presets/auth/README.md) - Allows you to add authentication.
+   - [nova](./.presets/nova/README.md) - Allows you to use Nova as administration panel for Laravel. (Requires the [auth](./.presets/auth/README.md) preset.)
    - [telescope](./.presets/telescope/README.md) - Allows you to use Telescope as debug assistant for Laravel.
-   - [nova](./.presets/nova/README.md) - Allows you to use Nova as administration panel for Laravel.
 
    **Frontend presets**
 

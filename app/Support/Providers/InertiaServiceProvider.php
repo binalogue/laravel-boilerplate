@@ -2,7 +2,6 @@
 
 namespace Support\Providers;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
 use Support\SeoTools\Facades\MetaTags;
@@ -17,20 +16,7 @@ class InertiaServiceProvider extends ServiceProvider
 
         Inertia::share([
             'auth' => function () {
-                /** @var \Support\Eloquent\User|null $user */
-                $user = Auth::user();
-
-                if (Auth::check() && ! is_null($user)) {
-                    return [
-                        'user' => [
-                            'id' => $user->id,
-                            'name' => $user->first_name,
-                            'email' => $user->email,
-                        ],
-
-                        'notifications' => $user->unreadNotificationsMessages(),
-                    ];
-                }
+                // @use-preset-inertia-service-provider-auth
 
                 return null;
             },

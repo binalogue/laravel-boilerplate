@@ -2,9 +2,6 @@
 
 namespace Support\Providers;
 
-use Domain\Users\Models\User;
-use Domain\Users\Observers\UserObserver;
-use Domain\Users\Subscribers\UserSubscriber;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 class EventServiceProvider extends ServiceProvider
@@ -24,7 +21,7 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $subscribe = [
-        UserSubscriber::class,
+        // @use-preset-event-service-provider-subscribe
     ];
 
     public function boot(): void
@@ -34,6 +31,6 @@ class EventServiceProvider extends ServiceProvider
 
     protected function bootModelObservers(): void
     {
-        User::observe(UserObserver::class);
+        // @use-preset-event-service-provider-boot-model-observers
     }
 }

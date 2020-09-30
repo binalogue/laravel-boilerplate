@@ -2,9 +2,6 @@
 
 namespace Support\Http;
 
-use App\Platform\Auth\Middleware\Authenticate;
-use App\Platform\Auth\Middleware\MustResetPassword;
-use App\Platform\Auth\Middleware\RedirectIfAuthenticated;
 use Fruitcake\Cors\HandleCors;
 use Illuminate\Auth\Middleware\AuthenticateWithBasicAuth;
 use Illuminate\Auth\Middleware\Authorize;
@@ -77,15 +74,14 @@ class Kernel extends BaseKernel
      * @var array
      */
     protected $routeMiddleware = [
-        'auth' => Authenticate::class,
         'auth.basic' => AuthenticateWithBasicAuth::class,
         'cache.headers' => SetCacheHeaders::class,
         'can' => Authorize::class,
-        'guest' => RedirectIfAuthenticated::class,
         'password.confirm' => RequirePassword::class,
-        'password.reset' => MustResetPassword::class,
         'signed' => ValidateSignature::class,
         'throttle' => ThrottleRequests::class,
         'verified' => EnsureEmailIsVerified::class,
+
+        // @use-preset-auth-middleware
     ];
 }
