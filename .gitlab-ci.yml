@@ -17,7 +17,7 @@
 
 stages:
   - install
-  - styles
+  - analyse
   - test
   - security
   - staging
@@ -47,10 +47,10 @@ install:composer:
     paths:
       - vendor/
 
-styles:php-cs-fixer:
+analyse:php-cs-fixer:
   extends:
     - .only-backend-changes
-  stage: styles
+  stage: analyse
   image: edbizarro/gitlab-ci-pipeline-php:7.4
   dependencies:
     - install:composer
@@ -61,20 +61,20 @@ styles:php-cs-fixer:
     paths:
       - .php_cs.cache
 
-styles:larastan:
+analyse:larastan:
   extends:
     - .only-backend-changes
-  stage: styles
+  stage: analyse
   image: edbizarro/gitlab-ci-pipeline-php:7.4
   dependencies:
     - install:composer
   script:
     - vendor/bin/phpstan analyse
 
-styles:phpcpd:
+analyse:phpcpd:
   extends:
     - .only-backend-changes
-  stage: styles
+  stage: analyse
   image: edbizarro/gitlab-ci-pipeline-php:7.4
   dependencies: []
   script:

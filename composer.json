@@ -109,10 +109,10 @@
     "post-create-project-cmd": [
       "@php artisan key:generate --ansi"
     ],
-    "styles": "composer styles:phpcsfixer && composer styles:larastan && composer styles:phpcpd",
-    "styles:larastan": "vendor/bin/phpstan analyse",
-    "styles:phpcpd": "vendor/bin/phpcpd --exclude=vendor --exclude=node_modules .",
-    "styles:phpcsfixer": "vendor/bin/php-cs-fixer fix",
+    "analyse": "composer analyse:phpcsfixer && composer analyse:larastan && composer analyse:phpcpd",
+    "analyse:larastan": "vendor/bin/phpstan analyse",
+    "analyse:phpcpd": "vendor/bin/phpcpd --exclude=vendor --exclude=node_modules .",
+    "analyse:phpcsfixer": "vendor/bin/php-cs-fixer fix",
     "test": "vendor/bin/phpunit"
   }
 }
