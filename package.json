@@ -76,21 +76,17 @@
   "lint-staged": {
     "**/*.php": [
       "vendor/bin/php-cs-fixer fix --config .php_cs.dist",
-      "vendor/bin/phpcpd",
-      "git add"
+      "vendor/bin/phpcpd"
     ],
     "resources/js/**/*.js": [
-      "./node_modules/.bin/eslint --fix",
-      "git add"
+      "./node_modules/.bin/eslint --fix"
     ],
     "resources/js/**/*.vue": [
       "./node_modules/.bin/eslint --fix",
-      "./node_modules/.bin/stylelint --fix",
-      "git add"
+      "./node_modules/.bin/stylelint --fix"
     ],
     "resources/sass/**/*.scss": [
-      "./node_modules/.bin/stylelint --fix",
-      "git add"
+      "./node_modules/.bin/stylelint --fix"
     ]
   }
 }
