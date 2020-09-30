@@ -4,7 +4,7 @@
   "design": {
     "ios": {
       "pictureAspect": "backgroundAndMargin",
-      "backgroundColor": "#1db954",
+      "backgroundColor": "#ffffff",
       "margin": "14%",
       "assets": {
         "ios6AndPriorIcons": false,
@@ -16,7 +16,7 @@
     "desktopBrowser": {},
     "windows": {
       "pictureAspect": "noChange",
-      "backgroundColor": "#1db954",
+      "backgroundColor": "#ffffff",
       "onConflict": "override",
       "assets": {
         "windows80Ie10Tile": false,
@@ -30,7 +30,7 @@
     },
     "androidChrome": {
       "pictureAspect": "noChange",
-      "themeColor": "#1db954",
+      "themeColor": "#ffffff",
       "manifest": {
         "name": "BinaLaravel",
         "display": "standalone",
@@ -45,7 +45,7 @@
     },
     "safariPinnedTab": {
       "pictureAspect": "silhouette",
-      "themeColor": "#1db954"
+      "themeColor": "#ffffff"
     }
   },
   "settings": {
