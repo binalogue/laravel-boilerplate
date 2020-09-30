@@ -109,7 +109,7 @@
     "post-create-project-cmd": [
       "@php artisan key:generate --ansi"
     ],
-    "styles": "composer styles:phpcsfixer && styles:larastan && composer styles:phpcpd",
+    "styles": "composer styles:phpcsfixer && composer styles:larastan && composer styles:phpcpd",
     "styles:larastan": "vendor/bin/phpstan analyse",
     "styles:phpcpd": "vendor/bin/phpcpd --exclude=vendor --exclude=node_modules .",
     "styles:phpcsfixer": "vendor/bin/php-cs-fixer fix",
