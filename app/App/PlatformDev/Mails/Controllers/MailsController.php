@@ -20,7 +20,7 @@ class MailsController
         if (! is_null($user)) {
             $this->notifiable = $user;
         } else {
-            throw new \Exception("User not found");
+            throw new \Exception('User not found');
         }
     }
 
