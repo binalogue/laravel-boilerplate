@@ -61,6 +61,16 @@ styles:php-cs-fixer:
     paths:
       - .php_cs.cache
 
+styles:larastan:
+  extends:
+    - .only-backend-changes
+  stage: styles
+  image: edbizarro/gitlab-ci-pipeline-php:7.4
+  dependencies:
+    - install:composer
+  script:
+    - vendor/bin/phpstan analyse
+
 styles:phpcpd:
   extends:
     - .only-backend-changes
