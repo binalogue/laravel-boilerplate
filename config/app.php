@@ -179,7 +179,6 @@ return [
         // Support\Providers\BroadcastServiceProvider::class,
         Support\Providers\EventServiceProvider::class,
         Support\Providers\FlashServiceProvider::class,
-        Support\Providers\HorizonServiceProvider::class,
         Support\Providers\InertiaServiceProvider::class,
         Support\Providers\RouteServiceProvider::class,
         Support\Providers\SeoToolsServiceProvider::class,

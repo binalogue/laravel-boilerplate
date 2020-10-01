@@ -110,6 +110,4 @@ return [
         ],
     ],
 
-    'log_actions_enabled' => env('LOG_ACTIONS_ENABLED', false),
-
 ];

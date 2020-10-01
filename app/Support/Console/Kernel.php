@@ -13,10 +13,6 @@ class Kernel extends BaseKernel
 
     protected function schedule(Schedule $schedule): void
     {
-        $schedule
-            ->command('horizon:snapshot')
-            ->everyFiveMinutes();
-
         // @use-preset-schedule
     }
 

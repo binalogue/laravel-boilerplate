@@ -41,7 +41,6 @@
     "inertiajs/inertia-laravel": "^0.2",
     "laravel-lang/lang": "~7.0",
     "laravel/framework": "^8.0",
-    "laravel/horizon": "^5.0",
     "laravel/socialite": "^5.0",
     "laravel/tinker": "^2.4",
     "laravel/ui": "^3.0",

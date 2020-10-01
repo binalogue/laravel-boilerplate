@@ -43,6 +43,7 @@ If you are cloning this repository to use in another project, please see section
 
    - [auth](./.presets/auth/README.md) - Allows you to add authentication.
    - [nova](./.presets/nova/README.md) - Allows you to use Nova as administration panel for Laravel. (Requires the [auth](./.presets/auth/README.md) preset.)
+   - [horizon](./.presets/horizon/README.md) - Allows you to use Horizon to easily monitor key metrics of your queue system.
    - [telescope](./.presets/telescope/README.md) - Allows you to use Telescope as debug assistant for Laravel.
 
    **Frontend presets**

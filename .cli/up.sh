@@ -21,13 +21,11 @@ if [ -f artisan ]; then
 
   # Publish any vendor packages assets.
   # @use-preset-vendor-publish
-  dc:pa horizon:publish
 
   # Migrate database.
   dc:pa migrate:fresh --force --seed
 
-  # Terminate the master Horizon process.
-  dc exec queue php artisan horizon:terminate
+  # @use-preset-vendor-horizon-terminate
 fi
 
 # @use-preset-before-yarn
