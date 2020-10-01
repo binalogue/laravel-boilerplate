@@ -21,7 +21,7 @@ class ProfileController
         $user = Auth::user();
 
         return Inertia::render('ProfileShowPage', [
-            'profile' => fn () => [
+            'profile' => [
                 'first_name' => $user->first_name,
                 'last_name' => $user->last_name,
                 'email' => $user->email,
@@ -40,7 +40,7 @@ class ProfileController
         }
 
         return Inertia::render('ProfileEditPage', [
-            'profile' => fn () => [
+            'profile' => [
                 'first_name' => $user->first_name,
                 'last_name' => $user->last_name,
                 'email' => $user->email,

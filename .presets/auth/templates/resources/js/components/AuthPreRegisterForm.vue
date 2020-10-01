@@ -48,9 +48,7 @@ export default {
 
   methods: {
     registerWithEmail() {
-      this.$inertia.visit(this.route('register.form'), {
-        data: this.form,
-      });
+      this.$inertia.get(this.route('register.form'), this.form);
     },
   },
 };
