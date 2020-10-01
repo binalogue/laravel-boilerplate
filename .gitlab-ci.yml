@@ -155,6 +155,7 @@ security:sensiolabs:
 #     name: production
 #     url: https://laravel.binalogue.dev
 
+# @use-preset-gitlab-production-forge
 production:forge:
   stage: production
   image: alpine:latest

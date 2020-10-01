@@ -4,13 +4,9 @@
 
 [![Website laravel.binalogue.dev](https://img.shields.io/website?down_color=red&down_message=down&up_color=green&up_message=up&url=https%3A%2F%2Flaravel.binalogue.dev)](https://laravel.binalogue.dev)
 
-<!-- ⬇️ REMOVE -->
+<!-- @use-preset-readme-intro -->
 
 This repository contains a skeleton to easily create Laravel 8 and Vue.js applications 🚀
-
-If you are cloning this repository to use in another project, please see the SETUP.md file to get a fresh copy of this boilerplate.
-
-<!-- ⬆️ REMOVE -->
 
 ## Getting Started
 
@@ -28,7 +24,15 @@ These instructions will get you a copy of the project up and running on your loc
    git clone git@gitlab.com:binalogue/laravel-boilerplate.git && cd laravel-boilerplate
    ```
 
-2. Add the necessary presets:
+If you are cloning this repository to use in another project, please see sections 2 and 3 to get a fresh copy of this boilerplate. If not, skip to section 4.
+
+2. Setup the project:
+
+   ```bash
+   npx use-preset ./.presets/setup
+   ```
+
+3. Add other optional presets:
 
    **Development environment presets**
 
@@ -45,13 +49,13 @@ These instructions will get you a copy of the project up and running on your loc
 
    - [three](./.presets/three/README.md) - Allows you to install three.js.
 
-3. Build the project:
+4. Build the project:
 
    ```bash
    .cli/build.sh
    ```
 
-4. Run the project:
+5. Run the project:
 
    ```bash
    .cli/up.sh
@@ -71,7 +75,7 @@ These instructions will get you a copy of the project up and running on your loc
      docker-compose exec app yarn hot
      ```
 
-5. Stop the project:
+6. Stop the project:
 
    ```bash
    .cli/down.sh
