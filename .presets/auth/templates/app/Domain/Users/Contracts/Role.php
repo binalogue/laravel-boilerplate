@@ -11,7 +11,7 @@ interface Role
      *
      * @return \Domain\Users\Contracts\Role
      *
-     * @throws \Domain\Users\Exceptions\RoleDoesNotExist
+     * @throws \Domain\Users\Exceptions\RoleDoesNotExistException
      */
     public static function findByName(string $name): self;
 
@@ -22,7 +22,7 @@ interface Role
      *
      * @return \Domain\Users\Contracts\Role
      *
-     * @throws \Domain\Users\Exceptions\RoleDoesNotExist
+     * @throws \Domain\Users\Exceptions\RoleDoesNotExistException
      */
     public static function findById(int $id): self;
 

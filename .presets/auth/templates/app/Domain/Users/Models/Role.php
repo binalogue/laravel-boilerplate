@@ -3,7 +3,7 @@
 namespace Domain\Users\Models;
 
 use Domain\Users\Contracts\Role as RoleContract;
-use Domain\Users\Exceptions\RoleDoesNotExist;
+use Domain\Users\Exceptions\RoleDoesNotExistException;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Support\Eloquent\Model;
 
@@ -45,7 +45,7 @@ class Role extends Model implements RoleContract
         $role = static::where('name', $name)->first();
 
         if (! $role) {
-            throw RoleDoesNotExist::named($name);
+            throw RoleDoesNotExistException::named($name);
         }
 
         return $role;
@@ -56,7 +56,7 @@ class Role extends Model implements RoleContract
         $role = static::where('id', $id)->first();
 
         if (! $role) {
-            throw RoleDoesNotExist::withId($id);
+            throw RoleDoesNotExistException::withId($id);
         }
 
         return $role;

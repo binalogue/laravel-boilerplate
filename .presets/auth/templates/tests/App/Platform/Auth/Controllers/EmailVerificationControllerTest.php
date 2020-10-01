@@ -3,7 +3,7 @@
 namespace Tests\App\Platform\Auth\Controllers;
 
 use Domain\Users\Models\User;
-use Domain\Users\Notifications\UserRequestedVerification;
+use Domain\Users\Notifications\UserRequestedVerificationNotification;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\Event;
@@ -122,6 +122,6 @@ class EmailVerificationControllerTest extends TestCase
             ->post($this->verificationResendRoute())
             ->assertRedirect($this->verificationNoticeRoute());
 
-        Notification::assertSentTo($user, UserRequestedVerification::class);
+        Notification::assertSentTo($user, UserRequestedVerificationNotification::class);
     }
 }

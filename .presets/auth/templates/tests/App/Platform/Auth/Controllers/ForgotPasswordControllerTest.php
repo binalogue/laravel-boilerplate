@@ -3,7 +3,7 @@
 namespace Tests\App\Platform\Auth\Controllers;
 
 use Domain\Users\Models\User;
-use Domain\Users\Notifications\UserForgotPassword;
+use Domain\Users\Notifications\UserForgotPasswordNotification;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
@@ -65,7 +65,7 @@ class ForgotPasswordControllerTest extends TestCase
             User::factory()->make([
                 'email' => 'nobody@example.com',
             ]),
-            UserForgotPassword::class
+            UserForgotPasswordNotification::class
         );
     }
 
@@ -87,7 +87,7 @@ class ForgotPasswordControllerTest extends TestCase
 
         Notification::assertSentTo(
             $user,
-            UserForgotPassword::class,
+            UserForgotPasswordNotification::class,
             fn ($notification) => Hash::check($notification->token, $token->token)
         );
     }

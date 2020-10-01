@@ -2,7 +2,7 @@
 
 namespace Support\Auth;
 
-use Domain\Users\Notifications\UserRequestedVerification;
+use Domain\Users\Notifications\UserRequestedVerificationNotification;
 use Illuminate\Auth\MustVerifyEmail as BaseMustVerifyEmail;
 
 trait MustVerifyEmail
@@ -11,6 +11,6 @@ trait MustVerifyEmail
 
     public function sendEmailVerificationNotification()
     {
-        $this->notify(new UserRequestedVerification());
+        $this->notify(new UserRequestedVerificationNotification());
     }
 }

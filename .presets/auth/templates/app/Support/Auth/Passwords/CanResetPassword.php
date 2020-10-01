@@ -2,7 +2,7 @@
 
 namespace Support\Auth\Passwords;
 
-use Domain\Users\Notifications\UserForgotPassword;
+use Domain\Users\Notifications\UserForgotPasswordNotification;
 use Illuminate\Auth\Passwords\CanResetPassword as BaseCanResetPassword;
 
 trait CanResetPassword
@@ -11,6 +11,6 @@ trait CanResetPassword
 
     public function sendPasswordResetNotification($token)
     {
-        $this->notify(new UserForgotPassword($token));
+        $this->notify(new UserForgotPasswordNotification($token));
     }
 }

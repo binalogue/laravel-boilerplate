@@ -7,7 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class UserRequestedVerification extends VerifyEmail implements ShouldQueue
+class UserRequestedVerificationNotification extends VerifyEmail implements ShouldQueue
 {
     use Queueable;
 

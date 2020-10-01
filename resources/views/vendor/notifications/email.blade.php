@@ -53,10 +53,10 @@
 {{-- Subcopy --}}
 @isset ($actionText)
 @component('mail::subcopy')
-@lang('mail.subcopy', [
+{!! __('mail.subcopy', [
     'action_text' => $actionText,
     'action_url' => $actionUrl,
-])
+]) !!}
 @endcomponent
 @endisset
 

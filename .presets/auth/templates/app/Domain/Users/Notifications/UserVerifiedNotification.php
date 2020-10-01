@@ -8,7 +8,7 @@ use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 use Support\Eloquent\User;
 
-class UserVerified extends Notification implements ShouldQueue
+class UserVerifiedNotification extends Notification implements ShouldQueue
 {
     use Queueable;
 

@@ -2,8 +2,8 @@
 
 namespace Domain\Users\Subscribers;
 
-use Domain\Users\Notifications\UserRegistered;
-use Domain\Users\Notifications\UserVerified;
+use Domain\Users\Notifications\UserRegisteredNotification;
+use Domain\Users\Notifications\UserVerifiedNotification;
 use Illuminate\Auth\Events\Login;
 use Illuminate\Auth\Events\Logout;
 use Illuminate\Auth\Events\Registered;
@@ -17,7 +17,7 @@ class UserSubscriber
         /** @var \Domain\Users\Models\User */
         $user = $event->user;
 
-        $user->notify(new UserRegistered());
+        $user->notify(new UserRegisteredNotification());
     }
 
     public function handleUserVerified(Verified $event): void
@@ -25,7 +25,7 @@ class UserSubscriber
         /** @var \Domain\Users\Models\User */
         $user = $event->user;
 
-        $user->notify(new UserVerified());
+        $user->notify(new UserVerifiedNotification());
     }
 
     public function handleUserLogin(Login $event): void

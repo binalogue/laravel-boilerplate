@@ -45,11 +45,11 @@ module.exports = Preset.make('laravel-boilerplate-auth-preset')
   .search(/@use-preset-auth-service-provider-boot$/)
   .addAfter([
     `$this->app->bind(RoleContract::class, Role::class);`,
-    `Gate::define('view-any-id', fn ($user) => $user->isSuperAdmin());`,
-    `Gate::define('update-role-attribute', UserPolicy::class.'@updateRoleAttribute');`,
-    `Gate::define('update-email-attribute', UserPolicy::class.'@updateEmailAttribute');`,
-    `Gate::define('update-password-attribute', UserPolicy::class.'@updatePasswordAttribute');`,
-    `Gate::define('update-has-notifications-enabled-attribute', UserPolicy::class.'@updateHasNotificationsEnabledAttribute');`,
+    `Gate::define('viewAnyId', fn ($user) => $user->isSuperAdmin());`,
+    `Gate::define('updateRoleAttribute', UserPolicy::class.'@updateRoleAttribute');`,
+    `Gate::define('updateEmailAttribute', UserPolicy::class.'@updateEmailAttribute');`,
+    `Gate::define('updatePasswordAttribute', UserPolicy::class.'@updatePasswordAttribute');`,
+    `Gate::define('updateHasNotificationsEnabledAttribute', UserPolicy::class.'@updateHasNotificationsEnabledAttribute');`,
   ])
   .end()
   .chain()
@@ -247,10 +247,10 @@ module.exports = Preset.make('laravel-boilerplate-auth-preset')
   .search(/@use-preset-development-routes$/)
   .addAfter([
     `// Mails to users...`,
-    `Route::get('/mails/users/registered', [MailsController::class, 'userRegistered']);`,
-    `Route::get('/mails/users/requested-verification', [MailsController::class, 'userRequestedVerification']);`,
-    `Route::get('/mails/users/verified', [MailsController::class, 'userVerified']);`,
-    `Route::get('/mails/users/forgot-password', [MailsController::class, 'userForgotPassword']);`,
+    `Route::get('mails/users/registered', [MailsController::class, 'userRegistered']);`,
+    `Route::get('mails/users/requested-verification', [MailsController::class, 'userRequestedVerification']);`,
+    `Route::get('mails/users/verified', [MailsController::class, 'userVerified']);`,
+    `Route::get('mails/users/forgot-password', [MailsController::class, 'userForgotPassword']);`,
   ])
   .end()
   .chain()

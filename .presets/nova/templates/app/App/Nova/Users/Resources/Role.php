@@ -34,7 +34,7 @@ class Role extends Resource
         return [
             ID::make()
                 ->sortable()
-                ->canSee(fn ($request) => $request->user()->can('view-any-id', $this)),
+                ->canSee(fn ($request) => $request->user()->can('viewAnyId', $this)),
 
             Text::make('Name')
                 ->sortable()

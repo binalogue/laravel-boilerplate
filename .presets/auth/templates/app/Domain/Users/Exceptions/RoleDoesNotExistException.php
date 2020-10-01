@@ -4,7 +4,7 @@ namespace Domain\Users\Exceptions;
 
 use InvalidArgumentException;
 
-class RoleDoesNotExist extends InvalidArgumentException
+class RoleDoesNotExistException extends InvalidArgumentException
 {
     public static function named(string $roleName): self
     {
