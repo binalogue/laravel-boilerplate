@@ -4,7 +4,8 @@ if (! function_exists('accepted')) {
     /**
      * Check if the value under validation is true, 1, 'true', 'yes' or 'on'.
      *
-     * @param  bool|int|string  $value
+     * @param bool|int|string $value
+     *
      * @return bool
      */
     function accepted($value)
@@ -25,7 +26,8 @@ if (! function_exists('webp')) {
     /**
      * Switch image extensions to WebP when supported by the browser.
      *
-     * @param  string  $imagePath
+     * @param string $imagePath
+     *
      * @return string
      */
     function webp($imagePath)

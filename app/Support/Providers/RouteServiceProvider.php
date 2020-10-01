@@ -27,11 +27,7 @@ class RouteServiceProvider extends ServiceProvider
         $this->bootRouteModelBinding();
     }
 
-    /**
-     * Configure the rate limiters for the application.
-     *
-     * @return void
-     */
+    /** Configure the rate limiters for the application. */
     protected function configureRateLimiting(): void
     {
         RateLimiter::for('api', function (Request $request) {

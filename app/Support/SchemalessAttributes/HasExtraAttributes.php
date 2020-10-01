@@ -31,11 +31,7 @@ trait HasExtraAttributes
     |--------------------------------------------------------------------------
     */
 
-    /**
-     * Get the model's "extra_attributes" attribute.
-     *
-     * @return \Spatie\SchemalessAttributes\SchemalessAttributes
-     */
+    /** Get the model's "extra_attributes" attribute. */
     public function getExtraAttributesAttribute(): SchemalessAttributes
     {
         return SchemalessAttributes::createForModel($this, 'extra_attributes');
@@ -47,11 +43,7 @@ trait HasExtraAttributes
     |--------------------------------------------------------------------------
     */
 
-    /**
-     * Scope a query to only include models with "extra_attributes" attribute.
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
+    /** Scope a query to only include models with "extra_attributes" attribute. */
     public function scopeWithExtraAttributes(): Builder
     {
         return SchemalessAttributes::scopeWithSchemalessAttributes('extra_attributes');
@@ -66,8 +58,6 @@ trait HasExtraAttributes
     /**
      * Remove empty attributes from the given field.
      *
-     * @param  string  $attribute
-     * @param  bool  $persist
      * @return \Domain\Users\Models\User
      */
     public function cleanExtraAttributes(
