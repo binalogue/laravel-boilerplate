@@ -14,16 +14,11 @@ return [
     |
     */
 
-    'google' => [
-
-        'client_id' => env('GOOGLE_CLIENT_ID'),
-        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
-        'redirect' => '/oauth/google/callback',
-    ],
-
     'google_tag_manager' => [
 
         'id' => env('GOOGLE_TAG_MANAGER_ID'),
     ],
+
+    // @use-preset-config-services
 
 ];

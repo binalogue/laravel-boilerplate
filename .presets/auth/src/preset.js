@@ -4,8 +4,17 @@ module.exports = Preset.make('laravel-boilerplate-auth-preset')
 
   .copyTemplates()
 
+  .editJson('composer.json')
+  .title('➕ Add auth PHP dependencies')
+  .merge({
+    require: {
+      'laravel/socialite': '^5.0',
+    },
+  })
+  .chain()
+
   .edit('app/Support/Http/Kernel.php')
-  .title('🏗 Update HTTP kernel')
+  .title('🏗 Add auth middlewares to HTTP kernel')
   .search(/@use-preset-auth-middleware$/)
   .addAfter([
     `'auth' => \\App\\Platform\\Auth\\Middleware\\Authenticate::class,`,
@@ -253,5 +262,18 @@ module.exports = Preset.make('laravel-boilerplate-auth-preset')
     `$this->call(RolesTableSeeder::class);`,
     `$this->call(UsersTableSeeder::class);`,
   ])
+  .end()
+  .chain()
+
+  .edit('config/services.php')
+  .title('🔧 Add Google service')
+  .search(/@use-preset-config-services$/)
+  .addAfter(
+    `'google' => [
+      'client_id' => env('GOOGLE_CLIENT_ID'),
+      'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+      'redirect' => '/oauth/google/callback',
+    ],`
+  )
   .end()
   .chain();
