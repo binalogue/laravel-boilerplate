@@ -5411,12 +5411,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/binalogue/php-cs-fixer-config.git",
-                "reference": "566874d81767d206bde86cf40108fae281afefc2"
+                "reference": "82b15a3f837590d62f099cbc0d73f4011ea36b2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/binalogue/php-cs-fixer-config/zipball/566874d81767d206bde86cf40108fae281afefc2",
-                "reference": "566874d81767d206bde86cf40108fae281afefc2",
+                "url": "https://api.github.com/repos/binalogue/php-cs-fixer-config/zipball/82b15a3f837590d62f099cbc0d73f4011ea36b2b",
+                "reference": "82b15a3f837590d62f099cbc0d73f4011ea36b2b",
                 "shasum": ""
             },
             "require": {
@@ -5451,7 +5451,7 @@
             "support": {
                 "source": "https://github.com/binalogue/php-cs-fixer-config/tree/master"
             },
-            "time": "2020-09-30T13:13:20+00:00"
+            "time": "2020-10-01T19:38:36+00:00"
         },
         {
             "name": "composer/ca-bundle",
