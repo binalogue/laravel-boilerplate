@@ -4,7 +4,7 @@ namespace Support\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
-use Support\SeoTools\Facades\MetaTags;
+use Support\SeoTools\SeoTools;
 
 class InertiaServiceProvider extends ServiceProvider
 {
@@ -29,7 +29,7 @@ class InertiaServiceProvider extends ServiceProvider
                 'class' => flash()->class,
             ],
 
-            'meta' => fn () => MetaTags::generateVueMeta(),
+            'meta' => fn () => SeoTools::generateVueMeta(),
         ]);
     }
 }

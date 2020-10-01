@@ -1,15 +1,15 @@
-<!-- MetaTags -->
-{!! MetaTags::generate() !!}
-<!-- End MetaTags -->
+<!-- SEO Meta -->
+{!!  SEOMeta::generate() !!}
+<!-- End SEO Meta -->
 
-<!-- Open Graph -->
+<!-- Open Graph: https://ogp.me -->
 {!! OpenGraph::generate() !!}
 <!-- End Open Graph -->
 
 <!-- Twitter Cards: https://cards-dev.twitter.com/validator -->
-{!! TwitterCards::generate() !!}
+{!! TwitterCard::generate() !!}
 <!-- End Twitter Cards -->
 
-<!-- Facebook Sharing: https://developers.facebook.com/tools/debug/ -->
-{!! FacebookSharing::generate() !!}
-<!-- End Facebook Sharing -->
+<!-- JSON-LD: https://json-ld.org -->
+{!! JsonLd::generate() !!}
+<!-- End JSON-LD -->

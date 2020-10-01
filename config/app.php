@@ -181,7 +181,6 @@ return [
         Support\Providers\FlashServiceProvider::class,
         Support\Providers\InertiaServiceProvider::class,
         Support\Providers\RouteServiceProvider::class,
-        Support\Providers\SeoToolsServiceProvider::class,
         Support\Providers\ViewServiceProvider::class,
 
         // @use-preset-app-service-providers
@@ -241,10 +240,14 @@ return [
         /*
          * Custom Aliases...
          */
-        'FacebookSharing' => Support\SeoTools\Facades\FacebookSharing::class,
-        'MetaTags' => Support\SeoTools\Facades\MetaTags::class,
-        'OpenGraph' => Support\SeoTools\Facades\OpenGraph::class,
-        'TwitterCards' => Support\SeoTools\Facades\TwitterCards::class,
+
+        // artesaos/seotools
+        'SEOMeta' => Artesaos\SEOTools\Facades\SEOMeta::class,
+        'OpenGraph' => Artesaos\SEOTools\Facades\OpenGraph::class,
+        'TwitterCard' => Artesaos\SEOTools\Facades\TwitterCard::class,
+        'JsonLd' => Artesaos\SEOTools\Facades\JsonLd::class,
+        'JsonLdMulti' => Artesaos\SEOTools\Facades\JsonLdMulti::class,
+        'SEOTools' => Artesaos\SEOTools\Facades\SEOTools::class,
 
     ],
 
