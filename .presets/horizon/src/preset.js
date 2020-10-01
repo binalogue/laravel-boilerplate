@@ -8,6 +8,10 @@ module.exports = Preset.make('laravel-boilerplate-horizon-preset')
   .title('➕ Add Horizon PHP dependencies')
   .merge({
     require: {
+      'ext-json': '*',
+      'ext-pcntl': '*',
+      'ext-posix': '*',
+      'ext-redis': '*',
       'laravel/horizon': '^5.2',
     },
   })

@@ -8,6 +8,7 @@ module.exports = Preset.make('laravel-boilerplate-telescope-preset')
   .title('➕ Add Telescope PHP dependencies')
   .merge({
     require: {
+      'ext-json': '*',
       'laravel/telescope': '^4.0',
     },
   })
