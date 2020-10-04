@@ -36,6 +36,13 @@ If you are cloning this repository to use in another project, please see section
    npx use-preset ./.presets/setup
    ```
 
+   - Replace app name (default: `Laravel Boilerplate`)
+   - Replace app short name (default: `Binaplate`)
+   - Replace app description (default: `We ❤️ code`)
+   - Replace repository path (default: `binalogue/laravel-boilerplate`)
+   - Replace repository name (default: `laravel-boilerplate`)
+   - Replace domain name (default: `laravel.binalogue.dev`)
+
 4. Add other optional presets:
 
    **Development environment presets**
