@@ -38,7 +38,7 @@ class User extends Resource
 
     public static $defaultIndexOrderDirection = 'desc';
 
-    public static $priority = 1;
+    public static int $priority = 1;
 
     public function fields(Request $request): array
     {
