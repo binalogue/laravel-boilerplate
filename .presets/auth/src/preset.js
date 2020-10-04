@@ -46,32 +46,24 @@ module.exports = Preset.make('laravel-boilerplate-auth-preset')
 
   .edit('app/Support/Providers/EventServiceProvider.php')
   .title('🏗 Update EventServiceProvider')
-  .search(/<?php$/)
-  .addAfter([
-    `use Domain\\Users\\Models\\User;`,
-    `use Domain\\Users\\Observers\\UserObserver;`,
-    `use Domain\\Users\\Subscribers\\UserSubscriber;`,
-  ])
-  .end()
   .search(/@use-preset-event-service-provider-subscribe$/)
-  .addAfter(`UserSubscriber::class,`)
+  .addAfter(`\\Domain\\Users\\Subscribers\\UserSubscriber::class,`)
   .end()
   .search(/@use-preset-event-service-provider-boot-model-observers$/)
-  .addAfter(`User::observe(UserObserver::class);`)
+  .addAfter(
+    `\\Domain\\Users\\Models\\User::observe(\\Domain\\Users\\Observers\\UserObserver::class);`
+  )
   .end()
   .chain()
 
   .edit('app/Support/Providers/InertiaServiceProvider.php')
   .title('🏗 Update InertiaServiceProvider')
-  .search(/<?php$/)
-  .addAfter(`use Illuminate\\Support\\Facades\\Auth;`)
-  .end()
   .search(/@use-preset-inertia-service-provider-auth$/)
   .addAfter(
     `/** @var \\Support\\Eloquent\\User|null $user */
-    $user = Auth::user();
+    $user = \\Illuminate\\Support\\Facades\\Auth::user();
 
-    if (Auth::check() && ! is_null($user)) {
+    if (\\Illuminate\\Support\\Facades\\Auth::check() && ! is_null($user)) {
         return [
             'user' => [
                 'id' => $user->id,
@@ -88,21 +80,6 @@ module.exports = Preset.make('laravel-boilerplate-auth-preset')
 
   .edit('routes/web.php')
   .title('🏗 Add web routes')
-  .search(/<?php$/)
-  .addAfter([
-    `use App\\Platform\\Auth\\Controllers\\EmailVerificationController;`,
-    `use App\\Platform\\Auth\\Controllers\\ForceResetPasswordController;`,
-    `use App\\Platform\\Auth\\Controllers\\ForgotPasswordController;`,
-    `use App\\Platform\\Auth\\Controllers\\LoginController;`,
-    `use App\\Platform\\Auth\\Controllers\\PreRegisterController;`,
-    `use App\\Platform\\Auth\\Controllers\\RegisterController;`,
-    `use App\\Platform\\Auth\\Controllers\\ResetPasswordController;`,
-    `use App\\Platform\\Auth\\Controllers\\SocialiteController;`,
-    `use App\\Platform\\Notifications\\Controllers\\NotificationsController;`,
-    `use App\\Platform\\Users\\Controllers\\ProfileController;`,
-    `use App\\Platform\\Users\\Controllers\\UpdateProfileAvatarController;`,
-  ])
-  .end()
   .search(/@use-preset-web-routes$/)
   .addAfter([
     `/*`,
@@ -113,78 +90,78 @@ module.exports = Preset.make('laravel-boilerplate-auth-preset')
 
     `// Authentication`,
 
-    `Route::get('login', [LoginController::class, 'showLoginForm'])
+    `Route::get('login', [\\App\\Platform\\Auth\\Controllers\\LoginController::class, 'showLoginForm'])
       ->name('login.form')
       ->middleware('guest');`,
 
-    `Route::post('login', [LoginController::class, 'login'])
+    `Route::post('login', [\\App\\Platform\\Auth\\Controllers\\LoginController::class, 'login'])
       ->middleware('guest');`,
 
-    `Route::post('logout', [LoginController::class, 'logout'])
+    `Route::post('logout', [\\App\\Platform\\Auth\\Controllers\\LoginController::class, 'logout'])
       ->name('logout');`,
 
     `// Pre Registration`,
 
-    `Route::get('register', [PreRegisterController::class, 'showPreRegisterForm'])
+    `Route::get('register', [\\App\\Platform\\Auth\\Controllers\\PreRegisterController::class, 'showPreRegisterForm'])
       ->name('preRegister.form')
       ->middleware('guest');`,
 
     `// Registration`,
 
-    `Route::get('register/email', [RegisterController::class, 'showRegisterForm'])
+    `Route::get('register/email', [\\App\\Platform\\Auth\\Controllers\\RegisterController::class, 'showRegisterForm'])
       ->name('register.form')
       ->middleware('guest');`,
 
-    `Route::post('register', [RegisterController::class, 'register'])
+    `Route::post('register', [\\App\\Platform\\Auth\\Controllers\\RegisterController::class, 'register'])
       ->name('register')
       ->middleware('guest');`,
 
     `// Email Verification`,
 
-    `Route::get('email/verify', [EmailVerificationController::class, 'showVerificationNotice'])
+    `Route::get('email/verify', [\\App\\Platform\\Auth\\Controllers\\EmailVerificationController::class, 'showVerificationNotice'])
       ->name('verification.notice')
       ->middleware('auth');`,
 
-    `Route::get('email/verify/{id}/{hash}', [EmailVerificationController::class, 'verify'])
+    `Route::get('email/verify/{id}/{hash}', [\\App\\Platform\\Auth\\Controllers\\EmailVerificationController::class, 'verify'])
       ->name('verification.verify')
       ->middleware('auth', 'signed', 'throttle:6,1');`,
 
-    `Route::post('email/resend', [EmailVerificationController::class, 'resend'])
+    `Route::post('email/resend', [\\App\\Platform\\Auth\\Controllers\\EmailVerificationController::class, 'resend'])
       ->name('verification.resend')
       ->middleware('auth', 'throttle:6,1');`,
 
     `// Socialite`,
 
-    `Route::get('oauth/{driver}', [SocialiteController::class, 'redirectToProvider'])
+    `Route::get('oauth/{driver}', [\\App\\Platform\\Auth\\Controllers\\SocialiteController::class, 'redirectToProvider'])
       ->where('driver', implode('|', config('socialite.drivers')))
       ->name('oauth')
       ->middleware('guest');`,
 
-    `Route::get('oauth/{driver}/callback', [SocialiteController::class, 'handleProviderCallback'])
+    `Route::get('oauth/{driver}/callback', [\\App\\Platform\\Auth\\Controllers\\SocialiteController::class, 'handleProviderCallback'])
       ->where('driver', implode('|', config('socialite.drivers')))
       ->name('oauth.callback');`,
 
     `// Password Reset`,
 
-    `Route::get('password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])
+    `Route::get('password/reset', [\\App\\Platform\\Auth\\Controllers\\ForgotPasswordController::class, 'showLinkRequestForm'])
       ->name('password.request');`,
 
-    `Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])
+    `Route::post('password/email', [\\App\\Platform\\Auth\\Controllers\\ForgotPasswordController::class, 'sendResetLinkEmail'])
       ->name('password.email');`,
 
-    `Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])
+    `Route::get('password/reset/{token}', [\\App\\Platform\\Auth\\Controllers\\ResetPasswordController::class, 'showResetForm'])
       ->name('password.reset');`,
 
-    `Route::post('password/reset', [ResetPasswordController::class, 'reset'])
+    `Route::post('password/reset', [\\App\\Platform\\Auth\\Controllers\\ResetPasswordController::class, 'reset'])
       ->name('password.update');`,
 
     `// Force Password Reset`,
 
-    `Route::get('password/new', [ForceResetPasswordController::class, 'showResetForm'])
+    `Route::get('password/new', [\\App\\Platform\\Auth\\Controllers\\ForceResetPasswordController::class, 'showResetForm'])
       ->name('password.forceReset')
       ->middleware('auth');`,
 
-    `Route::post('password/new', [ForceResetPasswordController::class, 'reset'])
+    `Route::post('password/new', [\\App\\Platform\\Auth\\Controllers\\ForceResetPasswordController::class, 'reset'])
       ->name('password.forceResetUpdate')
       ->middleware('auth');`,
 
@@ -194,23 +171,23 @@ module.exports = Preset.make('laravel-boilerplate-auth-preset')
     `|--------------------------------------------------------------------------`,
     `*/`,
 
-    `Route::get('profile', [ProfileController::class, 'show'])
+    `Route::get('profile', [\\App\\Platform\\Users\\Controllers\\ProfileController::class, 'show'])
       ->name('profile.show')
       ->middleware('auth', 'verified', 'password.reset');`,
 
-    `Route::get('profile/edit', [ProfileController::class, 'edit'])
+    `Route::get('profile/edit', [\\App\\Platform\\Users\\Controllers\\ProfileController::class, 'edit'])
       ->name('profile.edit')
       ->middleware('auth', 'verified', 'password.reset');`,
 
-    `Route::put('profile', [ProfileController::class, 'update'])
+    `Route::put('profile', [\\App\\Platform\\Users\\Controllers\\ProfileController::class, 'update'])
       ->name('profile.update')
       ->middleware('auth', 'verified', 'password.reset');`,
 
-    `Route::delete('profile', [ProfileController::class, 'destroy'])
+    `Route::delete('profile', [\\App\\Platform\\Users\\Controllers\\ProfileController::class, 'destroy'])
       ->name('profile.destroy')
       ->middleware('auth', 'verified', 'password.reset');`,
 
-    `Route::post('profile/avatar', UpdateProfileAvatarController::class)
+    `Route::post('profile/avatar', \\App\\Platform\\Users\\Controllers\\UpdateProfileAvatarController::class)
       ->name('profile.avatar')
       ->middleware('auth', 'verified', 'password.reset');`,
 
@@ -220,7 +197,7 @@ module.exports = Preset.make('laravel-boilerplate-auth-preset')
     `|--------------------------------------------------------------------------`,
     `*/`,
 
-    `Route::delete('notifications/{notification}', NotificationsController::class)
+    `Route::delete('notifications/{notification}', \\App\\Platform\\Notifications\\Controllers\\NotificationsController::class)
       ->name('notifications.read');`,
   ])
   .end()
@@ -228,19 +205,13 @@ module.exports = Preset.make('laravel-boilerplate-auth-preset')
 
   .edit('routes/development.php')
   .title('🏗 Add development routes')
-  .search(/<?php$/)
-  .addAfter([
-    `use App\\PlatformDev\\Mails\\Controllers\\MailsController;`,
-    `use Illuminate\\Support\\Facades\\Route;`,
-  ])
-  .end()
   .search(/@use-preset-development-routes$/)
   .addAfter([
     `// Mails to users...`,
-    `Route::get('mails/users/registered', [MailsController::class, 'userRegistered']);`,
-    `Route::get('mails/users/requested-verification', [MailsController::class, 'userRequestedVerification']);`,
-    `Route::get('mails/users/verified', [MailsController::class, 'userVerified']);`,
-    `Route::get('mails/users/forgot-password', [MailsController::class, 'userForgotPassword']);`,
+    `\\Illuminate\\Support\\Facades\\Route::get('mails/users/registered', [\\App\\PlatformDev\\Mails\\Controllers\\MailsController::class, 'userRegistered']);`,
+    `\\Illuminate\\Support\\Facades\\Route::get('mails/users/requested-verification', [\\App\\PlatformDev\\Mails\\Controllers\\MailsController::class, 'userRequestedVerification']);`,
+    `\\Illuminate\\Support\\Facades\\Route::get('mails/users/verified', [\\App\\PlatformDev\\Mails\\Controllers\\MailsController::class, 'userVerified']);`,
+    `\\Illuminate\\Support\\Facades\\Route::get('mails/users/forgot-password', [\\App\\PlatformDev\\Mails\\Controllers\\MailsController::class, 'userForgotPassword']);`,
   ])
   .end()
   .chain()
