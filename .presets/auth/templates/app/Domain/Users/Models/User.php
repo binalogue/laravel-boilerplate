@@ -67,12 +67,12 @@ class User extends Authenticatable
 
     public function getFirstNameAttribute(?string $value): string
     {
-        return mb_convert_case($value, MB_CASE_TITLE, 'UTF-8');
+        return mb_convert_case($value ?? '', MB_CASE_TITLE, 'UTF-8');
     }
 
     public function getLastNameAttribute(?string $value): string
     {
-        return mb_convert_case(is_string($value) ? $value : '', MB_CASE_TITLE, 'UTF-8');
+        return mb_convert_case($value ?? '', MB_CASE_TITLE, 'UTF-8');
     }
 
     /*
