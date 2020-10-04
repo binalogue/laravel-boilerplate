@@ -1,5 +1,3 @@
-import { Inertia } from '@inertiajs/inertia';
-
 export default {
   data() {
     return {
@@ -8,8 +6,8 @@ export default {
     };
   },
 
-  mounted() {
-    this.unregisterStartEvent = Inertia.on('start', event => {
+  methods: {
+    handleStartEvent() {
       console.log('[vuelidate]', 'on start');
 
       this.submitting = true;
@@ -19,12 +17,14 @@ export default {
 
         if (this.$v.$invalid) {
           this.$_vuelidate_handleErrors();
-          event.preventDefault();
+          return false;
         }
       }
-    });
 
-    this.unregisterSuccessEvent = Inertia.on('success', event => {
+      return true;
+    },
+
+    handleSuccessEvent() {
       console.log('[vuelidate]', 'on success');
 
       if (this.$page.hasErrorsOrExceptions) {
@@ -33,15 +33,8 @@ export default {
       }
 
       this.$_vuelidate_resetForm();
-    });
-  },
+    },
 
-  beforeDestroy() {
-    this.unregisterStartEvent();
-    this.unregisterSuccessEvent();
-  },
-
-  methods: {
     $_vuelidate_handleErrors() {
       this.hasErrors = true;
 

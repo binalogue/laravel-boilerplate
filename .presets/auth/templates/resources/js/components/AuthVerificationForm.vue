@@ -19,7 +19,14 @@ export default {
 
   methods: {
     requestVerificationEmail() {
-      this.$inertia.post(this.route('verification.resend'));
+      this.$inertia.post(
+        this.route('verification.resend'),
+        {},
+        {
+          onStart: () => this.handleStartEvent(),
+          onSuccess: () => this.handleSuccessEvent(),
+        }
+      );
     },
   },
 };

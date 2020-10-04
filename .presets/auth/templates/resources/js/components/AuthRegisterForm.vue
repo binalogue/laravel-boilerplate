@@ -148,6 +148,7 @@ export default {
   methods: {
     register() {
       this.$inertia.post(this.route('register'), this.form, {
+        onStart: () => this.handleStartEvent(),
         onFinish: () => {
           if (!this.$page.hasErrorsOrExceptions) {
             this.$gtm.track('sign-up', {
@@ -155,6 +156,8 @@ export default {
               label: this.signUpMethod,
             });
           }
+
+          this.handleSuccessEvent();
         },
       });
     },

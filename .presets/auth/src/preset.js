@@ -95,6 +95,7 @@ module.exports = Preset.make('laravel-boilerplate-auth-preset')
       ->middleware('guest');`,
 
     `Route::post('login', [\\App\\Platform\\Auth\\Controllers\\LoginController::class, 'login'])
+      ->name('login')
       ->middleware('guest');`,
 
     `Route::post('logout', [\\App\\Platform\\Auth\\Controllers\\LoginController::class, 'logout'])

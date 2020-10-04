@@ -85,6 +85,7 @@ export default {
   methods: {
     login() {
       this.$inertia.post(this.route('login'), this.form, {
+        onStart: () => this.handleStartEvent(),
         onSuccess: () => {
           if (!this.$page.hasErrorsOrExceptions) {
             this.$gtm.track('login', {
@@ -92,6 +93,8 @@ export default {
               label: 'Email',
             });
           }
+
+          this.handleSuccessEvent();
         },
       });
     },

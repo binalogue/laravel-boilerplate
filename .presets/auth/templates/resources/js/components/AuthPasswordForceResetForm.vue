@@ -60,7 +60,10 @@ export default {
 
   methods: {
     createNewPassword() {
-      this.$inertia.post(this.route('password.forceResetUpdate'), this.form);
+      this.$inertia.post(this.route('password.forceResetUpdate'), this.form, {
+        onStart: () => this.handleStartEvent(),
+        onSuccess: () => this.handleSuccessEvent(),
+      });
     },
   },
 };

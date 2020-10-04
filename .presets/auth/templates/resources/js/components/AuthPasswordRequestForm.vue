@@ -48,7 +48,10 @@ export default {
 
   methods: {
     requestPassword() {
-      this.$inertia.post(this.route('password.email'), this.form);
+      this.$inertia.post(this.route('password.email'), this.form, {
+        onStart: () => this.handleStartEvent(),
+        onSuccess: () => this.handleSuccessEvent(),
+      });
     },
   },
 };
