@@ -33,13 +33,19 @@ module.exports = Preset.make('laravel-boilerplate-nova-preset')
       'sbine/route-viewer': '^0.0.7',
       'timothyasp/nova-color-field': '^1.0',
     },
-    repositories: [
-      {
-        type: 'composer',
-        url: 'https://nova.laravel.com',
-      },
-    ],
   })
+  .chain()
+
+  .edit('composer.json')
+  .title('➕ Add Nova repository')
+  .search('"repositories"')
+  .addAfter(
+    `{
+      type: 'composer',
+      url: 'https://nova.laravel.com',
+    }`
+  )
+  .end()
   .chain()
 
   .edit('.cli/up.sh')

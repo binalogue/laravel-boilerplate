@@ -1,11 +1,31 @@
 const { Preset } = require('use-preset');
 
 const files = [
-  '.*',
-  '!(node_modules|public|vendor)/**/*.+(conf|js|json|md|php|vue|yml)',
+  '+(.*/**/.*|!(node_modules|public|vendor)/**/*.+(conf|dockerfile|js|json|md|php|sh|vue|yml)|!(.presets/setup/src/preset.js))',
 ];
 
 module.exports = Preset.make('laravel-boilerplate-setup-preset')
+
+  .delete('README.md')
+  .title('🔥 Remove README.md')
+  .chain()
+
+  .delete('composer.lock')
+  .title('🔥 Remove composer.lock')
+  .chain()
+
+  .delete('yarn.lock')
+  .title('🔥 Remove yarn.lock')
+  .chain()
+
+  .edit(['.gitlab-ci.yml'])
+  .title('👷‍♂️ Remove production job')
+  .search(/@use-preset-gitlab-production-forge$/)
+  .removeAfter(11) // Removes job
+  .end()
+  .chain()
+
+  .copyTemplates()
 
   .prompts()
   .input('App name (default: "Laravel Boilerplate")', 'app_name')
@@ -63,18 +83,4 @@ module.exports = Preset.make('laravel-boilerplate-setup-preset')
   .title('💬 Update domain')
   .replace('laravel.binalogue.dev')
   .with(context => context.prompts.domain_name_production)
-  .chain()
-
-  .edit(['README.md'])
-  .title('📝 Update README')
-  .search(/@use-preset-readme-intro/)
-  .removeAfter(3) // Removes into
-  .end()
-  .chain()
-
-  .edit(['.gitlab-ci.yml'])
-  .title('👷‍♂️ Remove production job')
-  .search(/@use-preset-gitlab-production-forge$/)
-  .removeAfter(11) // Removes job
-  .end()
   .chain();

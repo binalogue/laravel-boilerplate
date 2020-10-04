@@ -26,30 +26,20 @@ module.exports = Preset.make('laravel-boilerplate-auth-preset')
 
   .edit('app/Support/Providers/AuthServiceProvider.php')
   .title('🏗 Update AuthServiceProvider')
-  .search(/<?php$/)
-  .addAfter([
-    `use Domain\\Users\\Contracts\\Role as RoleContract;`,
-    `use Domain\\Users\\Models\\Role;`,
-    `use Domain\\Users\\Models\\User;`,
-    `use Domain\\Users\\Policies\\RolePolicy;`,
-    `use Domain\\Users\\Policies\\UserPolicy;`,
-    `use Illuminate\\Support\\Facades\\Gate;`,
-  ])
-  .end()
   .search(/@use-preset-auth-service-provider-policies$/)
   .addAfter([
-    `Role::class => RolePolicy::class,`,
-    `User::class => UserPolicy::class,`,
+    `\\Domain\\Users\\Models\\Role::class => \\Domain\\Users\\Policies\\RolePolicy::class,`,
+    `\\Domain\\Users\\Models\\User::class => \\Domain\\Users\\Policies\\UserPolicy::class,`,
   ])
   .end()
   .search(/@use-preset-auth-service-provider-boot$/)
   .addAfter([
-    `$this->app->bind(RoleContract::class, Role::class);`,
-    `Gate::define('viewAnyId', fn ($user) => $user->isSuperAdmin());`,
-    `Gate::define('updateRoleAttribute', UserPolicy::class.'@updateRoleAttribute');`,
-    `Gate::define('updateEmailAttribute', UserPolicy::class.'@updateEmailAttribute');`,
-    `Gate::define('updatePasswordAttribute', UserPolicy::class.'@updatePasswordAttribute');`,
-    `Gate::define('updateHasNotificationsEnabledAttribute', UserPolicy::class.'@updateHasNotificationsEnabledAttribute');`,
+    `$this->app->bind(\\Domain\\Users\\Contracts\\Role::class, \\Domain\\Users\\Models\\Role::class);`,
+    `\\Illuminate\\Support\\Facades\\Gate::define('viewAnyId', fn ($user) => $user->isSuperAdmin());`,
+    `\\Illuminate\\Support\\Facades\\Gate::define('updateRoleAttribute', \\Domain\\Users\\Policies\\UserPolicy::class.'@updateRoleAttribute');`,
+    `\\Illuminate\\Support\\Facades\\Gate::define('updateEmailAttribute', \\Domain\\Users\\Policies\\UserPolicy::class.'@updateEmailAttribute');`,
+    `\\Illuminate\\Support\\Facades\\Gate::define('updatePasswordAttribute', \\Domain\\Users\\Policies\\UserPolicy::class.'@updatePasswordAttribute');`,
+    `\\Illuminate\\Support\\Facades\\Gate::define('updateHasNotificationsEnabledAttribute', \\Domain\\Users\\Policies\\UserPolicy::class.'@updateHasNotificationsEnabledAttribute');`,
   ])
   .end()
   .chain()

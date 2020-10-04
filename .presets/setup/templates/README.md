@@ -4,8 +4,6 @@
 
 [![Website laravel.binalogue.dev](https://img.shields.io/website?down_color=red&down_message=down&up_color=green&up_message=up&url=https%3A%2F%2Flaravel.binalogue.dev)](https://laravel.binalogue.dev)
 
-This repository contains a skeleton to easily create Laravel 8 and Vue.js applications 🚀
-
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
@@ -19,48 +17,16 @@ These instructions will get you a copy of the project up and running on your loc
 1. Clone the repository from GitLab:
 
    ```bash
-   git clone git@gitlab.com:binalogue/laravel-boilerplate.git <YOUR_REPOSITORY_NAME> && cd <YOUR_REPOSITORY_NAME>
+   git clone git@gitlab.com:binalogue/laravel-boilerplate.git && cd laravel-boilerplate
    ```
 
-If you are cloning this repository to use in another project, please see sections 2 - 4 to get a fresh copy of this boilerplate. If not, skip to section 5.
-
-2. Init Git:
-
-   ```bash
-   rm -rf .git && git init
-   ```
-
-3. Setup the project:
-
-   ```bash
-   npx use-preset ./.presets/setup
-   ```
-
-4. Add other optional presets:
-
-   **Development environment presets**
-
-   - [apache](./.presets/apache/README.md) - Allows you to use Apache instead of Nginx.
-   - [ngrok](./.presets/ngrok/README.md) - Allows you to expose a web server running on your local machine to the internet, with HTTPS support.
-
-   **Backend presets**
-
-   - [auth](./.presets/auth/README.md) - Allows you to add authentication.
-   - [nova](./.presets/nova/README.md) - Allows you to use Nova as administration panel for Laravel. (Requires the [auth](./.presets/auth/README.md) preset.)
-   - [horizon](./.presets/horizon/README.md) - Allows you to use Horizon to easily monitor key metrics of your queue system.
-   - [telescope](./.presets/telescope/README.md) - Allows you to use Telescope as debug assistant for Laravel.
-
-   **Frontend presets**
-
-   - [three](./.presets/three/README.md) - Allows you to install three.js.
-
-5. Build the project:
+2. Build the project:
 
    ```bash
    .cli/build.sh
    ```
 
-6. Run the project:
+3. Run the project:
 
    ```bash
    .cli/up.sh
@@ -80,7 +46,7 @@ If you are cloning this repository to use in another project, please see section
      docker-compose exec app yarn hot
      ```
 
-7. Stop the project:
+4. Stop the project:
 
    ```bash
    .cli/down.sh
@@ -96,7 +62,7 @@ composer test
 
 ## Deployment
 
-We have set up **continuous deployment** with Laravel Forge. Every time we push to the **master** branch, we deploy the new changes to our **production** environment.
+We have set up **continuous deployment** with Laravel Forge. Every time we push to the **master** branch, we deploy the new changes to our **staging** environment. The same applies to the **production** branch, connected with the **production** environment.
 
 ## Built With
 
