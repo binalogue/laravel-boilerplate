@@ -187,7 +187,7 @@ module.exports = Preset.make('laravel-boilerplate-auth-preset')
       ->name('profile.destroy')
       ->middleware('auth', 'verified', 'password.reset');`,
 
-    `Route::post('profile/avatar', \\App\\Platform\\Users\\Controllers\\UpdateProfileAvatarController::class)
+    `Route::post('profile/avatar', [\\App\\Platform\\Users\\Controllers\\ProfileAvatarController::class, 'update'])
       ->name('profile.avatar')
       ->middleware('auth', 'verified', 'password.reset');`,
 

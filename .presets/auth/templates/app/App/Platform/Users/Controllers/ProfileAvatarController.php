@@ -2,17 +2,17 @@
 
 namespace App\Platform\Users\Controllers;
 
-use App\Platform\Users\Requests\UpdateProfileAvatarRequest;
+use App\Platform\Users\Requests\UpdateUserAvatarRequest;
 use Domain\Users\Actions\UpdateUserAvatarAction;
 use Domain\Users\DataTransferObjects\UserData;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
-class UpdateProfileAvatarController
+class ProfileAvatarController
 {
-    public function __invoke(
-        UpdateProfileAvatarRequest $updateProfileAvatarRequest,
+    public function update(
+        UpdateUserAvatarRequest $updateUserAvatarRequest,
         UpdateUserAvatarAction $updateUserAvatarAction
     ): RedirectResponse {
         $user = Auth::user();
@@ -23,7 +23,7 @@ class UpdateProfileAvatarController
 
         $updateUserAvatarAction->execute(
             $user,
-            UserData::fromUpdateProfileAvatarRequest($updateProfileAvatarRequest)
+            UserData::fromUpdateUserAvatarRequest($updateUserAvatarRequest)
         );
 
         flash()->success(is_string($flash = __('profile.flash.avatar_updated')) ? $flash : '');

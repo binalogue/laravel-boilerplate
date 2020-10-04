@@ -2,7 +2,7 @@
 
 namespace App\Platform\Users\Controllers;
 
-use App\Platform\Users\Requests\ProfileUpdateRequest;
+use App\Platform\Users\Requests\UpdateUserRequest;
 use Domain\Users\Actions\DeleteUserAction;
 use Domain\Users\Actions\UpdateUserAction;
 use Domain\Users\DataTransferObjects\UserData;
@@ -52,7 +52,7 @@ class ProfileController
 
     public function update(
         UpdateUserAction $updateUserAction,
-        ProfileUpdateRequest $profileUpdateRequest
+        UpdateUserRequest $updateUserRequest
     ): RedirectResponse {
         $user = Auth::user();
 
@@ -62,7 +62,7 @@ class ProfileController
 
         $updateUserAction->execute(
             $user,
-            UserData::fromProfileUpdateRequest($profileUpdateRequest)
+            UserData::fromUpdateUserRequest($updateUserRequest)
         );
 
         flash()->success(is_string($flash = __('profile.flash.updated')) ? $flash : '');

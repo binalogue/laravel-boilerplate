@@ -3,8 +3,8 @@
 namespace Domain\Users\DataTransferObjects;
 
 use App\Platform\Auth\Requests\RegisterRequest;
-use App\Platform\Users\Requests\ProfileUpdateRequest;
-use App\Platform\Users\Requests\UpdateProfileAvatarRequest;
+use App\Platform\Users\Requests\UpdateUserAvatarRequest;
+use App\Platform\Users\Requests\UpdateUserRequest;
 use Illuminate\Http\UploadedFile;
 use Laravel\Socialite\Contracts\User;
 use Spatie\DataTransferObject\DataTransferObject;
@@ -62,22 +62,22 @@ class UserData extends DataTransferObject
         ]);
     }
 
-    public static function fromProfileUpdateRequest(
-        ProfileUpdateRequest $profileUpdateRequest
+    public static function fromUpdateUserRequest(
+        UpdateUserRequest $updateUserRequest
     ): self {
         return new self([
-            'first_name' => $profileUpdateRequest->get('first_name'),
-            'last_name' => $profileUpdateRequest->get('last_name'),
-            'email' => $profileUpdateRequest->get('email'),
-            'password' => $profileUpdateRequest->get('password'),
+            'first_name' => $updateUserRequest->get('first_name'),
+            'last_name' => $updateUserRequest->get('last_name'),
+            'email' => $updateUserRequest->get('email'),
+            'password' => $updateUserRequest->get('password'),
         ]);
     }
 
-    public static function fromUpdateProfileAvatarRequest(
-        UpdateProfileAvatarRequest $updateProfileAvatarRequest
+    public static function fromUpdateUserAvatarRequest(
+        UpdateUserAvatarRequest $updateUserAvatarRequest
     ): self {
         return new self([
-            'uploaded_avatar' => $updateProfileAvatarRequest->file('avatar'),
+            'uploaded_avatar' => $updateUserAvatarRequest->file('avatar'),
         ]);
     }
 }
