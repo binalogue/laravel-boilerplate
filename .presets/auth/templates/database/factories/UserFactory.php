@@ -17,11 +17,7 @@ class UserFactory extends Factory
      */
     protected $model = User::class;
 
-    /**
-     * Define the model's default state.
-     *
-     * @return array
-     */
+    /** Define the model's default state. */
     public function definition(): array
     {
         return [

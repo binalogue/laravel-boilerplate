@@ -16,7 +16,6 @@ class SocialiteController
     /**
      * Redirect the user to the provider authentication page.
      *
-     * @param  string  $driver
      * @return \Illuminate\Http\RedirectResponse
      */
     public function redirectToProvider(string $driver)
@@ -27,7 +26,6 @@ class SocialiteController
     /**
      * Obtain the user information from provider.
      *
-     * @param  string  $driver
      * @return \Illuminate\Http\RedirectResponse|\Inertia\Response
      */
     public function handleProviderCallback(string $driver)

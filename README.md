@@ -54,6 +54,12 @@ If you are cloning this repository to use in another project, please see section
 
    - [three](./.presets/three/README.md) - Allows you to install three.js.
 
+   > Run PHP CS Fixer when the presets have been applied:
+   >
+   > ```bash
+   > composer analyse:phpcsfixer
+   > ```
+
 5. Build the project:
 
    ```bash

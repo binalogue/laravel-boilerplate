@@ -41,9 +41,9 @@ module.exports = Preset.make('laravel-boilerplate-nova-preset')
   .search('"repositories"')
   .addAfter(
     `{
-      type: 'composer',
-      url: 'https://nova.laravel.com',
-    }`
+      "type": "composer",
+      "url": "https://nova.laravel.com",
+    },`
   )
   .end()
   .chain()

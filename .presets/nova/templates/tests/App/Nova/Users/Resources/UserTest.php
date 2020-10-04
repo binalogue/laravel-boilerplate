@@ -251,7 +251,7 @@ class UserTest extends NovaTestCase
                             'component' => 'file-field',
                             'name' => 'Avatar',
                             'value' => null,
-                            'thumbnailUrl' => 'https://www.gravatar.com/avatar/' . md5($this->user->email) . '?s=300',
+                            'thumbnailUrl' => 'https://www.gravatar.com/avatar/'.md5($this->user->email).'?s=300',
                         ],
                         [
                             'attribute' => 'first_name',

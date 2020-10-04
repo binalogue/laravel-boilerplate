@@ -6,11 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateNotificationsTable extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    /** Run the migrations. */
     public function up(): void
     {
         Schema::create('notifications', function (Blueprint $table) {
@@ -23,11 +19,7 @@ class CreateNotificationsTable extends Migration
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
+    /** Reverse the migrations. */
     public function down(): void
     {
         Schema::dropIfExists('notifications');

@@ -78,7 +78,6 @@ RUN chmod +x /usr/local/bin/composer-installer \
   && /usr/local/bin/composer-installer \
   && mv composer.phar /usr/local/bin/composer \
   && chmod +x /usr/local/bin/composer \
-  && composer check-platform-reqs --working-dir=/var/www/ \
   && composer global require hirak/prestissimo --prefer-dist --no-progress --no-suggest --classmap-authoritative \
   && composer clear-cache \
   && composer --version
