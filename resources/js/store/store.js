@@ -62,7 +62,7 @@ export default new Vuex.Store({
   },
 
   getters: {
-    getAppLogo: ({ settings }) => settings.logo || '',
+    getAppLogo: ({ settings }) => settings.logo || '/images/logo.png',
 
     getAppName: ({ settings }) => settings.app_name || '',
 

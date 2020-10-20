@@ -50,7 +50,7 @@ export default {
       return new Promise(resolve => {
         const pxloader = new PxLoader();
 
-        pxloader.addImage(this.webp('/images/logo.png'));
+        pxloader.addImage(this.$store.getters.getAppLogo);
 
         if (this.$store.state.isPhone) {
           pxloader.addImage(this.webp('/images/binalogue-bg-home-mobile.jpg'));
