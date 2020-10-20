@@ -5,7 +5,7 @@
       :class="{
         'pointer-events-none': $store.state.route.name === 'home',
       }"
-      :href="route('home')"
+      :href="route('pages.home')"
       @click="handleClickLogo"
     >
       <img v-webp="'/images/logo.png'" alt="Binalogue" />
