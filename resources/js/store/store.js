@@ -1,5 +1,3 @@
-/* global Laravel */
-
 /* Vendor */
 import Vue from 'vue';
 import Vuex from 'vuex';
@@ -43,12 +41,6 @@ export default new Vuex.Store({
     flash: {},
     isShownTheFlashStatus: false,
 
-    // Router.
-    route: {
-      name: '',
-      href: '',
-    },
-
     /*
     |---------------------------------------------------------------------------
     | Frontend Data
@@ -70,9 +62,9 @@ export default new Vuex.Store({
   },
 
   getters: {
-    getAppName: ({ settings }) => settings.app_name || '',
+    getAppLogo: ({ settings }) => settings.logo || '',
 
-    getClientLogo: ({ settings }) => settings.logo || '',
+    getAppName: ({ settings }) => settings.app_name || '',
 
     isAuth: ({ user }) => !!user,
 
@@ -81,8 +73,6 @@ export default new Vuex.Store({
 
   actions: {
     addBackendInertiajsData({ commit }, { auth, flash, meta }) {
-      commit('SET_ROUTE', Laravel.route().current());
-
       if (auth) {
         commit('SET_AUTH_USER', auth.user);
       }
@@ -124,11 +114,6 @@ export default new Vuex.Store({
       state.flash.message = message;
       state.flash.level = level;
       state.flash.class = c;
-    },
-
-    SET_ROUTE(state, payload) {
-      state.route.name = payload;
-      state.route.href = window.location.href;
     },
 
     TOGGLE_IS_LOADING(state, payload) {

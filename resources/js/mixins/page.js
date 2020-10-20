@@ -36,6 +36,11 @@ export default {
       type: Object,
       default: () => {},
     },
+
+    request: {
+      type: Object,
+      default: () => {},
+    },
   },
 
   metaInfo() {

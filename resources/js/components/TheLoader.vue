@@ -1,6 +1,6 @@
 <template>
   <div class="TheLoader">
-    <img :src="$store.getters.getClientLogo" :alt="$store.getters.getAppName" />
+    <img :src="$store.getters.getAppLogo" :alt="$store.getters.getAppName" />
   </div>
 </template>
 
