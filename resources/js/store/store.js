@@ -43,9 +43,6 @@ export default new Vuex.Store({
     flash: {},
     isShownTheFlashStatus: false,
 
-    // Meta.
-    meta: {},
-
     // Router.
     route: {
       name: '',
@@ -77,8 +74,6 @@ export default new Vuex.Store({
 
     getClientLogo: ({ settings }) => settings.logo || '',
 
-    getPageTitle: ({ meta }) => meta.title || '',
-
     isAuth: ({ user }) => !!user,
 
     isGuest: ({ user }) => !user,
@@ -90,10 +85,6 @@ export default new Vuex.Store({
 
       if (auth) {
         commit('SET_AUTH_USER', auth.user);
-      }
-
-      if (meta) {
-        commit('SET_META', meta);
       }
 
       if (flash) {
@@ -133,10 +124,6 @@ export default new Vuex.Store({
       state.flash.message = message;
       state.flash.level = level;
       state.flash.class = c;
-    },
-
-    SET_META(state, payload) {
-      state.meta = payload;
     },
 
     SET_ROUTE(state, payload) {
