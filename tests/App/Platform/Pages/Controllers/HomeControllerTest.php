@@ -1,11 +1,11 @@
 <?php
 
-namespace Tests\App\Platform\Home\Controllers;
+namespace Tests\App\Platform\Pages\Controllers;
 
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-/** @see \App\Platform\Home\Controllers\HomeController */
+/** @see \App\Platform\Pages\Controllers\HomeController */
 class HomeControllerTest extends TestCase
 {
     use RefreshDatabase;
@@ -14,7 +14,7 @@ class HomeControllerTest extends TestCase
     public function user_can_see_home_page()
     {
         $this
-            ->get(route('home'))
+            ->get(route('pages.home'))
             ->assertStatus(200);
     }
 }

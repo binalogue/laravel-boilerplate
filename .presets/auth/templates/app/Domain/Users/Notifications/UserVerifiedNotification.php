@@ -32,7 +32,7 @@ class UserVerifiedNotification extends Notification implements ShouldQueue
                 route('profile.show')
             )
             ->line(__('users.notifications.verified.mail.outro_line', [
-                'url' => route('home'),
+                'url' => route('pages.home'),
             ]))
             ->salutation(is_string($salutation = __('users.notifications.verified.mail.salutation')) ? $salutation : '');
     }

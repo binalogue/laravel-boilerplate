@@ -1,5 +1,3 @@
-import { mapGetters } from 'vuex';
-
 export default {
   props: {
     auth: {
@@ -38,16 +36,17 @@ export default {
       type: Object,
       default: () => {},
     },
+
+    request: {
+      type: Object,
+      default: () => {},
+    },
   },
 
   metaInfo() {
     return {
-      title: this.getPageTitle,
+      title: this.$page.meta.title,
     };
-  },
-
-  computed: {
-    ...mapGetters(['getPageTitle']),
   },
 
   created() {

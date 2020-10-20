@@ -82,6 +82,6 @@ class ProfileController
 
         flash()->success(is_string($flash = __('profile.flash.destroyed')) ? $flash : '');
 
-        return Redirect::route('home');
+        return Redirect::route('pages.home');
     }
 }

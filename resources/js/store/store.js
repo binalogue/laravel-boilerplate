@@ -1,5 +1,3 @@
-/* global Laravel */
-
 /* Vendor */
 import Vue from 'vue';
 import Vuex from 'vuex';
@@ -36,18 +34,12 @@ export default new Vuex.Store({
     |---------------------------------------------------------------------------
     */
 
+    // Auth.
+    user: undefined,
+
     // Flash.
     flash: {},
     isShownTheFlashStatus: false,
-
-    // Meta.
-    meta: {},
-
-    // Router.
-    route: {
-      name: '',
-      href: '',
-    },
 
     /*
     |---------------------------------------------------------------------------
@@ -57,9 +49,6 @@ export default new Vuex.Store({
     |  - resources/js/app.js
     |---------------------------------------------------------------------------
     */
-
-    // Auth.
-    user: undefined,
 
     // Cookies.
     isShownTheCookieBanner: false,
@@ -73,27 +62,19 @@ export default new Vuex.Store({
   },
 
   getters: {
+    getAppLogo: ({ settings }) => settings.logo || '/images/logo.png',
+
     getAppName: ({ settings }) => settings.app_name || '',
 
-    getClientLogo: ({ settings }) => settings.logo || '',
+    isAuth: ({ user }) => !!user,
 
-    getPageTitle: ({ meta }) => meta.title || '',
-
-    isAuth: state => !!state.user,
-
-    isGuest: state => !state.user,
+    isGuest: ({ user }) => !user,
   },
 
   actions: {
     addBackendInertiajsData({ commit }, { auth, flash, meta }) {
-      commit('SET_ROUTE', Laravel.route().current());
-
       if (auth) {
         commit('SET_AUTH_USER', auth.user);
-      }
-
-      if (meta) {
-        commit('SET_META', meta);
       }
 
       if (flash) {
@@ -133,15 +114,6 @@ export default new Vuex.Store({
       state.flash.message = message;
       state.flash.level = level;
       state.flash.class = c;
-    },
-
-    SET_META(state, payload) {
-      state.meta = payload;
-    },
-
-    SET_ROUTE(state, payload) {
-      state.route.name = payload;
-      state.route.href = window.location.href;
     },
 
     TOGGLE_IS_LOADING(state, payload) {

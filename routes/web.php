@@ -1,6 +1,6 @@
 <?php
 
-use App\Platform\Home\Controllers\HomeController;
+use App\Platform\Pages\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
-| Home
+| Pages
 |--------------------------------------------------------------------------
 */
 
 Route::get('/', HomeController::class)
-    ->name('home');
+    ->name('pages.home');
 
 // @use-preset-web-routes

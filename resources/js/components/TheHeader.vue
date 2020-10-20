@@ -3,12 +3,12 @@
     <inertia-link
       class="TheHeader__logo"
       :class="{
-        'pointer-events-none': $store.state.route.name === 'home',
+        'pointer-events-none': $page.request.route_name === 'pages.home',
       }"
-      :href="route('home')"
+      :href="route('pages.home')"
       @click="handleClickLogo"
     >
-      <img v-webp="'/images/logo.png'" alt="Binalogue" />
+      <img :src="$store.getters.getAppLogo" :alt="$store.getters.getAppName" />
     </inertia-link>
   </div>
 </template>
