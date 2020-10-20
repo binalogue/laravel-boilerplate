@@ -36,6 +36,9 @@ export default new Vuex.Store({
     |---------------------------------------------------------------------------
     */
 
+    // Auth.
+    user: undefined,
+
     // Flash.
     flash: {},
     isShownTheFlashStatus: false,
@@ -58,9 +61,6 @@ export default new Vuex.Store({
     |---------------------------------------------------------------------------
     */
 
-    // Auth.
-    user: undefined,
-
     // Cookies.
     isShownTheCookieBanner: false,
 
@@ -79,9 +79,9 @@ export default new Vuex.Store({
 
     getPageTitle: ({ meta }) => meta.title || '',
 
-    isAuth: state => !!state.user,
+    isAuth: ({ user }) => !!user,
 
-    isGuest: state => !state.user,
+    isGuest: ({ user }) => !user,
   },
 
   actions: {
