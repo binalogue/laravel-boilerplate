@@ -39,7 +39,7 @@ module.exports = Preset.make('laravel-boilerplate-telescope-preset')
   .search(/@use-preset-schedule$/)
   .addAfter([
     `if (config('telescope.enabled')) {`,
-    `$schedule->command('telescope:prune --hours=72')->daily();`,
+    `$schedule->command('telescope:prune')->daily();`,
     `}`,
   ])
   .end()

@@ -17,7 +17,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
         $this->hideSensitiveRequestDetails();
 
         Telescope::filter(function (IncomingEntry $entry) {
-            if ($this->app->environment(['local', 'staging'])) {
+            if ($this->app->environment(['local'])) {
                 return true;
             }
 
@@ -29,7 +29,7 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
         });
 
         Telescope::filterBatch(function (Collection $entries) {
-            if ($this->app->environment(['local', 'staging'])) {
+            if ($this->app->environment(['local'])) {
                 return true;
             }
 
@@ -42,14 +42,10 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
         });
     }
 
-    /**
-     * Prevent sensitive request details from being logged by Telescope.
-     *
-     * @return void
-     */
+    /** Prevent sensitive request details from being logged by Telescope. */
     protected function hideSensitiveRequestDetails(): void
     {
-        if ($this->app->environment(['local', 'staging'])) {
+        if ($this->app->environment(['local'])) {
             return;
         }
 
@@ -66,8 +62,6 @@ class TelescopeServiceProvider extends TelescopeApplicationServiceProvider
      * Register the Telescope gate.
      *
      * This gate determines who can access Telescope in non-local environments.
-     *
-     * @return void
      */
     protected function gate(): void
     {
