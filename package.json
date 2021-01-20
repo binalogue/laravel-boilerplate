@@ -50,7 +50,7 @@
     "@inertiajs/inertia": "^0.3.4",
     "@inertiajs/inertia-vue": "^0.2.4",
     "@inertiajs/progress": "^0.1.2",
-    "gsap": "^3.4.2",
+    "gsap": "^3.6.0",
     "lang.js": "^1.1.14",
     "lodash": "^4.17.19",
     "mobile-detect": "^1.4.4",
