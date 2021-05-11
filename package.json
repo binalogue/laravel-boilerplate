@@ -52,7 +52,7 @@
     "@inertiajs/progress": "^0.1.2",
     "gsap": "^3.4.2",
     "lang.js": "^1.1.14",
-    "lodash": "^4.17.19",
+    "lodash": "^4.17.21",
     "mobile-detect": "^1.4.4",
     "pxloader": "^1.1.2",
     "vue": "^2.6.11",
